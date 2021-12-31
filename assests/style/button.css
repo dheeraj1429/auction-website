@@ -63,4 +63,13 @@
   box-shadow: 0px 10px 20px -10px rgba(202, 0, 0, 0.5);
   font-weight: bold;
 }
+.Add_to_cart {
+  border: none;
+  border-radius: 30px;
+  background-color: var(--LightRedColor);
+  color: var(--MainColor);
+  padding: 0.6rem 2rem;
+  box-shadow: 0px 10px 20px -10px rgba(202, 0, 0, 0.5);
+  font-weight: bold;
+}
 /* Buttons */
