@@ -1,0 +1,61 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  font-family: "Ubuntu", sans-serif;
+}
+
+div#background-img {
+  background-image: url("../assets/background.svg");
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+div.center {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.card {
+  width: 30%;
+  height: 50%;
+  background-color: white;
+}
+
+form.form-control {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+input.input-custom {
+  outline: none;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 100px;
+  border: 1px solid rgba(0, 0, 0, 0.51);
+}
+
+form.form-control > button {
+  padding: 10px;
+  border-radius: 100px;
+  border: 1px solid rgba(0, 0, 0, 0.51);
+  cursor: pointer;
+  background-color: #ff6000;
+  border: none;
+  color: white;
+  font-weight: bold;
+}
+
+div.card-body {
+  height: 60%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
