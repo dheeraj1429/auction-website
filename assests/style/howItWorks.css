@@ -1,0 +1,24 @@
+/* banner section */
+.Banner_Section_div {
+  background-image: url(/assests/icons&images/Rectangle\ 1221\ copy\ 1.png);
+  background-position: center;
+  background-size: cover;
+  padding: 200px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Banner_Section_div h1 {
+  font-weight: 700;
+}
+.Banner_Section_div span {
+  color: var(--LightRedColor);
+}
+/* banner section */
+
+/* How to works section */
+.How_it_works_content h1 {
+  font-weight: 800;
+  font-size: 45px;
+}
+/* How to works section */
