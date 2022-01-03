@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER["DOCUMENT_ROOT"] . "/model/base.php";;
+require_once $_SERVER["DOCUMENT_ROOT"] . "/model/base.php";
 
 
 class Blog extends Base
@@ -89,8 +89,8 @@ class Blog extends Base
         }
     }
 
-    public function delete()
+    public function delete($id)
     {
-        // ... 
+        $this->update(array("status" => 0), $id);
     }
 }

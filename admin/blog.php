@@ -2,6 +2,7 @@
 require_once "../model/blog.php";
 session_start();
 $pageName = "Manage Blog";
+$blog = new Blog();
 
 function getBlogs()
 {
@@ -17,25 +18,30 @@ if (!isset($_SESSION['admin_email'])) {
     header("location:login.php");
     exit();
 }
-//change status...
+// change status...
 // if (isset($_POST['id']) && $_POST['status']) {
 //     $id = mysqli_real_escape_string($conn, ak_secure_string($_POST['id']));
 //     $status = mysqli_real_escape_string($conn, ak_secure_string($_POST['status']));
 //     mysqli_query($conn, "UPDATE `" . $tblPrefix . "blog` SET `status` = '$status' WHERE `id`=$id");
 //     exit();
 // }
-// // Delete
-// if (isset($_GET['delete-row'])) {
-//     $id = mysqli_real_escape_string($conn, ak_secure_string($_GET['delete-row']));
-//     $dataQ = mysqli_query($conn, "UPDATE `" . $tblPrefix . "blog` SET `status` = 0 WHERE `id`=$id");
-//     if ($dataQ == true) {
-//         $_SESSION['toast']['msg'] = "Succesfully Deleted";
-//         header("location:alternative.php");
-//         exit();
-//     } else {
-//         $_SESSION['toast']['msg'] = "Something Went Wrong";
-//     }
-// }
+// Delete
+if (isset($_GET['params']) && isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $params = $_GET['params'];
+    if ($params === "delete") {
+        $blog->delete($id);
+    }
+    // $id = mysqli_real_escape_string($conn, ak_secure_string($_GET['delete-row']));
+    // $dataQ = mysqli_query($conn, "UPDATE `" . $tblPrefix . "blog` SET `status` = 0 WHERE `id`=$id");
+    // if ($dataQ == true) {
+    //     $_SESSION['toast']['msg'] = "Succesfully Deleted";
+    //     header("location:alternative.php");
+    //     exit();
+    // } else {
+    //     $_SESSION['toast']['msg'] = "Something Went Wrong";
+    // }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,7 +65,7 @@ if (!isset($_SESSION['admin_email'])) {
                             <div class="card py-3 m-b-30">
                                 <div class="card-body">
                                     <?php foreach ($blogs as $dataB) : ?>
-
+                                    <?php if ($dataB['status'] != 0) : ?>
                                     <div class="col-lg-4 m-b-30" style="float: left">
                                         <div class="card m-b-30">
                                             <div class="card-media">
@@ -75,15 +81,16 @@ if (!isset($_SESSION['admin_email'])) {
                                                 <a href="add-blog.php?id=<?php echo $dataB['id']; ?>"
                                                     class="btn btn-primary">Edit</a>
 
-                                                <a href="#" class="btn btn-danger delete-row"
+                                                <a href="/admin/blog.php?id=<?php echo $dataB['id'] ?>&params=delete"
+                                                    class="btn btn-danger delete-row"
                                                     data-this-id="<?php echo $dataB['id']; ?>">Delete</a>
                                                 <span class="ml-5">
                                                     <label class="cstm-switch">
                                                         <input type="checkbox"
                                                             data-this-id="<?php echo $dataB['id']; ?>"
                                                             <?php if ($dataB['status'] == 2) {
-                                                                                                                                    echo 'checked';
-                                                                                                                                } ?> name="option"
+                                                                                                                                        echo 'checked';
+                                                                                                                                    } ?> name="option"
                                                             class="cstm-switch-input change-status">
                                                         <span class="cstm-switch-indicator"></span>
                                                     </label>
@@ -91,7 +98,7 @@ if (!isset($_SESSION['admin_email'])) {
                                             </div>
                                         </div>
                                     </div>
-
+                                    <?php endif; ?>
                                     <?php endforeach; ?>
                                 </div>
                             </div>
