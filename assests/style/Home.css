@@ -1,7 +1,7 @@
 /* banner section */
 /* header_banner_section */
 .header_banner_section {
-  background-image: url(/assests/icons&images/BANNER.png);
+  background-image: url(../icons&images/BANNER.png);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -132,7 +132,7 @@
 
 /* deal_of_the_day */
 .deal_of_the_day {
-  background-image: url(/assests/icons&images/Group\ 157.png);
+  background-image: url(../icons&images/Group\ 157.png);
   background-position: center;
   background-size: cover;
 }
@@ -216,10 +216,10 @@
   color: var(--MainColor);
 }
 .Featured_Banner_One {
-  background-image: url(/assests/icons&images/Group\ 413.png);
+  background-image: url(../icons&images/Group\ 413.png);
 }
 .Featured_Banner_Two {
-  background-image: url(/assests/icons&images/Group\ 414.png);
+  background-image: url(../icons&images/Group\ 414.png);
 }
 /* Featured auction section */
 
@@ -259,7 +259,7 @@
 
 /* Our Pricing Plans  */
 .our_pricing_plan {
-  background-image: url(/assests/icons&images/BANNER.png);
+  background-image: url(../icons&images/BANNER.png);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -312,7 +312,7 @@
 
 /* Register for free start */
 .register_for_free {
-  background-image: url(/assests/icons&images/BANNER.png);
+  background-image: url(../icons&images/BANNER.png);
   background-position: center;
   background-size: cover;
 }
