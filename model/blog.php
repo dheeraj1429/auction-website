@@ -1,5 +1,5 @@
 <?php
-require_once "./base.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/model/base.php";;
 
 
 class Blog extends Base
@@ -37,17 +37,17 @@ class Blog extends Base
             array_key_exists("meta_desc", $data) &&
             array_key_exists("status", $data)
         ) {
-            $name = $this->preventSqlInjection($data["name"]);
-            $url = $this->preventSqlInjection($data["url"]);
-            $cat = $this->preventSqlInjection($data["cat"]);
-            $img = $this->preventSqlInjection($data["img"]);
-            $shortDesc = $this->preventSqlInjection($data["short_desc"]);
-            $desc = $this->preventSqlInjection($data["desc"]);
-            $postDate = $this->preventSqlInjection($data["post_date"]);
-            $metaKeyword = $this->preventSqlInjection($data["meta_keyword"]);
-            $metaDesc = $this->preventSqlInjection($data["meta_desc"]);
-            $metaTitle = $this->preventSqlInjection($data["meta_title"]);
-            $status = $this->preventSqlInjection($data["status"]);
+            $name = $data["name"];
+            $url = $data["url"];
+            $cat = $data["cat"];
+            $img = $data["img"];
+            $shortDesc = $data["short_desc"];
+            $desc = $data["desc"];
+            $postDate = $data["post_date"];
+            $metaKeyword = $data["meta_keyword"];
+            $metaDesc = $data["meta_desc"];
+            $metaTitle = $data["meta_title"];
+            $status = $data["status"];
 
             $sql = "INSERT INTO " . $this->tableName . " (
                 name,
@@ -55,12 +55,12 @@ class Blog extends Base
                 cat, 
                 img, 
                 short_desc, 
-                desc, 
+                `desc`, 
                 post_date, 
                 meta_title, 
                 meta_keyword, 
                 meta_desc, 
-                status) VALUES (
+                `status`) VALUES (
                     '$name', 
                     '$url', 
                     '$cat', 
@@ -83,7 +83,7 @@ class Blog extends Base
         $keys = array_keys($updatedData);
         foreach ($keys as $key) {
             $value = $updatedData[$key];
-            $sql = "UPDATE " . $this->tableName . " SET " . $key . " = " . $value . " WHERE id = '$id'";
+            $sql = "UPDATE " . $this->tableName . " SET " . $key . " = " . "'$value'" . " WHERE id = '$id'";
             $stmt = $this->connection->prepare($sql);
             $stmt->execute();
         }
@@ -91,6 +91,6 @@ class Blog extends Base
 
     public function delete()
     {
-        // ...
+        // ... 
     }
 }
