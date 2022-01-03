@@ -32,6 +32,7 @@ function uploadImage($fileObj)
 }
 
 $categories = getCategory();
+$blog = new Blog();
 
 if (!isset($_SESSION['admin_email'])) {
     $_SESSION['toast']['msg'] = "Please, Log-in to continue.";
@@ -49,8 +50,25 @@ if (isset($_POST['submit'])) {
     $mDesc = $_POST['mdesc'];
     $mKeyword = $_POST['mkeyword'];
     $image = $_FILES['image'];
-    $blog = new Blog();
 
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        $data = array(
+            "name" => $name,
+            "url" => $url,
+            "cat" => $cat,
+            "`desc`" => $desc,
+            "post_date" => date("Y-m-d"),
+            "meta_keyword" => $mKeyword,
+            "meta_title" => $mTitle,
+            "meta_desc" => $mDesc,
+            "`status`" => 1,
+            "short_desc" => $descShort
+        );
+        $blog->update($data, $id);
+        header("Location: /admin/blog.php");
+        die();
+    }
     $filePath = uploadImage($image);
 
     $data = array(
@@ -91,12 +109,11 @@ if (isset($_POST['submit'])) {
     // }
 }
 
-// // Update data 
-// if(isset($_GET['id'])){
-//     $id=mysqli_real_escape_string($conn,ak_secure_string($_GET['id']));
-//     $data=mysqli_query($conn,"SELECT * FROM `".$tblPrefix."blog` WHERE id='$id'");
-//     $dataB=mysqli_fetch_assoc($data);
-// }
+// Update data 
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $dataB = $blog->read($id = $id)[0];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -143,7 +160,7 @@ if (isset($_POST['submit'])) {
                                                 <select class="form-control" name="cat" autocomplete="off" required="">
                                                     <option value="" selected="" disabled="">Select Category</option>
                                                     <?php foreach ($categories as $category) : ?>
-                                                    <option value="" selected="" disabled="">
+                                                    <option value="<?php echo $category["id"] ?>">
                                                         <?php echo $category["name"] ?></option>
                                                     <?php endforeach; ?>
                                                 </select>
@@ -155,13 +172,13 @@ if (isset($_POST['submit'])) {
                                                     <label class="custom-file-label" for="inputllogo02">Image</label>
                                                 </div>
                                                 <?php if (isset($_GET['id'])) { ?>
-                                                <img src="../media/img/blog/<?php if (isset($_GET['id'])) {
-                                                                                    echo $dataB['img'];
-                                                                                } ?>"
-                                                    class="img-circle img-responsive m-auto mx-2"
+                                                <img src="<?php if (isset($_GET['id'])) {
+                                                                    echo $dataB['img'];
+                                                                } ?>" class="img-circle img-responsive m-auto mx-2"
                                                     alt="<?php if (isset($_GET['id'])) {
-                                                                                                                                                echo $dataB['name'];
-                                                                                                                                            } ?>" height="100px;">
+                                                                                                                                echo $dataB['name'];
+                                                                                                                            } ?>"
+                                                    height="100px;">
                                                 <?php } ?>
                                             </div>
                                             <div class="form-group col-md-12">

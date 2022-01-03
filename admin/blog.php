@@ -1,6 +1,16 @@
 <?php
+require_once "../model/blog.php";
 session_start();
 $pageName = "Manage Blog";
+
+function getBlogs()
+{
+    $blog = new Blog();
+    $blogs = $blog->read();
+    return $blogs;
+}
+
+$blogs = getBlogs();
 
 if (!isset($_SESSION['admin_email'])) {
     $_SESSION['toast']['msg'] = "Please, Log-in to continue.";
@@ -48,15 +58,12 @@ if (!isset($_SESSION['admin_email'])) {
                         <div class="col-lg-12 mx-auto mt-2">
                             <div class="card py-3 m-b-30">
                                 <div class="card-body">
-                                    <?php
-                                    $dataBlog = mysqli_query($conn, "SELECT `id`,`name`,`cat`,`short_desc`,`img`,`post_date`,`status` FROM `" . $tblPrefix . "blog` WHERE status>0");
-                                    while ($dataB = mysqli_fetch_assoc($dataBlog)) {
-                                    ?>
+                                    <?php foreach ($blogs as $dataB) : ?>
+
                                     <div class="col-lg-4 m-b-30" style="float: left">
                                         <div class="card m-b-30">
                                             <div class="card-media">
-                                                <img class="card-img-top"
-                                                    src="../media/img/blog/<?php echo $dataB['img']; ?>"
+                                                <img class="card-img-top" src="<?php echo $dataB['img']; ?>"
                                                     alt="<?php echo $dataB['name']; ?>">
                                             </div>
                                             <div class="card-body">
@@ -84,7 +91,8 @@ if (!isset($_SESSION['admin_email'])) {
                                             </div>
                                         </div>
                                     </div>
-                                    <?php } ?>
+
+                                    <?php endforeach; ?>
                                 </div>
                             </div>
                         </div>
