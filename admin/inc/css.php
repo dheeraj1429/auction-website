@@ -38,6 +38,7 @@
 <!-- Alertify-->
 <link rel="stylesheet" type="text/css" href="./assets/css/alertify.rtl.min.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/alertify-default-theme.rtl.min.css">
+
 <style type="text/css">
 .btn-floating {
     display: inline-block;

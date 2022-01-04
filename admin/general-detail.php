@@ -1,8 +1,10 @@
 <?php
 require_once "../model/general.php";
+require_once "../model/functions.php";
 
 session_start();
 $pageName = "General Details";
+$_SESSION['toast']['msg']="working";
 
 if (!isset($_SESSION['admin_email'])) {
     $_SESSION['toast']['msg'] = "Please, Log-in to continue.";
@@ -25,48 +27,50 @@ function getValuesByName($name)
 
 function uploadImage($fileObj)
 {
-    $fileType = strtolower(explode('/', $fileObj["type"])[1]);
-    $exceptedTypes = array("jpg", "png", "jpeg");
-    $uploadDir = "../media/";
+	$fileType = strtolower(explode('/', $fileObj["type"])[1]);
+	$exceptedTypes = array("jpg", "png", "jpeg");
+	$uploadDir = "../assests/img/";
 
-    if (in_array($fileType, $exceptedTypes)) {
-        $fileName = uniqid("", true) . "." . $fileType;
-        $fileDestination = $uploadDir . $fileName;
-        move_uploaded_file($fileObj["tmp_name"], $fileDestination);
-        return $fileName;
-    } else {
-        throw new Exception("Unexpected file type");
-    }
+	if (in_array($fileType, $exceptedTypes)) {
+		$fileName = uniqid("", true) . "." . $fileType;
+		$fileDestination = $uploadDir . $fileName;
+		move_uploaded_file($fileObj["tmp_name"], $fileDestination);
+		return $fileName;
+	} else {
+		throw new Exception("Unexpected file type");
+	}
 }
 // update logo
 if (isset($_POST['sub-logo'])) {
-    $fileObj = $_FILES["logo"];
-    $tmpName = $_FILES['logo']['tmp_name'];
+	$fileObj = $_FILES["logo"];
+	$tmpName = $_FILES['logo']['tmp_name'];
 
-    if (file_exists($tmpName)) {
-        try {
-            $filePath = uploadImage($fileObj);
-        } catch (Exception $e) {
-            $_SESSION['toast']['msg'] = "Upload only image format(jpg,jpeg,png).";
-        }
-        $general = getGeneral();
-        $general->update(array("key_value" => $filePath), $_key = "logo");
-    }
+	if (file_exists($tmpName)) {
+		try {
+			$filePath = uploadImage($fileObj);
+		} catch (Exception $e) {
+			$_SESSION['toast']['msg'] = "Upload only image format(jpg,jpeg,png).";
+		}
+		$general = getGeneral();
+		$general->update(array("key_value" => $filePath), $_key = "logo");
+        header('refresh:0');
+	}
 }
 
 // //update favicon...
 if (isset($_POST['sub-favicon'])) {
-    $tmpName = $_FILES['favicon']['tmp_name'];
-    $fileObj = $_FILES['favicon'];
-    if (file_exists($tmpName)) {
-        try {
-            $filePath = uploadImage($fileObj);
-        } catch (Exception $e) {
-            $_SESSION['toast']['msg'] = "Upload only image format(jpg,jpeg,png).";
-        }
-        $general = getGeneral();
-        $general->update(array("key_value" => $filePath), $_key = "favicon");
-    }
+	$tmpName = $_FILES['favicon']['tmp_name'];
+	$fileObj = $_FILES['favicon'];
+	if (file_exists($tmpName)) {
+		try {
+			$filePath = uploadImage($fileObj);
+		} catch (Exception $e) {
+			$_SESSION['toast']['msg'] = "Upload only image format(jpg,jpeg,png).";
+		}
+		$general = getGeneral();
+		$general->update(array("key_value" => $filePath), $_key = "favicon");
+        header('refresh:0');
+	}
 }
 // // general detail
 if (isset($_POST['submit_general'])) {
@@ -118,7 +122,9 @@ if (isset($_POST['submit_general'])) {
                                             <form method="POST" enctype="multipart/form-data">
                                                 <h3 class="text-center">Logo/Favicon</h3>
                                                 <div class="form-row mb-3">
-                                                    <img src="<?php echo "../media/" . getValuesByName("logo"); ?>" class="img-circle img-responsive m-auto mx-2" alt="Logo" height="100px;">
+                                                    <img src="<?php echo "../assests/img/" . getValuesByName("logo"); ?>"
+                                                        class="img-circle img-responsive m-auto mx-2" alt="Logo"
+                                                        height="100px;">
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input" id="inputlogo01" name="logo">
                                                         <label class="custom-file-label" for="inputlogo01">Logo</label>
@@ -130,7 +136,9 @@ if (isset($_POST['submit_general'])) {
                                             </form>
                                             <form method="POST" enctype="multipart/form-data">
                                                 <div class="form-row mb-5">
-                                                    <img src="<?php echo "../media/" . getValuesByName("favicon") ?>" class="img-circle img-responsive m-auto mx-2" alt="Favicon" height="100px;">
+                                                    <img src="<?php echo "../assests/img/" . getValuesByName("favicon") ?>"
+                                                        class="img-circle img-responsive m-auto mx-2" alt="Favicon"
+                                                        height="100px;">
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input" id="inputllogo02" name="favicon">
                                                         <label class="custom-file-label" for="inputllogo02">Favicon</label>

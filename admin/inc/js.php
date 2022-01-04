@@ -67,5 +67,4 @@ $('.change-status').on('change', function() {
     });
 });
 </script>
-<!-- <?php // echo toast(1);
-        ?> -->
+<?php echo toast(1);?>
