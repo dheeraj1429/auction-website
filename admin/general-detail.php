@@ -4,9 +4,9 @@ require_once "../model/functions.php";
 require_once "../session.php";
 
 $pageName = "General Details";
-$_SESSION['toast']['msg'] = "working";
 
 if (!isset($_SESSION['admin_email'])) {
+    $_SESSION['toast']['type'] = "success";
     $_SESSION['toast']['msg'] = "Please, Log-in to continue.";
     header("location:login.php");
     exit();
