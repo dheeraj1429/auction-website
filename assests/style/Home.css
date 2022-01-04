@@ -1,7 +1,7 @@
 /* banner section */
 /* header_banner_section */
 .header_banner_section {
-  background-image: url(/assests/icons&images/BANNER.png);
+  background-image: url(../icons&images/BANNER.png);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

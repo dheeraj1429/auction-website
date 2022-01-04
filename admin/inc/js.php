@@ -10,7 +10,9 @@
 if ($('#editor').length) {
     CKEDITOR.replace('editor');
 }
-
+if ($('#editor2').length) {
+    CKEDITOR.replace('editor2');
+}
 if ($('.ckeditor').length) {
     CKEDITOR.replace('ckeditor');
 }
@@ -66,4 +68,4 @@ $('.change-status').on('change', function() {
 });
 </script>
 <!-- <?php // echo toast(1);
-		?> -->
+        ?> -->
