@@ -1529,14 +1529,7 @@ $testomonials = $testomonial->read();
                                 <img src="./assests/icons&images/Group 122.png" alt="" class="img-fluid my-3">
                                 <img src="./assests/icons&images/Group 124.svg" alt="">
                             </div>
-                            <p class="user_content_details">Lorem, ipsum dolor sit amet consectetur adipisicing
-                                elit.
-                                Necessitatibus
-                                fugiat hic laborum, ipsam
-                                minima magni dolore autem magnam fuga, dolorem repellendus officia temporibus
-                                molestiae quisquam
-                                illum,
-                                dolor non rerum impedit!</p>
+                            <p class="user_content_details"><?php echo $t["message"] ?></p>
                             <h4><?php echo $t["Name"] ?></h4>
                             <h5><?php echo $t["designation"] ?></h5>
                         </div>

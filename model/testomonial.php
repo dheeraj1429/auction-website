@@ -28,12 +28,14 @@ class Testomonial extends Base
             array_key_exists("review", $data) &&
             array_key_exists("status", $data) &&
             array_key_exists("media", $data) &&
-            array_key_exists("Name", $data)
+            array_key_exists("Name", $data) &&
+            array_key_exists("message", $data)
         ) {
             $designation = $data["designation"];
             $review = $data["review"];
             $name = $data["Name"];
             $status = $data["status"];
+            $message = $data["message"];
             $datetime = date("Y-m-d H:i:s");
             $media = $data["media"];
 
@@ -43,14 +45,16 @@ class Testomonial extends Base
                     status, 
                     datetime, 
                     media,
-                    Name
+                    Name,
+                    message
                     ) VALUES (
                         '$designation', 
                         '$review', 
                         '$status', 
                         '$datetime', 
                         '$media',
-                        '$name'
+                        '$name',
+                        '$message'
                     )";
             $stmt = $this->connection->prepare($sql);
             $stmt->execute();

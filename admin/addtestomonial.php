@@ -40,22 +40,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $designation = $_POST['designation'];
     $review = $_POST['review'];
     $status = 1;
+    $message = htmlspecialchars($_POST['message']);
     $fileObj = $_FILES["image"];
 
     if ($isEdit) {
         if ($fileObj["size"] != 0) {
             $fileName = uploadImage($fileObj);
-            $updatedData = array("Name" => $name, "designation" => $designation, "review" => $review, "status" => $status, "media" => $fileName);
+            $updatedData = array("Name" => $name, "message" => $message, "designation" => $designation, "review" => $review, "status" => $status, "media" => $fileName);
         } else {
-            $updatedData = array("Name" => $name, "designation" => $designation, "review" => $review, "status" => $status);
+            $updatedData = array("Name" => $name, "message" => $message, "designation" => $designation, "review" => $review, "status" => $status);
         }
         $testomonial->update($updatedData, $_GET["id"]);
         header("Refresh:0");
+        die();
     }
     $fileName = uploadImage($fileObj);
-    $data = array("Name" => $name, "designation" => $designation, "review" => $review, "status" => $status, "media" => $fileName);
+    $data = array("Name" => $name, "message" => $message, "designation" => $designation, "review" => $review, "status" => $status, "media" => $fileName);
     $testomonial->create($data);
-    header("Refresh:0");
+    header("Location:./testomonial.php");
 }
 ?>
 <!DOCTYPE html>
@@ -103,6 +105,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                                     echo $testomonialData["review"];
                                                                 } ?>" type="number" class="form-control"
                                                     id="inputemail" placeholder="review" name="review">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message">Message</label>
+                                                <textarea class="form-control" name="message" id="message"
+                                                    rows="3"><?php if ($isEdit) {
+                                                                                                                        echo $testomonialData["message"];
+                                                                                                                    } ?></textarea>
                                             </div>
                                             <!-- <div class="form-group col-md-6">
                                                 <label for="mailerinout">status</label>
