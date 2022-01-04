@@ -13,7 +13,13 @@
 //     $data = $general->getDataByName($name)[0];
 //     return $data["key_value"];
 // }
+require_once "./model/package.php";
+require_once "./model/testomonial.php";
 
+$package = new Package();
+$testomonial = new Testomonial();
+$packages = $package->read();
+$testomonials = $testomonial->read();
 
 ?>
 <?php require_once "./header.php" ?>
@@ -1509,10 +1515,13 @@
 
             <!-- Testimonial Cards -->
             <div class="row slider2">
+                <?php foreach ($testomonials as $t) : ?>
                 <div class="col-12 col-sm-12 col-md-6 col-lg-12 p-3 slider_two item">
                     <div class="userCard_testimonial">
                         <!-- Testimonial cards content -->
-                        <img src="./assests/icons&images/Ellipse 45.png" alt="" class="img-fluid user_profile">
+                        <img style="width: 100px; height: 100px; border-radius: 50%;"
+                            src="./media/img/testomonial/<?php echo $t["media"] ?>" alt=""
+                            class="img-fluid user_profile">
                         <!-- Testimonial cards content -->
 
                         <div>
@@ -1528,16 +1537,15 @@
                                 molestiae quisquam
                                 illum,
                                 dolor non rerum impedit!</p>
-                            <h4>Gabriel Nolan</h4>
-                            <h5>Consultant</h5>
+                            <h4><?php echo $t["Name"] ?></h4>
+                            <h5><?php echo $t["designation"] ?></h5>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-12 p-3 slider_two item">
+                <?php endforeach; ?>
+                <!-- <div class="col-12 col-sm-12 col-md-6 col-lg-12 p-3 slider_two item">
                     <div class="userCard_testimonial">
-                        <!-- Testimonial cards content -->
                         <img src="./assests/icons&images/Ellipse 46.png" alt="" class="img-fluid user_profile">
-                        <!-- Testimonial cards content -->
 
                         <div>
                             <div class="d-flex justify-content-between">
@@ -1552,16 +1560,14 @@
                                 molestiae quisquam
                                 illum,
                                 dolor non rerum impedit!</p>
-                            <h4>Gabriel Nolan</h4>
+                            <h4>test</h4>
                             <h5>Consultant</h5>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-sm-12 col-md-6 col-lg-12 p-3 slider_two item">
                     <div class="userCard_testimonial">
-                        <!-- Testimonial cards content -->
                         <img src="./assests/icons&images/Ellipse 46.png" alt="" class="img-fluid user_profile">
-                        <!-- Testimonial cards content -->
 
                         <div>
                             <div class="d-flex justify-content-between">
@@ -1583,9 +1589,7 @@
                 </div>
                 <div class="col-12 col-sm-12 col-md-6 col-lg-12 p-3 slider_two item">
                     <div class="userCard_testimonial">
-                        <!-- Testimonial cards content -->
                         <img src="./assests/icons&images/Ellipse 46.png" alt="" class="img-fluid user_profile">
-                        <!-- Testimonial cards content -->
 
                         <div>
                             <div class="d-flex justify-content-between">
@@ -1605,10 +1609,10 @@
                         </div>
                     </div>
                 </div>
+            </div> -->
+                <!-- Testimonial Cards -->
+
             </div>
-            <!-- Testimonial Cards -->
-
-        </div>
     </section>
     <!-- Testimonials Section -->
 
@@ -1638,25 +1642,26 @@
         <div class="container-fluid price_card_margin_div pb-5 side_padding">
             <div class="row">
                 <!-- Price div cards -->
+                <?php foreach ($packages as $p) : ?>
                 <div class="col-12 col-sm-12 col-md-3 col-lg-3">
                     <div class="price_plan_card_inner_div">
 
-                        <div class="price_plan_heading text-center">
-                            <h1 class="my-4">10 CLICK PACK</h1>
+                        <div class="price_plan_heading activeBar_plan text-center">
+                            <h1 class="my-4"><?php echo $p["clicks"] ?> CLICK PACK</h1>
                         </div>
 
                         <div class="price_plan_heading_content px-4 py-3 text-center">
                             <p class="light_para my-4">The pack allows you to<br> have 10 aditional clicks<br> to
                                 bid.</p>
 
-                            <h2 class="Price_Dolar "><span>$</span>15</h2>
+                            <h2 class="Price_Dolar "><span>$</span><?php echo $p["price"] ?></h2>
 
                             <button class="View_More_Button my-3">Buy Now</button>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                <?php endforeach; ?>
+                <!-- <div class="col-12 col-sm-12 col-md-3 col-lg-3">
                     <div class="price_plan_card_inner_div">
 
                         <div class="price_plan_heading activeBar_plan text-center">
@@ -1709,7 +1714,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Price div cards -->
+                 Price div cards -->
             </div>
         </div>
     </section>
