@@ -19,13 +19,13 @@ function uploadImage($fileObj)
 {
     $fileType = strtolower(explode('/', $fileObj["type"])[1]);
     $exceptedTypes = array("jpg", "png", "jpeg");
-    $uploadDir = "./media/img/blog/";
+    $uploadDir = "../media/img/blog/";
 
     if (in_array($fileType, $exceptedTypes)) {
         $fileName = uniqid("", true) . "." . $fileType;
         $fileDestination = $uploadDir . $fileName;
         move_uploaded_file($fileObj["tmp_name"], $fileDestination);
-        return $fileDestination;
+        return $fileName;
     } else {
         throw new Exception("Unexpected file type");
     }
@@ -173,7 +173,7 @@ if (isset($_GET['id'])) {
                                                 </div>
                                                 <?php if (isset($_GET['id'])) { ?>
                                                 <img src="<?php if (isset($_GET['id'])) {
-                                                                    echo $dataB['img'];
+                                                                    echo "../media/img/blog/" . $dataB['img'];
                                                                 } ?>" class="img-circle img-responsive m-auto mx-2"
                                                     alt="<?php if (isset($_GET['id'])) {
                                                                                                                                 echo $dataB['name'];

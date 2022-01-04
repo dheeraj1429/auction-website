@@ -7,7 +7,7 @@ $blog = new Blog();
 function getBlogs()
 {
     $blog = new Blog();
-    $blogs = $blog->read();
+    $blogs = $blog->getActiveBlog();
     return $blogs;
 }
 
@@ -65,33 +65,39 @@ if (isset($_GET['params']) && isset($_GET['id'])) {
                             <div class="card py-3 m-b-30">
                                 <div class="card-body">
                                     <?php foreach ($blogs as $dataB) : ?>
-                                        <?php if ($dataB['status'] != 0) : ?>
-                                            <div class="col-lg-4 m-b-30" style="float: left">
-                                                <div class="card m-b-30">
-                                                    <div class="card-media">
-                                                        <img class="card-img-top" src="<?php echo $dataB['img']; ?>" alt="<?php echo $dataB['name']; ?>">
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <h5 class="card-title"><?php echo $dataB['name']; ?></h5>
-                                                        <p class="card-text">
-                                                            <?php echo htmlspecialchars_decode($dataB['short_desc']); ?>
-                                                        </p>
-
-                                                        <a href="add-blog.php?id=<?php echo $dataB['id']; ?>" class="btn btn-primary">Edit</a>
-
-                                                        <a href="/admin/blog.php?id=<?php echo $dataB['id'] ?>&params=delete" class="btn btn-danger delete-row" data-this-id="<?php echo $dataB['id']; ?>">Delete</a>
-                                                        <span class="ml-5">
-                                                            <label class="cstm-switch">
-                                                                <input type="checkbox" data-this-id="<?php echo $dataB['id']; ?>" <?php if ($dataB['status'] == 2) {
-                                                                                                                                        echo 'checked';
-                                                                                                                                    } ?> name="option" class="cstm-switch-input change-status">
-                                                                <span class="cstm-switch-indicator"></span>
-                                                            </label>
-                                                        </span>
-                                                    </div>
-                                                </div>
+                                    <div class="col-lg-4 m-b-30" style="float: left">
+                                        <div class="card m-b-30">
+                                            <div class="card-media">
+                                                <img class="card-img-top"
+                                                    src="../media/img/blog/<?php echo $dataB['img']; ?>"
+                                                    alt="<?php echo $dataB['name']; ?>">
                                             </div>
-                                        <?php endif; ?>
+                                            <div class="card-body">
+                                                <h5 class="card-title"><?php echo $dataB['name']; ?></h5>
+                                                <p class="card-text">
+                                                    <?php echo htmlspecialchars_decode($dataB['short_desc']); ?>
+                                                </p>
+
+                                                <a href="add-blog.php?id=<?php echo $dataB['id']; ?>"
+                                                    class="btn btn-primary">Edit</a>
+
+                                                <a href="/admin/blog.php?id=<?php echo $dataB['id'] ?>&params=delete"
+                                                    class="btn btn-danger delete-row"
+                                                    data-this-id="<?php echo $dataB['id']; ?>">Delete</a>
+                                                <span class="ml-5">
+                                                    <label class="cstm-switch">
+                                                        <input type="checkbox"
+                                                            data-this-id="<?php echo $dataB['id']; ?>"
+                                                            <?php if ($dataB['status'] == 2) {
+                                                                                                                                    echo 'checked';
+                                                                                                                                } ?> name="option"
+                                                            class="cstm-switch-input change-status">
+                                                        <span class="cstm-switch-indicator"></span>
+                                                    </label>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <?php endforeach; ?>
                                 </div>
                             </div>
@@ -101,7 +107,8 @@ if (isset($_GET['params']) && isset($_GET['id'])) {
             </section>
         </section>
     </main>
-    <a href="add-blog.php" class="btn-floating btn btn-primary" id="Add Section" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add">
+    <a href="add-blog.php" class="btn-floating btn btn-primary" id="Add Section" data-toggle="tooltip"
+        data-placement="top" title="" data-original-title="Add">
         <i class="mdi mdi-plus"></i>
     </a>
 </body>

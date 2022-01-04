@@ -22,6 +22,15 @@ class Blog extends Base
         return $result;
     }
 
+    public function getActiveBlog()
+    {
+        $sql = "SELECT * FROM " . $this->tableName . " WHERE status = '1' OR status = '2'";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
     public function create($data)
     {
         if (
