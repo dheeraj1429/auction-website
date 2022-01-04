@@ -8,7 +8,7 @@ $pageName = "Login";
 if (isset($_SESSION['admin_email'])) {
     $_SESSION['toast']['type'] = "success";
     $_SESSION['toast']['msg'] = "Logged in ";
-    header("location: /admin/index.php");
+    header("location: ./index.php");
     exit();
 }
 

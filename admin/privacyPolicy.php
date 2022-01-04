@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $pageName = "Privacy Policy";
 
 if (!isset($_SESSION['admin_email'])) {
