@@ -1,7 +1,7 @@
 <?php
 // include_once("../inc/config.php");
 require_once("../model/users.php");
-session_start();
+require_once "../session.php";
 
 $pageName = "Login";
 

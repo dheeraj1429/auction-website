@@ -1,3 +1,8 @@
+<?php
+require_once "../../model/functions.php";
+
+$function = new Functions();
+?>
 <script src='./assets/js/9556cd6744b0b19628598270bd385082cda6a269.js'></script>
 <script src='./assets/js/ba78fede76f682cd388ed2abbfd1e1568e76f8a4.js'></script>
 <script src='./assets/js/ff7d5d77cd410b14515c741086c083555816f641.js.js'></script>
@@ -67,4 +72,4 @@ $('.change-status').on('change', function() {
     });
 });
 </script>
-<?php echo toast(1);?>
+<?php echo $function->toast(1); ?>

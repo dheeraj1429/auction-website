@@ -1,5 +1,6 @@
 <?php
 require_once "../model/category.php";
+require_once "../session.php";
 if (!isset($_SESSION["admin_email"])) {
     $category = new Category();
     $categoryName = $_POST['category'];

@@ -1,8 +1,8 @@
 <?php
 require_once "../model/blog.php";
 require_once "../model/category.php";
+require_once "../session.php";
 
-session_start();
 
 $pageName = "Add/Edit Blog";
 

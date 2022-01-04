@@ -1,6 +1,6 @@
 <?php
 require_once "../model/general.php";
-session_start();
+require_once "../session.php";
 $pageName = "Privacy Policy";
 
 $general = new General();

@@ -1,6 +1,6 @@
 <?php
 require_once "../model/blog.php";
-session_start();
+require_once "../session.php";
 $pageName = "Manage Blog";
 $blog = new Blog();
 
