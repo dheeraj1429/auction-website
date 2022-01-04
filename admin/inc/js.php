@@ -3,7 +3,7 @@
 <script src='/admin/assets/js/ff7d5d77cd410b14515c741086c083555816f641.js.js'></script>
 <!-- <script src='assets/js/setting-data.js'></script> -->
 <!-- Alertify -->
-<script type="text/javascript" src="admin/assets/js/alertify.min.js"></script>
+<script type="text/javascript" src="/admin/assets/js/alertify.min.js"></script>
 <!-- Ck Editor -->
 <script src="plugin/ckeditor/ckeditor.js"></script>
 <script type="text/javascript">
