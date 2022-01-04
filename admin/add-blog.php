@@ -66,7 +66,7 @@ if (isset($_POST['submit'])) {
             "short_desc" => $descShort
         );
         $blog->update($data, $id);
-        header("Location: /admin/blog.php");
+        header("Location: blog.php");
         die();
     }
     $filePath = uploadImage($image);

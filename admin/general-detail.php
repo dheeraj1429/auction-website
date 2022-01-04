@@ -79,7 +79,7 @@ if (isset($_POST['submit_general'])) {
 	$general = getGeneral();
 
 	$general->update($updatedData);
-	header("Location: /admin/general-detail.php");
+	header("Location: general-detail.php");
 	die();
 }
 

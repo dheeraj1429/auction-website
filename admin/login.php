@@ -1,5 +1,5 @@
 <?php
-include_once("../inc/config.php");
+// include_once("../inc/config.php");
 require_once("../model/users.php");
 session_start();
 
@@ -23,7 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hashPassword = $userData['password'];
     if (hash("sha512", $password . $users->hashKey) == $hashPassword && $userData['role'] == 'admin' || $userData['role'] == 'superadmin') {
         $_SESSION['admin_email'] = $email;
-        header("Location: /admin/");
+        $_SESSION["admin_name"] = $userData["username"];
+        header("Location: ./");
         die();
     } else {
         echo "Incorrect password";

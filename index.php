@@ -49,7 +49,7 @@
                                                 <input type="text" placeholder="ENTER KEYWORD" />
                                                 <div
                                                     class="headerBanner_search_icons_div d-flex align-items-center justify-content-center">
-                                                    <img src="/assests/icons&images/search.svg" alt="">
+                                                    <img src="./assests/icons&images/search.svg" alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -61,7 +61,7 @@
                                                 <input type="text" placeholder="ANY CATEGORY" />
                                                 <div
                                                     class="headerBanner_search_icons_div d-flex align-items-center justify-content-center">
-                                                    <img src="/assests/icons&images/dropdown.svg" alt="">
+                                                    <img src="./assests/icons&images/dropdown.svg" alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -73,7 +73,7 @@
                                                 <input type="text" placeholder="MAX PRICE" />
                                                 <div
                                                     class="headerBanner_search_icons_div d-flex align-items-center justify-content-center">
-                                                    <img src="/assests/icons&images/$.svg" alt="">
+                                                    <img src="./assests/icons&images/$.svg" alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -121,7 +121,7 @@
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-3 col-lg-3 text-center">
                     <!-- Step Images -->
-                    <img src="/assests/icons&images/Group 382.png" />
+                    <img src="./assests/icons&images/Group 382.png" />
                     <!-- Step Images -->
 
                     <div class="step_Content_Div my-4">
@@ -133,7 +133,7 @@
 
                 <div class="col-12 col-sm-12 col-md-3 col-lg-3 text-center">
                     <!-- Step Images -->
-                    <img src="/assests/icons&images/Group 324.png" />
+                    <img src="./assests/icons&images/Group 324.png" />
                     <!-- Step Images -->
 
                     <div class="step_Content_Div my-4">
@@ -145,7 +145,7 @@
 
                 <div class="col-12 col-sm-12 col-md-3 col-lg-3 text-center">
                     <!-- Step Images -->
-                    <img src="/assests/icons&images/Group 326.png" />
+                    <img src="./assests/icons&images/Group 326.png" />
                     <!-- Step Images -->
 
                     <div class="step_Content_Div my-4">
@@ -157,7 +157,7 @@
 
                 <div class="col-12 col-sm-12 col-md-3 col-lg-3 text-center">
                     <!-- Step Images -->
-                    <img src="/assests/icons&images/Group 327.png" />
+                    <img src="./assests/icons&images/Group 327.png" />
                     <!-- Step Images -->
 
                     <div class="step_Content_Div my-4">
@@ -201,7 +201,7 @@
                         <!-- Auction Products badge-->
 
                         <!-- Products Images -->
-                        <img src="/assests/icons&images/image 10.png" alt="" class="img-fluid">
+                        <img src="./assests/icons&images/image 10.png" alt="" class="img-fluid">
                         <!-- Products Images -->
                         <!-- Products Content -->
                         <div class="Auction_products_content mt-3">
@@ -258,7 +258,7 @@
                         <!-- Auction Products badge-->
 
                         <!-- Products Images -->
-                        <img src="/assests/icons&images/image 9.png" alt="" class="img-fluid">
+                        <img src="./assests/icons&images/image 9.png" alt="" class="img-fluid">
                         <!-- Products Images -->
                         <!-- Products Content -->
                         <div class="Auction_products_content mt-3">
@@ -315,7 +315,7 @@
                         <!-- Auction Products badge-->
 
                         <!-- Products Images -->
-                        <img src="/assests/icons&images/image 10.png" alt="" class="img-fluid">
+                        <img src="./assests/icons&images/image 10.png" alt="" class="img-fluid">
                         <!-- Products Images -->
                         <!-- Products Content -->
                         <div class="Auction_products_content mt-3">
@@ -372,7 +372,7 @@
                         <!-- Auction Products badge-->
 
                         <!-- Products Images -->
-                        <img src="/assests/icons&images/image 9.png" alt="" class="img-fluid">
+                        <img src="./assests/icons&images/image 9.png" alt="" class="img-fluid">
                         <!-- Products Images -->
                         <!-- Products Content -->
                         <div class="Auction_products_content mt-3">
@@ -440,7 +440,7 @@
             <div class="row py-5">
                 <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
                     <div class="deal_of_the_day_banne_div">
-                        <img src="/assests/icons&images/Group 412.png" alt="" class="img-fluid">
+                        <img src="./assests/icons&images/Group 412.png" alt="" class="img-fluid">
                     </div>
                 </div>
                 <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
@@ -467,7 +467,7 @@
 
                                 <div class="d-flex justify-content-center">
                                     <!-- Products Images -->
-                                    <img src="/assests/icons&images/Group 335.png" alt="" class="img-fluid">
+                                    <img src="./assests/icons&images/Group 335.png" alt="" class="img-fluid">
                                     <!-- Products Images -->
                                 </div>
                                 <!-- Products Content -->
@@ -526,7 +526,7 @@
 
                                 <div class="d-flex justify-content-center">
                                     <!-- Products Images -->
-                                    <img src="/assests/icons&images/Group 334.png" alt="" class="img-fluid">
+                                    <img src="./assests/icons&images/Group 334.png" alt="" class="img-fluid">
                                     <!-- Products Images -->
                                 </div>
                                 <!-- Products Content -->
@@ -585,7 +585,7 @@
 
                                 <div class="d-flex justify-content-center">
                                     <!-- Products Images -->
-                                    <img src="/assests/icons&images/Group 333.png" alt="" class="img-fluid">
+                                    <img src="./assests/icons&images/Group 333.png" alt="" class="img-fluid">
                                     <!-- Products Images -->
                                 </div>
                                 <!-- Products Content -->
@@ -644,7 +644,7 @@
 
                                 <div class="d-flex justify-content-center">
                                     <!-- Products Images -->
-                                    <img src="/assests/icons&images/Group 333.png" alt="" class="img-fluid">
+                                    <img src="./assests/icons&images/Group 333.png" alt="" class="img-fluid">
                                     <!-- Products Images -->
                                 </div>
                                 <!-- Products Content -->
@@ -757,7 +757,7 @@
                         <!-- Auction Products badge-->
 
                         <!-- Products Images -->
-                        <img src="/assests/icons&images/image 25.png" alt="" class="img-fluid">
+                        <img src="./assests/icons&images/image 25.png" alt="" class="img-fluid">
                         <!-- Products Images -->
                         <!-- Products Content -->
                         <div class="Auction_products_content mt-3">
@@ -814,7 +814,7 @@
                         <!-- Auction Products badge-->
 
                         <!-- Products Images -->
-                        <img src="/assests/icons&images/image 26.png" alt="" class="img-fluid">
+                        <img src="./assests/icons&images/image 26.png" alt="" class="img-fluid">
                         <!-- Products Images -->
                         <!-- Products Content -->
                         <div class="Auction_products_content mt-3">
@@ -871,7 +871,7 @@
                         <!-- Auction Products badge-->
 
                         <!-- Products Images -->
-                        <img src="/assests/icons&images/image 27.png" alt="" class="img-fluid">
+                        <img src="./assests/icons&images/image 27.png" alt="" class="img-fluid">
                         <!-- Products Images -->
                         <!-- Products Content -->
                         <div class="Auction_products_content mt-3">
@@ -928,7 +928,7 @@
                         <!-- Auction Products badge-->
 
                         <!-- Products Images -->
-                        <img src="/assests/icons&images/pngwing 1.png" alt="" class="img-fluid">
+                        <img src="./assests/icons&images/pngwing 1.png" alt="" class="img-fluid">
                         <!-- Products Images -->
                         <!-- Products Content -->
                         <div class="Auction_products_content mt-3">
@@ -990,7 +990,7 @@
                         <!-- Auction Products badge-->
 
                         <!-- Products Images -->
-                        <img src="/assests/icons&images/image 13.png" alt="" class="img-fluid">
+                        <img src="./assests/icons&images/image 13.png" alt="" class="img-fluid">
                         <!-- Products Images -->
                         <!-- Products Content -->
                         <div class="Auction_products_content mt-3">
@@ -1047,7 +1047,7 @@
                         <!-- Auction Products badge-->
 
                         <!-- Products Images -->
-                        <img src="/assests/icons&images/Group 147.png" alt="" class="img-fluid">
+                        <img src="./assests/icons&images/Group 147.png" alt="" class="img-fluid">
                         <!-- Products Images -->
                         <!-- Products Content -->
                         <div class="Auction_products_content mt-3">
@@ -1104,7 +1104,7 @@
                         <!-- Auction Products badge-->
 
                         <!-- Products Images -->
-                        <img src="/assests/icons&images/image 15.png" alt="" class="img-fluid">
+                        <img src="./assests/icons&images/image 15.png" alt="" class="img-fluid">
                         <!-- Products Images -->
                         <!-- Products Content -->
                         <div class="Auction_products_content mt-3">
@@ -1161,7 +1161,7 @@
                         <!-- Auction Products badge-->
 
                         <!-- Products Images -->
-                        <img src="/assests/icons&images/image 16.png" alt="" class="img-fluid">
+                        <img src="./assests/icons&images/image 16.png" alt="" class="img-fluid">
                         <!-- Products Images -->
                         <!-- Products Content -->
                         <div class="Auction_products_content mt-3">
@@ -1260,7 +1260,7 @@
 
                                 <div class="d-flex justify-content-center">
                                     <!-- Products Images -->
-                                    <img src="/assests/icons&images/Group 335.png" alt="" class="img-fluid">
+                                    <img src="./assests/icons&images/Group 335.png" alt="" class="img-fluid">
                                     <!-- Products Images -->
                                 </div>
                                 <!-- Products Content -->
@@ -1319,7 +1319,7 @@
 
                                 <div class="d-flex justify-content-center">
                                     <!-- Products Images -->
-                                    <img src="/assests/icons&images/Group 334.png" alt="" class="img-fluid">
+                                    <img src="./assests/icons&images/Group 334.png" alt="" class="img-fluid">
                                     <!-- Products Images -->
                                 </div>
                                 <!-- Products Content -->
@@ -1378,7 +1378,7 @@
 
                                 <div class="d-flex justify-content-center">
                                     <!-- Products Images -->
-                                    <img src="/assests/icons&images/Group 333.png" alt="" class="img-fluid">
+                                    <img src="./assests/icons&images/Group 333.png" alt="" class="img-fluid">
                                     <!-- Products Images -->
                                 </div>
                                 <!-- Products Content -->
@@ -1437,7 +1437,7 @@
 
                                 <div class="d-flex justify-content-center">
                                     <!-- Products Images -->
-                                    <img src="/assests/icons&images/Group 333.png" alt="" class="img-fluid">
+                                    <img src="./assests/icons&images/Group 333.png" alt="" class="img-fluid">
                                     <!-- Products Images -->
                                 </div>
                                 <!-- Products Content -->
@@ -1512,7 +1512,31 @@
                 <div class="col-12 col-sm-12 col-md-6 col-lg-12 p-3 slider_two item">
                     <div class="userCard_testimonial">
                         <!-- Testimonial cards content -->
-                        <img src="/assests/icons&images/Ellipse 45.png" alt="" class="img-fluid user_profile">
+                        <img src="./assests/icons&images/Ellipse 45.png" alt="" class="img-fluid user_profile">
+                        <!-- Testimonial cards content -->
+
+                        <div>
+                            <div class="d-flex justify-content-between">
+                                <img src="./assests/icons&images/Group 122.png" alt="" class="img-fluid my-3">
+                                <img src="./assests/icons&images/Group 124.svg" alt="">
+                            </div>
+                            <p class="user_content_details">Lorem, ipsum dolor sit amet consectetur adipisicing
+                                elit.
+                                Necessitatibus
+                                fugiat hic laborum, ipsam
+                                minima magni dolore autem magnam fuga, dolorem repellendus officia temporibus
+                                molestiae quisquam
+                                illum,
+                                dolor non rerum impedit!</p>
+                            <h4>Gabriel Nolan</h4>
+                            <h5>Consultant</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-12 p-3 slider_two item">
+                    <div class="userCard_testimonial">
+                        <!-- Testimonial cards content -->
+                        <img src="./assests/icons&images/Ellipse 46.png" alt="" class="img-fluid user_profile">
                         <!-- Testimonial cards content -->
 
                         <div>
@@ -1536,13 +1560,13 @@
                 <div class="col-12 col-sm-12 col-md-6 col-lg-12 p-3 slider_two item">
                     <div class="userCard_testimonial">
                         <!-- Testimonial cards content -->
-                        <img src="/assests/icons&images/Ellipse 46.png" alt="" class="img-fluid user_profile">
+                        <img src="./assests/icons&images/Ellipse 46.png" alt="" class="img-fluid user_profile">
                         <!-- Testimonial cards content -->
 
                         <div>
                             <div class="d-flex justify-content-between">
-                                <img src="/assests/icons&images/Group 122.png" alt="" class="img-fluid my-3">
-                                <img src="/assests/icons&images/Group 124.svg" alt="">
+                                <img src="./assests/icons&images/Group 122.png" alt="" class="img-fluid my-3">
+                                <img src="./assests/icons&images/Group 124.svg" alt="">
                             </div>
                             <p class="user_content_details">Lorem, ipsum dolor sit amet consectetur adipisicing
                                 elit.
@@ -1560,37 +1584,13 @@
                 <div class="col-12 col-sm-12 col-md-6 col-lg-12 p-3 slider_two item">
                     <div class="userCard_testimonial">
                         <!-- Testimonial cards content -->
-                        <img src="/assests/icons&images/Ellipse 46.png" alt="" class="img-fluid user_profile">
+                        <img src="./assests/icons&images/Ellipse 46.png" alt="" class="img-fluid user_profile">
                         <!-- Testimonial cards content -->
 
                         <div>
                             <div class="d-flex justify-content-between">
-                                <img src="/assests/icons&images/Group 122.png" alt="" class="img-fluid my-3">
-                                <img src="/assests/icons&images/Group 124.svg" alt="">
-                            </div>
-                            <p class="user_content_details">Lorem, ipsum dolor sit amet consectetur adipisicing
-                                elit.
-                                Necessitatibus
-                                fugiat hic laborum, ipsam
-                                minima magni dolore autem magnam fuga, dolorem repellendus officia temporibus
-                                molestiae quisquam
-                                illum,
-                                dolor non rerum impedit!</p>
-                            <h4>Gabriel Nolan</h4>
-                            <h5>Consultant</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-12 p-3 slider_two item">
-                    <div class="userCard_testimonial">
-                        <!-- Testimonial cards content -->
-                        <img src="/assests/icons&images/Ellipse 46.png" alt="" class="img-fluid user_profile">
-                        <!-- Testimonial cards content -->
-
-                        <div>
-                            <div class="d-flex justify-content-between">
-                                <img src="/assests/icons&images/Group 122.png" alt="" class="img-fluid my-3">
-                                <img src="/assests/icons&images/Group 124.svg" alt="">
+                                <img src="./assests/icons&images/Group 122.png" alt="" class="img-fluid my-3">
+                                <img src="./assests/icons&images/Group 124.svg" alt="">
                             </div>
                             <p class="user_content_details">Lorem, ipsum dolor sit amet consectetur adipisicing
                                 elit.
@@ -1755,7 +1755,7 @@
                     <div class="post_div">
                         <!-- Post Previwe -->
                         <div class="post_img_div">
-                            <img src="/assests/icons&images/Rectangle 20.png" alt="">
+                            <img src="./assests/icons&images/Rectangle 20.png" alt="">
                             <div class="post_date_div">
                                 <h3 class="text-white">13 <span>DEC</span></h3>
                             </div>
@@ -1763,7 +1763,7 @@
                         <!-- Post Previwe -->
                         <!-- Post Details -->
                         <div class="my-3 d-flex align-items-center">
-                            <img src="/assests/icons&images/Group 4.svg" alt="">
+                            <img src="./assests/icons&images/Group 4.svg" alt="">
                             <p class="ms-3 light_para">By Giulia May</p>
                         </div>
 
@@ -1777,7 +1777,7 @@
                             voluptates error
                             quod illo.</p>
 
-                        <button class="Read_more_button my-3">Read More <img src="/assests/icons&images/Vector (2).svg"
+                        <button class="Read_more_button my-3">Read More <img src="./assests/icons&images/Vector (2).svg"
                                 alt=""></button>
                         <!-- Post Details -->
                     </div>
@@ -1789,7 +1789,7 @@
                     <div class="post_div">
                         <!-- Post Previwe -->
                         <div class="post_img_div">
-                            <img src="/assests/icons&images/Rectangle 19.png" alt="">
+                            <img src="./assests/icons&images/Rectangle 19.png" alt="">
                             <div class="post_date_div">
                                 <h3 class="text-white">13 <span>DEC</span></h3>
                             </div>
@@ -1797,7 +1797,7 @@
                         <!-- Post Previwe -->
                         <!-- Post Details -->
                         <div class="my-3 d-flex align-items-center">
-                            <img src="/assests/icons&images/Group 4.svg" alt="">
+                            <img src="./assests/icons&images/Group 4.svg" alt="">
                             <p class="ms-3 light_para">By Giulia May</p>
                         </div>
 
@@ -1811,7 +1811,7 @@
                             voluptates error
                             quod illo.</p>
 
-                        <button class="Read_more_button my-3">Read More <img src="/assests/icons&images/Vector (2).svg"
+                        <button class="Read_more_button my-3">Read More <img src="./assests/icons&images/Vector (2).svg"
                                 alt=""></button>
                         <!-- Post Details -->
                     </div>
@@ -1823,7 +1823,7 @@
                     <div class="post_div">
                         <!-- Post Previwe -->
                         <div class="post_img_div">
-                            <img src="/assests/icons&images/Rectangle 19-1.png" alt="">
+                            <img src="./assests/icons&images/Rectangle 19-1.png" alt="">
                             <div class="post_date_div">
                                 <h3 class="text-white">13 <span>DEC</span></h3>
                             </div>
@@ -1831,7 +1831,7 @@
                         <!-- Post Previwe -->
                         <!-- Post Details -->
                         <div class="my-3 d-flex align-items-center">
-                            <img src="/assests/icons&images/Group 4.svg" alt="">
+                            <img src="./assests/icons&images/Group 4.svg" alt="">
                             <p class="ms-3 light_para">By Giulia May</p>
                         </div>
 
@@ -1845,7 +1845,7 @@
                             voluptates error
                             quod illo.</p>
 
-                        <button class="Read_more_button my-3">Read More <img src="/assests/icons&images/Vector (2).svg"
+                        <button class="Read_more_button my-3">Read More <img src="./assests/icons&images/Vector (2).svg"
                                 alt=""></button>
                         <!-- Post Details -->
                     </div>
@@ -1876,7 +1876,7 @@
                                     <div class="inner_input d-flex">
                                         <input type="email" placeholder="Enter your Email">
                                         <div class="news_icons">
-                                            <img src="/assests/icons&images/Layer 2.svg" alt="">
+                                            <img src="./assests/icons&images/Layer 2.svg" alt="">
                                         </div>
                                     </div>
                                     <!-- Input group icon and input -->

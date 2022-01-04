@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER["DOCUMENT_ROOT"] . "/model/base.php";
+require_once "base.php";
 
 
 class Category extends Base

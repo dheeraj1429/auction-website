@@ -1,8 +1,8 @@
 <?php
-include_once("../inc/config.php");
+
 $pageName = "Privacy Policy";
 
-if (!isset($_SESSION['admin_name'])) {
+if (!isset($_SESSION['admin_email'])) {
     $_SESSION['toast']['msg'] = "Please, Log-in to continue.";
     header("location:login.php");
     exit();

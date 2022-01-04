@@ -69,7 +69,7 @@ require_once "./getValuesByName.php";
                     <div class="container-fluid">
                         <a class="navbar-brand" href="/">
                             <!-- <h1>Auction</h1> -->
-                            <img width="50px" height="50px" src="<?php echo "/media/" . getValuesByName("logo") ?>"
+                            <img width="50px" height="50px" src="<?php echo "./media/" . getValuesByName("logo") ?>"
                                 alt="logo">
                         </a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"

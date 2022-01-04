@@ -1,6 +1,6 @@
 <aside class="admin-sidebar">
     <div class="admin-sidebar-brand">
-        <img class="admin-brand-logo" src="/admin/assets/img/logo.png" width="40" alt="atmos Logo">
+        <img class="admin-brand-logo" src="./assets/img/logo.png" width="40" alt="atmos Logo">
         <span class="admin-brand-content font-secondary">
             <a href='index.php'> Ak</a>
         </span>
@@ -23,7 +23,7 @@
                 </a>
             </li>
             <li class="menu-item active ">
-                <a href="/admin/general-detail.php" class=" menu-link">
+                <a href="./general-detail.php" class=" menu-link">
                     <span class="menu-label">
                         <span class="menu-name">General Details<span class="menu-arrow"></span>
                         </span>
@@ -45,7 +45,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li class="menu-item ">
-                        <a href='about.php' class=' menu-link'>
+                        <a href='./about.php' class=' menu-link'>
                             <span class="menu-label">
                                 <span class="menu-name">About Section</span>
                             </span>
@@ -55,7 +55,7 @@
                         </a>
                     </li>
                     <li class="menu-item ">
-                        <a href='admin/alternative.php' class=' menu-link'>
+                        <a href='./alternative.php' class=' menu-link'>
                             <span class="menu-label">
                                 <span class="menu-name">Alternative Section</span>
                             </span>
@@ -65,7 +65,7 @@
                         </a>
                     </li>
                     <li class="menu-item ">
-                        <a href='/admin/service.php' class=' menu-link'>
+                        <a href='./service.php' class=' menu-link'>
                             <span class="menu-label">
                                 <span class="menu-name">Services</span>
                             </span>
@@ -75,7 +75,7 @@
                         </a>
                     </li>
                     <li class="menu-item ">
-                        <a href='projects.php' class=' menu-link'>
+                        <a href='./projects.php' class=' menu-link'>
                             <span class="menu-label">
                                 <span class="menu-name">My Work</span>
                             </span>
@@ -85,7 +85,7 @@
                         </a>
                     </li>
                     <li class="menu-item ">
-                        <a href='policypage.php' class=' menu-link'>
+                        <a href='./policypage.php' class=' menu-link'>
                             <span class="menu-label">
                                 <span class="menu-name">Policy Page</span>
                             </span>
@@ -95,7 +95,7 @@
                         </a>
                     </li>
                     <li class="menu-item ">
-                        <a href='admin/meta.php' class=' menu-link'>
+                        <a href='./meta.php' class=' menu-link'>
                             <span class="menu-label">
                                 <span class="menu-name">Meta Tags</span>
                             </span>
@@ -118,7 +118,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li class="menu-item">
-                        <a href="blog.php" class=" menu-link">
+                        <a href="./blog.php" class=" menu-link">
                             <span class="menu-label">
                                 <span class="menu-name"> Manage Blogs </span>
                             </span>
@@ -130,7 +130,7 @@
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="/admin/category.php" class=" menu-link">
+                        <a href="./category.php" class=" menu-link">
                             <span class="menu-label">
                                 <span class="menu-name">Blog Category</span>
                             </span>
@@ -145,7 +145,7 @@
             </li>
 
             <li class="menu-item active ">
-                <a href="feedback.php" class="menu-link">
+                <a href="./feedback.php" class="menu-link">
                     <span class="menu-label">
                         <span class="menu-name">Feedback</span>
                     </span>
@@ -155,7 +155,7 @@
                 </a>
             </li>
             <li class="menu-item active ">
-                <a href="share.php" class="menu-link">
+                <a href="./share.php" class="menu-link">
                     <span class="menu-label">
                         <span class="menu-name">Statics</span>
                     </span>

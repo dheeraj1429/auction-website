@@ -4,7 +4,7 @@ $pageName = "Dashboard ";
 
 if (!isset($_SESSION['admin_email'])) {
     $_SESSION['toast']['msg'] = "Please, Log-in to continue.";
-    header("location: /admin/login.php");
+    header("location: ./login.php");
     exit();
 }
 ?>
@@ -30,7 +30,7 @@ if (!isset($_SESSION['admin_email'])) {
                                 <div class="row ">
                                     <div class="col-12 pt-3 text-center">
                                         <h1 class="text-white"><span class="js-greeting">Good </span>,
-                                            <?php echo ucfirst($_SESSION['adi']['name']); ?>!</h1>
+                                            <?php echo ucfirst($_SESSION['admin_email']); ?>!</h1>
                                     </div>
                                 </div>
                                 <div class="row py-3 ">
