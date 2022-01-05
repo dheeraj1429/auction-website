@@ -113,6 +113,20 @@
   .Shedule_div h3 {
     font-size: 12px;
   }
+  .tabs_card {
+    overflow: visible;
+    width: 100%;
+    display: block !important;
+  }
+  .howitworks_heading {
+    font-size: 1.7rem;
+  }
+  .sign_in_inner_div h1 {
+    font-size: 3rem;
+  }
+  .switch_section h1 {
+    font-size: 2rem;
+  }
 }
 @media (max-width: 420px) {
   .Top_Header {

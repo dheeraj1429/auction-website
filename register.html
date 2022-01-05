@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="./assests/style/button.css" />
   <link rel="stylesheet" href="./assests/style/footer.css" />
   <link rel="stylesheet" href="./assests/style/logIn.css" />
+  <link rel="stylesheet" href="./assests/style/responsive.css" />
 
   <!-- Slick Slider CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
@@ -111,7 +112,7 @@
     <section class="SignIn_Div side_padding">
       <div class="container-fluid padding_one">
         <div class="row">
-          <div class="col-12 col-sm-12 col-md-8 col-lg-8">
+          <div class="col-lg-12 col-xxl-8">
             <!-- Sign In Div -->
             <div class="sign_in_inner_div">
               <!-- Sing In Component content -->
@@ -122,12 +123,19 @@
               <!-- Sing In Component content -->
 
               <!-- Sing in and log in buttons -->
-              <div class="login_buttons_div my-4 d-flex align-items-center justify-content-center">
-                <button class="log_with_facebook login_with_button">
-                  <img src="./assests/icons&images/facebbok11.png" alt="" /> Log in with Facebook
-                </button>
-                <button class="log_with_google login_with_button"><img src="./assests/icons&images/g.png" alt="" /> Log
-                  in with Google</button>
+              <div class="login_buttons_div my-4">
+                <div class="row">
+                  <div class="col-12 col-md-6 col-lg-6">
+                    <button class="log_with_facebook login_with_button">
+                      <img src="./assests/icons&images/facebbok11.png" alt="" /> Log in with Facebook
+                    </button>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-6 mt-4 mt-md-0">
+                    <button class="log_with_google login_with_button"><img src="./assests/icons&images/g.png" alt="" />
+                      Log
+                      in with Google</button>
+                  </div>
+                </div>
               </div>
               <!-- Sing in and log in buttons -->
 
@@ -181,7 +189,7 @@
             <!-- Sign In Div -->
           </div>
 
-          <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+          <div class="col-lg-12 col-xxl-4 mt-5 mt-xxl-0">
             <!-- Switch section -->
             <div class="switch_section text-center">
               <!-- Content -->
@@ -202,16 +210,17 @@
   <!-- Main -->
 
   <!-- Footer -->
-  <footer class="footer second_footer">
+
+  <footer class="footer side_padding second_footer">
     <!-- Footer -->
     <div class="container padding_one">
-      <div class="row pt-4">
-        <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+      <div class="row pt-4 justify-content-center">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
           <h1 class="text-white my-3">OUT STORE</h1>
-          <p class="light_para">
-            Lorem ipsum, dolor sit amet consectetur adipisicing <br />
-            elit. Optio voluptatem qui magnam aliquid cum atque tempore quia? Quis, doloribus commodi.
-          </p>
+          <p class="light_para">Lorem ipsum, dolor sit amet consectetur adipisicing <br> elit. Optio voluptatem qui
+            magnam
+            aliquid cum atque
+            tempore quia? Quis, doloribus commodi.</p>
 
           <!-- Footer icons -->
           <div class="footer_icons">
@@ -221,17 +230,19 @@
             <i class="fab fa-twitter"></i>
           </div>
           <!-- Footer icons -->
+
         </div>
-        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3 mt-3 mt-md-0">
           <h1 class="text-white my-3">My Account</h1>
           <p class="light_para"><a href="#">Sign In</a></p>
           <p class="light_para"><a href="#">View Cart</a></p>
           <p class="light_para"><a href="#">My Wishlist</a></p>
           <p class="light_para"><a href="#">Track My Order</a></p>
           <p class="light_para"><a href="#">Help</a></p>
+
         </div>
 
-        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3">
           <h1 class="text-white my-3">Information</h1>
           <p class="light_para"><a href="#">About Me</a></p>
           <p class="light_para"><a href="#">How to shop ?</a></p>
@@ -240,7 +251,7 @@
           <p class="light_para"><a href="#">Log in</a></p>
         </div>
 
-        <div class="col-12 col-sm-12 col-md-2 col-lg-2">
+        <div class="col-12 col-sm-6 col-md-2 col-lg-2">
           <h1 class="text-white my-3">Customer Service</h1>
           <p class="light_para"><a href="#">Payment Methods</a></p>
           <p class="light_para"><a href="#">Money-back gurantee</a></p>
@@ -249,9 +260,12 @@
           <p class="light_para"><a href="#">Terms and conditions</a></p>
           <p class="light_para"><a href="#">Privacy Prolicy</a></p>
         </div>
+
       </div>
+
     </div>
     <!-- Footer -->
+
 
     <!-- Footer Second -->
     <div class="container-fluid footer_second">
