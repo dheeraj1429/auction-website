@@ -31,12 +31,12 @@ class Users extends Base
             array_key_exists("address", $data) &&
             array_key_exists("role", $data)
         ) {
-            $username = $this->preventSqlInjection($data["username"]);
-            $email = $this->preventSqlInjection($data["email"]);
-            $password = $this->preventSqlInjection($data["password"]);
-            $contact = $this->preventSqlInjection($data["contact"]);
-            $address = $this->preventSqlInjection($data["address"]);
-            $role = $this->preventSqlInjection($data["role"]);
+            $username = $data["username"];
+            $email = $data["email"];
+            $password = hash("sha512", $data["password"]);
+            $contact = $data["contact"];
+            $address = $data["address"];
+            $role = $data["role"];
             $token = $this->generateToken();
             $sql = "INSERT INTO " . $this->tableName . "(
                 username, 
@@ -72,16 +72,28 @@ class Users extends Base
         }
     }
 
-    private function generateToken()
+    private function validateToken($token)
     {
-        $sql = "SELECT token FROM " . $this->tableName;
+        $sql = "SELECT * FROM " . $this->tableName . " WHERE token = '$token'";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
-        $tokens = $stmt->fetchAll();
+        $result = $stmt->fetchAll();
+        if (empty($result)) {
+            return true;
+        }
+        return false;
+    }
+
+    private function generateToken()
+    {
+        // $sql = "SELECT token FROM " . $this->tableName;
+        // $stmt = $this->connection->prepare($sql);
+        // $stmt->execute();
+        // $tokens = $stmt->fetchAll();
         $token = $this->getToken();
 
-        if (in_array($token, $tokens)) {
-            $this->generateToken();
+        if (!$this->validateToken($token)) {
+            return $this->generateToken();
         }
         return $token;
     }

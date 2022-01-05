@@ -17,11 +17,13 @@ require_once "./getValuesByName.php";
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
     <!-- Style sheet Link -->
-    <link rel="stylesheet" href="./assests/style/Home.css">
-    <link rel="stylesheet" href="./assests/style/global.css">
-    <link rel="stylesheet" href="./assests/style/navbar.css">
-    <link rel="stylesheet" href="./assests/style/button.css">
-    <link rel="stylesheet" href="./assests/style/footer.css">
+
+    <link rel="stylesheet" href="./assests/style/Home.css" />
+    <link rel="stylesheet" href="./assests/style/global.css" />
+    <link rel="stylesheet" href="./assests/style/navbar.css" />
+    <link rel="stylesheet" href="./assests/style/button.css" />
+    <link rel="stylesheet" href="./assests/style/footer.css" />
+    <link rel="stylesheet" href="./assests/style/logIn.css" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
@@ -107,9 +109,9 @@ require_once "./getValuesByName.php";
 
                                 <div class="sign_in_button d-flex align-items-center ms-5">
                                     <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="#">SIGN IN</a>
+                                        <a class="nav-link active" aria-current="page" href="./logIn.php">SIGN IN</a>
                                     </li>
-                                    <button class="Subcribe_button_sm text-white">REGISTER</button>
+                                    <a href="./register.php" class="Subcribe_button_sm text-white">REGISTER</a>
                                 </div>
                             </ul>
                         </div>
