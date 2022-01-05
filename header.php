@@ -25,7 +25,7 @@ require_once "./getValuesByName.php";
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
-    <link rel="icon" href="<?php echo "/media/" . getValuesByName("favicon") ?>">
+    <link rel="icon" href="<?php echo "./media/" . getValuesByName("favicon") ?>">
 </head>
 
 <body>
