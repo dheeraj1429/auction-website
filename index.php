@@ -15,12 +15,14 @@
 // }
 require_once "./model/package.php";
 require_once "./model/testomonial.php";
+require_once "./model/blog.php";
 
 $package = new Package();
 $testomonial = new Testomonial();
+$blog = new Blog();
 $packages = $package->read();
 $testomonials = $testomonial->read();
-
+$blogs = $blog->getLatestBlog();
 ?>
 <?php require_once "./header.php" ?>
 <!-- Main-Navbar -->
@@ -1748,14 +1750,16 @@ $testomonials = $testomonial->read();
 
             <!-- News Post Div -->
             <div class="row py-3">
+                <?php foreach ($blogs as $b) : ?>
                 <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                     <!-- Posts -->
                     <div class="post_div">
                         <!-- Post Previwe -->
                         <div class="post_img_div">
-                            <img src="./assests/icons&images/Rectangle 20.png" alt="">
+                            <img src="./media/img/blog/<?php echo $b["img"] ?>" alt="">
                             <div class="post_date_div">
-                                <h3 class="text-white">13 <span>DEC</span></h3>
+                                <h3 class="text-white"><?php echo date_format(date_create($b["post_date"]), "d M") ?>
+                                </h3>
                             </div>
                         </div>
                         <!-- Post Previwe -->
@@ -1765,15 +1769,17 @@ $testomonials = $testomonial->read();
                             <p class="ms-3 light_para">By Giulia May</p>
                         </div>
 
-                        <h1>Technology series-11 Controller</h1>
+                        <h1><?php echo $b["name"] ?></h1>
 
-                        <p class="post_discription light_para">Lorem, ipsum dolor sit amet consectetur adipisicing
-                            elit. Cum
-                            debitis vero
-                            quae sed, maiores numquam
-                            doloremque ipsam cupiditate maxime pariatur, voluptates ipsa iure illum veritatis. Quos
-                            voluptates error
-                            quod illo.</p>
+                        <p class="post_discription light_para">
+                            <?php echo htmlspecialchars_decode($b["desc"]) ?>
+                        </p>
+                        <!-- <p class="post_discription light_para">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                            Nulla nobis at fuga dolore voluptates nisi ut. Autem commodi ullam, veniam provident
+                            explicabo earum! Saepe, soluta iusto. In laborum saepe sequi cupiditate quaerat non
+                            recusandae consequuntur commodi blanditiis autem possimus officia iure sunt numquam nesciunt
+                            cum, iusto ipsum? Nisi veritatis necessitatibus ullam. Praesentium, ducimus. Ut ipsam quos
+                            illum doloremque inventore ex.</p> -->
 
                         <button class="Read_more_button my-3">Read More <img src="./assests/icons&images/Vector (2).svg"
                                 alt=""></button>
@@ -1781,7 +1787,7 @@ $testomonials = $testomonial->read();
                     </div>
                     <!-- Posts -->
                 </div>
-
+                <?php endforeach; ?>
                 <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                     <!-- Posts -->
                     <div class="post_div">

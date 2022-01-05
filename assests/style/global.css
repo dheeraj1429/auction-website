@@ -85,3 +85,11 @@ span {
 .light_para {
   color: var(--DarkGrayColor);
 }
+
+.second_footer {
+  margin: 0 !important;
+}
+
+a {
+  text-decoration: none;
+}
