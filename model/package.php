@@ -34,12 +34,12 @@ class Package extends Base
         }
     }
 
-    public function update($updatedData, $id)
+    public function update($updateddata, $id)
     {
-        $keys = array_keys($updatedData);
+        $keys = array_keys($updateddata);
         foreach ($keys as $key) {
-            $value = $updatedData[$key];
-            $sql = "UPDATE " . $this->tableName . " SET " . $key . " = " . "'$value'" . " WHERE id = '$id'";
+            $value = $updateddata[$key];
+            $sql = "update " . $this->tablename . " set " . $key . " = " . "'$value'" . " where id = '$id'";
             $stmt = $this->connection->prepare($sql);
             $stmt->execute();
         }
