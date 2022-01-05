@@ -11,7 +11,6 @@ function getBlogs()
     return $blogs;
 }
 
-$blogs = getBlogs();
 
 if (!isset($_SESSION['admin_email'])) {
     $_SESSION['toast']['msg'] = "Please, Log-in to continue.";
@@ -42,6 +41,7 @@ if (isset($_GET['params']) && isset($_GET['id'])) {
     //     $_SESSION['toast']['msg'] = "Something Went Wrong";
     // }
 }
+$blogs = getBlogs();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,7 +81,7 @@ if (isset($_GET['params']) && isset($_GET['id'])) {
                                                 <a href="add-blog.php?id=<?php echo $dataB['id']; ?>"
                                                     class="btn btn-primary">Edit</a>
 
-                                                <a href="/admin/blog.php?id=<?php echo $dataB['id'] ?>&params=delete"
+                                                <a href="./blog.php?id=<?php echo $dataB['id'] ?>&params=delete"
                                                     class="btn btn-danger delete-row"
                                                     data-this-id="<?php echo $dataB['id']; ?>">Delete</a>
                                                 <span class="ml-5">
