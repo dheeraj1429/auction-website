@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sing In</title>
+  <title>Contact Us</title>
 
   <!-- Bootstarp 5 CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -14,13 +14,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
   <!-- Style sheet Link -->
-  <link rel="stylesheet" href="./assests/style/Home.css" />
   <link rel="stylesheet" href="./assests/style/global.css" />
   <link rel="stylesheet" href="./assests/style/navbar.css" />
   <link rel="stylesheet" href="./assests/style/button.css" />
   <link rel="stylesheet" href="./assests/style/footer.css" />
-  <link rel="stylesheet" href="./assests/style/logIn.css" />
+  <link rel="stylesheet" href="./assests/style/Home.css" />
   <link rel="stylesheet" href="./assests/style/responsive.css" />
+  <link rel="stylesheet" href="./assests/style/content.css">
+  <link rel="stylesheet" href="./assests/style/howItWorks.css">
 
   <!-- Slick Slider CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
@@ -66,7 +67,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                  <a class="nav-link active " aria-current="page" href="./home.html">HOME</a>
+                  <a class="nav-link active" aria-current="page" href="./home.html">HOME</a>
                 </li>
 
                 <li class="nav-item">
@@ -112,110 +113,187 @@
 
   <!-- Main -->
   <main>
-    <!-- Sing Up Component -->
-    <section class="SignIn_Div side_padding">
-      <div class="container-fluid padding_one">
-        <div class="row">
-          <div class="col-lg-12 col-xxl-8">
-            <!-- Sign In Div -->
-            <div class="sign_in_inner_div">
-              <!-- Sing In Component content -->
-              <div class="text-center">
-                <h1>HI, THERE</h1>
-                <p class="light_para my-3">Create Your Account</p>
+    <!-- Banner section -->
+    <section class="Banner_Section_div">
+      <h1 class="text-white banner_heading">CONTACT <span>US</span></h1>
+    </section>
+    <!-- Banner section -->
+
+    <!-- Content us section -->
+    <section class="contact_use_section padding_one main_bg">
+      <div class="container-fluid side_padding ">
+        <div class="row gx-0 contact_row justify-content-center">
+          <div class="col-12 col-sm-12 col-md-7 col-lg-7 p-5">
+
+            <div class="contact_div">
+              <!-- Contact content -->
+              <div class="d-flex justify-content-between">
+                <h3 class="contact_heading">Send us a Message</h3>
+                <img src="./assests/icons&images/cons.svg" alt="">
               </div>
-              <!-- Sing In Component content -->
+              <!-- Contact content -->
 
-              <!-- Sing in and log in buttons -->
-              <div class="login_buttons_div my-4">
-                <div class="row">
-                  <div class="col-12 col-md-6 col-lg-6">
-                    <button class="log_with_facebook login_with_button">
-                      <img src="./assests/icons&images/facebbok11.png" alt="" /> Log in with Facebook
-                    </button>
+
+              <!-- Contact inputs -->
+              <div class="contact_input_group_div mt-3">
+
+                <!-- Inputs -->
+                <div class="contact_page_input_inner mb-3 d-flex">
+                  <div class="contact_icons">
+                    <img src="./assests/icons&images/user-solid 1.svg" alt="">
                   </div>
-                  <div class="col-12 col-md-6 col-lg-6 mt-4 mt-md-0">
-                    <button class="log_with_google login_with_button"><img src="./assests/icons&images/g.png" alt="" />
-                      Log
-                      in with Google</button>
-                  </div>
+                  <input type="text" placeholder="Full Name">
                 </div>
+                <!-- Inputs -->
+
+                <!-- Inputs -->
+                <div class="contact_page_input_inner mb-3 d-flex">
+                  <div class="contact_icons">
+                    <img src="./assests/icons&images/mail.svg" alt="">
+                  </div>
+                  <input type="email" placeholder="Email Address">
+                </div>
+                <!-- Inputs -->
+
+                <!-- Inputs -->
+                <div class="contact_page_input_inner mb-3 d-flex">
+                  <div class="contact_icons">
+                    <img src="./assests/icons&images/phone-solid 1.svg" alt="">
+                  </div>
+                  <input type="number" placeholder="Phone Number">
+                </div>
+                <!-- Inputs -->
+
+
+                <!-- Inputs -->
+                <div class="contact_page_input_inner text-aria-div mb-3 d-flex">
+                  <div class="contact_icons message_icons_div">
+                    <img src="./assests/icons&images/d.svg" alt="">
+                  </div>
+                  <textarea class="message_aria" name="" id="" cols="30" rows="10" placeholder="Message"></textarea>
+                  <!-- <input type="number" placeholder="Phone Number"> -->
+                </div>
+                <!-- Inputs -->
+
+                <!-- Send Button -->
+                <button class="send_Button mt-3">Send <img src="./assests/icons&images/send.svg" alt=""></button>
+                <!-- Send Button -->
+
               </div>
-              <!-- Sing in and log in buttons -->
+              <!-- Contact inputs -->
 
-              <div class="d-flex mt-5 devide_div align-items-center justify-content-center">
-                <div class="line"></div>
-                <p>Or</p>
-                <div class="line"></div>
-              </div>
 
-              <!-- Sing in input div -->
-              <div class="mt-4">
-                <div class="sing_in_input_div d-flex align-items-center mb-4">
-                  <div class="sing_in_icons_div">
-                    <i class="fas fa-user"></i>
-                  </div>
-                  <input type="text" placeholder="Enter your name" />
-                </div>
-
-                <div class="sing_in_input_div d-flex align-items-center mb-4">
-                  <div class="sing_in_icons_div">
-                    <img src="./assests/icons&images/Layer 2.svg" alt="" />
-                  </div>
-                  <input type="email" placeholder="Email Address" />
-                </div>
-
-                <div class="sing_in_input_div d-flex align-items-center mb-4">
-                  <div class="sing_in_icons_div">
-                    <i class="fas fa-lock"></i>
-                  </div>
-                  <input type="password" placeholder="Enter your Password" />
-                </div>
-
-                <div class="sing_in_input_div d-flex align-items-center">
-                  <div class="sing_in_icons_div">
-                    <i class="fas fa-lock"></i>
-                  </div>
-                  <input type="password" placeholder="Conform Password" />
-                </div>
-
-                <!-- Forget Password -->
-                <div class="text-center mt-5 forgot_div">
-                  <!-- <a href="#">Forgot Password?</a> -->
-                  <div class="mt-4">
-                    <button class="logIn_button">REGISTER</button>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Sing in input div -->
             </div>
-            <!-- Sign In Div -->
+
           </div>
+          <div class="col-12 col-sm-12 col-md-5 col-lg-5">
+            <div class="contact_info contact_info_inner d-flex align-items-center p-5">
 
-          <div class="col-lg-12 col-xxl-4 mt-5 mt-xxl-0">
-            <!-- Switch section -->
-            <div class="switch_section text-center">
-              <!-- Content -->
-              <h1 class="text-white">Already have an account?</h1>
-              <p class="text-white mb-4">Log in your account</p>
-              <div>
-                <a class="logIn_button" href="./logIn.html">LOG IN</a>
+              <div class="contactsection">
+                <!-- Contact info -->
+                <div>
+                  <h3 class="text-white mb-3">Contact Information</h3>
+                  <p class="text-white">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  </p>
+                </div>
+
+
+                <div>
+                  <div class="contact_info_Div d-flex mt-5">
+                    <img src="./assests/icons&images/map-marker-alt-solid (2) 1.svg" alt="">
+                    <p class="text-white ms-3">360 King Street 3rd floor, Babukhan mall, Somajiguda, Hyderabad,
+                      Telangana,
+                      India.</p>
+                  </div>
+
+                  <div class="contact_info_Div d-flex mt-5">
+                    <img src="./assests/icons&images/mobile-alt-solid 1.svg" alt="">
+                    <p class="text-white ms-3">(800) 900-200-300, (900) 660-444-200</p>
+                  </div>
+
+                  <div class="contact_info_Div d-flex mt-5">
+                    <img src="./assests/icons&images/mail-1.svg" alt="">
+                    <p class="text-white ms-3">info@demo99.com</p>
+                  </div>
+                </div>
+
+                <!-- icons -->
+                <!-- <div class="contact_icons_div">
+                  <img src="./assests/icons&images/Group 425.svg" alt="">
+                  <img src="./assests/icons&images/Group 424.svg" alt="">
+                  <img src="./assests/icons&images/Group 423.svg" alt="">
+                  <img src="./assests/icons&images/Group 427.svg" alt="">
+                </div> -->
+                <!-- icons -->
+
+
               </div>
-              <!-- Content -->
+
             </div>
-            <!-- Switch section -->
+          </div>
+        </div>
+      </div>
+      <!-- Map section -->
+      <div class="container-fluid p-0 map_container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d167826.84650539697!2d77.1514821703051!3d28.679377810345667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1641379916794!5m2!1sen!2sin"
+          width="100%" height="450" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+      <!-- Map section -->
+    </section>
+    <!-- Content us section -->
+
+
+
+
+
+    <!-- News Letter Section -->
+
+    <section class="news_letter_sectionside_padding main_bg">
+      <div class="container-fluid padding_one">
+        <div class="row gx-0">
+          <div class="col-12 d-flex align-items-center justify-content-center">
+            <!-- News letter div -->
+            <div class="news_letter_inner_div">
+              <div class="row px-3 align-items-center">
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                  <h1>Receive our newsletter:</h1>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-xl-7 col-xxl-8">
+
+                  <div class="row align-items-center justify-content-center">
+                    <div class="col-12  col-md-8 col-lg-9 my-4 my-md-0">
+                      <div class="input_group_div">
+                        <div class="inner_input d-flex">
+                          <input type="email" placeholder="Enter your Email">
+                          <div class="news_icons">
+                            <img src="./assests/icons&images/Layer 2.svg" alt="">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12  col-md-4 col-lg-2">
+                      <!-- News letter button -->
+                      <button class="send_button">Send</button>
+                      <!-- News letter button -->
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <!-- News letter div -->
           </div>
         </div>
       </div>
     </section>
-    <!-- Sing Up Component -->
+    <!-- News Letter Section -->
   </main>
   <!-- Main -->
 
-  <!-- Footer -->
 
-  <footer class="footer side_padding second_footer">
+  <!-- Footer -->
+  <footer class="footer side_padding">
     <!-- Footer -->
     <div class="container padding_one">
       <div class="row pt-4 justify-content-center">
