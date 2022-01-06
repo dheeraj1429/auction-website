@@ -22,6 +22,16 @@ class CMSPages extends Base
         return $result;
     }
 
+    public function getCMSByType($type)
+    {
+        $sql = "SELECT * FROM " . $this->tableName . " WHERE type = '$type'";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+
+        return $result;
+    }
+
     public function create($data)
     {
         if (

@@ -22,6 +22,7 @@ require_once "./getValuesByName.php";
     <link rel="stylesheet" href="./assests/style/global.css" />
     <link rel="stylesheet" href="./assests/style/navbar.css" />
     <link rel="stylesheet" href="./assests/style/button.css" />
+    <link rel="stylesheet" href="./assests/style/howItWorks.css" />
     <link rel="stylesheet" href="./assests/style/footer.css" />
     <link rel="stylesheet" href="./assests/style/logIn.css" />
 
@@ -82,7 +83,7 @@ require_once "./getValuesByName.php";
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav ms-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link active_header" aria-current="page" href="./home.html">HOME</a>
+                                    <a class="nav-link active_header" aria-current="page" href="./">HOME</a>
                                 </li>
 
                                 <li class="nav-item">

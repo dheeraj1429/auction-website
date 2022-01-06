@@ -16,13 +16,16 @@
 require_once "./model/package.php";
 require_once "./model/testomonial.php";
 require_once "./model/blog.php";
+require_once "./model/cmsPages.php";
 
 $package = new Package();
 $testomonial = new Testomonial();
 $blog = new Blog();
+$cmsPages = new CMSPages();
 $packages = $package->read();
 $testomonials = $testomonial->read();
 $blogs = $blog->getLatestBlog();
+$howItWorks = $cmsPages->getCMSByType(2);
 ?>
 <?php require_once "./header.php" ?>
 <!-- Main-Navbar -->
@@ -34,13 +37,14 @@ $blogs = $blog->getLatestBlog();
 
 
     <!-- banner section -->
-    <section class="header_banner_section">
+    <section class="header_banner_section"
+        style="background-image: url(./media/img/cms/<?php echo $cmsPages->getCMSByType(1)[0]["img"] ?>)">
         <div class="banner_section_inner banner_padding">
             <div class="container-fluid side_padding">
                 <div class="d-flex justify-content-center align-items-center">
                     <div class="text-center">
                         <!-- Banner Content -->
-                        <h1 class="text-white ">Your Awesome Auction Website</h1>
+                        <h1 class="text-white "><?php echo $cmsPages->getCMSByType(1)[0]["desc"] ?></h1>
                         <h3 class="secondey_text mb-5 mt-3">Find amazing items <span>today!</span></h3>
                         <!-- Banner Content -->
 
@@ -127,57 +131,21 @@ $blogs = $blog->getLatestBlog();
 
             <!-- How it works box seaction -->
             <div class="row">
+                <?php foreach ($howItWorks as $w) : ?>
                 <div class="col-12 col-sm-12 col-md-3 col-lg-3 text-center">
                     <!-- Step Images -->
-                    <img src="./assests/icons&images/Group 382.png" />
+                    <img src="./media/img/cms/<?php echo $w["img"] ?>" />
                     <!-- Step Images -->
 
                     <div class="step_Content_Div my-4">
-                        <h3>Create your account</h3>
+                        <h3><?php echo $w["title"] ?></h3>
                         <div class="line_div my-3"></div>
-                        <p>create your account and complete your profile.</p>
+                        <p><?php echo $w["desc"] ?></p>
                     </div>
                 </div>
-
-                <div class="col-12 col-sm-12 col-md-3 col-lg-3 text-center">
-                    <!-- Step Images -->
-                    <img src="./assests/icons&images/Group 324.png" />
-                    <!-- Step Images -->
-
-                    <div class="step_Content_Div my-4">
-                        <h3>Connect</h3>
-                        <div class="line_div my-3"></div>
-                        <p>connect.</p>
-                    </div>
-                </div>
-
-                <div class="col-12 col-sm-12 col-md-3 col-lg-3 text-center">
-                    <!-- Step Images -->
-                    <img src="./assests/icons&images/Group 326.png" />
-                    <!-- Step Images -->
-
-                    <div class="step_Content_Div my-4">
-                        <h3>Participate in the auction</h3>
-                        <div class="line_div my-3"></div>
-                        <p>take part in the auctions you are in interested in. </p>
-                    </div>
-                </div>
-
-                <div class="col-12 col-sm-12 col-md-3 col-lg-3 text-center">
-                    <!-- Step Images -->
-                    <img src="./assests/icons&images/Group 327.png" />
-                    <!-- Step Images -->
-
-                    <div class="step_Content_Div my-4">
-                        <h3>Win the auction</h3>
-                        <div class="line_div my-3"></div>
-                        <p>win the auction and win a products at less than 30% of its value</p>
-                    </div>
-                </div>
-
+                <?php endforeach; ?>
+                <!-- How it works box seaction -->
             </div>
-            <!-- How it works box seaction -->
-        </div>
     </section>
     <!-- How it works -->
 
@@ -1646,7 +1614,8 @@ $blogs = $blog->getLatestBlog();
                         </div>
 
                         <div class="price_plan_heading_content px-4 py-3 text-center">
-                            <p class="light_para my-4">The pack allows you to<br> have 10 aditional clicks<br> to
+                            <p class="light_para my-4">The pack allows you to<br> have <?php echo $p["clicks"] ?>
+                                aditional clicks<br> to
                                 bid.</p>
 
                             <h2 class="Price_Dolar "><span>$</span><?php echo $p["price"] ?></h2>

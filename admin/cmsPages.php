@@ -64,7 +64,7 @@ $data = $cmsPages->read();
                                                     <td><?php echo $data[$i]["img"] ?></td>
                                                     <td><?php echo $data[$i]["desc"] ?></td>
                                                     <td><?php echo $data[$i]["date_time"] ?></td>
-                                                    <td>
+                                                    <td style="display: flex;">
                                                         <a href="./addCMS.php?id=<?php echo $data[$i]["id"] ?>&params=edit"
                                                             type="button" class="btn btn-primary edit-btn">Edit</a>
                                                         <a href="./cmsPages.php?id=<?php echo $data[$i]["id"] ?>&params=delete"

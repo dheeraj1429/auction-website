@@ -21,6 +21,15 @@ class Users extends Base
         return $result;
     }
 
+    public function getUserByToken($token)
+    {
+        $sql = "SELECT * FROM " . $this->tableName . " WHERE token = '$token'";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result[0];
+    }
+
     public function create($data)
     {
         if (
@@ -61,12 +70,12 @@ class Users extends Base
         }
     }
 
-    public function update($updatedData, $email)
+    public function update($updatedData, $id)
     {
         $keys = array_keys($updatedData);
         foreach ($keys as $key) {
             $value = $updatedData[$key];
-            $sql = "UPDATE " . $this->tableName . " SET " . $key . " = " . $value . " WHERE email = $email";
+            $sql = "UPDATE " . $this->tableName . " SET " . $key . " = " . " '$value' " . " WHERE id = '$id'";
             $stmt = $this->connection->prepare($sql);
             $stmt->execute();
         }
