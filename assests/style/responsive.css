@@ -63,6 +63,14 @@
   .news_letter_inner_div {
     width: 93%;
   }
+  .blogs p {
+    font-size: 16px !important;
+    line-height: normal !important;
+  }
+  .blog_banner_section h1 {
+    font-weight: 700;
+    font-size: 30px !important;
+  }
 }
 @media (max-width: 768px) {
   .our_pricing_plan {
@@ -74,6 +82,9 @@
   }
   .Shedule_div h3 {
     font-size: 13px;
+  }
+  .user_icons_blog {
+    justify-content: start !important;
   }
 }
 @media (max-width: 744px) {

@@ -51,5 +51,6 @@
   color: var(--MainColor);
   border-radius: 30px;
   margin-left: -100px;
+  cursor: pointer;
 }
 /* footer */
