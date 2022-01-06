@@ -95,10 +95,6 @@ class Users extends Base
 
     private function generateToken()
     {
-        // $sql = "SELECT token FROM " . $this->tableName;
-        // $stmt = $this->connection->prepare($sql);
-        // $stmt->execute();
-        // $tokens = $stmt->fetchAll();
         $token = $this->getToken();
 
         if (!$this->validateToken($token)) {

@@ -85,28 +85,6 @@ if (isset($_POST['submit'])) {
         "short_desc" => $descShort
     );
     $blog->create($data);
-    // if (mysqli_query($conn, $query) == true) {
-    //     $tmpName = $_FILES['image']['tmp_name'];
-    //     if (file_exists($tmpName)) {
-    //         $fileName = $_FILES['image']['name'];
-    //         $ext = pathinfo($fileName, PATHINFO_EXTENSION);
-    //         if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'png') {
-    //             $fileName = rand(1111, 9999) . "." . $ext;
-    //             if (move_uploaded_file($tmpName, '../media/img/blog/' . $fileName) == true) {
-    //                 mysqli_query($conn, "UPDATE `" . $tblPrefix . "blog` SET `img`='$fileName' WHERE `id`='$id'");
-    //                 $_SESSION['toast']['type'] = "success";
-    //                 $_SESSION['toast']['msg'] = "Successfully updated.";
-    //             } else {
-    //                 $_SESSION['toast']['msg'] = "Something went wrong, Please try again.";
-    //             }
-    //         } else {
-    //             $_SESSION['toast']['msg'] = "Upload only image format(jpg,jpeg,png).";
-    //         }
-    //     }
-    // } else {
-    //     $_SESSION['toast']['type'] = "error";
-    //     $_SESSION['toast']['msg'] = "Something went wrong, Please try again.";
-    // }
 }
 
 // Update data 
