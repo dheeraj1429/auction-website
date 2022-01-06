@@ -23,6 +23,7 @@ require_once "./getValuesByName.php";
     <link rel="stylesheet" href="./assests/style/navbar.css" />
     <link rel="stylesheet" href="./assests/style/button.css" />
     <link rel="stylesheet" href="./assests/style/howItWorks.css" />
+    <link rel="stylesheet" href="./assests/style/content.css">
     <link rel="stylesheet" href="./assests/style/footer.css" />
     <link rel="stylesheet" href="./assests/style/logIn.css" />
 
