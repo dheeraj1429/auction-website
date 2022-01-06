@@ -134,6 +134,22 @@
   .contact_info h3 {
     font-size: 20px !important;
   }
+  .user_products_card {
+    display: block !important;
+  }
+  .user_products_card h3 {
+    color: var(--darkbg) !important;
+  }
+  .user_products_card h3 {
+    font-size: 30px !important;
+  }
+  .user_products_card p {
+    font-size: 20px !important;
+  }
+  .user_products_card {
+    display: grid !important;
+    place-content: center;
+  }
 }
 @media (max-width: 420px) {
   .Top_Header {

@@ -184,9 +184,11 @@
   align-items: center;
   cursor: pointer;
 }
-.tabs_card > div:nth-child(1) {
-  color: var(--LightRedColor);
+.active_tab_div {
   border-bottom: 2px solid var(--LightRedColor);
+}
+.active_tab {
+  color: var(--LightRedColor);
 }
 .tabs_card p {
   margin: 0 !important;
