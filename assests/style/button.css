@@ -96,4 +96,13 @@
   background-color: var(--LightRedColor);
   color: var(--MainColor);
 }
+.send_Button {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 4px;
+  background-color: var(--LightRedColor);
+  color: var(--MainColor);
+  border: none;
+  font-size: 1.4rem;
+}
 /* Buttons */

@@ -81,6 +81,10 @@
                 </li>
 
                 <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="./contact.html">CONTACT</a>
+                </li>
+
+                <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="#">BUY TOKENS</a>
                 </li>
                 <li class="nav-item">
@@ -679,13 +683,13 @@
             <!-- News letter div -->
             <div class="news_letter_inner_div">
               <div class="row px-3 align-items-center">
-                <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                   <h1>Receive our newsletter:</h1>
                 </div>
-                <div class="col-12 col-sm-12 col-md-9 col-lg-9">
+                <div class="col-12 col-sm-12 col-md-6 col-xl-7 col-xxl-8">
 
                   <div class="row align-items-center justify-content-center">
-                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 my-4 my-md-0">
+                    <div class="col-12  col-md-8 col-lg-9 my-4 my-md-0">
                       <div class="input_group_div">
                         <div class="inner_input d-flex">
                           <input type="email" placeholder="Enter your Email">
@@ -695,7 +699,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                    <div class="col-12  col-md-4 col-lg-2">
                       <!-- News letter button -->
                       <button class="send_button">Send</button>
                       <!-- News letter button -->
