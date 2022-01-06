@@ -1,5 +1,5 @@
 <?php
-require_once "./model/general.php";
+require_once "model/general.php";
 
 function getGeneral()
 {

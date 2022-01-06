@@ -1,6 +1,7 @@
 <?php
 include_once("../session.php");
 require_once "../const.php";
+require_once "../sendEmail.php";
 $pageName = "Reply";
 
 if (!isset($_SESSION['admin_email'])) {
@@ -9,7 +10,7 @@ if (!isset($_SESSION['admin_email'])) {
     exit();
 }
 
-function sendEmail($reciverEmail, $message)
+function send_email($reciverEmail, $message)
 {
     if (PROD === 0) {
         $file = fopen("message.html", "w");
@@ -20,14 +21,14 @@ function sendEmail($reciverEmail, $message)
         fwrite($file, $txt);
         fclose($file);
     } else if (PROD === 1) {
-        // send email
+        sendEmail($reciverEmail, $message);
     }
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $reciverEmail = $_POST["reciver_email"];
     $message = htmlspecialchars($_POST['message']);
-    sendEmail($reciverEmail, $message);
+    send_email($reciverEmail, $message);
     header("Refresh: 0");
 }
 ?>
@@ -55,19 +56,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <form method="post">
                                         <div class="form-group">
                                             <label for="reciver">Reciver Email</label>
-                                            <input id="reciver" name="reciver_email"
-                                                value="<?php echo $_GET['reciver_email']; ?>" class="form-control"
-                                                type="text" placeholder="<?php echo $_GET["reciver_email"] ?>" readonly>
+                                            <input id="reciver" name="reciver_email" value="<?php echo $_GET['reciver_email']; ?>" class="form-control" type="text" placeholder="<?php echo $_GET["reciver_email"] ?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <lable for="message">Message</lable>
-                                            <textarea name="message" class="form-control" id="messag "
-                                                rows="3"></textarea>
+                                            <textarea name="message" class="form-control" id="messag " rows="3"></textarea>
                                         </div>
                                         <div class="form-row pt-3">
                                             <div class="form-group col-md-12">
-                                                <button type="submit" class="btn btn-success m-auto"
-                                                    name="submit">Send</button>
+                                                <button type="submit" class="btn btn-success m-auto" name="submit">Send</button>
                                             </div>
                                         </div>
                                     </form>
