@@ -161,6 +161,12 @@
     display: grid !important;
     place-content: center;
   }
+  .navbar-brand h1 {
+    font-size: 24px;
+  }
+  .myAccountOptionNum input {
+    width: 100% !important;
+  }
 }
 @media (max-width: 420px) {
   .Top_Header {

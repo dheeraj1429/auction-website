@@ -2,25 +2,27 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sing In</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home page</title>
 
   <!-- Bootstarp 5 CDN -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
   <!-- Style sheet Link -->
-  <link rel="stylesheet" href="./assests/style/Home.css" />
-  <link rel="stylesheet" href="./assests/style/global.css" />
-  <link rel="stylesheet" href="./assests/style/navbar.css" />
-  <link rel="stylesheet" href="./assests/style/button.css" />
-  <link rel="stylesheet" href="./assests/style/footer.css" />
-  <link rel="stylesheet" href="./assests/style/logIn.css" />
-  <link rel="stylesheet" href="./assests/style/responsive.css" />
+  <link rel="stylesheet" href="./assests/style/Home.css">
+  <link rel="stylesheet" href="./assests/style/global.css">
+  <link rel="stylesheet" href="./assests/style/navbar.css">
+  <link rel="stylesheet" href="./assests/style/button.css">
+  <link rel="stylesheet" href="./assests/style/footer.css">
+  <link rel="stylesheet" href="./assests/style/responsive.css">
+  <link rel="stylesheet" href="./assests/style/blog.css">
+  <link rel="stylesheet" href="./assests/style/MyAccount.css">
+  <link rel="stylesheet" href="./assests/style/howItWorks.css">
 
   <!-- Slick Slider CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
@@ -28,11 +30,13 @@
 </head>
 
 <body>
+
   <!-- Header -->
   <header>
     <!-- Top Header -->
     <div class="Top_Header">
       <div class="Top_Header_Inner container-fluid side_padding">
+
         <div class="Top_Navbar_Inner_Sm_div">
           <i class="fas fa-envelope"></i>
           <p class="text-white">loremipsum@gmail.com</p>
@@ -66,7 +70,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="./home.html">HOME</a>
+                  <a class="nav-link active active_header" aria-current="page" href="./home.html">HOME</a>
                 </li>
 
                 <li class="nav-item">
@@ -105,6 +109,7 @@
                   </div>
                 </li>
 
+
                 <div class="sign_in_button d-flex align-items-center ms-5">
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="./logIn.html">LOG IN</a>
@@ -122,108 +127,89 @@
   </header>
   <!-- Header -->
 
-  <!-- Main -->
+  <!-- main -->
   <main>
-    <!-- Sing Up Component -->
-    <section class="SignIn_Div side_padding">
-      <div class="container-fluid padding_one">
-        <div class="row">
-          <div class="col-lg-12 col-xxl-8">
-            <!-- Sign In Div -->
-            <div class="sign_in_inner_div">
-              <!-- Sing In Component content -->
-              <div class="text-center">
-                <h1>HI, THERE</h1>
-                <p class="light_para my-3">Create Your Account</p>
-              </div>
-              <!-- Sing In Component content -->
+    <!-- Banner section -->
+    <section class="Banner_Section_div">
+      <h1 class="text-white banner_heading">MY <span>ACCOUNT</span></h1>
+    </section>
+    <!-- Banner section -->
 
-              <!-- Sing in and log in buttons -->
-              <div class="login_buttons_div my-4">
-                <div class="row">
-                  <div class="col-12 col-md-6 col-lg-6">
-                    <button class="log_with_facebook login_with_button">
-                      <img src="./assests/icons&images/facebbok11.png" alt="" /> Log in with Facebook
-                    </button>
-                  </div>
-                  <div class="col-12 col-md-6 col-lg-6 mt-4 mt-md-0">
-                    <button class="log_with_google login_with_button"><img src="./assests/icons&images/g.png" alt="" />
-                      Log
-                      in with Google</button>
-                  </div>
+    <!-- My Account Setting -->
+    <section class="MyAccount_Section padding_one">
+      <div class="container-fluid side_padding">
+        <div class="row pb-5 pt-4">
+          <div class="col-12 col-sm-12 col-md-8 col-lg-8">
+            <!-- My Account Setting -->
+            <div class="row">
+              <div class="col-12 ">
+                <div class="hot_it_works_heading  py-3">
+                  <h1>MY ACCOUNT <span class="span_color_2">SETTINGS</span></h1>
+                  <div class="line_div ms-0 my-4"></div>
                 </div>
               </div>
-              <!-- Sing in and log in buttons -->
-
-              <div class="d-flex mt-5 devide_div align-items-center justify-content-center">
-                <div class="line"></div>
-                <p>Or</p>
-                <div class="line"></div>
-              </div>
-
-              <!-- Sing in input div -->
-              <div class="mt-4">
-                <div class="sing_in_input_div d-flex align-items-center mb-4">
-                  <div class="sing_in_icons_div">
-                    <i class="fas fa-user"></i>
-                  </div>
-                  <input type="text" placeholder="Enter your name" />
-                </div>
-
-                <div class="sing_in_input_div d-flex align-items-center mb-4">
-                  <div class="sing_in_icons_div">
-                    <img src="./assests/icons&images/Layer 2.svg" alt="" />
-                  </div>
-                  <input type="email" placeholder="Email Address" />
-                </div>
-
-                <div class="sing_in_input_div d-flex align-items-center mb-4">
-                  <div class="sing_in_icons_div">
-                    <i class="fas fa-lock"></i>
-                  </div>
-                  <input type="password" placeholder="Enter your Password" />
-                </div>
-
-                <div class="sing_in_input_div d-flex align-items-center">
-                  <div class="sing_in_icons_div">
-                    <i class="fas fa-lock"></i>
-                  </div>
-                  <input type="password" placeholder="Conform Password" />
-                </div>
-
-                <!-- Forget Password -->
-                <div class="text-center mt-5 forgot_div">
-                  <!-- <a href="#">Forgot Password?</a> -->
-                  <div class="mt-4">
-                    <button class="logIn_button">REGISTER</button>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Sing in input div -->
             </div>
-            <!-- Sign In Div -->
-          </div>
+            <!-- My Account Setting -->
 
-          <div class="col-lg-12 col-xxl-4 mt-5 mt-xxl-0">
-            <!-- Switch section -->
-            <div class="switch_section text-center">
-              <!-- Content -->
-              <h1 class="text-white">Already have an account?</h1>
-              <p class="text-white mb-4">Log in your account</p>
-              <div>
-                <a class="logIn_button" href="./logIn.html">LOG IN</a>
+            <div class="row">
+              <div class="col-12 myAccountOptionNum col-sm-12 col-md-6 col-lg-6">
+                <p>Number of tokens purchased</p>
+                <input type="text" class="NumberInputDis" placeholder="0" disabled>
               </div>
-              <!-- Content -->
+              <div class="col-12 col-sm-12 col-md-6  col-md-6 col-lg-6">
+                <div class="col-12 myAccountOptionNum col-sm-12 mt-4 mt-md-0">
+                  <p>Number of vip tokens purchased</p>
+                  <input type="text" class="NumberInputDis" placeholder="0" disabled>
+                </div>
+              </div>
             </div>
-            <!-- Switch section -->
+
+            <div class="row mt-4">
+              <div class="col-12 myAccountOption col-sm-12 col-md-6 col-lg-6">
+                <p>Last name (*)</p>
+                <input type="text" placeholder="Your name" disabled>
+              </div>
+              <div class="col-12 col-sm-12 col-md-6  col-md-6 col-lg-6 mt-4 mt-md-0">
+                <div class="col-12 myAccountOption col-sm-12">
+                  <p>First name (*)</p>
+                  <input type="text" placeholder="Your name" disabled>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-4">
+              <div class="col-12 myAccountOption col-sm-12 col-md-6 col-lg-6">
+                <p>pseudo</p>
+                <input type="text" placeholder="Your name" disabled>
+              </div>
+              <div class="col-12 col-sm-12 col-md-6 col-md-6 col-lg-6 mt-4 mt-md-0">
+                <div class="col-12 myAccountOption col-sm-12 ">
+                  <p>E-mail (*)</p>
+                  <input type="text" placeholder="Your email address" disabled>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-4">
+              <div class="col-12 myAccountOption col-sm-12 col-md-6 col-lg-6">
+                <p>Telephone number (*)</p>
+                <input type="text" placeholder="Telephone number" disabled>
+              </div>
+              <div class="col-12 col-sm-12 col-md-6 col-md-6 col-lg-6 mt-4 mt-md-0">
+                <div class="col-12 myAccountOption col-sm-12 ">
+                  <p>City (*)</p>
+                  <input type="text" placeholder="Delhi" disabled>
+                </div>
+              </div>
+            </div>
           </div>
+          <div class="col-12 col-sm-12 col-md-4 col-lg-4"></div>
         </div>
       </div>
     </section>
-    <!-- Sing Up Component -->
+    <!-- My Account Setting -->
   </main>
-  <!-- Main -->
+  <!-- main -->
 
   <!-- Footer -->
   <footer class="footer side_padding second_footer">
@@ -240,11 +226,11 @@
 
           <!-- Footer icons -->
           <!-- <div class="footer_icons">
-            <i class="fab fa-facebook-f"></i>
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-linkedin-in"></i>
-            <i class="fab fa-twitter"></i>
-          </div> -->
+          <i class="fab fa-facebook-f"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-linkedin-in"></i>
+          <i class="fab fa-twitter"></i>
+        </div> -->
           <!-- Footer icons -->
 
         </div>
@@ -277,7 +263,7 @@
 
         </div>
 
-        <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-3 mt-2 mt-md-0">
           <h1 class="text-white my-3">NEWSLETTER</h1>
           <!-- <p class="light_para">Lorem ipsum dolor sit amet consectetur adipisicing.</p> -->
 
@@ -292,11 +278,11 @@
           <!-- News letter section -->
 
           <!-- <p class="light_para"><a href="#">Payment Methods</a></p>
-          <p class="light_para"><a href="#">Money-back gurantee</a></p>
-          <p class="light_para"><a href="#">Return</a></p>
-          <p class="light_para"><a href="#">Shipping</a></p>
-          <p class="light_para"><a href="#">Terms and conditions</a></p>
-          <p class="light_para"><a href="#">Privacy Prolicy</a></p> -->
+        <p class="light_para"><a href="#">Money-back gurantee</a></p>
+        <p class="light_para"><a href="#">Return</a></p>
+        <p class="light_para"><a href="#">Shipping</a></p>
+        <p class="light_para"><a href="#">Terms and conditions</a></p>
+        <p class="light_para"><a href="#">Privacy Prolicy</a></p> -->
         </div>
 
       </div>
