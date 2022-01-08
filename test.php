@@ -1,7 +1,5 @@
 <?php
-require_once "./registerCornJob.php";
 
-
-$registerCornJob = new RegisterCornJob();
-$registerCornJob->registerJob("17:08:00");
-echo "working";
+$out = shell_exec("crontab " . "cronJobs/cronFile.txt");
+echo $out;
+echo shell_exec("echo 'test'");

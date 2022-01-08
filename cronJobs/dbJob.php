@@ -10,8 +10,10 @@ function dbJob()
     $registerCornJob = new RegisterCornJob();
     $auction = new Auction();
     $currentAuction = $auction->getAuctionByTime();
-    $redis->setAuction($currentAuction);
-    $registerCornJob->registerJob($currentAuction[0]["time"]);
+    if (!empty($currentAuction)) {
+        $redis->setAuction($currentAuction);
+        $registerCornJob->registerJob($currentAuction[0]["time"]);
+    }
 }
 
 dbJob();

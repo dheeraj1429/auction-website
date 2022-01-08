@@ -3,10 +3,9 @@ date_default_timezone_set('Asia/Kolkata');
 
 class RegisterCornJob
 {
-    public function __construct($setAuctionJob = false, $setDBJob = false)
+    public function __construct($setAuctionJob = false)
     {
         $this->setAuctionJob = $setAuctionJob;
-        $this->setDBJob = $setDBJob;
         $this->fromScrach = false;
     }
 
@@ -16,13 +15,20 @@ class RegisterCornJob
         $dbTask = $this->databaseJob();
         $task = $dbTask . $auctionTask;
         file_put_contents("cronFile.txt", $task);
-        shell_exec("crontab " . "cronFile.txt");
+        $this->writeCronTab();
+    }
+
+    private function writeCronTab()
+    {
+        $command = "crontab " . "/opt/lampp/htdocs/auction/cronJobs/cronFile.txt";
+        echo $command;
+        shell_exec($command);
     }
 
     private function auctionJob($time)
     {
-        $restTime = $this->calculateTime($time);
-        $task = "{$restTime} * * * * php /opt/lampp/htdocs/auction/cronJobs/aucitonJob.php \n";
+        $restTime = explode(":", $time);
+        $task = "{$restTime[1]} {$restTime[0]} * * * ctp /opt/lampp/bin/php /opt/lampp/htdocs/auction/cronJobs/auctionJob.php\n";
         return $task;
     }
 
@@ -48,8 +54,8 @@ class RegisterCornJob
 
     private function databaseJob()
     {
-        $restTime = $this->calculateTime("24:00:00");
-        $task = "{$restTime} * * * * php /opt/lampp/htdocs/auction/cronJobs/dbJob.php \n";
+        $restTime = explode(":", "00:00:00");
+        $task = "{$restTime[1]} {$restTime[0]} * * * ctp /opt/lampp/bin/php /opt/lampp/htdocs/auction/cronJobs/dbJob.php\n";
         return $task;
     }
 }

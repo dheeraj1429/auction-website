@@ -1,8 +1,8 @@
 <?php
 require_once "../redis.php";
-require_once "../registerCornJob.php";
 require_once "../model/participant.php";
 require_once "../model/auction.php";
+require_once "../registerCronJob.php";
 require_once "../sendEmail.php";
 
 function auctionFunction()
@@ -23,8 +23,8 @@ function auctionFunction()
     $auctionData = $auctionModel->getIdByTime($auctionId);
 
     // Register Cron job
-    $registerCornJob = new RegisterCornJob();
-    $registerCornJob->registerJob($auctionData["time"]);
+    $registerCronJob = new RegisterCornJob();
+    $registerCronJob->registerJob($auctionData["time"]);
 }
 
 auctionFunction();

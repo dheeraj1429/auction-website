@@ -28,7 +28,8 @@ class RedisConnection
 
     public function getFirstAuction()
     {
-        return $this->redis->lrange("auctions", 0, 0);
+        $data = $this->redis->lrange("auctions", 0, 0);
+        return $data[0];
     }
 
     public function rmFisrstValue($value)
