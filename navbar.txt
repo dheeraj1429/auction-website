@@ -200,3 +200,50 @@
             </div>
           </div>
         </div>
+
+
+        <div class="col-12 col-sm-12 col-md-5 col-lg-5">
+            <div class="contact_info contact_info_inner d-flex align-items-center p-5">
+
+              <div class="contactsection">
+                <!-- Contact info -->
+                <div>
+                  <h3 class="text-white mb-3">Contact Information</h3>
+                  <!-- <p class="text-white">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, -->
+                  </p>
+                </div>
+
+
+                <div>
+                  <div class="contact_info_Div d-flex mt-5">
+                    <img src="./assests/icons&images/map-marker-alt-solid (2) 1.svg" alt="">
+                    <p class="text-white ms-3">360 King Street 3rd floor, Babukhan mall, Somajiguda, Hyderabad,
+                      Telangana,
+                      India.</p>
+                  </div>
+
+                  <div class="contact_info_Div d-flex mt-5">
+                    <img src="./assests/icons&images/mobile-alt-solid 1.svg" alt="">
+                    <p class="text-white ms-3">(800) 900-200-300, (900) 660-444-200</p>
+                  </div>
+
+                  <div class="contact_info_Div d-flex mt-5">
+                    <img src="./assests/icons&images/mail-1.svg" alt="">
+                    <p class="text-white ms-3">info@demo99.com</p>
+                  </div>
+                </div>
+
+                <!-- icons -->
+                <!-- <div class="contact_icons_div">
+                  <img src="./assests/icons&images/Group 425.svg" alt="">
+                  <img src="./assests/icons&images/Group 424.svg" alt="">
+                  <img src="./assests/icons&images/Group 423.svg" alt="">
+                  <img src="./assests/icons&images/Group 427.svg" alt="">
+                </div> -->
+                <!-- icons -->
+
+
+              </div>
+
+            </div>
+          </div>
