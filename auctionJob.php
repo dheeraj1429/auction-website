@@ -20,11 +20,11 @@ function auctionFunction()
             sendEmail($p["email"], "We are posponding auction");
         }
     }
-    $auctionData = $auctionModel->getIdByTime($auctionId);
+    $currentAuction = $cronJobs->read()[0];
 
     // Register Cron job
     $registerCronJob = new RegisterCornJob();
-    $registerCronJob->registerJob($auctionData["time"]);
+    $registerCronJob->registerJob($currentAuction["time"]);
 }
 
 auctionFunction();

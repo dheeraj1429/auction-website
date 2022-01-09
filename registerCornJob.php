@@ -46,7 +46,7 @@ class RegisterCornJob
 
     private function databaseJob()
     {
-        $task = "* * * * *  wget -O /dev/null 'http://localhost/auction/dbJob.php'\n";
+        $task = "0 0 * * *  wget -O /dev/null 'http://localhost/auction/dbJob.php'\n";
         return $task;
     }
 }
