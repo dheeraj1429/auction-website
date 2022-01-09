@@ -18,7 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             "password" => $password,
             "contact" => $phoneNumber,
             "address" => $address,
-            "role" => "user"
+            "role" => "user",
+            "status" => "active"
         );
         $users->create($data);
         header("Location: ./logIn.php");

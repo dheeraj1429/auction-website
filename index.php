@@ -4,7 +4,6 @@ require_once "./model/testomonial.php";
 require_once "./model/blog.php";
 require_once "./model/cmsPages.php";
 require_once "./redis.php";
-require_once "./scheduler.php";
 
 $package = new Package();
 $testomonial = new Testomonial();

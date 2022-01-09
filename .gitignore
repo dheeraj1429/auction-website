@@ -12,3 +12,6 @@
 
 # cronfile
 cronFile.txt
+
+# config.json
+/admin/config.json

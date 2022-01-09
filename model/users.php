@@ -46,6 +46,7 @@ class Users extends Base
             $contact = $data["contact"];
             $address = $data["address"];
             $role = $data["role"];
+            $status = $data["status"];
             $token = $this->generateToken();
             $sql = "INSERT INTO " . $this->tableName . "(
                 username, 
@@ -54,7 +55,8 @@ class Users extends Base
                 contact, 
                 address, 
                 role, 
-                token
+                token,
+                status
                 ) VALUES (
                     '$username', 
                     '$email', 
@@ -62,7 +64,8 @@ class Users extends Base
                     '$contact', 
                     '$address', 
                     '$role', 
-                    '$token'
+                    '$token',
+                    '$status'
                     )";
             $stmt = $this->connection->prepare($sql);
             $stmt->execute();

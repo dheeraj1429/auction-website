@@ -1,5 +1,10 @@
 <?php
+// $command = "crontab " . "/opt/lampp/htdocs/auction/cronJobs/cronFile.txt";
 
-$out = shell_exec("crontab " . "cronJobs/cronFile.txt");
+// $out = shell_exec($command);
+
+// echo $out;
+
+// echo "Done";
+$out = shell_exec("echo 'test'");
 echo $out;
-echo shell_exec("echo 'test'");

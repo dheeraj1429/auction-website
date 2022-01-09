@@ -20,7 +20,7 @@ function getGeneral()
 
 function getValuesByName($name)
 {
-    $general =    getGeneral();
+    $general = getGeneral();
     $data = $general->getDataByName($name)[0];
     return $data["key_value"];
 }

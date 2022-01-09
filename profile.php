@@ -6,10 +6,8 @@ if (!isset($_SESSION["email"])) {
     header("Location: ./logIn.php");
 }
 
-if (isset($_GET["token"])) {
-    $users = new Users();
-    $userData = $users->getUserByToken($_GET["token"]);
-}
+$users = new Users();
+$userData = $users->read($_SESSION["email"])[0];
 ?>
 
 <?php require_once "./header.php" ?>

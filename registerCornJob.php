@@ -1,4 +1,5 @@
 <?php
+require_once "sendEmail.php";
 date_default_timezone_set('Asia/Kolkata');
 
 class RegisterCornJob
@@ -20,24 +21,15 @@ class RegisterCornJob
 
     private function writeCronTab()
     {
-        $command = "crontab " . "/opt/lampp/htdocs/auction/cronJobs/cronFile.txt";
-        echo $command;
+        $command = "php /opt/lampp/htdocs/auction/addCron.php";
         shell_exec($command);
     }
 
     private function auctionJob($time)
     {
         $restTime = explode(":", $time);
-        $task = "{$restTime[1]} {$restTime[0]} * * * ctp /opt/lampp/bin/php /opt/lampp/htdocs/auction/cronJobs/auctionJob.php\n";
+        $task = "{$restTime[1]} {$restTime[0]} * * * wget -O /dev/null 'http://localhost/auction/auctionJob.php'\n";
         return $task;
-    }
-
-    private function calculateTime($time)
-    {
-        $from_time = strtotime(date("H:i:s"));
-        $to_time = strtotime($time);
-        $restTime = round(abs($to_time - $from_time) / 60, 2);
-        return $restTime;
     }
 
     public function registerDatabaseJob()
@@ -54,8 +46,7 @@ class RegisterCornJob
 
     private function databaseJob()
     {
-        $restTime = explode(":", "00:00:00");
-        $task = "{$restTime[1]} {$restTime[0]} * * * ctp /opt/lampp/bin/php /opt/lampp/htdocs/auction/cronJobs/dbJob.php\n";
+        $task = "* * * * *  wget -O /dev/null 'http://localhost/auction/dbJob.php'\n";
         return $task;
     }
 }

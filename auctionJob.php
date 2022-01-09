@@ -1,16 +1,16 @@
 <?php
-require_once "../redis.php";
-require_once "../model/participant.php";
-require_once "../model/auction.php";
-require_once "../registerCronJob.php";
-require_once "../sendEmail.php";
+require_once "registerCornJob.php";
+require_once "model/participant.php";
+require_once "model/auction.php";
+require_once "model/cronJobs.php";
+require_once "sendEmail.php";
 
 function auctionFunction()
 {
-    $redis = new RedisConnection();
+    $cronJobs = new CronJobs();
     $participant = new Participant();
-    $auctionId = $redis->getFirstAuction();
-    $redis->rmFisrstValue($auctionId);
+    $auctionId = $cronJobs->read()[0]["id"];
+    $cronJobs->updateStatus($auctionId, "unactive");
     $participantData = $participant->read($auctionId);
     $auctionModel = new Auction();
     $auctionData = $auctionModel->read($id = $auctionId)[0];
