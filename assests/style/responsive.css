@@ -63,6 +63,14 @@
   .news_letter_inner_div {
     width: 93%;
   }
+  .blogs p {
+    font-size: 16px !important;
+    line-height: normal !important;
+  }
+  .blog_banner_section h1 {
+    font-weight: 700;
+    font-size: 30px !important;
+  }
 }
 @media (max-width: 768px) {
   .our_pricing_plan {
@@ -74,6 +82,9 @@
   }
   .Shedule_div h3 {
     font-size: 13px;
+  }
+  .user_icons_blog {
+    justify-content: start !important;
   }
 }
 @media (max-width: 744px) {
@@ -133,6 +144,28 @@
   }
   .contact_info h3 {
     font-size: 20px !important;
+  }
+  .user_products_card {
+    display: block !important;
+  }
+  .user_products_card h3 {
+    color: var(--darkbg) !important;
+  }
+  .user_products_card h3 {
+    font-size: 30px !important;
+  }
+  .user_products_card p {
+    font-size: 20px !important;
+  }
+  .user_products_card {
+    display: grid !important;
+    place-content: center;
+  }
+  .navbar-brand h1 {
+    font-size: 24px;
+  }
+  .myAccountOptionNum input {
+    width: 100% !important;
   }
 }
 @media (max-width: 420px) {

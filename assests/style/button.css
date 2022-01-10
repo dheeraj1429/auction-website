@@ -105,4 +105,18 @@
   border: none;
   font-size: 1.4rem;
 }
+.replay_Button {
+  border: none;
+  background-color: transparent;
+  color: var(--LightRedColor);
+}
+.post_button {
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+  cursor: pointer;
+  background-color: var(--LightRedColor);
+  border: none;
+  color: var(--MainColor);
+  font-size: 0.8rem;
+}
 /* Buttons */

@@ -1,17 +1,20 @@
 /* banner section */
 /* header_banner_section */
 .header_banner_section {
-  background-image: url(../icons&images/BANNER.png);
+  background-image: url(../icons&images/Real-Estate-Web-Banner-7815.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
 .banner_section_inner h1 {
-  font-size: 65px;
-  font-weight: 800;
+  font-size: 60px;
+  font-weight: 600;
 }
 .banner_section_inner h3 {
-  font-size: 40px;
+  font-size: 80px;
+}
+.banner_section_inner p {
+  font-size: 20px;
 }
 /* header_banner_section */
 
@@ -184,9 +187,11 @@
   align-items: center;
   cursor: pointer;
 }
-.tabs_card > div:nth-child(1) {
-  color: var(--LightRedColor);
+.active_tab_div {
   border-bottom: 2px solid var(--LightRedColor);
+}
+.active_tab {
+  color: var(--LightRedColor);
 }
 .tabs_card p {
   margin: 0 !important;

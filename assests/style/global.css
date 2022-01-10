@@ -30,6 +30,8 @@ body {
   --tabsbgColor: #f2f2f2;
   --borderColor: #ebebeb;
   --darkbg: #003853;
+  --smoothlightGray: #f8f8f8;
+  --DsColor: #e8eaee;
 }
 /* Colors */
 
@@ -94,4 +96,10 @@ span {
 
 a {
   text-decoration: none;
+}
+
+.drop {
+  border: none;
+  background-color: transparent;
+  color: var(--darkbg);
 }
