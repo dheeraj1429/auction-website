@@ -143,14 +143,7 @@ $blogData = $blog->read($id = $_GET["id"])[0];
                     doloribus commodi.
                 </p>
 
-                <!-- Footer icons -->
-                <!-- <div class="footer_icons">
-          <i class="fab fa-facebook-f"></i>
-          <i class="fab fa-instagram"></i>
-          <i class="fab fa-linkedin-in"></i>
-          <i class="fab fa-twitter"></i>
-        </div> -->
-                <!-- Footer icons -->
+
             </div>
 
             <div class="col-12 col-sm-6 col-md-3 col-lg-2 mt-3 mt-md-0">
@@ -161,29 +154,10 @@ $blogData = $blog->read($id = $_GET["id"])[0];
                 <p class="light_para"><a href="./legal.html">Legal</a></p>
             </div>
 
-            <!-- <div class="col-12 col-sm-6 col-md-3 col-lg-3">
-        <h1 class="text-white my-3">STAY IN TOUCH</h1>
-        <div class="footer-icons_div d-flex align-items-center">
-          <i class=" fas fa-map-marker-alt text-white"></i>
-          <p class="light_para mb-0 ms-3"><a href="#">Residence les dunes tanisay, 2033 Akolk, UK City</a></p>
-        </div>
 
-        <div class="footer-icons_div my-3 d-flex align-items-center">
-          <i class="fas fa-phone-alt text-white"></i>
-          <p class="light_para mb-0 ms-3"><a href="#">7352-256-546-202</a></p>
-        </div>
-
-        <div class="footer-icons_div d-flex align-items-center">
-          <i class="fas fa-mail-bulk text-white"></i>
-          <p class="light_para mb-0 ms-3"><a href="#">contact@gami.com</a></p>
-        </div>
-
-
-      </div> -->
 
             <div class="col-12 col-sm-6 col-md-4 col-lg-4 ms-lg-5 ms-md-0">
                 <h1 class="text-white my-3">NEWSLETTER</h1>
-                <!-- <p class="light_para">Lorem ipsum dolor sit amet consectetur adipisicing.</p> -->
 
                 <!-- News letter section -->
                 <div class="newsLetter_search">
@@ -192,12 +166,7 @@ $blogData = $blog->read($id = $_GET["id"])[0];
                 </div>
                 <!-- News letter section -->
 
-                <!-- <p class="light_para"><a href="#">Payment Methods</a></p>
-        <p class="light_para"><a href="#">Money-back gurantee</a></p>
-        <p class="light_para"><a href="#">Return</a></p>
-        <p class="light_para"><a href="#">Shipping</a></p>
-        <p class="light_para"><a href="#">Terms and conditions</a></p>
-        <p class="light_para"><a href="#">Privacy Prolicy</a></p> -->
+
             </div>
         </div>
     </div>
