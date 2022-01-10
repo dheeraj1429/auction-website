@@ -4,16 +4,12 @@
 <meta name="apple-touch-fullscreen" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta content="" name="author" />
-<meta content="atlas is Bootstrap 4 based admin panel.It comes with 100's widgets,charts and icons"
-    name="description" />
+<meta content="atlas is Bootstrap 4 based admin panel.It comes with 100's widgets,charts and icons" name="description" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:type" content="website" />
-<meta property="og:title"
-    content="atlas is Bootstrap 4 based admin panel.It comes with 100's widgets,charts and icons" />
-<meta property="og:description"
-    content="atlas is Bootstrap 4 based admin panel.It comes with 100's widgets,charts and icons" />
-<meta property="og:image"
-    content="../../cdn.dribbble.com/users/180706/screenshots/5424805/the_sceens_-_mobile_perspective_mockup_3_-_by_tranmautritam.jpg" />
+<meta property="og:title" content="atlas is Bootstrap 4 based admin panel.It comes with 100's widgets,charts and icons" />
+<meta property="og:description" content="atlas is Bootstrap 4 based admin panel.It comes with 100's widgets,charts and icons" />
+<meta property="og:image" content="../../cdn.dribbble.com/users/180706/screenshots/5424805/the_sceens_-_mobile_perspective_mockup_3_-_by_tranmautritam.jpg" />
 <meta property="og:site_name" content="atlas " />
 <link rel="icon" type="image/x-icon" href="./assets/img/logo.png" />
 <link rel="icon" href="./assets/img/logo.png" type="image/png" sizes="16x16">
@@ -40,22 +36,22 @@
 <link rel="stylesheet" type="text/css" href="./assets/css/alertify-default-theme.rtl.min.css">
 
 <style type="text/css">
-.btn-floating {
-    display: inline-block;
-    color: #fff;
-    position: fixed;
-    right: 0px;
-    overflow: hidden;
-    z-index: 999;
-    width: 50px;
-    height: 50px;
-    padding: 13px;
-    background-color: #407cff;
-    border-radius: 50%;
-    transition: .3s;
-    cursor: pointer;
-    vertical-align: middle;
-    right: 30px;
-    bottom: 30px;
-}
+    .btn-floating {
+        display: inline-block;
+        color: #fff;
+        position: fixed;
+        right: 0px;
+        overflow: hidden;
+        z-index: 999;
+        width: 50px;
+        height: 50px;
+        padding: 13px;
+        background-color: #407cff;
+        border-radius: 50%;
+        transition: .3s;
+        cursor: pointer;
+        vertical-align: middle;
+        right: 30px;
+        bottom: 30px;
+    }
 </style>

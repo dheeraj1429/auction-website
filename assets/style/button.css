@@ -49,7 +49,7 @@
 .send_button {
   border: none;
   background-color: var(--LightRedColor);
-  padding: 1.3rem 4rem;
+  padding: 0.8rem 4rem;
   box-shadow: 0px 10px 20px -10px rgba(202, 0, 0, 0.5);
   font-weight: bold;
   color: var(--MainColor);
@@ -95,14 +95,5 @@
   border: none;
   background-color: var(--LightRedColor);
   color: var(--MainColor);
-}
-.send_Button {
-  width: 100%;
-  padding: 1rem;
-  border-radius: 4px;
-  background-color: var(--LightRedColor);
-  color: var(--MainColor);
-  border: none;
-  font-size: 1.4rem;
 }
 /* Buttons */

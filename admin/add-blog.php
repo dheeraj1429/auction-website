@@ -119,37 +119,68 @@ if (isset($_GET['id'])) {
                                         <form method="POST" enctype="multipart/form-data">
                                             <div class="form-group col-md-12">
                                                 <label for="head">Blog Name</label>
-                                                <input type="text" class="form-control" id="name" placeholder="Heading" value="<?php if (isset($_GET['id'])) {
+                                                <input type="text" class="form-control" id="name" placeholder="Heading"
+                                                    value="<?php if (isset($_GET['id'])) {
                                                                                                                                     echo $dataB['name'];
-                                                                                                                                } ?>" name="name" autocomplete="off" required="">
+                                                                                                                                } ?>"
+                                                    name="name" autocomplete="off" required="">
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label for="head">Blog Url</label>
-                                                <input type="text" class="form-control" id="url" placeholder="Blog url" value="<?php if (isset($_GET['id'])) {
+                                                <input type="text" class="form-control" id="url" placeholder="Blog url"
+                                                    value="<?php if (isset($_GET['id'])) {
                                                                                                                                     echo $dataB['url'];
-                                                                                                                                } ?>" name="url" autocomplete="off" required="">
+                                                                                                                                } ?>"
+                                                    name="url" autocomplete="off" required="">
+                                                <input type="text" class="form-control" id="name" placeholder="Heading"
+                                                    value="<?php if (isset($_GET['id'])) {
+                                                                                                                                    echo $dataB['name'];
+                                                                                                                                } ?>"
+                                                    name="name" autocomplete="off" required="">
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <label for="head">Blog Url</label>
+                                                <input type="text" class="form-control" id="url" placeholder="Heading"
+                                                    value="<?php if (isset($_GET['id'])) {
+                                                                                                                                    echo $dataB['url'];
+                                                                                                                                } ?>"
+                                                    name="url" autocomplete="off" required="">
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label for="head">Blog Category</label>
                                                 <select class="form-control" name="cat" autocomplete="off" required="">
                                                     <option value="" selected="" disabled="">Select Category</option>
-                                                    <?php foreach ($categories as $category) : ?>
-                                                        <option value="<?php echo $category["id"] ?>">
-                                                            <?php echo $category["name"] ?></option>
+                                                    <?php foreach ($categories as $category) : ?> <option
+                                                        value="<?php echo $category["id"] ?>">
+                                                        <?php echo $category["name"] ?></option>
                                                     <?php endforeach; ?>
+                                                    <?php
+                                                    $dataCat = mysqli_query($conn, "SELECT `id`,`name` FROM `" . $tblPrefix . "category` WHERE status=2");
+                                                    while ($cat = mysqli_fetch_assoc($dataCat)) {
+                                                    ?>
+                                                    <option value="<?php echo $cat['id']; ?>" <?php if (isset($_GET['id'])) {
+                                                                                                        if ($dataB['cat'] == $cat['id']) {
+                                                                                                            echo "selected";
+                                                                                                        }
+                                                                                                    } ?>>
+                                                        <?php echo $cat['name']; ?></option>
+                                                    <?php } ?>
                                                 </select>
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <div class="custom-file mt-3">
-                                                    <input type="file" class="custom-file-input" id="inputllogo02" name="image">
+                                                    <input type="file" class="custom-file-input" id="inputllogo02"
+                                                        name="image">
                                                     <label class="custom-file-label" for="inputllogo02">Image</label>
                                                 </div>
-                                                <?php if (isset($_GET['id'])) { ?>
-                                                    <img src="<?php if (isset($_GET['id'])) {
-                                                                    echo "../media/img/blog/" . $dataB['img'];
-                                                                } ?>" class="img-circle img-responsive m-auto mx-2" alt="<?php if (isset($_GET['id'])) {
-                                                                                                                                echo $dataB['name'];
-                                                                                                                            } ?>" height="100px;">
+                                                <?php if (isset($_GET['id'])) { ?> <img src="<?php if (isset($_GET['id'])) {
+                                                                                                    echo "../media/img/blog/" . $dataB['img'];
+                                                                                                } ?>"
+                                                    class="img-circle img-responsive m-auto mx-2"
+                                                    alt="<?php if (isset($_GET['id'])) {
+                                                                                                                                                                            echo $dataB['name'];
+                                                                                                                                                                        } ?>"
+                                                    height="100px;">
                                                 <?php } ?>
                                             </div>
                                             <div class="form-group col-md-12">
@@ -166,29 +197,96 @@ if (isset($_GET['id'])) {
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label for="mtitle">Blog Meta Title</label>
-                                                <input type="text" class="form-control" id="mtitle" placeholder="Heading" value="<?php if (isset($_GET['id'])) {
+                                                <input type="text" class="form-control" id="mtitle"
+                                                    placeholder="Heading"
+                                                    value="<?php if (isset($_GET['id'])) {
                                                                                                                                         echo $dataB['meta_title'];
-                                                                                                                                    } ?>" name="mtitle" autocomplete="off" required="">
+                                                                                                                                    } ?>"
+                                                    name="mtitle" autocomplete="off" required="">
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label for="keyword">Blog Meta Keyword</label>
-                                                <input type="text" class="form-control" id="keyword" placeholder="Heading" value="<?php if (isset($_GET['id'])) {
+                                                <input type="text" class="form-control" id="keyword"
+                                                    placeholder="Heading"
+                                                    value="<?php if (isset($_GET['id'])) {
                                                                                                                                         echo $dataB['meta_keyword'];
-                                                                                                                                    } ?>" name="mkeyword" autocomplete="off" required="">
+                                                                                                                                    } ?>"
+                                                    name="mkeyword" autocomplete="off" required="">
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label for="mdesc">Blog Meta Description</label>
-                                                <input type="text" class="form-control" id="mdesc" placeholder="Heading" value="<?php if (isset($_GET['id'])) {
+                                                <input type="text" class="form-control" id="mdesc" placeholder="Heading"
+                                                    value="<?php if (isset($_GET['id'])) {
                                                                                                                                     echo $dataB['meta_desc'];
-                                                                                                                                } ?>" name="mdesc" autocomplete="off" required="">
+                                                                                                                                } ?>"
+                                                    name="mdesc" autocomplete="off" required="">
                                             </div>
                                             <div class="form-row pt-3">
                                                 <div class="form-group col-md-12">
-                                                    <button type="submit" class="btn btn-success m-auto" name="submit">Save changes</button>
+                                                    <button type="submit" class="btn btn-success m-auto"
+                                                        name="submit">Save changes</button>
+                                                    =======
                                                 </div>
-                                            </div>
+                                                <div class="form-group col-md-12">
+                                                    <label for="text">Blog Short Content</label>
+                                                    <textarea class="form-control" name="short"><?php if (isset($_GET['id'])) {
+                                                                                                    echo htmlspecialchars_decode($dataB['short_desc']);
+                                                                                                } ?></textarea>
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                    <label for="text">Blog Content</label>
+                                                    <textarea class="form-control" name="desc"
+                                                        id="editor"><?php if (isset($_GET['id'])) {
+                                                                                                                echo htmlspecialchars_decode($dataB['desc']);
+                                                                                                            } ?></textarea>
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                    <label for="mtitle">Blog Meta Title</label>
+                                                    <input type="text" class="form-control" id="mtitle"
+                                                        placeholder="Heading"
+                                                        value="<?php if (isset($_GET['id'])) {
+                                                                                                                                            echo $dataB['meta_title'];
+                                                                                                                                        } ?>"
+                                                        name="mtitle" autocomplete="off" required="">
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                    <label for="keyword">Blog Meta Keyword</label>
+                                                    <input type="text" class="form-control" id="keyword"
+                                                        placeholder="Heading"
+                                                        value="<?php if (isset($_GET['id'])) {
+                                                                                                                                            echo $dataB['meta_keyword'];
+                                                                                                                                        } ?>"
+                                                        name="mkeyword" autocomplete="off" required="">
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                    <label for="mdesc">Blog Meta Description</label>
+                                                    <input type="text" class="form-control" id="mdesc"
+                                                        placeholder="Heading"
+                                                        value="<?php if (isset($_GET['id'])) {
+                                                                                                                                        echo $dataB['meta_desc'];
+                                                                                                                                    } ?>"
+                                                        name="mdesc" autocomplete="off" required="">
+                                                </div>
+                                                <div class="form-row pt-3">
+                                                    <div class="form-group col-md-12">
+                                                        <button type="submit" class="btn btn-success m-auto"
+                                                            name="submit">Save</button>
+                                                    </div>
+                                                </div>
                                         </form>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mx-auto mt-2">
+                            <div class="card py-3 m-b-30">
+                                <div class="card-body">
+                                    <h3 class="card-title text-center">Blog Media<h3>
+                                            <div class="col-lg-12 mb-3 text-center">
+                                                <img src="../assets/img/blog/<?php echo $dataB['img']; ?>"
+                                                    class="img-fluid img-responsive m-auto mx-2"
+                                                    alt="<?php echo $dataB['name']; ?>">
+                                            </div>
                                 </div>
                             </div>
                         </div>
@@ -199,6 +297,7 @@ if (isset($_GET['id'])) {
     </main>
 </body>
 <?php include_once('inc/js.php'); ?>
+<?php include_once('inc/search-bar.php'); ?><?php include_once('inc/js.php'); ?>
 <?php include_once('inc/search-bar.php'); ?>
 
 </html>

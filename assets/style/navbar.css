@@ -31,12 +31,9 @@
   font-weight: 700;
   font-size: 40px;
 }
-.nav-item {
-  margin: 0 0.5rem;
-}
-/* .nav-link {
+.nav-link {
   margin-left: 2rem !important;
-} */
+}
 .active_header {
   color: var(--LightRedColor) !important;
 }

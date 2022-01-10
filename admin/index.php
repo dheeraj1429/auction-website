@@ -37,7 +37,8 @@ if (!isset($_SESSION['admin_email'])) {
                                     <div class="col-lg-3 text-center">
                                         <div class="d-block pb-2">
                                             <div class="avatar avatar-lg">
-                                                <div class=" avatar-title rounded-circle"> <i class="mdi mdi-account-multiple"></i></div>
+                                                <div class=" avatar-title rounded-circle"> <i
+                                                        class="mdi mdi-account-multiple"></i></div>
                                             </div>
                                         </div>
                                         <h1 class=" m-0 text-white">3,500</h1>
@@ -46,7 +47,8 @@ if (!isset($_SESSION['admin_email'])) {
                                     <div class="col-lg-3 text-center">
                                         <div class="d-block pb-2">
                                             <div class="avatar avatar-lg">
-                                                <div class=" avatar-title rounded-circle bg-soft-warning"> <i class="mdi mdi-clipboard-check"></i></div>
+                                                <div class=" avatar-title rounded-circle bg-soft-warning"> <i
+                                                        class="mdi mdi-clipboard-check"></i></div>
                                             </div>
                                         </div>
                                         <h1 class=" m-0 text-white">48,100</h1>
@@ -55,7 +57,8 @@ if (!isset($_SESSION['admin_email'])) {
                                     <div class="col-lg-3 text-center">
                                         <div class="d-block pb-2">
                                             <div class="avatar avatar-lg">
-                                                <div class=" avatar-title bg-soft-success rounded-circle"> <i class="mdi mdi-cash-usd"></i></div>
+                                                <div class=" avatar-title bg-soft-success rounded-circle"> <i
+                                                        class="mdi mdi-cash-usd"></i></div>
                                             </div>
                                         </div>
                                         <h1 class=" m-0 text-white">$4600</h1>
@@ -64,7 +67,8 @@ if (!isset($_SESSION['admin_email'])) {
                                     <div class="col-lg-3 text-center">
                                         <div class="d-block pb-2">
                                             <div class="avatar avatar-lg">
-                                                <div class=" avatar-title rounded-circle bg-soft-danger"> <i class="mdi mdi-alert-octagram"></i></div>
+                                                <div class=" avatar-title rounded-circle bg-soft-danger"> <i
+                                                        class="mdi mdi-alert-octagram"></i></div>
                                             </div>
                                         </div>
                                         <h1 class=" m-0 text-white">50</h1>
@@ -96,7 +100,7 @@ if (!isset($_SESSION['admin_email'])) {
                             </div>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <<<<<<< HEAD <div class="col-12">
                         <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive p-t-10">
@@ -583,14 +587,21 @@ if (!isset($_SESSION['admin_email'])) {
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </div>
+                =======
+                >>>>>>> 783d3e3e56913e4faa1c71688f6d9041b928ee07
+            </div>
             </div>
         </section>
     </main>
-    <?php require_once("inc/modal.php"); ?>
-    <?php require_once("inc/js.php"); ?>
-    <?php require_once("inc/search-bar.php"); ?>
+    <<<<<<< HEAD <?php require_once("inc/modal.php"); ?> <?php require_once("inc/js.php"); ?>
+        <?php require_once("inc/search-bar.php"); ?> </body>
+
+        =======
+        <?php require_once("inc/modal.php"); ?>
+        <?php require_once("inc/js.php"); ?>
+        <?php require_once("inc/search-bar.php"); ?>
 </body>
+>>>>>>> 783d3e3e56913e4faa1c71688f6d9041b928ee07
 
 </html>

@@ -131,3 +131,119 @@
                     <button class="send_button ms-5">Send</button>
                     <!-- News letter button -->
                   </div>
+
+
+
+                   <div class="container-fluid side_padding">
+          <div class="d-flex justify-content-center align-items-center">
+            <div class="text-center">
+              <!-- Banner Content -->
+              <h1 class="text-white ">Your Awesome Auction Website</h1>
+              <h3 class="secondey_text mb-5 mt-3">Find amazing items <span>today!</span></h3>
+              <!-- Banner Content -->
+
+
+              <!-- Banner Input Div -->
+              <div class="headerBanner_inner_input_div py-3 px-3">
+                <div class="headerBanner_input_inner py-4">
+                  <div class="container-fluid">
+                    <div class="row">
+
+                      <!-- Search Input Div -->
+                      <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                        <div class="headerBanner_server_div d-flex">
+                          <input type="text" placeholder="ENTER KEYWORD" />
+                          <div class="headerBanner_search_icons_div d-flex align-items-center justify-content-center">
+                            <img src="./assests/icons&images/search.svg" alt="">
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Search Input Div -->
+
+                      <!-- Search Input Div -->
+                      <div class="col-12 col-sm-12 col-md-3 col-lg-3 my-3 my-md-0">
+                        <div class="headerBanner_server_div d-flex">
+                          <input type="text" placeholder="ANY CATEGORY" />
+                          <div class="headerBanner_search_icons_div d-flex align-items-center justify-content-center">
+                            <img src="./assests/icons&images/dropdown.svg" alt="">
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Search Input Div -->
+
+                      <!-- Search Input Div -->
+                      <div class="col-12 col-sm-12 col-md-3 col-lg-3 mb-3 mb-md-0">
+                        <div class="headerBanner_server_div d-flex">
+                          <input type="number" placeholder="MAX PRICE" />
+                          <div class="headerBanner_search_icons_div d-flex align-items-center justify-content-center">
+                            <img src="./assests/icons&images/$.svg" alt="">
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Search Input Div -->
+
+                      <!-- Search Input Div -->
+                      <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                        <!-- Search Button -->
+                        <button class="search_button">
+                          SEARCH
+                        </button>
+                        <!-- Search Button -->
+                      </div>
+                      <!-- Search Input Div -->
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Banner Input Div -->
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-12 col-sm-12 col-md-5 col-lg-5">
+            <div class="contact_info contact_info_inner d-flex align-items-center p-5">
+
+              <div class="contactsection">
+                <!-- Contact info -->
+                <div>
+                  <h3 class="text-white mb-3">Contact Information</h3>
+                  <!-- <p class="text-white">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, -->
+                  </p>
+                </div>
+
+
+                <div>
+                  <div class="contact_info_Div d-flex mt-5">
+                    <img src="./assests/icons&images/map-marker-alt-solid (2) 1.svg" alt="">
+                    <p class="text-white ms-3">360 King Street 3rd floor, Babukhan mall, Somajiguda, Hyderabad,
+                      Telangana,
+                      India.</p>
+                  </div>
+
+                  <div class="contact_info_Div d-flex mt-5">
+                    <img src="./assests/icons&images/mobile-alt-solid 1.svg" alt="">
+                    <p class="text-white ms-3">(800) 900-200-300, (900) 660-444-200</p>
+                  </div>
+
+                  <div class="contact_info_Div d-flex mt-5">
+                    <img src="./assests/icons&images/mail-1.svg" alt="">
+                    <p class="text-white ms-3">info@demo99.com</p>
+                  </div>
+                </div>
+
+                <!-- icons -->
+                <!-- <div class="contact_icons_div">
+                  <img src="./assests/icons&images/Group 425.svg" alt="">
+                  <img src="./assests/icons&images/Group 424.svg" alt="">
+                  <img src="./assests/icons&images/Group 423.svg" alt="">
+                  <img src="./assests/icons&images/Group 427.svg" alt="">
+                </div> -->
+                <!-- icons -->
+
+
+              </div>
+
+            </div>
+          </div>

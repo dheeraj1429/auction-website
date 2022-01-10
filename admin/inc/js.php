@@ -70,3 +70,57 @@ $('.change-status').on('change', function() {
 });
 </script>
 <?php echo toast(1); ?>
+=======
+
+</script>
+<script type="text/javascript">
+$(function() {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+<script type="text/javascript">
+//delete row...
+$('.delete-row').on('click', function() {
+    var id = $(this).data('this-id');
+    if (confirm("Do you want to delete this row?")) {
+        window.location = "?delete-row=" + id;
+        return true;
+    } else {
+        return false;
+    }
+});
+
+//change status..
+$('.change-status').on('change', function() {
+    var id = $(this).data('this-id'),
+        status = 0;
+
+    if ($(this).prop('checked') == true) {
+        status = 2;
+    } else {
+        status = 1;
+    }
+
+    //alert(id+ 'status: '+status);
+    $.ajax({
+        type: 'post',
+        url: '',
+        data: {
+            id: id,
+            status: status
+        },
+        success: function(response) {
+            console.log(response);
+            //alert(id);
+            alertify.message("Changes saved.", 3000);
+            //alert(status);
+
+        },
+        error: function(response) {
+            console.log(response);
+            alertify.message("Something went wrong, Please try again.", 3000);
+        }
+    });
+});
+</script>
+<?php echo toast(1); ?>

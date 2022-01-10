@@ -1,5 +1,6 @@
 /* Sing In Component */
 .sign_in_inner_div {
+  padding: 2rem;
   width: 100%;
   background-color: var(--MainColor);
 }
@@ -47,7 +48,7 @@
 .switch_section {
   width: 100%;
   height: 100%;
-  background-image: url(../icons&images/banner.jpg);
+  background-image: url(/assests/icons&images/Rectangle\ 1221\ copy\ 1.png);
   background-position: center;
   background-size: cover;
   padding: 1rem;
