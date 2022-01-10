@@ -26,6 +26,7 @@ require_once "./getValuesByName.php";
     <link rel="stylesheet" href="./assests/style/content.css">
     <link rel="stylesheet" href="./assests/style/footer.css" />
     <link rel="stylesheet" href="./assests/style/logIn.css" />
+    <link rel="stylesheet" href="./assests/style/userProfile.css" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
