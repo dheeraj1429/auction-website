@@ -21,6 +21,11 @@ class Auction extends Base
         return $result;
     }
 
+    public function getUpcomingAuction()
+    {
+        // ...
+    }
+
     public function create($data)
     {
         if (

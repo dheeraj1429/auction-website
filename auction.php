@@ -1,30 +1,46 @@
 <?php
 require_once "./model/auction.php";
+require_once "./session.php";
+require_once "./model/users.php";
+require_once "./model/participant.php";
 
+
+function getParticipantsByEmail($email)
+{
+    $participant = new Participant();
+    $participantData = $participant->getParticipantsByEmail($email);
+    if (empty($participantData)) {
+        return false;
+    }
+    return true;
+}
+
+$isLogin = false;
 $auction = new Auction();
 $auctionData = $auction->read();
 if (isset($_GET["id"])) {
+    if (isset($_SESSION["email"])) {
+        $users = new Users();
+        $isLogin = true;
+        $participant = new Participant();
+        $userData = $users->read($_SESSION["email"])[0];
+        $participantData = array("auction_id" => $_GET["id"], "email" => $userData["email"]);
+        $participant->create($participantData);
+    } else {
+        header("Location: ./logIn.php");
+    }
 }
 ?>
 
 <?php require_once "./header.php" ?>
-<section class="popular_action_section main_bg">
+<section class="popular_action_section main_bg" style="padding: 20px">
     <div class="container-fluid side_padding">
 
-        <!-- Popular action heading -->
-        <div class="row">
-            <div class="col-12 ">
-                <div class="hot_it_works_heading text-center py-3">
-                    <h1>POPULAR <span class="span_color_2">AUCTION</span></h1>
-                    <div class="line_div my-4"></div>
-                </div>
-            </div>
-        </div>
         <!-- Popular action heading -->
 
         <!-- Popular Auction products card -->
         <div class="row pb-5 p-2">
-            <?php foreach ($auctionData as $a) ?>
+            <?php foreach ($auctionData as $a) : ?>
             <div class="col-12 col-sm-12 col-md-3 col-lg-3">
                 <!-- Popular cards -->
                 <div class="popular_auction_card_div text-center py-3">
@@ -66,6 +82,37 @@ if (isset($_GET["id"])) {
                         <!-- Auction Price div -->
 
                         <!-- Subcribe button -->
+                        <?php if ($isLogin) : ?>
+                        <?php if (getParticipantsByEmail($_GET['email'])) : ?>
+                        <div class="mt-4 mb-5">
+                            <a href="./auction.php?id=<?php echo $a["id"] ?>" class="Subcribe_button">Starting on
+                                <?php echo $a["data"] ?></a>
+                        </div>
+                        <!-- Subcribe button -->
+
+                        <!-- Shecdule time div -->
+                        <div class="Shedule_div py-2">
+                            <h3 class="text-white mb-3"> Scheduled on <?php echo $a["date"] ?> <?php echo $a["time"] ?>
+                            </h3>
+                        </div>
+                        <?php else : ?>
+                        <div class="mt-4 mb-5">
+                            <a href="./auction.php?id=<?php echo $a["id"] ?>" class="Subcribe_button">Subscribe for
+                                $<?php echo $a["starting_price"] ?></a>
+                        </div>
+                        <?php endif; ?>
+                        <div class="mt-4 mb-5">
+                            <a href="./auction.php?id=<?php echo $a["id"] ?>" class="Subcribe_button">Subscribe for
+                                $<?php echo $a["starting_price"] ?></a>
+                        </div>
+                        <!-- Subcribe button -->
+
+                        <!-- Shecdule time div -->
+                        <div class="Shedule_div py-2">
+                            <h3 class="text-white mb-3"> Scheduled on <?php echo $a["date"] ?> <?php echo $a["time"] ?>
+                            </h3>
+                        </div>
+                        <?php endif; ?>
                         <div class="mt-4 mb-5">
                             <a href="./auction.php?id=<?php echo $a["id"] ?>" class="Subcribe_button">Subscribe for
                                 $<?php echo $a["starting_price"] ?></a>
@@ -83,15 +130,8 @@ if (isset($_GET["id"])) {
                 </div>
                 <!-- Popular cards -->
             </div>
+            <?php endforeach; ?>
             <!-- Popular cards -->
-        </div>
-
-        <div class="row">
-            <div class="col-12 text-center">
-                <div class="mt-2 mb-5 d-flex justify-content-center ">
-                    <button class="Subcribe_button">See All Auction</button>
-                </div>
-            </div>
         </div>
     </div>
     <!-- Popular Auction products card -->

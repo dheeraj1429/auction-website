@@ -23,12 +23,21 @@ class Participant extends Base
 
     public function create($data)
     {
-        if (array_key_exists("auction_id", $data) && array_key_exists("user_id", $data)) {
+        if (array_key_exists("auction_id", $data) && array_key_exists("email", $data)) {
             $auctionId = $data["auction_id"];
-            $userId = $data["user_id"];
-            $sql = "INSERT INTO " . $this->tableName . " (auction_id, user_id) VALUES ('$auctionId', '$userId')";
+            $userEmail = $data["email"];
+            $sql = "INSERT INTO " . $this->tableName . " (auction_id, email) VALUES ('$auctionId', '$userEmail')";
             $stmt = $this->connection->prepare($sql);
             $stmt->execute();
         }
+    }
+
+    public function getParticipantsByEmail($userEmail)
+    {
+        $sql  = "SELECT * FROM " . $this->tableName . " WHERE email = '$userEmail'";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
     }
 }

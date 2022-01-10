@@ -100,7 +100,7 @@ if (!isset($_SESSION['admin_email'])) {
                             </div>
                         </div>
                     </div>
-                    <<<<<<< HEAD <div class="col-12">
+                    <div class="col-12">
                         <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive p-t-10">
@@ -587,21 +587,19 @@ if (!isset($_SESSION['admin_email'])) {
                                 </div>
                             </div>
                         </div>
+                    </div>
+
                 </div>
-                =======
-                >>>>>>> 783d3e3e56913e4faa1c71688f6d9041b928ee07
-            </div>
             </div>
         </section>
     </main>
-    <<<<<<< HEAD <?php require_once("inc/modal.php"); ?> <?php require_once("inc/js.php"); ?>
-        <?php require_once("inc/search-bar.php"); ?> </body>
-
-        =======
-        <?php require_once("inc/modal.php"); ?>
-        <?php require_once("inc/js.php"); ?>
-        <?php require_once("inc/search-bar.php"); ?>
+    <?php require_once("inc/modal.php"); ?> <?php require_once("inc/js.php"); ?>
+    <?php require_once("inc/search-bar.php"); ?>
 </body>
->>>>>>> 783d3e3e56913e4faa1c71688f6d9041b928ee07
+
+<?php require_once("inc/modal.php"); ?>
+<?php require_once("inc/js.php"); ?>
+<?php require_once("inc/search-bar.php"); ?>
+</body>
 
 </html>

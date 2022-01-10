@@ -29,7 +29,7 @@ function uploadImage($fileObj)
 {
     $fileType = strtolower(explode('/', $fileObj["type"])[1]);
     $exceptedTypes = array("jpg", "png", "jpeg");
-    $uploadDir = "../assests/img/";
+    $uploadDir = "../media/";
 
     if (in_array($fileType, $exceptedTypes)) {
         $fileName = uniqid("", true) . "." . $fileType;
@@ -127,7 +127,7 @@ if (isset($_POST['submit_general'])) {
                                             <form method="POST" enctype="multipart/form-data">
                                                 <h3 class="text-center">Logo/Favicon</h3>
                                                 <div class="form-row mb-3">
-                                                    <img src="<?php echo "../assests/img/" . getValuesByName("logo"); ?>"
+                                                    <img src="<?php echo "../media/" . getValuesByName("logo"); ?>"
                                                         class="img-circle img-responsive m-auto mx-2" alt="Logo"
                                                         height="100px;">
                                                     <div class="custom-file">
@@ -143,7 +143,7 @@ if (isset($_POST['submit_general'])) {
                                             </form>
                                             <form method="POST" enctype="multipart/form-data">
                                                 <div class="form-row mb-5">
-                                                    <img src="<?php echo "../assests/img/" . getValuesByName("favicon") ?>"
+                                                    <img src="<?php echo "../media/" . getValuesByName("favicon") ?>"
                                                         class="img-circle img-responsive m-auto mx-2" alt="Favicon"
                                                         height="100px;">
                                                     <div class="custom-file">

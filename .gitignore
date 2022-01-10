@@ -15,3 +15,6 @@ cronFile.txt
 
 # config.json
 /admin/config.json
+
+# errors logs
+/admin/error_log

@@ -19,6 +19,8 @@ function auctionFunction()
         foreach ($participantData as $p) {
             sendEmail($p["email"], "We are posponding auction");
         }
+    } else if ($auctionData["capacity"] == count($participantData)) {
+        $cronJobs->updateStatus($auctionId, "waiting");
     }
     $currentAuction = $cronJobs->read()[0];
 
