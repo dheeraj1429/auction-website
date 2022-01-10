@@ -1,5 +1,9 @@
 <?php
 require_once "./getValuesByName.php";
+
+if (isset($_SESSION["email"])) {
+    // ... 
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +31,7 @@ require_once "./getValuesByName.php";
     <link rel="stylesheet" href="./assests/style/footer.css" />
     <link rel="stylesheet" href="./assests/style/logIn.css" />
     <link rel="stylesheet" href="./assests/style/userProfile.css" />
+    <link rel="stylesheet" href="./assests/style/blog.css" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
@@ -72,7 +77,7 @@ require_once "./getValuesByName.php";
             <div class="container-fludi side_padding">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="container-fluid">
-                        <a class="navbar-brand" href="/">
+                        <a class="navbar-brand" href="./index.php">
                             <!-- <h1>Auction</h1> -->
                             <img width="50px" height="50px" src="<?php echo "./media/" . getValuesByName("logo") ?>"
                                 alt="logo">
@@ -110,12 +115,21 @@ require_once "./getValuesByName.php";
                                 </li>
 
 
+                                <?php if (isset($_SESSION["email"])) : ?>
+                                <div class="profile-info">
+                                    <a href="./userProfile.php">
+                                        <img style="width: 50px; height: 50px; border-radius: 50%"
+                                            src="./media/img/users/default.png" alt="profile-img">
+                                    </a>
+                                </div>
+                                <?php else : ?>
                                 <div class="sign_in_button d-flex align-items-center ms-5">
                                     <li class="nav-item">
                                         <a class="nav-link active" aria-current="page" href="./logIn.php">SIGN IN</a>
                                     </li>
                                     <a href="./register.php" class="Subcribe_button_sm text-white">REGISTER</a>
                                 </div>
+                                <?php endif; ?>
                             </ul>
                         </div>
                     </div>
