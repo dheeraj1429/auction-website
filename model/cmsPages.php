@@ -47,18 +47,18 @@ class CMSPages extends Base
             $date_time = date("Y-m-d");
 
             $sql = "INSERT INTO " . $this->tableName . " (
-                type, 
-                title, 
-                img, 
-                `desc`, 
-                date_time)
-                VALUES (
-                    '$type',
-                    '$title',
-                    '$img',
-                    '$desc',
-                    '$date_time'
-                )";
+                    type, 
+                    title, 
+                    img, 
+                    `desc`, 
+                    date_time)
+                    VALUES (
+                        '$type',
+                        '$title',
+                        '$img',
+                        '$desc',
+                        '$date_time'
+                        )";
             $stmt = $this->connection->prepare($sql);
             $stmt->execute();
         }

@@ -13,8 +13,7 @@ class Base
         $this->hashKey = "option";
     }
 
-    public function preventSqlInjection($value)
-    {
-        return mysqli_real_escape_string($this->connection, $value);
+    public function preventSqlInjection($sql)
+    { // ...
     }
 }
