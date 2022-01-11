@@ -30,6 +30,15 @@ class Users extends Base
         return $result[0];
     }
 
+    public function getUserById($id)
+    {
+        $sql = "SELECT * FROM " . $this->tableName . " WHERE id = '$id'";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result[0];
+    }
+
     public function create($data)
     {
         if (

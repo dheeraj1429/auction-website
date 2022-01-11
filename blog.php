@@ -1,11 +1,48 @@
 <?php
 require_once "./session.php";
 require_once "./model/blog.php";
+require_once "./model/comment.php";
+require_once "./model/users.php";
+
+function getUserById($id)
+{
+    $users = new Users();
+    return $users->getUserById($id);
+}
 
 if (!isset($_GET["id"])) {
-   header("Location: index.php");
+    header("Location: index.php");
+}
+
+$comment = new Comment();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_SESSION["email"])) {
+        $name = $_POST["name"];
+        $email = $_POST["email"];
+        $commentText = htmlspecialchars($_POST["comment"]);
+        $blogId = $_GET["id"];
+        $reply = json_encode(
+            array("reply" => array())
+        );
+
+        $data = array(
+            "name" => $name,
+            "email" => $email,
+            "comment" => $commentText,
+            "blog_id" => $blogId,
+            "user_id" => $_SESSION["userId"],
+            "reply" => $reply
+        );
+        $comment->create($data);
+        header("Refresh: 0");
+    } else {
+        header("Location: ./logIn.php");
+        die();
+    }
 }
 $blog = new Blog();
+$comments = $comment->read($_GET["id"]);
 $blogData = $blog->read($id = $_GET["id"])[0];
 
 ?>
@@ -77,23 +114,63 @@ $blogData = $blog->read($id = $_GET["id"])[0];
                     <h1>Comments</h1>
                 </div>
 
+                <?php foreach ($comments as $c) : ?>
                 <div class="row side_padding pt-2 pt-md-5">
+                    <?php if (getUserById($c["user_id"])["profile_img"]) : ?>
                     <div class="col-12 col-md-2">
-                        <img src="./assests/icons&images/blog/Rectangle 1299.png" alt="" />
+                        <img width="100" height="100"
+                            src="./media/img/users/<?php getUserById($c["user_id"])["profile_img"] ?>"
+                            alt="profile-pic" />
                     </div>
+                    <?php else : ?>
+                    <div class="col-12 col-md-2">
+                        <img width="100" height="100" src="./media/img/users/default.png" alt="profile-pic" />
+                    </div>
+                    <?php endif; ?>
                     <div class="col-12 col-md-10 pt-3 pt-md-0 commentsUsers">
-                        <h3>Ernest Green <span class="comment_date light_para ms-2">June 11, 2021</span></h3>
+                        <h3><?php echo getUserById($c["user_id"])["username"] ?> <span
+                                class="comment_date light_para ms-2"><?php echo date_format(date_create($c["date"]), "F, d Y") ?></span>
+                        </h3>
                         <p class="light_para">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                            commodo consequat. Duis aute irure
-                            dolor in reprehenderit
+                            <?php echo $c["comment"] ?>
                         </p>
 
-                        <button class="replay_Button">Reply</button>
+                        <button id="<?php echo $c["id"] ?>" class="replay_Button">Reply</button>
+                        <div class="replys">
+                            <?php foreach (json_decode($c["reply"], true)["reply"] as $r) : ?>
+                            <?php if (getUserById($r["user_id"])["profile_img"]) : ?>
+                            <div class="col-12 col-md-2">
+                                <img width="100" height="100"
+                                    src="./media/img/users/<?php getUserById($r["user_id"])["profile_img"] ?>"
+                                    alt="profile-pic" />
+                            </div>
+                            <?php else : ?>
+                            <div class="col-12 col-md-2">
+                                <img width="100" height="100" src="./media/img/users/default.png" alt="profile-pic" />
+                            </div>
+                            <?php endif; ?>
+                            <div class="col-12 col-md-10 pt-3 pt-md-0 commentsUsers">
+                                <h3><?php echo getUserById($r["user_id"])["username"] ?>
+                                </h3>
+                            </div>
+                            <p class="light_para">
+                                <?php echo $r["reply"] ?>
+                            </p>
+                            <?php endforeach; ?>
+                        </div>
+                        <form action="./reply.php" method="post" style="display: none"
+                            id="reply-form-<?php echo $c["id"] ?>">
+                            <input type="hidden" name="comment-id" value="<?php echo $c["id"] ?>">
+                            <input type="hidden" name="blog-id" value="<?php echo $_GET["id"] ?>">
+                            <input type="hidden" name="user-id" value="<?php echo $_SESSION["userId"] ?>">
+                            <input type="text" name="reply" placeholder="Reply" style="margin: 10px"
+                                class="form-control" aria-describedby="replyHelpBlock">
+                            <button class="btn btn-primary" type="submit">Send</button>
+                            <button type="button" class="btn btn-secondary cancel-btn">Cancel</button>
+                        </form>
                     </div>
                 </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
@@ -108,22 +185,28 @@ $blogData = $blog->read($id = $_GET["id"])[0];
                     <p class="light_para">Your email address will not be published. Required fields are marked *</p>
                 </div>
 
-                <div class="col-12 message_aria">
-                    <textarea name="" id="" cols="30" rows="10" placeholder="Comment"></textarea>
-                </div>
 
-                <div class="row gx-0 message_aria">
-                    <div class="col-12 col-md-6">
-                        <input type="text" placeholder="Name" />
+                <form method="post">
+                    <div class="col-12 message_aria">
+                        <textarea id="" cols="30" name="comment" rows="10" placeholder="Comment"></textarea>
                     </div>
-                    <div class="col-12 col-md-6 ps-0 ps-md-2 mt-2 mt-md-0">
-                        <input type="email" name="" id="" placeholder="Email" />
-                    </div>
+                    <div class="row gx-0 message_aria">
+                        <div class="col-12 col-md-6">
+                            <input type="text" value="<?php if (isset($_SESSION["userId"])) {
+                                                            echo getUserById($_SESSION["userId"])["username"];
+                                                        } ?>" name="name" placeholder="Name" />
+                        </div>
+                        <div class="col-12 col-md-6 ps-0 ps-md-2 mt-2 mt-md-0">
+                            <input type="email" value="<?php if (isset($_SESSION["email"])) {
+                                                            echo $_SESSION['email'];
+                                                        } ?>" name="email" id="" placeholder="Email" />
+                        </div>
 
-                    <div class="d-flex">
-                        <button class="post_button mt-3">POST COMMENT</button>
+                        <div class="d-flex">
+                            <button type="submit" class="post_button mt-3">POST COMMENT</button>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </section>
@@ -131,72 +214,16 @@ $blogData = $blog->read($id = $_GET["id"])[0];
 </main>
 <!-- main -->
 
-<footer class="footer side_padding second_footer">
-    <!-- Footer -->
-    <div class="container padding_one">
-        <div class="row pt-4 justify-content-center">
-            <div class="col-12 col-sm-6 col-md-4 col-lg-5">
-                <h1 class="text-white my-3">SMART-AUCTION</h1>
-                <p class="light_para">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio <br />
-                    voluptatem qui magnam aliquid cum atque tempore quia? Quis,<br />
-                    doloribus commodi.
-                </p>
+<script>
+const replyBtns = document.getElementsByClassName("replay_Button");
 
-
-            </div>
-
-            <div class="col-12 col-sm-6 col-md-3 col-lg-2 mt-3 mt-md-0">
-                <h1 class="text-white my-3">USEFUL LINKS</h1>
-                <p class="light_para"><a href="./woWeare.html">Who are we?</a></p>
-                <p class="light_para"><a href="./howItWorks.html">How it works?</a></p>
-                <p class="light_para"><a href="./terms.html">Terms and Conditions</a></p>
-                <p class="light_para"><a href="./legal.html">Legal</a></p>
-            </div>
-
-
-
-            <div class="col-12 col-sm-6 col-md-4 col-lg-4 ms-lg-5 ms-md-0">
-                <h1 class="text-white my-3">NEWSLETTER</h1>
-
-                <!-- News letter section -->
-                <div class="newsLetter_search">
-                    <input type="search" placeholder="Enter your email" />
-                    <div class="newlettButton">SUBSCRIBE</div>
-                </div>
-                <!-- News letter section -->
-
-
-            </div>
-        </div>
-    </div>
-    <!-- Footer -->
-
-    <!-- Footer Second -->
-    <div class="container-fluid footer_second">
-        <div class="row">
-            <div class="d-flex justify-content-around py-3">
-                <p class="light_para">Copyright © 2021. All Rights Reserved.</p>
-                <p class="light_para">
-                    <a href="./terms.html"> Terms of Use </a> and
-                    <a href="./policy.html"> Privacy Policy </a>
-                </p>
-            </div>
-        </div>
-    </div>
-    <!-- Footer Second -->
-</footer>
-
-<!-- Footer -->
-
-<!-- jquery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- slick -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-
-<!-- Bootsrap 5 script CDN -->
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
-</body>
-
-</html>
+for (let replyBtn of replyBtns) {
+    replyBtn.onclick = () => {
+        const commentId = replyBtn.id;
+        const form = document.getElementById(`reply-form-${commentId}`);
+        form.style.display = "block";
+        form.getElementsByClassName("cancel-btn")[0].onclick = () => form.style.display = "none";
+    }
+}
+</script>
+<?php require_once "./footer2.php" ?>

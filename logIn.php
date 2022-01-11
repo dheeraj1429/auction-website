@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($password === $userData["password"]) {
         $_SESSION["email"] = $userData["email"];
         $_SESSION["username"] = $userData["username"];
-        $_SESSION["userId"] = $userData["userId"];
+        $_SESSION["userId"] = $userData["id"];
         header("Location: ./profile.php");
     }
 }
