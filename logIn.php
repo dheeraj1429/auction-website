@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <h1 class="text-white">NEW HERE?</h1>
                         <p class="text-white mb-4">Sign up and create your Account</p>
                         <div>
-                            <a class="logIn_button" href="./register.html">SIGN UP</a>
+                            <a class="logIn_button" href="./register.php">SIGN UP</a>
                         </div>
                         <!-- Content -->
                     </div>

@@ -4,8 +4,6 @@ require_once "./model/cmsPages.php";
 $cmsPages = new CmsPages();
 
 $howItWorks = $cmsPages->getCMSByType(3);
-// print_r($howItWorks);
-// die();
 ?>
 <?php require_once './header.php' ?>
 <!-- Header -->

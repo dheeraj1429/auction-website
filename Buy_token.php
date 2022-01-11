@@ -60,7 +60,8 @@ $packages = $package->read();
                                     <p class="click_card_content text-center light_para px-5">The pack allows
                                         you to have <?php echo $p["clicks"] ?> aditional clicks to bid.</p>
                                     <h2 class="click_card_price text-center"><sup>$</sup><?php echo $p["price"] ?></h2>
-                                    <button class="View_More_Button my-3">Buy Now</button>
+                                    <a role="button" href="./checkout.php?package_id=<?php echo $p["id"] ?>"
+                                        class="View_More_Button my-3">Buy Now</a>
                                 </div>
                             </div>
                         </div>
