@@ -9,8 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = hash("sha512", $_POST['password']);
     $userData = $users->read($userEmail = $email)[0];
 
-    // print_r($userData);
-    // die();
     if ($password === $userData["password"]) {
         $_SESSION["email"] = $userData["email"];
         $_SESSION["username"] = $userData["username"];
