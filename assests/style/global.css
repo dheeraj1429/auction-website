@@ -15,6 +15,8 @@ body {
 /* Colors */
 :root {
   --SmNavbarColorGreen: #1abc9c;
+  --Price: #79cd30;
+  --downPrice: #fb5f5f;
   --DarkColor: #000000;
   --LightRedColor: #ff6000;
   --MainColor: #ffffff;
