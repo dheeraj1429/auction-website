@@ -119,4 +119,13 @@
   color: var(--MainColor);
   font-size: 0.8rem;
 }
+.placeabit_Button {
+  padding: 0.6rem 3rem;
+  background-color: var(--Price);
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  color: var(--MainColor);
+  font-weight: bold;
+}
 /* Buttons */
