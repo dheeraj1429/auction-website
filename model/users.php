@@ -39,6 +39,19 @@ class Users extends Base
         return $result[0];
     }
 
+    public function updateBidToken($action, $tokenValue, $userId)
+    {
+        $totalTokens = $this->getUserById($userId)["bid_token"];
+
+        if ($action == "add") {
+            $totalTokens += $tokenValue;
+        } else if ($action == "remove") {
+            $totalTokens -= $tokenValue;
+        }
+
+        $this->update(array("bid_token" => $totalTokens), $userId);
+    }
+
     public function create($data)
     {
         if (
