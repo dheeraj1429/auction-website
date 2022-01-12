@@ -49,6 +49,10 @@ $packageData = $package->read($id = $_GET["package_id"])[0];
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
     <link rel="icon" href="<?php echo "./media/" . getValuesByName("favicon") ?>">
+    <script>
+    const userId = <?php echo $_SESSION["userId"] ?>;
+    const packageId = <?php echo $_GET["package_id"] ?>;
+    </script>
     <script src="https://www.paypal.com/sdk/js?client-id=<?php echo $configData["client_id"] ?>&components=buttons">
     </script>
 </head>
@@ -151,25 +155,11 @@ $packageData = $package->read($id = $_GET["package_id"])[0];
             </div>
         </div>
         <!-- Main-Navbar -->
-
     </header>
     <div class="container">
         <div class="center">
             <div id="paypal-button-container"></div>
         </div>
     </div>
-    <script>
-    paypal.Buttons({
-        createOrder: function(data, actions) {
-            // Set up the transaction
-            return actions.order.create({
-                purchase_units: [{
-                    amount: {
-                        value: '<?php echo $packageData["price"] ?>'
-                    }
-                }]
-            });
-        }
-    }).render('#paypal-button-container');
-    </script>
+    <script src="./assests/js/paypal.js"></script>
     <?php require_once "./footer2.php" ?>
