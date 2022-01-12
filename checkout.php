@@ -52,6 +52,7 @@ $packageData = $package->read($id = $_GET["package_id"])[0];
     <script>
     const userId = <?php echo $_SESSION["userId"] ?>;
     const packageId = <?php echo $_GET["package_id"] ?>;
+    const price = <?php echo $packageData["price"] ?>
     </script>
     <script src="https://www.paypal.com/sdk/js?client-id=<?php echo $configData["client_id"] ?>&components=buttons">
     </script>
