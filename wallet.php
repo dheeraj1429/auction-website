@@ -104,7 +104,6 @@ $walletData = $wallet->getDataByUserId($_SESSION["userId"]);
                                         <p class="light_para mt-1">Added</p>
                                         <?php else : ?>
                                         <p class="light_para mt-1">Removed</p>
-
                                         <?php endif; ?>
                                     </div>
                                 </div>
