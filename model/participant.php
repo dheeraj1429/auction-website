@@ -23,10 +23,10 @@ class Participant extends Base
 
     public function create($data)
     {
-        if (array_key_exists("auction_id", $data) && array_key_exists("user_id", $data)) {
+        if (array_key_exists("auction_id", $data) && array_key_exists("user_email", $data)) {
             $auctionId = $data["auction_id"];
-            $userId = $data["user_id"];
-            $sql = "INSERT INTO " . $this->tableName . " (auction_id, user_id) VALUES ('$auctionId', '$userId')";
+            $email = $data["user_email"];
+            $sql = "INSERT INTO " . $this->tableName . " (auction_id, email) VALUES ('$auctionId', '$email')";
             $stmt = $this->connection->prepare($sql);
             $stmt->execute();
         }

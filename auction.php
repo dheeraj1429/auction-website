@@ -1,9 +1,42 @@
 <?php
 require_once "./model/auction.php";
+require_once "./model/wallet.php";
+require_once "./model/users.php";
+require_once "./model/participant.php";
+require_once "./session.php";
 
 $auction = new Auction();
 $auctionData = $auction->read();
-if (isset($_GET["id"])) {
+if (isset($_GET["id"]) && isset($_GET["token"])) {
+    if (!isset($_SESSION["userId"])) {
+        header("Location: ./logIn.php");
+        die();
+    }
+    $id  = $_GET["id"];
+    $price = $_GET["token"];
+    $wallet = new Wallet();
+    $users = new Users();
+    $participant = new Participant();
+
+    $walletData = array(
+        "user_id" => $_SESSION["userId"],
+        "use_type" => "remove",
+        "token_value" => $price,
+        "auction_id" => $id
+    );
+    $participantData = array(
+        "auction_id" => $id,
+        "user_email" => $_SESSION["email"]
+    );
+
+    try {
+        $users->updateBidToken("remove", $price, $_SESSION["userId"]);
+    } catch (Exception $e) {
+        echo "You Don't have enough token";
+        die();
+    }
+    $wallet->create($walletData);
+    $participant->create($participantData);
 }
 ?>
 
@@ -12,19 +45,19 @@ if (isset($_GET["id"])) {
     <div class="container-fluid side_padding">
 
         <!-- Popular action heading -->
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-12 ">
                 <div class="hot_it_works_heading text-center py-3">
                     <h1>POPULAR <span class="span_color_2">AUCTION</span></h1>
                     <div class="line_div my-4"></div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Popular action heading -->
 
         <!-- Popular Auction products card -->
         <div class="row pb-5 p-2">
-            <?php foreach ($auctionData as $a) ?>
+            <?php foreach ($auctionData as $a) : ?>
             <div class="col-12 col-sm-12 col-md-3 col-lg-3">
                 <!-- Popular cards -->
                 <div class="popular_auction_card_div text-center py-3">
@@ -55,20 +88,21 @@ if (isset($_GET["id"])) {
                             <!-- Store price -->
                             <div class="auction_price_inner_div">
                                 <p class="light_para">Store price</p>
-                                <h3>$<?php echo $a["store_price"] ?></h3>
+                                <h3><?php echo $a["store_price"] ?></h3>
                             </div>
                             <!-- Start Price -->
                             <div class="auction_price_inner_div">
                                 <p class="light_para">Starting price</p>
-                                <h3>$<?php echo $a["starting_price"] ?></h3>
+                                <h3><?php echo $a["starting_price"] ?></h3>
                             </div>
                         </div>
                         <!-- Auction Price div -->
 
                         <!-- Subcribe button -->
                         <div class="mt-4 mb-5">
-                            <a href="./auction.php?id=<?php echo $a["id"] ?>" class="Subcribe_button">Subscribe for
-                                $<?php echo $a["starting_price"] ?></a>
+                            <a href="./auction.php?id=<?php echo $a["id"] ?>&token=<?php echo $a["starting_price"] ?>"
+                                class="Subcribe_button">Subscribe for
+                                <?php echo $a["starting_price"] ?></a>
                         </div>
                         <!-- Subcribe button -->
 
@@ -83,6 +117,7 @@ if (isset($_GET["id"])) {
                 </div>
                 <!-- Popular cards -->
             </div>
+            <?php endforeach; ?>
             <!-- Popular cards -->
         </div>
 

@@ -42,14 +42,17 @@ class Users extends Base
     public function updateBidToken($action, $tokenValue, $userId)
     {
         $totalTokens = $this->getUserById($userId)["bid_token"];
-
         if ($action == "add") {
             $totalTokens += $tokenValue;
         } else if ($action == "remove") {
             $totalTokens -= $tokenValue;
         }
 
-        $this->update(array("bid_token" => $totalTokens), $userId);
+        if ($totalTokens >= 0) {
+            $this->update(array("bid_token" => $totalTokens), $userId);
+        } else {
+            throw new Exception("You Don't have enough token");
+        }
     }
 
     public function create($data)
