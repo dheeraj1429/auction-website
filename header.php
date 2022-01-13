@@ -1,9 +1,6 @@
 <?php
 require_once "./getValuesByName.php";
 
-if (isset($_SESSION["email"])) {
-    // ... 
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">

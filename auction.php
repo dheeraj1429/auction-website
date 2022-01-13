@@ -6,7 +6,27 @@ require_once "./model/participant.php";
 require_once "./session.php";
 
 $auction = new Auction();
-$auctionData = $auction->read();
+$auctionData = $auction->getUpcomingAuction();
+
+function getAuctionParticipants($auctionId, $totalParticipants)
+{
+    $participant = new Participant();
+    $participants = count($participant->read($id = $auctionId));
+    $percent = round(($participants / $totalParticipants) * 100);
+    return $percent;
+}
+
+function isParticepeted($email, $auctionId)
+{
+    $participant = new Participant();
+    $participants = $participant->getParticipant($email, $auctionId);
+    if (empty($participants)) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
 if (isset($_GET["id"]) && isset($_GET["token"])) {
     if (!isset($_SESSION["userId"])) {
         header("Location: ./logIn.php");
@@ -78,8 +98,10 @@ if (isset($_GET["id"]) && isset($_GET["token"])) {
 
                         <!-- Product Input Progress bar -->
                         <div class="progress auction_progress_bar mt-2 mb-4">
-                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25"
-                                aria-valuemin="0" aria-valuemax="100">25%</div>
+                            <div class="progress-bar" role="progressbar"
+                                style="width: <?php echo getAuctionParticipants($a["id"], $a["capacity"]) ?>%;"
+                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                <?php echo getAuctionParticipants($a["id"], $a["capacity"]) ?>%</div>
                         </div>
                         <!-- Product Input Progress bar -->
 
@@ -100,9 +122,13 @@ if (isset($_GET["id"]) && isset($_GET["token"])) {
 
                         <!-- Subcribe button -->
                         <div class="mt-4 mb-5">
+                            <?php if (!isParticepeted($_SESSION["email"], $a["id"])) : ?>
                             <a href="./auction.php?id=<?php echo $a["id"] ?>&token=<?php echo $a["starting_price"] ?>"
                                 class="Subcribe_button">Subscribe for
                                 <?php echo $a["starting_price"] ?></a>
+                            <?php else : ?>
+                            <button class="btn btn-primary disabled" type="button">Subscribe</button>
+                            <?php endif; ?>
                         </div>
                         <!-- Subcribe button -->
 
@@ -121,13 +147,13 @@ if (isset($_GET["id"]) && isset($_GET["token"])) {
             <!-- Popular cards -->
         </div>
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-12 text-center">
                 <div class="mt-2 mb-5 d-flex justify-content-center ">
                     <button class="Subcribe_button">See All Auction</button>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     <!-- Popular Auction products card -->
 

@@ -66,6 +66,15 @@ class Auction extends Base
         }
     }
 
+    public function getUpcomingAuction()
+    {
+        $sql = "SELECT * FROM " . $this->tableName . " WHERE `time` > TIME(NOW()) AND (`date` > DATE(NOW()) OR `date` = DATE(NOW()))";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
     private function validateToken($token)
     {
         $sql = "SELECT * FROM " . $this->tableName . " WHERE token = '$token'";
@@ -119,7 +128,7 @@ class Auction extends Base
 
     public function getAuctionByToken($token)
     {
-        $sql = "SELECT id, `time`, `capacity` FROM `auction` WHERE token = '$token'";
+        $sql = "SELECT * FROM `auction` WHERE token = '$token'";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll();

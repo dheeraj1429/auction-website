@@ -10,7 +10,7 @@ function auctionFunction($token)
     $auctionModel = new Auction();
     // $cronJobs = new CronJobs();
     $participant = new Participant();
-    $auctionData = $auctionModel->getAuctionByToken($token)["id"];
+    $auctionData = $auctionModel->getAuctionByToken($token);
     $participantData = $participant->read($auctionData["id"]);
 
     if (count($participantData) != $auctionData["capacity"]) {
@@ -19,7 +19,7 @@ function auctionFunction($token)
         }
     } else {
         foreach ($participantData as $p) {
-            sendEmail($p["email"], "We are starting the auction");
+            sendEmail($p["email"], "We are starting the auction you can participate at -> http://localhost/auction/auctionpage.php?token=$token");
         }
     }
 }
