@@ -2,6 +2,7 @@
 include_once("../session.php");
 require_once "../model/auction.php";
 $pageName = "Add Auction";
+date_default_timezone_set('Asia/Kolkata');
 
 if (!isset($_SESSION['admin_email'])) {
     $_SESSION['toast']['msg'] = "Please, Log-in to continue.";
@@ -27,6 +28,21 @@ function uploadImage($fileObj)
     }
 }
 
+function addCron($date, $time, $token)
+{
+    $file = fopen("cronFile.txt", "a");
+    $dateData = explode("-", $date);
+    $timeData = explode(":", $time);
+    $day = $dateData[2];
+    $month = $dateData[1];
+    $hour = $timeData[0];
+    $minute = $timeData[1];
+
+    $text = "$minute $hour $day $month * wget -O /dev/null 'http://localhost/auction/auctionJob.php?token=$token'\n";
+    fwrite($file, $text);
+    $out = shell_exec("php /opt/lampp/htdocs/auction/addCron.php");
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $productName = $_POST['product_name'];
     $startingPrice = $_POST['starting_price'];
@@ -35,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $date = $_POST['date'];
     $time = $_POST['time'];
     $image = $_FILES['image'];
+    $token = $auction->generateToken();
 
     $fileName = uploadImage($image);
     $data = array(
@@ -44,11 +61,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         "time" => $time,
         "starting_price" => $startingPrice,
         "store_price" => $storePrice,
-        "product_img" => $fileName
+        "product_img" => $fileName,
+        "token"  => $token
     );
-    // print_r($data);
-    // die();
+    addCron($date, $time, $token);
     $auction->create($data);
+    header("Refresh: 0");
 }
 ?>
 <!DOCTYPE html>

@@ -2,29 +2,28 @@
 require_once "registerCornJob.php";
 require_once "model/participant.php";
 require_once "model/auction.php";
-require_once "model/cronJobs.php";
+// require_once "model/cronJobs.php";
 require_once "sendEmail.php";
 
-function auctionFunction()
+function auctionFunction($token)
 {
-    $cronJobs = new CronJobs();
-    $participant = new Participant();
-    $auctionId = $cronJobs->read()[0]["id"];
-    $cronJobs->updateStatus($auctionId, "unactive");
-    $participantData = $participant->read($auctionId);
     $auctionModel = new Auction();
-    $auctionData = $auctionModel->read($id = $auctionId)[0];
+    // $cronJobs = new CronJobs();
+    $participant = new Participant();
+    $auctionData = $auctionModel->getAuctionByToken($token)["id"];
+    $participantData = $participant->read($auctionData["id"]);
 
     if (count($participantData) != $auctionData["capacity"]) {
         foreach ($participantData as $p) {
             sendEmail($p["email"], "We are posponding auction");
         }
+    } else {
+        foreach ($participantData as $p) {
+            sendEmail($p["email"], "We are starting the auction");
+        }
     }
-    $currentAuction = $cronJobs->read()[0];
-
-    // Register Cron job
-    $registerCronJob = new RegisterCornJob();
-    $registerCronJob->registerJob($currentAuction["time"]);
 }
 
-auctionFunction();
+if (isset($_GET["token"])) {
+    auctionFunction($_GET["token"]);
+}

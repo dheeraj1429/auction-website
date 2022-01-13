@@ -30,7 +30,8 @@ class Auction extends Base
             array_key_exists("capacity", $data) &&
             array_key_exists("product_img", $data) &&
             array_key_exists("date", $data) &&
-            array_key_exists("time", $data)
+            array_key_exists("time", $data) &&
+            array_key_exists("token", $data)
         ) {
             $productName = $data['product_name'];
             $startingPrice = $data['starting_price'];
@@ -40,7 +41,7 @@ class Auction extends Base
             $date = $data['date'];
             $time = $data['time'];
             $productImg = $data['product_img'];
-            $token = $this->generateToken();
+            $token = $data["token"];
             $sql = "INSERT INTO " . $this->tableName . " (
                 product_name,
                 starting_price,
@@ -77,7 +78,7 @@ class Auction extends Base
         return false;
     }
 
-    private function generateToken()
+    public function generateToken()
     {
         $token = $this->getToken();
 
@@ -116,14 +117,13 @@ class Auction extends Base
         $stmt->execute();
     }
 
-    public function getAuctionByTime()
+    public function getAuctionByToken($token)
     {
-        $currentDate = date("Y-m-d");
-        $sql = "SELECT id, `time` FROM `auction` WHERE `date` = '$currentDate' ORDER BY `time` ASC";
+        $sql = "SELECT id, `time`, `capacity` FROM `auction` WHERE token = '$token'";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll();
-        return $result;
+        return $result[0];
     }
 
     public function getIdByTime($id)
