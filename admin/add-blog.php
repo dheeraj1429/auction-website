@@ -71,7 +71,7 @@
             <section class="pull-up">
                 <div class="container">
                     <div class="row ">
-                        <div class= "mx-auto mt-2 <?php if(isset($_GET['id'])) echo "col-lg-8"; else echo "col-lg-10";?>">
+                        <div class= "mx-auto mt-2 col-lg-8">
                             <div class="card py-3 m-b-30">
                                 <div class="card-body">
                                     <h3 class="card-title text-center"><?php echo $pageName;?></h3>
@@ -136,9 +136,9 @@
                         <div class= "col-lg-4 mx-auto mt-2">
                             <div class="card py-3 m-b-30">
                                 <div class="card-body">
-                                    <h3 class="card-title text-center">Blog Media<h3>
+                                    <h3 class="card-title text-center">Media<h3>
                                     <div class="col-lg-12 mb-3 text-center">
-                                        <img src="../assets/img/blog/<?php echo $dataB['img'];?>" class="img-fluid img-responsive m-auto mx-2" alt="<?php echo $dataB['name'];?>" >
+                                        <img src="../assets/img/blog/<?php if(isset($_GET['id'])){echo $dataB['img'];}else{echo 'default.png';}?>" class="img-fluid img-responsive m-auto mx-2"  >
                                     </div>
                                 </div>
                             </div>

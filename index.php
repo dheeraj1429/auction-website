@@ -2,7 +2,7 @@
   require_once 'inc/config.php';
 
   //News Data 
-    $howitWorks = mysqli_query($conn,"SELECT `type`, `title`, `desc` FROM `".$tblPrefix."cms_pages` WHERE type = 2 and status > 1");
+    $howitWorks = mysqli_query($conn,"SELECT `type`, `title`, `desc` FROM `".$tblPrefix."cms_pages` WHERE type = 2 and status > 1 LIMIT 4");
     $newsQuery = mysqli_query($conn,"SELECT `name`,`url`,`img`,`short_desc`,`post_date` FROM `".$tblPrefix."blog` WHERE `status` = 2 ORDER BY id DESC"); 
     $testimonial = mysqli_query($conn,"SELECT `name`,`designation`,`review`,`rating`,`media` FROM `".$tblPrefix."testimonial` WHERE status = 2  LIMIT  5");
     $packages = mysqli_query($conn,"SELECT `id`, `name`, `description`, `sale_price` FROM `".$tblPrefix."packages` WHERE status = 2 LIMIT 4");
@@ -127,7 +127,7 @@
         <!-- How it works heading -->
 
         <!-- How it works box seaction -->
-        <div class="row">
+        <div class="row justify-content-center">
           <?php   
             $i = 0;
             while($datahit = mysqli_fetch_assoc($howitWorks)){
@@ -143,7 +143,7 @@
             <div class="step_Content_Div my-4">
               <h3><?php echo $datahit['title'];?></h3>
               <div class="line_div my-3"></div>
-              <p><?php echo $datahit['desc'];?></p>
+              <p><?php echo substr($datahit['desc'],0,120);?>...</p>
             </div>
           </div>
           <?php }?>

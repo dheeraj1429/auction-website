@@ -54,49 +54,9 @@
                             </a>
                         </li>
                         <li class="menu-item ">
-                            <a href='alternative.php' class=' menu-link'> 
-                                <span class="menu-label"> 
-                                    <span class="menu-name">Alternative Section</span> 
-                                </span> 
-                                <span class="menu-icon"> 
-                                     <i class="mdi mdi-history"></i>
-                                </span> 
-                            </a>
-                        </li>
-                        <li class="menu-item ">
-                            <a href='service.php' class=' menu-link'> 
-                                <span class="menu-label"> 
-                                    <span class="menu-name">Services</span> 
-                                </span> 
-                                <span class="menu-icon"> 
-                                     <i class="mdi mdi-history"></i>
-                                </span> 
-                            </a>
-                        </li>
-                        <li class="menu-item ">
-                            <a href='projects.php' class=' menu-link'> 
-                                <span class="menu-label"> 
-                                    <span class="menu-name">My Work</span> 
-                                </span> 
-                                <span class="menu-icon"> 
-                                     <i class="mdi mdi-history"></i>
-                                </span> 
-                            </a>
-                        </li>
-                        <li class="menu-item ">
                             <a href='policypage.php' class=' menu-link'> 
                                 <span class="menu-label"> 
                                     <span class="menu-name">Policy Page</span> 
-                                </span> 
-                                <span class="menu-icon"> 
-                                     <i class="mdi mdi-history"></i>
-                                </span> 
-                            </a>
-                        </li>
-                        <li class="menu-item ">
-                            <a href='meta.php' class=' menu-link'> 
-                                <span class="menu-label"> 
-                                    <span class="menu-name">Meta Tags</span> 
                                 </span> 
                                 <span class="menu-icon"> 
                                      <i class="mdi mdi-history"></i>

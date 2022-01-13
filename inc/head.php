@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="./assets/style/navbar.css">
   <link rel="stylesheet" href="./assets/style/button.css">
   <link rel="stylesheet" href="./assets/style/footer.css">
+  <link rel="stylesheet" href="./assets/style/responsive.css" />
+
   
 
   <!-- Slick Slider CDN -->

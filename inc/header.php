@@ -47,15 +47,15 @@
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link active " aria-current="page" href="./howItWorks.html">HOW IT WORKS</a>
+                  <a class="nav-link active " aria-current="page" href="./howItWorks.php">HOW IT WORKS</a>
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="./Ended.html">ENDED AUCTIONS</a>
+                  <a class="nav-link active" aria-current="page" href="./Ended.php">ENDED AUCTIONS</a>
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="./currentAuctions.html">CURRENT AUCTION</a>
+                  <a class="nav-link active" aria-current="page" href="./currentAuctions.php">CURRENT AUCTION</a>
                 </li>
 
                 <li class="nav-item">
@@ -69,9 +69,9 @@
 
                 <div class="sign_in_button d-flex align-items-center ms-5">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="./logIn.html">LOG IN</a>
+                    <a class="nav-link active" aria-current="page" href="./logIn.php">LOG IN</a>
                   </li>
-                  <a class="Subcribe_button_sm text-white" href="./register.html">REGISTER </a>
+                  <a class="Subcribe_button_sm text-white" href="./register.php">REGISTER </a>
                 </div>
               </ul>
             </div>
