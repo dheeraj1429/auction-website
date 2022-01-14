@@ -31,17 +31,29 @@ function cmp($a, $b)
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    if (isset($_GET["token"]) && isset($_GET["email"]) && isset($_GET["id"])) {
+    if (isset($_GET["token"]) && isset($_GET["email"]) && isset($_GET["auction_id"]) && isset($_GET['user_id'])) {
         $token = $_GET["token"];
         $email = $_GET["email"];
-        $id = $_GET["id"];
+        $id = $_GET["auction_id"];
+        $userId = $_GET["user_id"];
+        $redis = new RedisConnection($token);
+        $users = $redis->getUsers();
 
-        if (isParticepeted($email, $id)) {
-            $redis = new RedisConnection($token);
+        if (in_array($userId, $users)) {
             $data = $redis->getAuctions($token);
-            usort($data, "cmp");
-            $updateValue = json_encode($data[count($data) - 1]);
-            echo $updateValue;
+            if ($data) {
+                usort($data, "cmp");
+                $data[count($data) - 1]["null"] = false;
+                $data[count($data) - 1]["users"] = count($users);
+                $updateValue = json_encode($data[count($data) - 1]);
+                echo $updateValue;
+            } else {
+                echo json_encode(array(
+                    "info" => "no bids yet",
+                    "null" => true,
+                    "users" => count($users)
+                ));
+            }
         } else {
             header('HTTP/1.0 403 Forbidden');
             echo "You don't have permission to participate";

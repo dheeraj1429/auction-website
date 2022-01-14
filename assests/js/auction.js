@@ -15,13 +15,19 @@ function setupAuctionCalls() {
       console.log(data);
       if (data["comfirmation"]) {
         setInterval(() => {
-          const url = `./api/auction.php?token=${token}&email=${userId}&id=${auctionId}`;
+          const url = `./api/auction.php?token=${token}&email=${email}&auction_id=${auctionId}&user_id=${userId}`;
           const xhr = new XMLHttpRequest();
           xhr.open("GET", url, true);
 
           xhr.onload = () => {
             if (xhr.status === 200) {
               const updatedData = JSON.parse(xhr.responseText);
+              const users = document.getElementById("users");
+              users.innerHTML = updatedData["users"];
+              if (!updatedData["null"]) {
+                const newPrice = document.getElementById("new-price");
+                newPrice.innerHTML = updatedData["amount"] + 20;
+              }
               console.log(updatedData);
             }
           };
@@ -43,7 +49,7 @@ function registerBid(data) {
   });
 }
 
-// window.onload = setupAuctionCalls;
+window.onload = setupAuctionCalls;
 
 document.getElementById("submit-btn").onclick = () => {
   const amount = parseInt(document.getElementById("new-price").innerHTML);

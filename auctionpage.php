@@ -222,7 +222,7 @@ $auctionData = $auction->getAuctionByToken($_GET["token"]);
                             </div>
                         </div>
                         <p class="h3 mt-1 ">Number of coupons</p>
-                        <p class="h4 fw-light">0</p>
+                        <p id="users" class="h4 fw-light">0</p>
                         <div class="mt-3">
                             <div class="card border-0 ">
                                 <h5 class="card-title  mb-1">Specification</h5>
