@@ -4,9 +4,10 @@ require_once "vendor/autoload.php";
 
 class RedisConnection
 {
-    public function __construct()
+    public function __construct($token)
     {
         $this->redis = new Predis\Client();
+        $this->token = $token;
     }
 
     public function getValueByKey($key)
@@ -19,17 +20,37 @@ class RedisConnection
         $this->redis->set($key, $value);
     }
 
-    public function setAuction($auctions)
+    public function setAuction($value)
     {
-        foreach ($auctions as $auction) {
-            $this->redis->lpush("auctions", $auction["id"]);
+        $bidData = $this->getAuctions();
+        if (!isset($bidData)) {
+            $bidData = array();
         }
+        array_push($bidData, $value);
+        $this->redis->hset($this->token, "bids", json_encode($bidData));
     }
 
-    public function getFirstAuction()
+    public function getAuctions()
     {
-        $data = $this->redis->lrange("auctions", 0, 0);
-        return $data[0];
+        $data = json_decode($this->redis->hget($this->token, "bids"), true);
+        return $data;
+    }
+
+    public function getUsers()
+    {
+        $data = $this->redis->hget($this->token, "users");
+        return json_decode($data, true);
+    }
+
+    public function setUsers($id)
+    {
+        $data = $this->getUsers();
+        if (isset($data)) {
+            array_push($data, $id);
+        } else {
+            $data = array($id);
+        }
+        $this->redis->hset($this->token, "users", json_encode($data));
     }
 
     public function rmFisrstValue($value)

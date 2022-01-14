@@ -4,6 +4,11 @@ require_once "./session.php";
 
 $users = new Users();
 
+if (isset($_SESSION["email"])) {
+    header("Location: ./userProfile.php");
+    die();
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = hash("sha512", $_POST['password']);
@@ -13,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION["email"] = $userData["email"];
         $_SESSION["username"] = $userData["username"];
         $_SESSION["userId"] = $userData["id"];
-        header("Location: ./profile.php");
+        header("Location: ./userProfile.php");
     }
 }
 ?>
