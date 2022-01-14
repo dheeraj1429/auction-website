@@ -40,7 +40,7 @@ function addCron($date, $time, $token)
 
     $text = "$minute $hour $day $month * wget -O /dev/null 'http://localhost/auction/auctionJob.php?token=$token'\n";
     fwrite($file, $text);
-    $out = shell_exec("php /opt/lampp/htdocs/auction/addCron.php");
+    shell_exec("php /opt/lampp/htdocs/auction/addCron.php");
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
