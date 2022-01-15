@@ -41,23 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </div>
                         <!-- Sing In Component content -->
 
-                        <!-- Sing in and log in buttons -->
-                        <div class="login_buttons_div my-4 d-flex align-items-center justify-content-center">
-                            <button class="log_with_facebook login_with_button">
-                                <img src="./assests/icons&images/facebbok11.png" alt="" /> Log in with Facebook
-                            </button>
-                            <button class="log_with_google login_with_button"><img src="./assests/icons&images/g.png"
-                                    alt="" /> Log
-                                in with Google</button>
-                        </div>
-                        <!-- Sing in and log in buttons -->
-
-                        <div class="d-flex mt-5 devide_div align-items-center justify-content-center">
-                            <div class="line"></div>
-                            <p>Or</p>
-                            <div class="line"></div>
-                        </div>
-
                         <!-- Sing in input div -->
                         <div class="mt-4">
                             <form method="post">
