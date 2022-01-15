@@ -29,7 +29,7 @@ function uploadImage($fileObj)
 {
     $fileType = strtolower(explode('/', $fileObj["type"])[1]);
     $exceptedTypes = array("jpg", "png", "jpeg");
-    $uploadDir = "../assests/img/";
+    $uploadDir = "../media/";
 
     if (in_array($fileType, $exceptedTypes)) {
         $fileName = uniqid("", true) . "." . $fileType;
@@ -79,7 +79,25 @@ if (isset($_POST['submit_general'])) {
     $email = $_POST['email'];
     $mailer = $_POST['mailer'];
     $address = $_POST['address'];
-    $updatedData = array('website_name' => $site, "address"  => $address, 'phone_number' => $contact, 'email' => $email, 'mailer_email' => $mailer);
+    $facebook = $_POST['facebook'];
+    $instagram = $_POST['instagram'];
+    $linkedin = $_POST['linkedin'];
+    $twitter = $_POST['twitter'];
+    $footerHeading = $_POST['footerHeading'];
+    $footerContent = $_POST['footerContent'];
+    $updatedData = array(
+        'website_name' => $site,
+        "address"  => $address,
+        'phone_number' => $contact,
+        'email' => $email,
+        'mailer_email' => $mailer,
+        "facebook" => $facebook,
+        "twitter" => $twitter,
+        "instagram" => $instagram,
+        "linkedin" => $linkedin,
+        "footer-content" => $footerContent,
+        "footer-heading" => $footerHeading
+    );
     $general = getGeneral();
 
     $general->update($updatedData);
@@ -127,7 +145,7 @@ if (isset($_POST['submit_general'])) {
                                             <form method="POST" enctype="multipart/form-data">
                                                 <h3 class="text-center">Logo/Favicon</h3>
                                                 <div class="form-row mb-3">
-                                                    <img src="<?php echo "../assests/img/" . getValuesByName("logo"); ?>"
+                                                    <img src="<?php echo "../media/" . getValuesByName("logo"); ?>"
                                                         class="img-circle img-responsive m-auto mx-2" alt="Logo"
                                                         height="100px;">
                                                     <div class="custom-file">
@@ -143,7 +161,7 @@ if (isset($_POST['submit_general'])) {
                                             </form>
                                             <form method="POST" enctype="multipart/form-data">
                                                 <div class="form-row mb-5">
-                                                    <img src="<?php echo "../assests/img/" . getValuesByName("favicon") ?>"
+                                                    <img src="<?php echo "../media/" . getValuesByName("favicon") ?>"
                                                         class="img-circle img-responsive m-auto mx-2" alt="Favicon"
                                                         height="100px;">
                                                     <div class="custom-file">
@@ -162,7 +180,8 @@ if (isset($_POST['submit_general'])) {
                                         </div>
                                         <div class="tab-pane fade" id="line-profile" role="tabpanel"
                                             aria-labelledby="profile-tab">
-                                            <form method="POST" enctype="multipart/form-data">
+                                            <form method="POST" action="./general-detail.php"
+                                                enctype="multipart/form-data">
                                                 <h3 class="text-center">General Details</h3>
                                                 <div class="form-row">
                                                     <div class="form-group col-lg-12">
@@ -195,14 +214,60 @@ if (isset($_POST['submit_general'])) {
                                                             placeholder="Address" name="address"
                                                             value="<?php echo getValuesByName("address"); ?>">
                                                     </div>
+                                                    <div class="form-group col-md-6">
+                                                        <div class="input-group mb-3">
+                                                            <input type="text" class="form-control"
+                                                                placeholder="Facebook" autocomplete="off"
+                                                                name="facebook"
+                                                                value="<?php echo getValuesByName("facebook"); ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <div class="input-group mb-3">
+                                                            <input type="text" class="form-control"
+                                                                placeholder="Instagram" autocomplete="off"
+                                                                name="instagram"
+                                                                value="<?php echo getValuesByName("instagram"); ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <div class="input-group mb-3">
+                                                            <input type="text" class="form-control"
+                                                                placeholder="Linkedin" autocomplete="off"
+                                                                name="linkedin"
+                                                                value="<?php echo getValuesByName("linkedin"); ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <div class="input-group mb-3">
+                                                            <input type="text" class="form-control"
+                                                                placeholder="Twitter" autocomplete="off" name="twitter"
+                                                                value="<?php echo getValuesByName("twitter"); ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-12">
+                                                        <label for="footerHeading">Footer Content Heading</label>
+                                                        <div class="input-group mb-3">
+                                                            <input type="text" id="footerHeading" class="form-control"
+                                                                placeholder="Footer Content Heading" autocomplete="off"
+                                                                name="footerHeading"
+                                                                value="<?php echo getValuesByName("footer-heading") ?>">
+                                                        </div>
+                                                        <label for="footerContent">Footer Content </label>
+                                                        <textarea class="form-control" id="footerContent"
+                                                            name="footerContent">
+                                                            <?php echo getValuesByName("footer-content") ?>
+                                                        </textarea>
+                                                    </div>
                                                 </div>
                                                 <button type="submit" class="btn btn-success btn-cta"
-                                                    name="submit_general">Save changes</button>
+                                                    name="submit_general">Save
+                                                    changes</button>
                                             </form>
                                         </div>
-
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>

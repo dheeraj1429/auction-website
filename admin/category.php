@@ -5,6 +5,12 @@ require_once "../session.php";
 $pageName = "Category";
 $category = new Category();
 
+if (!isset($_SESSION['admin_email'])) {
+    $_SESSION['toast']['msg'] = "Please, Log-in to continue.";
+    header("location:login.php");
+    die();
+}
+
 function getCategory()
 {
     $category = new Category();
@@ -15,11 +21,19 @@ if (isset($_GET["id"])) {
     $id = $_GET["id"];
 
     $category->delete($id);
-    header("Location: /admin/category.php");
+    header("Location: ./category.php");
     die();
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['id']) && $_POST['status']) {
+        $id = $_POST['id'];
+        $status = $_POST['status'];
+        $updatedData = array("status" => $status);
+
+        $category->update($updatedData, $id);
+        exit();
+    }
     $_category = $_POST["category"];
     $data = array(
         "name" => $_category,
@@ -29,12 +43,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $category->create($data);
     header("Location: /admin/category.php");
 }
-if (!isset($_SESSION['admin_email'])) {
-    $_SESSION['toast']['msg'] = "Please, Log-in to continue.";
-    header("location:login.php");
-    die();
-}
-
 $categoryData = getCategory();
 ?>
 <!DOCTYPE html>
@@ -59,10 +67,12 @@ $categoryData = getCategory();
                         <div class="col-lg-10 mx-auto mt-2">
                             <div class="card py-3 m-b-30">
                                 <div class="card-body">
-                                    <div class="center" style="display: flex; width: 100%; align-items: center; justify-content: space-between">
+                                    <div class="center"
+                                        style="display: flex; width: 100%; align-items: center; justify-content: space-between">
 
                                         <h1>Categories</h1>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                            data-target="#exampleModal">
                                             Add
                                         </button>
                                     </div>
@@ -77,18 +87,31 @@ $categoryData = getCategory();
                                             </thead>
                                             <tbody>
                                                 <?php for ($i = 0; $i < count($categoryData); $i++) : ?>
-                                                    <tr>
-                                                        <td><?php echo $i + 1 ?></td>
-                                                        <td><?php echo $categoryData[$i]["name"] ?></td>
-                                                        <td><?php echo $categoryData[$i]["date_time"] ?></td>
-                                                        <td>
-                                                            Status
-                                                        </td>
-                                                        <td id="<?php echo $categoryData[$i]["id"] ?>" class="<?php echo $categoryData[$i]["name"] ?>">
-                                                            <button data-toggle="modal" data-target="#editModal" type="button" class="btn btn-primary edit-btn">Edit</button>
-                                                            <a href="/admin/category.php?id=<?php echo $categoryData[$i]["id"] ?>" type="button" class="btn btn-danger">Delete</a>
-                                                        </td>
-                                                    </tr>
+                                                <tr>
+                                                    <td><?php echo $i + 1 ?></td>
+                                                    <td><?php echo $categoryData[$i]["name"] ?></td>
+                                                    <td><?php echo $categoryData[$i]["date_time"] ?></td>
+                                                    <td>
+                                                        <span class="ml-5">
+                                                            <label class="cstm-switch">
+                                                                <input type="checkbox"
+                                                                    data-this-id="<?php echo $categoryData[$i]['id']; ?>"
+                                                                    <?php if ($categoryData[$i]['status'] == 2) {
+                                                                                                                                                        echo 'checked';
+                                                                                                                                                    } ?> name="option"
+                                                                    class="cstm-switch-input change-status">
+                                                                <span class="cstm-switch-indicator"></span>
+                                                            </label>
+                                                        </span>
+                                                    </td>
+                                                    <td id="<?php echo $categoryData[$i]["id"] ?>"
+                                                        class="<?php echo $categoryData[$i]["name"] ?>">
+                                                        <button data-toggle="modal" data-target="#editModal"
+                                                            type="button" class="btn btn-primary edit-btn">Edit</button>
+                                                        <a href="./category.php?id=<?php echo $categoryData[$i]["id"] ?>"
+                                                            type="button" class="btn btn-danger">Delete</a>
+                                                    </td>
+                                                </tr>
                                                 <?php endfor; ?>
                                             </tbody>
                                         </table>
@@ -130,10 +153,11 @@ $categoryData = getCategory();
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="/admin/updateBlogCategory.php" method="post">
+                    <form action="./updateBlogCategory.php" method="post">
                         <div class="modal-body">
                             <input type="hidden" name="id" id="id-input">
-                            <input id="edit-form" type="text" name="category" class="form-control" placeholder="Add Category">
+                            <input id="edit-form" type="text" name="category" class="form-control"
+                                placeholder="Add Category">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -145,19 +169,19 @@ $categoryData = getCategory();
         </div>
     </main>
     <script>
-        const editButtons = document.getElementsByClassName("edit-btn");
+    const editButtons = document.getElementsByClassName("edit-btn");
 
-        for (let button of editButtons) {
-            button.onclick = () => {
-                const parentNode = button.parentElement;
-                const idInput = document.getElementById("id-input");
-                const editForm = document.getElementById("edit-form");
-                const nodeId = parentNode.id;
-                const nodeValue = parentNode.className;
-                idInput.value = nodeId;
-                editForm.value = nodeValue;
-            }
+    for (let button of editButtons) {
+        button.onclick = () => {
+            const parentNode = button.parentElement;
+            const idInput = document.getElementById("id-input");
+            const editForm = document.getElementById("edit-form");
+            const nodeId = parentNode.id;
+            const nodeValue = parentNode.className;
+            idInput.value = nodeId;
+            editForm.value = nodeValue;
         }
+    }
     </script>
 </body>
 <?php include_once('inc/js.php'); ?>
