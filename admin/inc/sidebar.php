@@ -77,7 +77,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li class="menu-item ">
-                        <a href='manage-testimonial.php' class=' menu-link'>
+                        <a href='./testomonial.php' class=' menu-link'>
                             <span class="menu-label">
                                 <span class="menu-name">Manage Testimonial</span>
                             </span>
@@ -87,7 +87,7 @@
                         </a>
                     </li>
                     <li class="menu-item ">
-                        <a href='manage-packages.php' class=' menu-link'>
+                        <a href='./package.php' class=' menu-link'>
                             <span class="menu-label">
                                 <span class="menu-name">Manage Packages</span>
                             </span>
