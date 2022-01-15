@@ -99,15 +99,16 @@ require_once "./getValuesByName.php";
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">ENDED AUCTIONS</a>
+                                    <a class="nav-link active" aria-current="page" href="./Ended.php">ENDED AUCTIONS</a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">CURRENT AUCTION</a>
+                                    <a class="nav-link active" aria-current="page" href="./currentAuctions.php">CURRENT
+                                        AUCTION</a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">CUY TOKENS</a>
+                                    <a class="nav-link active" aria-current="page" href="Buy_token.php">BUY TOKENS</a>
                                 </li>
 
                                 <li class="nav-item">
