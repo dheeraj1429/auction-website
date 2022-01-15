@@ -1791,4 +1791,4 @@ $howItWorks = $cmsPages->getCMSByType(2);
 <!-- Main -->
 
 <!-- Footer -->
-<?php require_once "./footer.php" ?>
+<?php require_once "./footer2.php" ?>
