@@ -255,3 +255,278 @@
 
 
           
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           <div class="container pt-5 pb-5">
+        <div class="row pt-4">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3 mt-5">
+            <div class="card border-0 winner_card">
+              <p class="h4 text-center text-white auction_winner_heading">
+                GRAND PRICE WINNER
+              </p>
+              <i class="fas fa-crown fa-3x winner_crown"></i>
+
+              <div class="d-flex auction_winner align-items-center px-3">
+                <div>
+                  <img src="./assests/icons&images/Ellipse 45.png" class="card-img-top img-fluid pt-5" alt="..."
+                    style="width: 100px" />
+                  <p class="text-white fw-bold">@johnson</p>
+                  <p class="h5 text-center text-white fw-bold">$12312</p>
+                </div>
+                <div>
+                  <img src="./assests/icons&images/Ellipse 46.png" class="card-img-top img-fluid pt-5 winner_crown_img"
+                    alt="..." style="width: 160px" />
+                  <p class="text-white text-center fw-bold">@johnson</p>
+                  <p class="h5 text-center text-white p-0 fw-bold">$12312</p>
+                </div>
+                <div>
+                  <img src="./assests/icons&images/Ellipse 45.png" class="card-img-top img-fluid pt-5" alt="..."
+                    style="width: 100px" />
+                  <p class="text-white fw-bold">@johnson</p>
+                  <p class="h5 text-center text-white fw-bold">$12312</p>
+                </div>
+              </div>
+              <!-- <button
+                      class="btn btn-lg mb-3 mx-4 px-5 rounded-pill auction_time text-white"
+                    >
+                      2D 5H 30MIN 52S
+                    </button> -->
+              <div class="card-body">
+                <div class="progress mt-2 mb-4">
+                  <div class="progress-bar auction_winner_progress_bar" role="progressbar" style="width: 65%"
+                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                    60%
+                  </div>
+                </div>
+                <p>
+                  <span class="text-danger mx-5"> 10bids left</span>
+                  <span class="text-muted mx-3">30 bids</span>
+                </p>
+                <div class="other_winner pt-2">
+                  <span class="h5 px-3"> 4</span>
+                  <i class="fas fa-user fa-2x px-1"></i><span class="px-3">@username</span> <span>$1234</span>
+                </div>
+                <div class="other_winner mt-2 pt-2">
+                  <span class="h5 px-3"> 5</span>
+                  <i class="fas fa-user fa-2x px-1"></i><span class="px-3">@username</span> <span>$1234</span>
+                </div>
+                <div class="other_winner mt-2 pt-2">
+                  <span class="h5 px-3"> 6 </span>
+                  <i class="fas fa-user fa-2x px-1"></i><span class="px-3">@username</span> <span>$1234</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-12 col-sm-12 col-md-12 col-lg-8  offset-lg-1 px-1">
+            <div class="row ">
+
+              <div class="col-12 winner_bg_color mt-4">
+                <div class="row g-2">
+                  <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="container-fluid">
+                      <span class="gravel_icon"><i class="fas fa-gavel  pb-3 px-4 fa-3x text-white"></i>
+                      </span>
+                      <span class="text-white pb-4 pt-2 h3">
+                        AUCTION LIST</span>
+
+                      <!-- <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> -->
+                      <ul class=" ms-auto mb-2 mb-lg-0">
+
+
+                        <li class="nav-item">
+                          <!-- <span class="button_viewmargin">  -->
+                          <button class="btn btn-lg mb-3 rounded-pill viewAll_button">
+                            View All
+                          </button>
+                          <!-- </span> -->
+                        </li>
+
+                      </ul>
+
+                    </div>
+                  </nav>
+                </div>
+              </div>
+
+
+
+              <div class="container mt-3">
+                <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 py-5 d-flex justify-content-around"   > -->
+                <div class="row ">
+                  <div
+                    class="col-6 col-sm-12 col-md-12 col-lg-6 d-flex justify-content-around view_winner_display   mt-5 ">
+                    <div class="">
+                      <img src="assests/icons&images/Ellipse 45.png " class="" />
+                      <!-- <span class="text-center contestant_check1"><i
+                                          class="fas fa-check-circle fa-1x contestant_check"></i> </span> -->
+                    </div>
+                    <div>
+                      <p class="h5 fw-bold pt-3 mx-2 px-1">johnson</p>
+                      <p class="h6 fw-bold px-1">$123</p>
+                    </div>
+                    <div class="mt-4">
+                      <button class="btn btn-lg mb-3 mx-3 px-5 rounded-pill view_winner_button">
+                        View
+                      </button>
+                    </div>
+                  </div>
+
+
+                  <div
+                    class="col-6 col-sm-12 col-md-12 col-lg-6 d-flex justify-content-around view_winner_display  mt-lg-5 ">
+                    <div class="">
+                      <img src="assests/icons&images/Ellipse 46.png " class="" />
+                      <!-- <span class="text-center contestant_check1"><i
+                                      class="fas fa-check-circle fa-1x contestant_check"></i> </span> -->
+                    </div>
+                    <div>
+                      <p class="h5 fw-bold pt-3 px-1">johnson</p>
+                      <p class="h6 fw-bold px-1">$123</p>
+                    </div>
+                    <div class="mt-4">
+                      <button class="btn btn-lg mb-3 mx-3 px-5 rounded-pill view_winner_button">
+                        View
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="container">
+                <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 py-5 d-flex justify-content-around"   > -->
+                <div class="row g-2">
+                  <div
+                    class="col-6 col-sm-12 col-md-12 col-lg-6 d-flex justify-content-around view_winner_display   mt-5 ">
+                    <div class="">
+                      <img src="assests/icons&images/Ellipse 45.png " class="" />
+                      <!-- <span class="text-center contestant_check1"><i
+                                        class="fas fa-check-circle fa-1x contestant_check"></i> </span> -->
+                    </div>
+                    <div>
+                      <p class="h5 fw-bold pt-3 mx-2 px-1">johnson</p>
+                      <p class="h6 fw-bold px-1">$123</p>
+                    </div>
+                    <div class="mt-4">
+                      <button class="btn btn-lg mb-3 mx-3 px-5 rounded-pill view_winner_button">
+                        View
+                      </button>
+                    </div>
+                  </div>
+
+
+                  <div
+                    class="col-6 col-sm-12 col-md-12 col-lg-6 d-flex justify-content-around view_winner_display  mt-lg-5 ">
+                    <div class="">
+                      <img src="assests/icons&images/Ellipse 46.png " class="" />
+                      <!-- <span class="text-center contestant_check1"><i
+                                    class="fas fa-check-circle fa-1x contestant_check"></i> </span> -->
+                    </div>
+                    <div>
+                      <p class="h5 fw-bold pt-3 px-1">johnson</p>
+                      <p class="h6 fw-bold px-1">$123</p>
+                    </div>
+                    <div class="mt-4">
+                      <button class="btn btn-lg mb-3 mx-3 px-5 rounded-pill view_winner_button">
+                        View
+                      </button>
+                    </div>
+                  </div>
+
+
+
+                </div>
+              </div>
+
+
+              <div class="container">
+                <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 py-5 d-flex justify-content-around"   > -->
+                <div class="row g-2">
+                  <div
+                    class="col-6 col-sm-12 col-md-12 col-lg-6 d-flex justify-content-around view_winner_display   mt-5 ">
+                    <div class="">
+                      <img src="assests/icons&images/Ellipse 45.png " class="" />
+                      <!-- <span class="text-center contestant_check1"><i
+                                        class="fas fa-check-circle fa-1x contestant_check"></i> </span> -->
+                    </div>
+                    <div>
+                      <p class="h5 fw-bold pt-3 mx-2 px-1">johnson</p>
+                      <p class="h6 fw-bold px-1">$123</p>
+                    </div>
+                    <div class="mt-4">
+                      <button class="btn btn-lg mb-3 mx-3 px-5 rounded-pill view_winner_button">
+                        View
+                      </button>
+                    </div>
+                  </div>
+
+
+                  <div
+                    class="col-6 col-sm-12 col-md-12 col-lg-6 d-flex justify-content-around view_winner_display  mt-lg-5 ">
+                    <div class="">
+                      <img src="assests/icons&images/Ellipse 46.png " class="" />
+                      <!-- <span class="text-center contestant_check1"><i
+                                    class="fas fa-check-circle fa-1x contestant_check"></i> </span> -->
+                    </div>
+                    <div>
+                      <p class="h5 fw-bold pt-3 px-1">johnson</p>
+                      <p class="h6 fw-bold px-1">$123</p>
+                    </div>
+                    <div class="mt-4">
+                      <button class="btn btn-lg mb-3 mx-3 px-4 rounded-pill view_winner_button">
+                        View
+                      </button>
+                    </div>
+                  </div>
+
+
+
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+      </div>
+      </div>
+      </div>
