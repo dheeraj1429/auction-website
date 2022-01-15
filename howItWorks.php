@@ -20,71 +20,69 @@ $howItWorks = $cmsPages->getCMSByType(3);
     <section class="register_and_account_div padding_Two">
         <div class="container">
             <?php for ($i = 0; $i < count($howItWorks); $i++) : ?>
-            <?php if (($i + 1) % 2 != 0) : ?>
-            <div class="row justify-content-evenly">
-                <div class="col-12 col-sm-12 col-md-6 col-lg-5">
-                    <img src="./media/img/cms/<?php echo $howItWorks[$i]["img"]; ?>" alt=""
-                        class="img-fluid howItWorks_image" />
-                </div>
-                <div class="col-1">
-                    <div class="number_circle">0<?php echo $i + 1 ?></div>
-                    <div class="dot_container mt-3">
-                        <span class="doted"></span>
-                        <span class="doted"></span>
-                        <span class="doted"></span>
-                        <span class="doted"></span>
-                        <span class="doted"></span>
-                        <span class="doted"></span>
-                        <span class="doted"></span>
-                        <span class="doted"></span>
-                        <span class="doted"></span>
-                        <span class="doted"></span>
-                        <span class="doted"></span>
-                        <span class="doted"></span>
+                <?php if (($i + 1) % 2 != 0) : ?>
+                    <div class="row justify-content-evenly">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-5">
+                            <img src="./media/img/cms/<?php echo $howItWorks[$i]["img"]; ?>" alt="" class="img-fluid howItWorks_image" />
+                        </div>
+                        <div class="col-1">
+                            <div class="number_circle">0<?php echo $i + 1 ?></div>
+                            <div class="dot_container mt-3">
+                                <span class="doted"></span>
+                                <span class="doted"></span>
+                                <span class="doted"></span>
+                                <span class="doted"></span>
+                                <span class="doted"></span>
+                                <span class="doted"></span>
+                                <span class="doted"></span>
+                                <span class="doted"></span>
+                                <span class="doted"></span>
+                                <span class="doted"></span>
+                                <span class="doted"></span>
+                                <span class="doted"></span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-5 my-auto">
+                            <div class="How_it_works_content">
+                                <p class="howitworks_heading m-0 p-0"><?php echo $howItWorks[$i]["title"]; ?></p>
+                                <p class="howitworks_para">
+                                    <?php echo $howItWorks[$i]["desc"] ?>
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-5 my-auto">
-                    <div class="How_it_works_content">
-                        <p class="howitworks_heading m-0 p-0"><?php echo $howItWorks[$i]["title"]; ?></p>
-                        <p class="howitworks_para">
-                            <?php echo $howItWorks[$i]["desc"] ?>
-                        </p>
+                <?php else : ?>
+                    <div class="row justify-content-evenly">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-5 order-3">
+                            <img src="./media/img/cms/<?php echo $howItWorks[$i]["img"]; ?>" alt="" class="img-fluid howItWorks_image" />
+                        </div>
+                        <div class="col-1 order-2">
+                            <div class="number_circle">0<?php echo $i + 1 ?></div>
+                            <div class="dot_container mt-3">
+                                <span class="doted"></span>
+                                <span class="doted"></span>
+                                <span class="doted"></span>
+                                <span class="doted"></span>
+                                <span class="doted"></span>
+                                <span class="doted"></span>
+                                <span class="doted"></span>
+                                <span class="doted"></span>
+                                <span class="doted"></span>
+                                <span class="doted"></span>
+                                <span class="doted"></span>
+                                <span class="doted"></span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-5 my-auto order-1">
+                            <div class="How_it_works_content">
+                                <p class="howitworks_heading m-0 p-0"><?php echo $howItWorks[$i]["title"]; ?></p>
+                                <p class="howitworks_para">
+                                    <?php echo $howItWorks[$i]["desc"] ?>
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <?php else : ?>
-            <div class="row justify-content-evenly">
-                <div class="col-12 col-sm-12 col-md-6 col-lg-5 order-3">
-                    <img src="./media/img/cms/<?php echo $howItWorks[$i]["img"]; ?>" alt=""
-                        class="img-fluid howItWorks_image" />
-                </div>
-                <div class="col-1 order-2">
-                    <div class="number_circle">0<?php echo $i + 1 ?></div>
-                    <div class="dot_container mt-3">
-                        <span class="doted"></span>
-                        <span class="doted"></span>
-                        <span class="doted"></span>
-                        <span class="doted"></span>
-                        <span class="doted"></span>
-                        <span class="doted"></span>
-                        <span class="doted"></span>
-                        <span class="doted"></span>
-                        <span class="doted"></span>
-                        <span class="doted"></span>
-                        <span class="doted"></span>
-                        <span class="doted"></span>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-5 my-auto order-1">
-                    <div class="How_it_works_content">
-                        <p class="howitworks_heading m-0 p-0"><?php echo $howItWorks[$i]["title"]; ?></p>
-                        <p class="howitworks_para">
-                            <?php echo $howItWorks[$i]["desc"] ?>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <?php endif; ?>
+                <?php endif; ?>
             <?php endfor; ?>
 
             <!-- Register for free start -->

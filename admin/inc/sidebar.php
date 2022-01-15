@@ -1,8 +1,7 @@
 <aside class="admin-sidebar">
     <div class="admin-sidebar-brand">
-        <img class="admin-brand-logo" src="./assets/img/logo.png" width="40" alt="atmos Logo">
         <span class="admin-brand-content font-secondary">
-            <a href='index.php'> Ak</a>
+            <a href='index.php'><?php echo "Smart Auction"; ?></a>
         </span>
         <div class="ml-auto">
             <a href="#" class="admin-pin-sidebar btn-ghost btn btn-rounded-circle"></a>
@@ -23,9 +22,9 @@
                 </a>
             </li>
             <li class="menu-item active ">
-                <a href="./general-detail.php" class=" menu-link">
+                <a href="general-detail.php" class=" menu-link">
                     <span class="menu-label">
-                        <span class="menu-name">General Details<span class="menu-arrow"></span>
+                        <span class="menu-name">General Details
                         </span>
                     </span>
                     <span class="menu-icon">
@@ -45,9 +44,9 @@
                 </a>
                 <ul class="sub-menu">
                     <li class="menu-item ">
-                        <a href='./about.php' class=' menu-link'>
+                        <a href='how-it-work.php' class=' menu-link'>
                             <span class="menu-label">
-                                <span class="menu-name">About Section</span>
+                                <span class="menu-name">How it Works</span>
                             </span>
                             <span class="menu-icon">
                                 <i class="mdi mdi-plus-outline"></i>
@@ -55,37 +54,7 @@
                         </a>
                     </li>
                     <li class="menu-item ">
-                        <a href='./alternative.php' class=' menu-link'>
-                            <span class="menu-label">
-                                <span class="menu-name">Alternative Section</span>
-                            </span>
-                            <span class="menu-icon">
-                                <i class="mdi mdi-history"></i>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="menu-item ">
-                        <a href='./service.php' class=' menu-link'>
-                            <span class="menu-label">
-                                <span class="menu-name">Services</span>
-                            </span>
-                            <span class="menu-icon">
-                                <i class="mdi mdi-history"></i>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="menu-item ">
-                        <a href='./projects.php' class=' menu-link'>
-                            <span class="menu-label">
-                                <span class="menu-name">My Work</span>
-                            </span>
-                            <span class="menu-icon">
-                                <i class="mdi mdi-history"></i>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="menu-item ">
-                        <a href='./policypage.php' class=' menu-link'>
+                        <a href='privacyPolicy.php' class=' menu-link'>
                             <span class="menu-label">
                                 <span class="menu-name">Policy Page</span>
                             </span>
@@ -94,13 +63,36 @@
                             </span>
                         </a>
                     </li>
+                </ul>
+            </li>
+            <li class="menu-item active ">
+                <a href="#" class="open-dropdown menu-link">
+                    <span class="menu-label">
+                        <span class="menu-name">Services<span class="menu-arrow"></span>
+                        </span>
+                    </span>
+                    <span class="menu-icon">
+                        <i class="icon-placeholder mdi mdi-calendar"></i>
+                    </span>
+                </a>
+                <ul class="sub-menu">
                     <li class="menu-item ">
-                        <a href='./meta.php' class=' menu-link'>
+                        <a href='manage-testimonial.php' class=' menu-link'>
                             <span class="menu-label">
-                                <span class="menu-name">Meta Tags</span>
+                                <span class="menu-name">Manage Testimonial</span>
                             </span>
                             <span class="menu-icon">
-                                <i class="mdi mdi-history"></i>
+                                <i class="mdi mdi-plus-outline"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="menu-item ">
+                        <a href='manage-packages.php' class=' menu-link'>
+                            <span class="menu-label">
+                                <span class="menu-name">Manage Packages</span>
+                            </span>
+                            <span class="menu-icon">
+                                <i class="mdi mdi-plus-outline"></i>
                             </span>
                         </a>
                     </li>
@@ -118,7 +110,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li class="menu-item">
-                        <a href="./blog.php" class=" menu-link">
+                        <a href="blog.php" class=" menu-link">
                             <span class="menu-label">
                                 <span class="menu-name"> Manage Blogs </span>
                             </span>
@@ -130,13 +122,12 @@
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="./category.php" class=" menu-link">
+                        <a href="category.php" class=" menu-link">
                             <span class="menu-label">
                                 <span class="menu-name">Blog Category</span>
                             </span>
                             <span class="menu-icon">
                                 <i class="icon-placeholder ">
-                                    BC
                                 </i>
                             </span>
                         </a>
@@ -145,7 +136,7 @@
             </li>
 
             <li class="menu-item active ">
-                <a href="./feedback.php" class="menu-link">
+                <a href="feedback.php" class="menu-link">
                     <span class="menu-label">
                         <span class="menu-name">Feedback</span>
                     </span>
@@ -155,7 +146,7 @@
                 </a>
             </li>
             <li class="menu-item active ">
-                <a href="./share.php" class="menu-link">
+                <a href="share.php" class="menu-link">
                     <span class="menu-label">
                         <span class="menu-name">Statics</span>
                     </span>

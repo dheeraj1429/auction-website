@@ -59,10 +59,11 @@ if (!isset($_SESSION['admin_email'])) {
                                         <div class="tab-pane fade show active" id="line-home" role="tabpanel"
                                             aria-labelledby="home-tab">
                                             <form method="post">
+                                                <h3 style="margin: 15px;" class="text-center">Privacy Policy</h3>
                                                 <textarea class="form-control" name="policy" id="editor">
-                                                <?php if (isset($_GET['id'])) {
-                                                    echo htmlspecialchars_decode($dataB['desc']);
-                                                } ?>
+                                                    <?php
+                                                    echo $general->getDataByName("privacy")[0]["key_value"];
+                                                    ?>
                                                 </textarea>
                                                 <div class="form-row pt-3">
                                                     <div class="form-group col-md-12">
@@ -75,10 +76,9 @@ if (!isset($_SESSION['admin_email'])) {
                                         <div class="tab-pane fade" id="line-profile" role="tabpanel"
                                             aria-labelledby="profile-tab">
                                             <form method="POST">
+                                                <h3 style="margin: 15px" class="text-center">Terms & Conditions</h3>
                                                 <textarea class="form-control" name="condition" id="editor2">
-                                                <?php if (isset($_GET['id'])) {
-                                                    echo htmlspecialchars_decode($dataB['desc']);
-                                                } ?>
+                                                <?php echo $general->getDataByName("condition")[0]["key_value"]; ?>
                                                 </textarea>
                                                 <div class="form-row pt-3">
                                                     <div class="form-group col-md-12">

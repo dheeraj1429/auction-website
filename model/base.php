@@ -14,6 +14,16 @@ class Base
     }
 
     public function preventSqlInjection($sql)
-    { // ...
+    {
+        $sql = mysqli_real_escape_string($this->connection, $this->akSecureString($sql));
+        return $sql;
+    }
+
+    private function akSecureString($param)
+    {
+        ///remove vulnerable params...
+        $param = str_replace('"', "\"", str_replace("'", '\'', str_replace('</script>', '', str_replace('<script>', '', $param))));
+
+        return $param;
     }
 }
