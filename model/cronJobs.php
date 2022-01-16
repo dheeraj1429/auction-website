@@ -8,9 +8,7 @@ class CronJobs extends Base
 
     public function read()
     {
-
-        $sql = "SELECT * FROM " . $this->tableName . " 
-          WHERE status = 'active'   ORDER BY 'time' ASC";
+        $sql = "SELECT * FROM " . $this->tableName . " WHERE status = 'active'";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll();
@@ -20,11 +18,12 @@ class CronJobs extends Base
 
     public function create($data)
     {
-        if (array_key_exists("auction_id", $data) && array_key_exists("time", $data)) {
-            $auctionId = $data["auction_id"];
+        if (array_key_exists("token", $data) && array_key_exists("time", $data) && array_key_exists("date", $data)) {
+            $token = $data["token"];
             $time = $data["time"];
+            $date = $data["date"];
             $status = "active";
-            $sql = "INSERT INTO " . $this->tableName . " (auction_id, time, status) VALUES ('$auctionId', '$time', '$status')";
+            $sql = "INSERT INTO " . $this->tableName . " (token, time, date, status) VALUES ('$token', '$time', '$date', '$status')";
             $stmt = $this->connection->prepare($sql);
             $stmt->execute();
         }
@@ -41,16 +40,16 @@ class CronJobs extends Base
         }
     }
 
-    public function updateStatus($auctionId, $status)
+    public function updateStatus($token, $status)
     {
-        $sql = "UPDATE " . $this->tableName . " SET " . "status = '$status' WHERE auction_id = '$auctionId'";
+        $sql = "UPDATE " . $this->tableName . " SET " . "status = '$status' WHERE token = '$token'";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
     }
 
-    public function delete()
+    public function delete($token)
     {
-        $sql = "TRUNCATE TABLE " . $this->tableName;
+        $sql = "DELETE FROM " . $this->tableName . " WHERE token = '$token'";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
     }

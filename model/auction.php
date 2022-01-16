@@ -31,15 +31,21 @@ class Auction extends Base
             array_key_exists("product_img", $data) &&
             array_key_exists("date", $data) &&
             array_key_exists("time", $data) &&
-            array_key_exists("token", $data)
+            array_key_exists("token", $data) &&
+            array_key_exists("category", $data) &&
+            array_key_exists("discription", $data)
         ) {
             $productName = $data['product_name'];
             $startingPrice = $data['starting_price'];
             $capacity = $data['capacity'];
             $storePrice = $data['store_price'];
             $capacity = $data['capacity'];
+            $category = $data['category'];
+            $discription = $data['discription'];
             $date = $data['date'];
             $time = $data['time'];
+            $endTime = strtotime("+20 minutes", strtotime($time));
+            $endTime = date('h:i', $endTime);
             $productImg = $data['product_img'];
             $token = $data["token"];
             $sql = "INSERT INTO " . $this->tableName . " (
@@ -49,8 +55,11 @@ class Auction extends Base
                 capacity,
                 date,
                 time,
+                end_time,
                 store_price,
-                product_img
+                product_img,
+                category,
+                discription
             ) VALUES (
                 '$productName',
                 '$startingPrice',
@@ -58,8 +67,11 @@ class Auction extends Base
                 '$capacity',
                 '$date',
                 '$time',
+                '$endTime',
                 '$storePrice',
-                '$productImg'
+                '$productImg',
+                '$category',
+                '$discription'
             )";
             $stmt = $this->connection->prepare($sql);
             $stmt->execute();
@@ -102,7 +114,7 @@ class Auction extends Base
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 30; $i++) {
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         return $randomString;

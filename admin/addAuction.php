@@ -1,6 +1,8 @@
 <?php
 include_once("../session.php");
 require_once "../model/auction.php";
+require_once "../model/cronJobs.php";
+
 $pageName = "Add Auction";
 date_default_timezone_set('Asia/Kolkata');
 
@@ -31,6 +33,8 @@ function uploadImage($fileObj)
 function addCron($date, $time, $token)
 {
     $file = fopen("cronFile.txt", "a");
+    $cronJobs = new CronJobs();
+    $cronJobs->create(array("date" => $date, "time" => $time, "token" => $token));
     $dateData = explode("-", $date);
     $timeData = explode(":", $time);
     $day = $dateData[2];
@@ -50,9 +54,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $capacity = $_POST['capacity'];
     $date = $_POST['date'];
     $time = $_POST['time'];
+    $category = $_POST['category'];
+    $discription = htmlspecialchars($_POST['discription']);
     $image = $_FILES['image'];
     $token = $auction->generateToken();
-
     $fileName = uploadImage($image);
     $data = array(
         "product_name" => $productName,
@@ -60,6 +65,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         "date" => $date,
         "time" => $time,
         "starting_price" => $startingPrice,
+        "category" => $category,
+        "discription" => $discription,
         "store_price" => $storePrice,
         "product_img" => $fileName,
         "token"  => $token
@@ -101,6 +108,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                                                                                                                 echo $dataB['name'];
                                                                                                                                             } ?>"
                                                     name="product_name" autocomplete="off" required="">
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <label for="category">Category</label>
+                                                <input type="text" id="category" placeholder="Category" name="category"
+                                                    class="form-control">
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label for="starting_price">Starting Price</label>
@@ -160,6 +172,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                                                                                             } ?>"
                                                     height="100px;">
                                                 <?php } ?>
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <label for="discription">Discription</label>
+                                                <textarea class="form-control" name="discription" id="discription"
+                                                    rows="3"></textarea>
                                             </div>
                                             <div class="form-row pt-3">
                                                 <div class="form-group col-md-12">

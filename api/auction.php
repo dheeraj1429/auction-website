@@ -70,7 +70,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $entityBody = file_get_contents('php://input');
     $data = json_decode($entityBody, true);
-    if (array_key_exists('token', $data) && array_key_exists('auction_id', $data) && array_key_exists('id', $data) && array_key_exists('amount', $data) && array_key_exists('email', $data)) {
+    if (
+        array_key_exists('token', $data) &&
+        array_key_exists('auction_id', $data) &&
+        array_key_exists('id', $data) &&
+        array_key_exists('amount', $data) &&
+        array_key_exists('email', $data)
+    ) {
         $token = $data['token'];
         $id = $data['id'];
         $amount = $data['amount'];
