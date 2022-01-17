@@ -16,7 +16,9 @@ if (!isset($_SESSION['admin_email'])) {
 $auction = new Auction();
 $auctionCategory = new AuctionCategory();
 $categories =  $auctionCategory->read();
-
+if (isset($_GET["id"])) {
+    $dataB = $auction->read($id = $_GET["id"])[0];
+}
 function uploadImage($fileObj)
 {
     $fileType = strtolower(explode('/', $fileObj["type"])[1]);
@@ -54,6 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $productName = $_POST['product_name'];
     $startingPrice = $_POST['starting_price'];
     $storePrice = $_POST['store_price'];
+    $feature = $_POST['feature'];
     $capacity = $_POST['capacity'];
     $date = $_POST['date'];
     $time = $_POST['time'];
@@ -61,20 +64,50 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $discription = htmlspecialchars($_POST['discription']);
     $image = $_FILES['image'];
     $token = $auction->generateToken();
-    $fileName = uploadImage($image);
-    $data = array(
-        "product_name" => $productName,
-        "capacity" => $capacity,
-        "date" => $date,
-        "time" => $time,
-        "starting_price" => $startingPrice,
-        "category" => $category,
-        "discription" => $discription,
-        "store_price" => $storePrice,
-        "product_img" => $fileName,
-        "token"  => $token
-    );
-    $auction->create($data);
+
+    if (isset($_GET['id'])) {
+        if ($image["size"] !== 0) {
+            $fileName = uploadImage($image);
+        } else {
+            $fileName = null;
+        }
+    } else {
+        $fileName = uploadImage($image);
+    }
+
+    if ($fileName) {
+        $data = array(
+            "product_name" => $productName,
+            "capacity" => $capacity,
+            "date" => $date,
+            "time" => $time,
+            "featured_status" => $feature,
+            "starting_price" => $startingPrice,
+            "category" => $category,
+            "discription" => $discription,
+            "store_price" => $storePrice,
+            "product_img" => $fileName,
+            "token"  => $token
+        );
+    } else {
+        $data = array(
+            "product_name" => $productName,
+            "capacity" => $capacity,
+            "date" => $date,
+            "time" => $time,
+            "featured_status" => $feature,
+            "starting_price" => $startingPrice,
+            "category" => $category,
+            "discription" => $discription,
+            "store_price" => $storePrice,
+            "token"  => $token
+        );
+    }
+    if (isset($_GET['id'])) {
+        $auction->update($data, $_GET["id"]);
+    } else {
+        $auction->create($data);
+    }
     addCron($date, $time, $token);
     header("Refresh: 0");
     die();
@@ -109,7 +142,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                 <input type="text" class="form-control" id="product_name"
                                                     placeholder="Product Name"
                                                     value="<?php if (isset($_GET['id'])) {
-                                                                                                                                                echo $dataB['name'];
+                                                                                                                                                echo $dataB['product_name'];
                                                                                                                                             } ?>"
                                                     name="product_name" autocomplete="off" required="">
                                             </div>
@@ -125,11 +158,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                 </select>
                                             </div>
                                             <div class="form-group col-md-12">
+                                                <label for="head">Auction Feature</label>
+                                                <select class="form-control" name="feature" autocomplete="off"
+                                                    required="">
+                                                    <option value="" selected="" disabled="">Select Category</option>
+                                                    <option value="featured">Featured</option>
+                                                    <option value="deal_of_the_day">Deal of the Day</option>
+                                                    <option value="popular-auction">Popular</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-12">
                                                 <label for="starting_price">Starting Price</label>
                                                 <input type="number" class="form-control" id="starting_price"
                                                     placeholder="Starting Price"
                                                     value="<?php if (isset($_GET['id'])) {
-                                                                                                                                                        echo $dataB['url'];
+                                                                                                                                                        echo $dataB['starting_price'];
                                                                                                                                                     } ?>"
                                                     name="starting_price" autocomplete="off" required="">
                                             </div>
@@ -138,7 +181,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                 <input type="number" class="form-control" id="store_price"
                                                     placeholder="Store Price"
                                                     value="<?php if (isset($_GET['id'])) {
-                                                                                                                                                echo $dataB['url'];
+                                                                                                                                                echo $dataB['store_price'];
                                                                                                                                             } ?>"
                                                     name="store_price" autocomplete="off" required="">
                                             </div>
@@ -147,7 +190,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                 <input type="number" class="form-control" id="capacity"
                                                     placeholder="Capacity"
                                                     value="<?php if (isset($_GET['id'])) {
-                                                                                                                                            echo $dataB['url'];
+                                                                                                                                            echo $dataB['capacity'];
                                                                                                                                         } ?>"
                                                     name="capacity" autocomplete="off" required="">
                                             </div>
@@ -156,14 +199,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                 <input type="date" class="form-control" id="date"
                                                     placeholder="Auction Date"
                                                     value="<?php if (isset($_GET['id'])) {
-                                                                                                                                        echo $dataB['url'];
+                                                                                                                                        echo $dataB['date'];
                                                                                                                                     } ?>"
                                                     name="date" autocomplete="off" required="">
                                                 <label for="time">Time</label>
                                                 <input type="time" class="form-control" id="time"
                                                     placeholder="Auction Time"
                                                     value="<?php if (isset($_GET['id'])) {
-                                                                                                                                        echo $dataB['url'];
+                                                                                                                                        echo $dataB['time'];
                                                                                                                                     } ?>"
                                                     name="time" autocomplete="off" required="">
                                             </div>
@@ -175,10 +218,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                 </div>
                                                 <?php if (isset($_GET['id'])) { ?>
                                                 <img src="<?php if (isset($_GET['id'])) {
-                                                                    echo "../media/img/product/" . $dataB['img'];
+                                                                    echo "../media/img/product/" . $dataB['product_img'];
                                                                 } ?>" class="img-circle img-responsive m-auto mx-2"
                                                     alt="<?php if (isset($_GET['id'])) {
-                                                                                                                                echo $dataB['name'];
+                                                                                                                                echo $dataB['product_name'];
                                                                                                                             } ?>"
                                                     height="100px;">
                                                 <?php } ?>
@@ -186,7 +229,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                             <div class="form-group col-md-12">
                                                 <label for="discription">Discription</label>
                                                 <textarea class="form-control" name="discription" id="discription"
-                                                    rows="3"></textarea>
+                                                    rows="3">
+                                                    <?php
+                                                    if (isset($_GET['id'])) {
+                                                        echo $dataB["discription"];
+                                                    }
+                                                    ?>
+                                                </textarea>
                                             </div>
                                             <div class="form-row pt-3">
                                                 <div class="form-group col-md-12">

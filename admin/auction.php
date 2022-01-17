@@ -60,7 +60,8 @@ $auctionData = $aucion->read();
                                                     <td><?php echo $auctionData[$i]["time"] ?></td>
                                                     <td><?php echo $auctionData[$i]["store_price"] ?></td>
                                                     <td>
-                                                        <button type="button" class="btn btn-primary">Edit</button>
+                                                        <a href="./addAuction.php?id=<?php echo $auctionData[$i]["id"] ?>"
+                                                            type="button" class="btn btn-primary">Edit</a>
                                                         <button type="button" class="btn btn-danger">Delte</button>
                                                     </td>
                                                 </tr>

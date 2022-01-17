@@ -31,6 +31,7 @@ class Auction extends Base
             array_key_exists("product_img", $data) &&
             array_key_exists("date", $data) &&
             array_key_exists("time", $data) &&
+            array_key_exists("featured_status", $data) &&
             array_key_exists("token", $data) &&
             array_key_exists("category", $data) &&
             array_key_exists("discription", $data)
@@ -42,6 +43,7 @@ class Auction extends Base
             $capacity = $data['capacity'];
             $category = $data['category'];
             $discription = $data['discription'];
+            $feature = $data['featured_status'];
             $date = $data['date'];
             $time = $data['time'];
             $endTime = strtotime("+20 minutes", strtotime($time));
@@ -59,7 +61,8 @@ class Auction extends Base
                 store_price,
                 product_img,
                 category,
-                discription
+                discription,
+                feature_status
             ) VALUES (
                 '$productName',
                 '$startingPrice',
@@ -71,11 +74,48 @@ class Auction extends Base
                 '$storePrice',
                 '$productImg',
                 '$category',
-                '$discription'
+                '$discription',
+                '$feature'
             )";
             $stmt = $this->connection->prepare($sql);
             $stmt->execute();
         }
+    }
+
+    public function getLiveAuction()
+    {
+        $sql = "SELECT * FROM " . $this->tableName . " WHERE `time` > TIME(NOW()) AND `date` = DATE(NOW())";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
+    public function getFeatured()
+    {
+        $sql = "SELECT * FROM " . $this->tableName . " WHERE featured_status = 'featured'";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
+    public function getDealOfTheDay()
+    {
+        $sql = "SELECT * FROM " . $this->tableName . " WHERE featured_status = 'deal_of_the_day'";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
+    public function getPopular()
+    {
+        $sql = "SELECT * FROM " . $this->tableName . " WHERE featured_status = 'popular-auction'";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
     }
 
     public function getUpcomingAuction()

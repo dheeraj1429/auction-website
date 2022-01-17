@@ -1,6 +1,3 @@
-<?php
-require_once "./getValuesByName.php";
-?>
 <footer class="footer side_padding second_footer">
     <!-- Footer -->
     <div class="container padding_one">
