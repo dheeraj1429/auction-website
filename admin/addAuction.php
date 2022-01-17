@@ -161,7 +161,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                 <label for="head">Auction Feature</label>
                                                 <select class="form-control" name="feature" autocomplete="off"
                                                     required="">
-                                                    <option value="" selected="" disabled="">Select Category</option>
+                                                    <option value="" selected="" disabled="">Select Feature</option>
                                                     <option value="featured">Featured</option>
                                                     <option value="deal_of_the_day">Deal of the Day</option>
                                                     <option value="popular-auction">Popular</option>

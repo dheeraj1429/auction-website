@@ -62,7 +62,7 @@ class Auction extends Base
                 product_img,
                 category,
                 discription,
-                feature_status
+                featured_status
             ) VALUES (
                 '$productName',
                 '$startingPrice',

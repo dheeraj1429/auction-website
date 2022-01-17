@@ -3,7 +3,7 @@ require_once "./model/users.php";
 
 $users = new Users();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST["submit"])) {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -22,11 +22,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             "status" => "active"
         );
         $users->create($data);
+        $_SESSION["flash"]["message"] = "Successfully created your now you're able to login";
+        $_SESSION["flash"]["type"] = "success";
         header("Location: ./logIn.php");
+    } else {
+        $_SESSION["flash"]["message"] = "Password dose not match";
+        $_SESSION["flash"]["type"] = "danger";
+        header("Refresh: 0");
+        die();
     }
 }
 
 ?>
+<?php if (isset($_SESSION["flash"])) : ?>
+<div class="alert alert-<?php echo $_SESSION["flash"]["type"] ?>" role="alert">
+    <?php echo $_SESSION["flash"]["message"] ?>
+</div>
+<?php endif; ?>
 <!-- Header -->
 <?php require_once "./header.php" ?>
 <!-- Main -->
@@ -102,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <div class="text-center mt-5 forgot_div">
                                     <!-- <a href="#">Forgot Password?</a> -->
                                     <div class="mt-4">
-                                        <button type="submit" class="logIn_button">REGISTER</button>
+                                        <button type="submit" name="submit" class="logIn_button">REGISTER</button>
                                     </div>
                                 </div>
                             </div>

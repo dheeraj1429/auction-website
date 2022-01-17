@@ -9,21 +9,38 @@ if (isset($_SESSION["email"])) {
     die();
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
     $email = $_POST['email'];
     $password = hash("sha512", $_POST['password']);
     $userData = $users->read($userEmail = $email)[0];
 
+    if (count($userData) == 0) {
+        $_SESSION["flash"]["message"] = "Invalid Username or email";
+        $_SESSION["flash"]["type"] = "warning";
+        header("Refresh: 0");
+        die();
+    }
     if ($password === $userData["password"]) {
         $_SESSION["email"] = $userData["email"];
         $_SESSION["username"] = $userData["username"];
         $_SESSION["userId"] = $userData["id"];
+        unset($_SESSION["flash"]);
         header("Location: ./userProfile.php");
+    } else {
+        $_SESSION["flash"]["message"] = "Invalid password";
+        $_SESSION["flash"]["type"] = "warning";
+        header("Refresh: 0");
+        die();
     }
 }
 ?>
 
 <!-- Header -->
+<?php if (isset($_SESSION["flash"])) : ?>
+<div class="alert alert-<?php echo $_SESSION["flash"]["type"] ?>" role="alert">
+    <?php echo $_SESSION["flash"]["message"] ?>
+</div>
+<?php endif; ?>
 <?php require_once "./header.php" ?>
 <!-- Main -->
 <main>
@@ -61,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <div class="text-center mt-5 forgot_div">
                                     <a href="#">Forgot Password?</a>
                                     <div class="mt-4">
-                                        <button type="submit" class="logIn_button">LOG IN</button>
+                                        <button type="submit" name="submit" class="logIn_button">LOG IN</button>
                                     </div>
                                 </div>
                             </form>
