@@ -1109,6 +1109,13 @@ $howItWorks = $cmsPages->getCMSByType(2);
                 </div>
                 <!-- Popular cards -->
             </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="mt-2 mb-5 d-flex justify-content-center ">
+                        <button class="Subcribe_button">See more</button>
+                    </div>
+                </div>
+            </div>
             <!-- Upcomming changes section products -->
 
         </div>
