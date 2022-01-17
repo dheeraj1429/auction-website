@@ -118,6 +118,15 @@ class Auction extends Base
         return $result;
     }
 
+    public function getMinimumPriceAuction()
+    {
+        $sql = "SELECT * FROM " . $this->tableName . " WHERE starting_price = (SELECT MIN(starting_price) FROM " . $this->tableName . ")";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
     public function getUpcomingAuction()
     {
         $sql = "SELECT * FROM " . $this->tableName . " WHERE `time` > TIME(NOW()) AND (`date` > DATE(NOW()) OR `date` = DATE(NOW()))";
