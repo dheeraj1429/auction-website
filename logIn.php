@@ -1,11 +1,8 @@
-<?php 
-   require_once 'inc/config.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
-     <?php require_once 'inc/head.php';?>
-     <link rel="stylesheet" href="./assets/style/logIn.css" />
+      <?php require_once 'inc/head.php';?>
+      <link rel="stylesheet" href="./assests/style/logIn.css" />
    </head>
 
    <body>
@@ -30,33 +27,12 @@
                         <!-- Sing In Component content -->
 
                         <!-- Sing in and log in buttons -->
-                        <!-- <div class="login_buttons_div my-4">
-                <div class="row">
-                  <div class="col-12 col-md-6 col-lg-6">
-                    <button class="log_with_facebook login_with_button">
-                      <img src="./assets/icons&images/facebbok11.png" alt="" /> Log in with Facebook
-                    </button>
-                  </div>
-                  <div class="col-12 col-md-6 col-lg-6 mt-4 mt-md-0">
-                    <button class="log_with_google login_with_button"><img src="./assets/icons&images/g.png" alt="" />
-                      Log
-                      in with Google</button>
-                  </div>
-                </div>
-              </div> -->
-                        <!-- Sing in and log in buttons -->
-
-                        <!-- <div class="d-flex mt-5 devide_div align-items-center justify-content-center">
-                <div class="line"></div>
-                <p>Or</p>
-                <div class="line"></div>
-              </div> -->
 
                         <!-- Sing in input div -->
                         <div class="mt-4">
                            <div class="sing_in_input_div d-flex align-items-center mb-4">
                               <div class="sing_in_icons_div">
-                                 <img src="./assets/icons&images/Layer 2.svg" alt="" />
+                                 <img src="./assests/icons&images/Layer 2.svg" alt="" />
                               </div>
                               <input type="email" placeholder="Email Address" />
                            </div>
@@ -103,10 +79,9 @@
       <!-- Main -->
       <!-- second_footer -->
       <!-- Footer -->
-
       <?php require_once 'inc/footer.php';?>
-
+      <!-- Footer -->
+      <!-- jquery -->
       <?php require_once 'inc/js.php';?>
-
    </body>
 </html>

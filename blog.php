@@ -1,11 +1,8 @@
-<?php
-   require_once 'inc/config.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
-      <?php require_once 'inc/head.php'; ?>
-      <link rel="stylesheet" href="./assets/style/blog.css" />
+      <?php require_once 'inc/head.php';?>
+      <link rel="stylesheet" href="./assests/style/blog.css" />
    </head>
 
    <body>
@@ -23,7 +20,7 @@
                      <h1>13 December 2021: Possible Omicron Signal in Los Angeles</h1>
                   </div>
                   <div class="col-12 col-md-6 col-lg-6 d-flex user_icons_blog align-items-center justify-content-end">
-                     <img src="./assets/icons&images/useGrop.svg" alt="" />
+                     <img src="./assests/icons&images/useGrop.svg" alt="" />
                      <div>
                         <p>bretskymd@gmail.com</p>
                         <p>November 5, 2021</p>
@@ -38,7 +35,7 @@
             <div class="container">
                <div class="row">
                   <div class="col-12 text-center">
-                     <img src="./assets/icons&images/blog/Rectangle 1297.png" alt="" class="img-fluid" />
+                     <img src="./assests/icons&images/blog/Rectangle 1297.png" alt="" class="img-fluid" />
                   </div>
                   <div class="col-12 side_padding">
                      <p class="ms-0 ms-md-3 mt-5 light_para">
@@ -62,7 +59,7 @@
             <div class="container">
                <div class="row">
                   <div class="col-12 text-center">
-                     <img src="./assets/icons&images/blog/Rectangle 1296.png" alt="" class="img-fluid" />
+                     <img src="./assests/icons&images/blog/Rectangle 1296.png" alt="" class="img-fluid" />
                   </div>
                   <div class="col-12 side_padding">
                      <p class="ms-0 ms-md-3 mt-5 light_para">
@@ -79,7 +76,7 @@
             <div class="container">
                <div class="row">
                   <div class="col-12 text-center">
-                     <img src="./assets/icons&images/blog/Rectangle 1298.png" alt="" class="img-fluid" />
+                     <img src="./assests/icons&images/blog/Rectangle 1298.png" alt="" class="img-fluid" />
                   </div>
                   <div class="col-12 side_padding">
                      <p class="ms-0 ms-md-3 mt-5 light_para">
@@ -109,7 +106,7 @@
 
                   <div class="row side_padding pt-2 pt-md-5">
                      <div class="col-12 col-md-2">
-                        <img src="./assets/icons&images/blog/Rectangle 1299.png" alt="" />
+                        <img src="./assests/icons&images/blog/Rectangle 1299.png" alt="" />
                      </div>
                      <div class="col-12 col-md-10 pt-3 pt-md-0 commentsUsers">
                         <h3>Ernest Green <span class="comment_date light_para ms-2">June 11, 2021</span></h3>
@@ -163,7 +160,6 @@
 
       <!-- Footer -->
 
-      <!-- jquery -->
       <?php require_once 'inc/js.php';?>
    </body>
 </html>

@@ -1,13 +1,13 @@
-<?php
-   require_once 'inc/config.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
       <?php require_once 'inc/head.php';?>
-      <link rel="stylesheet" href="./assets/style/content.css" />
-      <link rel="stylesheet" href="./assets/style/howItWorks.css" />
+      <link rel="stylesheet" href="./assests/style/content.css" />
+      <link rel="stylesheet" href="./assests/style/howItWorks.css" />
 
+      <!-- Slick Slider CDN -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
    </head>
 
    <body>
@@ -32,7 +32,7 @@
                         <!-- Contact content -->
                         <div class="d-flex justify-content-between">
                            <h3 class="contact_heading">Send us a Message</h3>
-                           <img src="./assets/icons&images/cons.svg" alt="" />
+                           <img src="./assests/icons&images/cons.svg" alt="" />
                         </div>
                         <!-- Contact content -->
 
@@ -41,7 +41,7 @@
                            <!-- Inputs -->
                            <div class="contact_page_input_inner mb-3 d-flex">
                               <div class="contact_icons">
-                                 <img src="./assets/icons&images/user-solid 1.svg" alt="" />
+                                 <img src="./assests/icons&images/user-solid 1.svg" alt="" />
                               </div>
                               <input type="text" placeholder="Full Name" />
                            </div>
@@ -50,7 +50,7 @@
                            <!-- Inputs -->
                            <div class="contact_page_input_inner mb-3 d-flex">
                               <div class="contact_icons">
-                                 <img src="./assets/icons&images/mail.svg" alt="" />
+                                 <img src="./assests/icons&images/mail.svg" alt="" />
                               </div>
                               <input type="email" placeholder="Email Address" />
                            </div>
@@ -59,7 +59,7 @@
                            <!-- Inputs -->
                            <div class="contact_page_input_inner mb-3 d-flex">
                               <div class="contact_icons">
-                                 <img src="./assets/icons&images/phone-solid 1.svg" alt="" />
+                                 <img src="./assests/icons&images/phone-solid 1.svg" alt="" />
                               </div>
                               <input type="number" placeholder="Phone Number" />
                            </div>
@@ -68,7 +68,7 @@
                            <!-- Inputs -->
                            <div class="contact_page_input_inner text-aria-div mb-3 d-flex">
                               <div class="contact_icons message_icons_div">
-                                 <img src="./assets/icons&images/d.svg" alt="" />
+                                 <img src="./assests/icons&images/d.svg" alt="" />
                               </div>
                               <textarea class="message_aria" name="" id="" cols="30" rows="10" placeholder="Message"></textarea>
                               <!-- <input type="number" placeholder="Phone Number"> -->
@@ -76,7 +76,7 @@
                            <!-- Inputs -->
 
                            <!-- Send Button -->
-                           <button class="send_Button mt-3">Send <img src="./assets/icons&images/send.svg" alt="" /></button>
+                           <button class="send_Button mt-3">Send <img src="./assests/icons&images/send.svg" alt="" /></button>
                            <!-- Send Button -->
                         </div>
                         <!-- Contact inputs -->
@@ -99,50 +99,13 @@
          <!-- Content us section -->
 
          <!-- News Letter Section -->
-
-         <section class="news_letter_sectionside_padding main_bg">
-            <div class="container-fluid padding_one">
-               <div class="row gx-0">
-                  <div class="col-12 d-flex align-items-center justify-content-center">
-                     <!-- News letter div -->
-                     <div class="news_letter_inner_div">
-                        <div class="row px-3 align-items-center">
-                           <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-                              <h1>Receive our newsletter:</h1>
-                           </div>
-                           <div class="col-12 col-sm-12 col-md-6 col-xl-7 col-xxl-8">
-                              <div class="row align-items-center justify-content-center">
-                                 <div class="col-12 col-md-8 col-lg-9 my-4 my-md-0">
-                                    <div class="input_group_div">
-                                       <div class="inner_input d-flex">
-                                          <input type="email" placeholder="Enter your Email" />
-                                          <div class="news_icons">
-                                             <img src="./assets/icons&images/Layer 2.svg" alt="" />
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="col-12 col-md-4 col-lg-2">
-                                    <!-- News letter button -->
-                                    <button class="send_button">Send</button>
-                                    <!-- News letter button -->
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <!-- News letter div -->
-                  </div>
-               </div>
-            </div>
-         </section>
+         <?php require_once 'inc/newsetter.php';?>
          <!-- News Letter Section -->
       </main>
       <!-- Main -->
 
       <!-- Footer -->
-      <?php require_once 'inc/footer.php';?>
-
-      <?php require_once 'inc/js.php';?>
+      <?php require_once 'inc/fotter.php';?>
+      <!-- Footer -->
    </body>
 </html>

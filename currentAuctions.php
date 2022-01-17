@@ -1,12 +1,11 @@
-<?php
-   require_once 'inc/config.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
-   <?php require_once 'inc/head.php';?>
-      <link rel="stylesheet" href="./assets/style/currentAuctions.css" />
-      <link rel="stylesheet" href="./assets/style/howItWorks.css" />
+      <?php require_once 'inc/head.php';?>
+      
+      <link rel="stylesheet" href="./assests/style/howItWorks.css" />
+      <link rel="stylesheet" href="./assests/style/currentAuctions.css" />
+
    </head>
 
    <body>
@@ -25,7 +24,7 @@
             <section class="container">
                <div class="row align-items-center pt-3">
                   <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-4 mb-md-0">
-                     <img src="./assets/icons&images/image 71.png" class="img-fluid" />
+                     <img src="./assests/icons&images/image 71.png" class="img-fluid" />
                   </div>
                   <div class="col-12 col-sm-12 col-md-6 col-lg-6 currentAuction_container1">
                      <p class="currentAuction_container1-para mb-0">Smartphone</p>
@@ -61,7 +60,7 @@
                         <!-- Auction Products badge-->
 
                         <!-- Products Images -->
-                        <img src="./assets/icons&images/image 66.png" alt="" class="img-fluid" />
+                        <img src="./assests/icons&images/image 66.png" alt="" class="img-fluid" />
                         <!-- Products Images -->
                         <!-- Products Content -->
                         <div class="Auction_products_content mt-3">
@@ -125,7 +124,7 @@
                         <!-- Auction Products badge-->
 
                         <!-- Products Images -->
-                        <img src="./assets/icons&images/image 67.png" alt="" class="img-fluid" />
+                        <img src="./assests/icons&images/image 67.png" alt="" class="img-fluid" />
                         <!-- Products Images -->
                         <!-- Products Content -->
                         <div class="Auction_products_content mt-3">
@@ -189,7 +188,7 @@
                         <!-- Auction Products badge-->
 
                         <!-- Products Images -->
-                        <img src="./assets/icons&images/image 68.png" alt="" class="img-fluid" />
+                        <img src="./assests/icons&images/image 68.png" alt="" class="img-fluid" />
                         <!-- Products Images -->
                         <!-- Products Content -->
                         <div class="Auction_products_content mt-3">
@@ -253,7 +252,7 @@
                         <!-- Auction Products badge-->
 
                         <!-- Products Images -->
-                        <img src="./assets/icons&images/image 69.png" alt="" class="img-fluid" />
+                        <img src="./assests/icons&images/image 69.png" alt="" class="img-fluid" />
                         <!-- Products Images -->
                         <!-- Products Content -->
                         <div class="Auction_products_content mt-3">
@@ -319,7 +318,7 @@
                         <!-- Auction Products badge-->
 
                         <!-- Products Images -->
-                        <img src="./assets/icons&images/image 10.png" alt="" class="img-fluid" />
+                        <img src="./assests/icons&images/image 10.png" alt="" class="img-fluid" />
                         <!-- Products Images -->
                         <!-- Products Content -->
                         <div class="Auction_products_content mt-3">
@@ -383,7 +382,7 @@
                         <!-- Auction Products badge-->
 
                         <!-- Products Images -->
-                        <img src="./assets/icons&images/image 26.png" alt="" class="img-fluid" />
+                        <img src="./assests/icons&images/image 26.png" alt="" class="img-fluid" />
                         <!-- Products Images -->
                         <!-- Products Content -->
                         <div class="Auction_products_content mt-3">
@@ -447,7 +446,7 @@
                         <!-- Auction Products badge-->
 
                         <!-- Products Images -->
-                        <img src="./assets/icons&images/image 9.png" alt="" class="img-fluid" />
+                        <img src="./assests/icons&images/image 9.png" alt="" class="img-fluid" />
                         <!-- Products Images -->
                         <!-- Products Content -->
                         <div class="Auction_products_content mt-3">
@@ -511,7 +510,7 @@
                         <!-- Auction Products badge-->
 
                         <!-- Products Images -->
-                        <img src="./assets/icons&images/image 10.png" alt="" class="img-fluid" />
+                        <img src="./assests/icons&images/image 10.png" alt="" class="img-fluid" />
                         <!-- Products Images -->
                         <!-- Products Content -->
                         <div class="Auction_products_content mt-3">
@@ -577,7 +576,7 @@
                         <!-- Auction Products badge-->
 
                         <!-- Products Images -->
-                        <img src="./assets/icons&images/Group 335.png" alt="" class="img-fluid" />
+                        <img src="./assests/icons&images/Group 335.png" alt="" class="img-fluid" />
                         <!-- Products Images -->
                         <!-- Products Content -->
                         <div class="Auction_products_content mt-3">
@@ -641,7 +640,7 @@
                         <!-- Auction Products badge-->
 
                         <!-- Products Images -->
-                        <img src="./assets/icons&images/Group 334.png" alt="" class="img-fluid" />
+                        <img src="./assests/icons&images/Group 334.png" alt="" class="img-fluid" />
                         <!-- Products Images -->
                         <!-- Products Content -->
                         <div class="Auction_products_content mt-3">
@@ -705,7 +704,7 @@
                         <!-- Auction Products badge-->
 
                         <!-- Products Images -->
-                        <img src="./assets/icons&images/Group 333.png" alt="" class="img-fluid" />
+                        <img src="./assests/icons&images/Group 333.png" alt="" class="img-fluid" />
                         <!-- Products Images -->
                         <!-- Products Content -->
                         <div class="Auction_products_content mt-3">
@@ -769,7 +768,7 @@
                         <!-- Auction Products badge-->
 
                         <!-- Products Images -->
-                        <img src="./assets/icons&images/Group 147.png" alt="" class="img-fluid" />
+                        <img src="./assests/icons&images/Group 147.png" alt="" class="img-fluid" />
                         <!-- Products Images -->
                         <!-- Products Content -->
                         <div class="Auction_products_content mt-3">
@@ -830,54 +829,15 @@
          <!--/ Products-->
 
          <!-- News Letter Section -->
-
-         <section class="news_letter_sectionside_padding main_bg">
-            <div class="container-fluid padding_one">
-               <div class="row gx-0">
-                  <div class="col-12 d-flex align-items-center justify-content-center">
-                     <!-- News letter div -->
-                     <div class="news_letter_inner_div">
-                        <div class="row px-3 align-items-center">
-                           <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-                              <h1>Receive our newsletter:</h1>
-                           </div>
-                           <div class="col-12 col-sm-12 col-md-6 col-xl-7 col-xxl-8">
-                              <div class="row align-items-center justify-content-center">
-                                 <div class="col-12 col-md-8 col-lg-9 my-4 my-md-0">
-                                    <div class="input_group_div">
-                                       <div class="inner_input d-flex">
-                                          <input type="email" placeholder="Enter your Email" />
-                                          <div class="news_icons">
-                                             <img src="./assets/icons&images/Layer 2.svg" alt="" />
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="col-12 col-md-4 col-lg-2">
-                                    <!-- News letter button -->
-                                    <button class="send_button">Send</button>
-                                    <!-- News letter button -->
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <!-- News letter div -->
-                  </div>
-               </div>
-            </div>
-         </section>
+         <?php require_once 'inc/newsletter.php';?>
          <!-- News Letter Section -->
       </main>
       <!-- Footer -->
       <!-- Footer -->
-
       <?php require_once 'inc/footer.php';?>
-
       <!-- Footer -->
       <!-- Footer -->
 
       <?php require_once 'inc/js.php';?>
-
    </body>
 </html>

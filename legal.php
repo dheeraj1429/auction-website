@@ -1,13 +1,9 @@
-<?php
-   require_once 'inc/config.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
-      
       <?php require_once 'inc/head.php';?>
-      <link rel="stylesheet" href="./assets/style/howItWorks.css" />
-      <link rel="stylesheet" href="./assets/style/policy.css" />
+      <link rel="stylesheet" href="./assests/style/howItWorks.css" />
+      <link rel="stylesheet" href="./assests/style/policy.css" />
 
    </head>
 
