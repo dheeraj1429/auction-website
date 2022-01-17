@@ -3,8 +3,8 @@ require_once "./session.php";
 require_once "./model/users.php";
 
 if (!isset($_SESSION['email'])) {
-   header("Location: ./logIn.php");
-   die();
+    header("Location: ./logIn.php");
+    die();
 }
 $users = new Users();
 $userData = $users->read($userEmail = $_SESSION["email"])[0];
@@ -39,12 +39,14 @@ $userData = $users->read($userEmail = $_SESSION["email"])[0];
                     <div class="row">
                         <div class="col-12 myAccountOptionNum col-sm-12 col-md-6 col-lg-6">
                             <p>Number of tokens purchased</p>
-                            <input type="text" class="NumberInputDis" placeholder="0" disabled />
+                            <input type="text" class="NumberInputDis" value="<?php echo $userData["bid_token"] ?>"
+                                placeholder="<?php echo $userData["bid_token"] ?>" disabled />
                         </div>
                         <div class="col-12 col-sm-12 col-md-6 col-md-6 col-lg-6">
                             <div class="col-12 myAccountOptionNum col-sm-12 mt-4 mt-md-0">
                                 <p>Number of vip tokens purchased</p>
-                                <input type="text" class="NumberInputDis" placeholder="0" disabled />
+                                <input type="text" class="NumberInputDis" value="<?php echo $userData["vip_token"] ?>"
+                                    placeholder="<?php echo $userData["vip_token"] ?>" disabled />
                             </div>
                         </div>
                     </div>
@@ -87,9 +89,9 @@ $userData = $users->read($userEmail = $_SESSION["email"])[0];
                         </div>
                         <div class="col-12 col-sm-12 col-md-6 col-md-6 col-lg-6 mt-4 mt-md-0">
                             <div class="col-12 myAccountOption col-sm-12">
-                                <p>City (*)</p>
-                                <input type="text" value="<?php echo $userData["address"] ?>" placeholder="Delhi"
-                                    disabled />
+                                <p>Address (*)</p>
+                                <input type="text" value="<?php echo $userData["address"] ?>"
+                                    placeholder="<?php echo $userData["address"] ?>" disabled />
                             </div>
                         </div>
                     </div>
