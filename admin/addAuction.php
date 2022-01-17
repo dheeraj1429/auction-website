@@ -35,7 +35,7 @@ function uploadImage($fileObj)
 
 function addCron($date, $time, $token)
 {
-    $file = fopen("cronFile.txt", "a");
+    $file = fopen("../cronFile.txt", "a");
     $cronJobs = new CronJobs();
     $cronJobs->create(array("date" => $date, "time" => $time, "token" => $token));
     $dateData = explode("-", $date);
@@ -74,9 +74,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         "product_img" => $fileName,
         "token"  => $token
     );
-    addCron($date, $time, $token);
     $auction->create($data);
+    addCron($date, $time, $token);
     header("Refresh: 0");
+    die();
 }
 ?>
 <!DOCTYPE html>
@@ -114,7 +115,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label for="head">Auction Category</label>
-                                                <select class="form-control" name="cat" autocomplete="off" required="">
+                                                <select class="form-control" name="category" autocomplete="off"
+                                                    required="">
                                                     <option value="" selected="" disabled="">Select Category</option>
                                                     <?php foreach ($categories as $category) : ?>
                                                     <option value="<?php echo $category["id"] ?>">
