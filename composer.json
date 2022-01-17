@@ -1,6 +1,12 @@
 {
-    "require": {
-        "phpmailer/phpmailer": "^6.5",
-        "predis/predis": "^1.1"
+  "autoload": {
+    "psr-4": {
+      "MyApp\\": "src"
     }
+  },
+  "require": {
+    "phpmailer/phpmailer": "^6.5",
+    "predis/predis": "^1.1",
+    "cboden/ratchet": "^0.4.4"
+  }
 }
