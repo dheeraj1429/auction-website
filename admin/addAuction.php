@@ -2,6 +2,7 @@
 include_once("../session.php");
 require_once "../model/auction.php";
 require_once "../model/cronJobs.php";
+require_once "../model/auctionCategory.php";
 
 $pageName = "Add Auction";
 date_default_timezone_set('Asia/Kolkata');
@@ -13,6 +14,8 @@ if (!isset($_SESSION['admin_email'])) {
 }
 
 $auction = new Auction();
+$auctionCategory = new AuctionCategory();
+$categories =  $auctionCategory->read();
 
 function uploadImage($fileObj)
 {
@@ -110,9 +113,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                     name="product_name" autocomplete="off" required="">
                                             </div>
                                             <div class="form-group col-md-12">
-                                                <label for="category">Category</label>
-                                                <input type="text" id="category" placeholder="Category" name="category"
-                                                    class="form-control">
+                                                <label for="head">Auction Category</label>
+                                                <select class="form-control" name="cat" autocomplete="off" required="">
+                                                    <option value="" selected="" disabled="">Select Category</option>
+                                                    <?php foreach ($categories as $category) : ?>
+                                                    <option value="<?php echo $category["id"] ?>">
+                                                        <?php echo $category["name"] ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label for="starting_price">Starting Price</label>
