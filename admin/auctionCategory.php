@@ -1,49 +1,37 @@
 <?php
-require_once "../model/category.php";
 require_once "../session.php";
+require_once "../model/auctionCategory.php";
 
-$pageName = "Category";
-$category = new Category();
-
-if (!isset($_SESSION['admin_email'])) {
-    $_SESSION['toast']['msg'] = "Please, Log-in to continue.";
-    header("location:login.php");
+if (!isset($_SESSION["admin_email"])) {
+    header("Location: ./login.php");
     die();
 }
-
-function getCategory()
-{
-    $category = new Category();
-    return $category->read();
-}
+$pageName = "Auction Category";
+$auctionCategory = new AuctionCategory();
 
 if (isset($_GET["id"])) {
     $id = $_GET["id"];
-
-    $category->delete($id);
-    header("Location: ./category.php");
+    $auctionCategory->delete($id);
+    header("Location: ./auctionCategory.php");
     die();
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST['id']) && $_POST['status']) {
-        $id = $_POST['id'];
-        $status = $_POST['status'];
-        $updatedData = array("status" => $status);
-
-        $category->update($updatedData, $id);
-        exit();
+    if (isset($_POST["status"])) {
+        $status = $_POST["status"];
+        $id = $_POST["id"];
+        $auctionCategory->update(array("status" => $status), $id);
+        echo json_encode(array("status" => "Done"));
+        die();
     }
-    $_category = $_POST["category"];
-    $data = array(
-        "name" => $_category,
-        "status" => 2,
-        "date_time" => date("Y-m-d"),
-    );
-    $category->create($data);
-    header("Location: /admin/category.php");
+    $name = $_POST["auction-category"];
+    $status = 2;
+    $data = array("name" => $name, "status" => $status);
+    $auctionCategory->create($data);
+    header("Refresh: 0");
+    die();
 }
-$categoryData = getCategory();
+$categoryData = $auctionCategory->read();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,7 +58,7 @@ $categoryData = getCategory();
                                     <div class="center"
                                         style="display: flex; width: 100%; align-items: center; justify-content: space-between">
 
-                                        <h1>Categories</h1>
+                                        <h2>Auction Categories</h2>
                                         <button type="button" class="btn btn-primary" data-toggle="modal"
                                             data-target="#exampleModal">
                                             Add
@@ -82,6 +70,7 @@ $categoryData = getCategory();
                                                 <th>Id</th>
                                                 <th>Name</th>
                                                 <th>Date</th>
+                                                <th>Time</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </thead>
@@ -90,7 +79,8 @@ $categoryData = getCategory();
                                                 <tr>
                                                     <td><?php echo $i + 1 ?></td>
                                                     <td><?php echo $categoryData[$i]["name"] ?></td>
-                                                    <td><?php echo $categoryData[$i]["date_time"] ?></td>
+                                                    <td><?php echo $categoryData[$i]["date"] ?></td>
+                                                    <td><?php echo $categoryData[$i]["time"] ?></td>
                                                     <td>
                                                         <span class="ml-5">
                                                             <label class="cstm-switch">
@@ -108,7 +98,7 @@ $categoryData = getCategory();
                                                         class="<?php echo $categoryData[$i]["name"] ?>">
                                                         <button data-toggle="modal" data-target="#editModal"
                                                             type="button" class="btn btn-primary edit-btn">Edit</button>
-                                                        <a href="./category.php?id=<?php echo $categoryData[$i]["id"] ?>"
+                                                        <a href="./auctionCategory.php?id=<?php echo $categoryData[$i]["id"] ?>"
                                                             type="button" class="btn btn-danger">Delete</a>
                                                     </td>
                                                 </tr>
@@ -132,9 +122,9 @@ $categoryData = getCategory();
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="./category.php" method="post">
+                    <form action="./auctionCategory.php" method="post">
                         <div class="modal-body">
-                            <input type="text" name="category" class="form-control" placeholder="Add Category">
+                            <input type="text" name="auction-category" class="form-control" placeholder="Add Category">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -153,10 +143,10 @@ $categoryData = getCategory();
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="./updateBlogCategory.php" method="post">
+                    <form action="./updateAuctionCategory.php" method="post">
                         <div class="modal-body">
                             <input type="hidden" name="id" id="id-input">
-                            <input id="edit-form" type="text" name="category" class="form-control"
+                            <input id="edit-form" type="text" name="name" class="form-control"
                                 placeholder="Add Category">
                         </div>
                         <div class="modal-footer">
