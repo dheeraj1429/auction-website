@@ -86,6 +86,16 @@
                             </span>
                         </a>
                     </li>
+                    <li class="menu-item">
+                        <a href="./auctionCategory.php" class="menu-link">
+                            <span class="menu-label">
+                                <span class="menu-name">Auction Category</span>
+                            </span>
+                            <span class="menu-icon">
+                                <i class="mdi mdi-plus-outline"></i>
+                            </span>
+                        </a>
+                    </li>
                     <li class="menu-item ">
                         <a href='./testomonial.php' class=' menu-link'>
                             <span class="menu-label">
