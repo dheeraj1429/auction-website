@@ -952,73 +952,6 @@ $popularAuction = $auction->getPopular();
                     </div>
                 </div>
                 <?php endforeach; ?>
-                <!-- <div class="col-12 col-sm-12 col-md-6 col-lg-12 p-3 slider_two item">
-                    <div class="userCard_testimonial">
-                        <img src="./assests/icons&images/Ellipse 46.png" alt="" class="img-fluid user_profile">
-
-                        <div>
-                            <div class="d-flex justify-content-between">
-                                <img src="/assests/icons&images/Group 122.png" alt="" class="img-fluid my-3">
-                                <img src="/assests/icons&images/Group 124.svg" alt="">
-                            </div>
-                            <p class="user_content_details">Lorem, ipsum dolor sit amet consectetur adipisicing
-                                elit.
-                                Necessitatibus
-                                fugiat hic laborum, ipsam
-                                minima magni dolore autem magnam fuga, dolorem repellendus officia temporibus
-                                molestiae quisquam
-                                illum,
-                                dolor non rerum impedit!</p>
-                            <h4>test</h4>
-                            <h5>Consultant</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-12 p-3 slider_two item">
-                    <div class="userCard_testimonial">
-                        <img src="./assests/icons&images/Ellipse 46.png" alt="" class="img-fluid user_profile">
-
-                        <div>
-                            <div class="d-flex justify-content-between">
-                                <img src="./assests/icons&images/Group 122.png" alt="" class="img-fluid my-3">
-                                <img src="./assests/icons&images/Group 124.svg" alt="">
-                            </div>
-                            <p class="user_content_details">Lorem, ipsum dolor sit amet consectetur adipisicing
-                                elit.
-                                Necessitatibus
-                                fugiat hic laborum, ipsam
-                                minima magni dolore autem magnam fuga, dolorem repellendus officia temporibus
-                                molestiae quisquam
-                                illum,
-                                dolor non rerum impedit!</p>
-                            <h4>Gabriel Nolan</h4>
-                            <h5>Consultant</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-12 p-3 slider_two item">
-                    <div class="userCard_testimonial">
-                        <img src="./assests/icons&images/Ellipse 46.png" alt="" class="img-fluid user_profile">
-
-                        <div>
-                            <div class="d-flex justify-content-between">
-                                <img src="./assests/icons&images/Group 122.png" alt="" class="img-fluid my-3">
-                                <img src="./assests/icons&images/Group 124.svg" alt="">
-                            </div>
-                            <p class="user_content_details">Lorem, ipsum dolor sit amet consectetur adipisicing
-                                elit.
-                                Necessitatibus
-                                fugiat hic laborum, ipsam
-                                minima magni dolore autem magnam fuga, dolorem repellendus officia temporibus
-                                molestiae quisquam
-                                illum,
-                                dolor non rerum impedit!</p>
-                            <h4>Gabriel Nolan</h4>
-                            <h5>Consultant</h5>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
                 <!-- Testimonial Cards -->
 
             </div>
@@ -1071,60 +1004,8 @@ $popularAuction = $auction->getPopular();
                     </div>
                 </div>
                 <?php endforeach; ?>
-                <!-- <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-                    <div class="price_plan_card_inner_div">
 
-                        <div class="price_plan_heading activeBar_plan text-center">
-                            <h1 class="my-4">15 CLICK PACK</h1>
-                        </div>
-
-                        <div class="price_plan_heading_content px-4 py-3 text-center">
-                            <p class="light_para my-4">The pack allows you to<br> have 10 aditional clicks<br> to
-                                bid.</p>
-
-                            <h2 class="Price_Dolar "><span>$</span>19</h2>
-
-                            <button class="View_More_Button my-3">Buy Now</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-                    <div class="price_plan_card_inner_div">
-
-                        <div class="price_plan_heading activeBar_plan text-center">
-                            <h1 class="my-4">20 CLICK PACK</h1>
-                        </div>
-
-                        <div class="price_plan_heading_content px-4 py-3 text-center">
-                            <p class="light_para my-4">The pack allows you to<br> have 10 aditional clicks<br> to
-                                bid.</p>
-
-                            <h2 class="Price_Dolar "><span>$</span>25</h2>
-
-                            <button class="View_More_Button my-3">Buy Now</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-                    <div class="price_plan_card_inner_div">
-
-                        <div class="price_plan_heading activeBar_plan text-center">
-                            <h1 class="my-4">25 CLICK PACK</h1>
-                        </div>
-
-                        <div class="price_plan_heading_content px-4 py-3 text-center">
-                            <p class="light_para my-4">The pack allows you to<br> have 10 aditional clicks<br> to
-                                bid.</p>
-
-                            <h2 class="Price_Dolar "><span>$</span>35</h2>
-
-                            <button class="View_More_Button my-3">Buy Now</button>
-                        </div>
-                    </div>
-                </div>
-                 Price div cards -->
+                <!-- Price div cards -->
             </div>
         </div>
     </section>
@@ -1141,7 +1022,7 @@ $popularAuction = $auction->getPopular();
                     <p class="text-white my-3">From cars to diamonds to iPhones, we have it all.</p>
                 </div>
                 <!-- Register content div -->
-                <button class="Register_Button">Register</button>
+                <a href="./register.php" class="Register_Button">Register</a>
             </div>
 
         </div>
@@ -1189,12 +1070,6 @@ $popularAuction = $auction->getPopular();
                         <p class="post_discription light_para">
                             <?php echo htmlspecialchars_decode($b["short_desc"]) ?>
                         </p>
-                        <!-- <p class="post_discription light_para">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                            Nulla nobis at fuga dolore voluptates nisi ut. Autem commodi ullam, veniam provident
-                            explicabo earum! Saepe, soluta iusto. In laborum saepe sequi cupiditate quaerat non
-                            recusandae consequuntur commodi blanditiis autem possimus officia iure sunt numquam nesciunt
-                            cum, iusto ipsum? Nisi veritatis necessitatibus ullam. Praesentium, ducimus. Ut ipsam quos
-                            illum doloremque inventore ex.</p> -->
 
                         <a href="./blog.php?id=<?php echo $b["id"] ?>" target="_blank" class=" Read_more_button
                             my-3">Read More <img src="./assests/icons&images/Vector (2).svg" alt=""></a>
