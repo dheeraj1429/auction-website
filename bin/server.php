@@ -3,14 +3,14 @@
 use Ratchet\Server\IoServer;
 use Ratchet\Http\HttpServer;
 use Ratchet\WebSocket\WsServer;
-use MyApp\Chat;
+use Auction\AuctionRoom;
 
 require dirname(__DIR__) . '/vendor/autoload.php';
 
 $server = IoServer::factory(
     new HttpServer(
         new WsServer(
-            new Chat()
+            new AuctionRoom()
         )
     ),
     8080

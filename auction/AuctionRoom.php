@@ -1,11 +1,11 @@
 <?php
 
-namespace MyApp;
+namespace Auction;
 
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
 
-class Chat implements MessageComponentInterface
+class AuctionRoom implements MessageComponentInterface
 {
     protected $clients;
 
@@ -25,6 +25,8 @@ class Chat implements MessageComponentInterface
     public function onMessage(ConnectionInterface $from, $msg)
     {
         $numRecv = count($this->clients) - 1;
+        print_r($this->clients);
+        die();
         echo sprintf(
             'Connection %d sending message "%s" to %d other connection%s' . "\n",
             $from->resourceId,
