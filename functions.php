@@ -1,5 +1,5 @@
 <?php
-require_once "./model/functions.php";
+require_once "./model/participant.php";
 require_once "./model/auctionCategory.php";
 
 function isParticepeted($email, $auctionId)

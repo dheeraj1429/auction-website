@@ -42,15 +42,23 @@ class RedisConnection
         return json_decode($data, true);
     }
 
-    public function setUsers($id)
+    public function setUsers($user)
     {
         $data = $this->getUsers();
         if (isset($data)) {
-            array_push($data, $id);
+            array_push($data, $user);
         } else {
-            $data = array($id);
+            $data = array($user);
         }
         $this->redis->hset($this->token, "users", json_encode($data));
+    }
+
+    public function rmUser($user)
+    {
+        $users = $this->getUsers();
+        $index = array_search($user, $users);
+        unset($users[$index]);
+        $this->redis->hset($this->token, "users", json_encode($users));
     }
 
     public function rmFisrstValue($value)

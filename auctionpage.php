@@ -51,10 +51,10 @@ $auctionData = $auction->getAuctionByToken($_GET["token"]);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
     <link rel="icon" href="<?php echo "./media/" . getValuesByName("favicon") ?>">
     <script>
-    const userId = "<?php echo $_SESSION["userId"] ?>";
-    const email = "<?php echo $_SESSION["email"] ?>";
-    const token = "<?php echo $_GET["token"] ?>";
-    const auctionId = "<?php echo $auctionData["id"] ?>";
+        const userId = "<?php echo $_SESSION["userId"] ?>";
+        const email = "<?php echo $_SESSION["email"] ?>";
+        const token = "<?php echo $_GET["token"] ?>";
+        const auctionId = "<?php echo $auctionData["id"] ?>";
     </script>
 </head>
 
@@ -99,12 +99,9 @@ $auctionData = $auction->getAuctionByToken($_GET["token"]);
                     <div class="container-fluid">
                         <a class="navbar-brand" href="./index.php">
                             <!-- <h1>Auction</h1> -->
-                            <img width="50px" height="50px" src="<?php echo "./media/" . getValuesByName("logo") ?>"
-                                alt="logo">
+                            <img width="50px" height="50px" src="<?php echo "./media/" . getValuesByName("logo") ?>" alt="logo">
                         </a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                            aria-label="Toggle navigation">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNav">
@@ -136,19 +133,18 @@ $auctionData = $auction->getAuctionByToken($_GET["token"]);
 
 
                                 <?php if (isset($_SESSION["email"])) : ?>
-                                <div class="profile-info">
-                                    <a href="./userProfile.php">
-                                        <img style="width: 50px; height: 50px; border-radius: 50%"
-                                            src="./media/img/users/default.png" alt="profile-img">
-                                    </a>
-                                </div>
+                                    <div class="profile-info">
+                                        <a href="./userProfile.php">
+                                            <img style="width: 50px; height: 50px; border-radius: 50%" src="./media/img/users/default.png" alt="profile-img">
+                                        </a>
+                                    </div>
                                 <?php else : ?>
-                                <div class="sign_in_button d-flex align-items-center ms-5">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="./logIn.php">SIGN IN</a>
-                                    </li>
-                                    <a href="./register.php" class="Subcribe_button_sm text-white">REGISTER</a>
-                                </div>
+                                    <div class="sign_in_button d-flex align-items-center ms-5">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" aria-current="page" href="./logIn.php">SIGN IN</a>
+                                        </li>
+                                        <a href="./register.php" class="Subcribe_button_sm text-white">REGISTER</a>
+                                    </div>
                                 <?php endif; ?>
                             </ul>
                         </div>
@@ -168,8 +164,7 @@ $auctionData = $auction->getAuctionByToken($_GET["token"]);
             <div class="container">
                 <div class="row g-3">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-6">
-                        <img src="./media/img/product/<?php echo $auctionData["product_img"] ?>"
-                            class="d-block w-75 img-fluid img_slide" alt="..." />
+                        <img src="./media/img/product/<?php echo $auctionData["product_img"] ?>" class="d-block w-75 img-fluid img_slide" alt="..." />
                     </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-6  ">
                         <h3 class="fw-bold"><?php echo $auctionData["product_name"] ?></h3>
@@ -204,8 +199,7 @@ $auctionData = $auction->getAuctionByToken($_GET["token"]);
                             </div>
                         </div>
 
-                        <button id="submit-btn"
-                            class="btn btn-lg rounded-pill h4 fw-bolder btn-danger buy_Button mb-5">Submit</button>
+                        <button id="submit-btn" class="btn btn-lg rounded-pill h4 fw-bolder btn-danger buy_Button mb-5">Submit</button>
                     </div>
                 </div>
         </section>

@@ -28,12 +28,12 @@ if (array_key_exists("email", $data) && array_key_exists("userId", $data) && arr
     $auctionId = $data["auction_id"];
     $token = $data["token"];
     $userId = $data["userId"];
-    $redis = new RedisConnection($token);
+    // $redis = new RedisConnection($token);
     if (isParticepeted($email, $auctionId)) {
-        $comfirmation = json_encode(array("email" => $email, "comfirmation" => true));
-        $redis->setUsers($userId);
+        $comfirmation = json_encode(array("email" => $email, "confirmation" => true));
+        // $redis->setUsers($userId);
     } else {
-        $comfirmation = json_encode(array("email" => $email, "comfirmation" => false));
+        $comfirmation = json_encode(array("email" => $email, "confirmation" => false));
     }
     echo $comfirmation;
 } else {
