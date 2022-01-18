@@ -5,6 +5,7 @@ require_once "./model/blog.php";
 require_once "./model/cmsPages.php";
 require_once "./model/participant.php";
 require_once "./model/auction.php";
+require_once "./functions.php";
 require_once "session.php";
 
 $package = new Package();
@@ -32,6 +33,12 @@ $dealOfTheDay = $auction->getDealOfTheDay();
 $popularAuction = $auction->getPopular();
 ?>
 <?php require_once "./header.php" ?>
+<?php if (isset($_SESSION["flash"])) : ?>
+<div class="alert alert-<?php echo $_SESSION["flash"]["type"] ?>" role="alert">
+    <?php echo $_SESSION["flash"]["message"] ?>
+</div>
+<?php unset($_SESSION["flash"]); ?>
+<?php endif; ?>
 <!-- Main-Navbar -->
 
 <!-- Header -->
@@ -154,8 +161,13 @@ $popularAuction = $auction->getPopular();
 
                             <!-- Subcribe button -->
                             <div class="mt-4 mb-5">
-                                <button class="Subcribe_button">Subscribe for
-                                    <?php echo $p["starting_price"] ?></button>
+                                <?php if (!isParticepeted($_SESSION["email"], $p["id"])) : ?>
+                                <a href="./registerAuction.php?auction_id=<?php echo $p["id"] ?>&token_value=<?php echo $p["starting_price"] ?>"
+                                    class="Subcribe_button">Subscribe for
+                                    <?php echo $p["starting_price"] ?></a>
+                                <?php else :  ?>
+                                <button type="button" class="btn btn-primary" disabled>Subscribed</button>
+                                <?php endif; ?>
                             </div>
                             <!-- Subcribe button -->
 
@@ -259,8 +271,13 @@ $popularAuction = $auction->getPopular();
 
                                     <!-- Subcribe button -->
                                     <div class="mt-4 mb-5">
-                                        <button class="Subcribe_button">Subscribe for
-                                            <?php echo $d["starting_price"] ?></button>
+                                        <?php if (!isParticepeted($_SESSION['email'], $d["id"])) : ?>
+                                        <a href="./registerAuction.php?auction_id=<?php echo $d["id"] ?>&token_value=<?php echo $d["starting_price"] ?>"
+                                            class="Subcribe_button">Subscribe for
+                                            <?php echo $d["starting_price"] ?></a>
+                                        <?php else : ?>
+                                        <button type="button" class="btn btn-primary" disabled>Subscribed</button>
+                                        <?php endif; ?>
                                     </div>
                                     <!-- Subcribe button -->
 
@@ -889,8 +906,13 @@ $popularAuction = $auction->getPopular();
 
                                     <!-- Subcribe button -->
                                     <div class="mt-4 mb-5">
-                                        <button class="Subcribe_button">Subscribe for
-                                            <?php echo $f["starting_price"] ?></button>
+                                        <?php if (!isParticepeted($_SESSION["email"], $f["id"])) : ?>
+                                        <a href="./registerAuction.php?auction_id=<?php echo $f["id"] ?>&token_value=<?php echo $f["starting_price"] ?>"
+                                            class="Subcribe_button">Subscribe for
+                                            <?php echo $f["starting_price"] ?></a>
+                                        <?php else : ?>
+                                        <button type="button" class="btn btn-primary" disabled>Subscribed</button>
+                                        <?php endif; ?>
                                     </div>
                                     <!-- Subcribe button -->
 
