@@ -2,6 +2,7 @@
 require_once "./session.php";
 require_once "./model/auction.php";
 require_once "./getValuesByName.php";
+require_once "./functions.php";
 
 if (!isset($_GET["token"])) {
     header("Location: ./auction.php");
@@ -160,37 +161,6 @@ $auctionData = $auction->getAuctionByToken($_GET["token"]);
     </header>
     <!-- Header -->
 
-    <!-- <section>
-      <div class="container-fluid d-flex pt-5">
-        <div class="row mx-5">
-          <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-            <img
-              src="./assests/icons&images/Rectangle 1234.png"
-              class="img-fluid my-3"
-            />
-          </div>
-          <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-            <img
-              src="./assests/icons&images/Rectangle 1236.png"
-              class="img-fluid my-3"
-            />
-          </div>
-          <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-            <img
-              src="./assests/icons&images/Rectangle 1237.png"
-              class="img-fluid my-3"
-            />
-          </div>
-          <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-            <img
-              src="./assests/icons&images/Rectangle 1235.png"
-              class="img-fluid my-3"
-            />
-          </div>
-        </div>
-      </div>
-    </section> -->
-
     <!-- Main -->
     <main>
         <!---Card-->
@@ -203,13 +173,12 @@ $auctionData = $auction->getAuctionByToken($_GET["token"]);
                     </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-6  ">
                         <h3 class="fw-bold"><?php echo $auctionData["product_name"] ?></h3>
-                        <h5>Headphones </h5>
+                        <h5><?php echo getAucitonCategory($auctionData["category"]) ?></h5>
                         <div class="col-6 col-sm-6 col-md-6 col-lg-6">
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus aut officia
-                                accusantium cupiditate iusto fugiat unde quod reiciendis debitis illum?</p>
+                            <p><?php echo $auctionData["discription"] ?></p>
                         </div>
 
-                        <h3 class="h2">time:</h3>
+                        <h3 class="h2">time: <span id="time">00:00</span></h3>
                         <div class="d-flex mt-2">
                             <div>
                                 <p class="h3">Store price:</p>
@@ -240,39 +209,6 @@ $auctionData = $auction->getAuctionByToken($_GET["token"]);
                     </div>
                 </div>
         </section>
-        <!-- <section class="news_letter_sectionside_padding main_bg">
-            <div class="container-fluid padding_one">
-                <div class="row gx-0">
-                    <div class="col-12 d-flex align-items-center justify-content-center">
-                        News letter div 
-                        <div class="news_letter_inner_div">
-                            <div class="row px-3 align-items-center">
-                                <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-                                    <h1>Receive our newsletter:</h1>
-                                </div>
-                                <div class="col-12 col-sm-12 col-md-6 col-xl-7 col-xxl-8">
-                                    <div class="row align-items-center justify-content-center">
-                                        <div class="col-12 col-md-8 col-lg-9 my-4 my-md-0">
-                                            <div class="input_group_div">
-                                                <div class="inner_input d-flex">
-                                                    <input type="email" placeholder="Enter your Email" />
-                                                    <div class="news_icons">
-                                                        <img src="./assests/icons&images/Layer 2.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-4 col-lg-2">
-                                            <button class="send_button">Send</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
         <!-- News Letter Section -->
     </main>
     <!-- Main -->
@@ -293,13 +229,6 @@ $auctionData = $auction->getAuctionByToken($_GET["token"]);
                     </p>
 
                     <!-- Footer icons -->
-                    <!-- <div class="footer_icons">
-          <i class="fab fa-facebook-f" class="img-fluid"></i>
-          <i class="fab fa-instagram" class="img-fluid"></i>
-          <i class="fab fa-linkedin-in" class="img-fluid"></i>
-          <i class="fab fa-twitter" class="img-fluid"></i>
-        </div> -->
-                    <!-- Footer icons -->
                 </div>
 
                 <div class="col-12 col-sm-6 col-md-3 col-lg-2 mt-3 mt-md-0">
@@ -314,26 +243,6 @@ $auctionData = $auction->getAuctionByToken($_GET["token"]);
                     <p class="light_para"><a href="./legal.html">Legal</a></p>
                 </div>
 
-                <!-- <div class="col-12 col-sm-6 col-md-3 col-lg-3">
-        <h1 class="text-white my-3">STAY IN TOUCH</h1>
-        <div class="footer-icons_div d-flex align-items-center">
-          <i class=" fas fa-map-marker-alt text-white" class="img-fluid"></i>
-          <p class="light_para mb-0 ms-3"><a href="#">Residence les dunes tanisay, 2033 Akolk, UK City</a></p>
-        </div>
-
-        <div class="footer-icons_div my-3 d-flex align-items-center">
-          <i class="fas fa-phone-alt text-white" class="img-fluid"></i>
-          <p class="light_para mb-0 ms-3"><a href="#">7352-256-546-202</a></p>
-        </div>
-
-        <div class="footer-icons_div d-flex align-items-center">
-          <i class="fas fa-mail-bulk text-white" class="img-fluid"></i>
-          <p class="light_para mb-0 ms-3"><a href="#">contact@gami.com</a></p>
-        </div>
-
-
-      </div> -->
-
                 <div class="col-12 col-sm-6 col-md-4 col-lg-4 ms-lg-5 ms-md-0">
                     <h1 class="text-white my-3">NEWSLETTER</h1>
                     <!-- <p class="light_para">Lorem ipsum dolor sit amet consectetur adipisicing.</p> -->
@@ -344,13 +253,6 @@ $auctionData = $auction->getAuctionByToken($_GET["token"]);
                         <div class="newlettButton">SUBSCRIBE</div>
                     </div>
                     <!-- News letter section -->
-
-                    <!-- <p class="light_para"><a href="#">Payment Methods</a></p>
-        <p class="light_para"><a href="#">Money-back gurantee</a></p>
-        <p class="light_para"><a href="#">Return</a></p>
-        <p class="light_para"><a href="#">Shipping</a></p>
-        <p class="light_para"><a href="#">Terms and conditions</a></p>
-        <p class="light_para"><a href="#">Privacy Prolicy</a></p> -->
                 </div>
             </div>
         </div>
@@ -375,7 +277,7 @@ $auctionData = $auction->getAuctionByToken($_GET["token"]);
     <!-- Footer -->
 
     <!-- Bootsrap 5 script CDN -->
-    <script src="./assests/js/auction.js"></script>
+    <script src="./assests/js/auction2.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" class="img-fluid"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" class="img-fluid"></script>
 </body>

@@ -31,7 +31,7 @@ if (!isParticepeted($_SESSION['email'], $_GET["auction_id"])) {
 
     $data = array("auction_id" => $_GET["auction_id"], "user_email" => $_SESSION["email"]);
     $walletData = array(
-        "user_id" => $_SESSION["user_id"],
+        "user_id" => $_SESSION["userId"],
         "use_type" => "remove",
         "token_value" => $_GET["token_value"],
         "auction_id" => $_GET["auction_id"],
