@@ -64,13 +64,13 @@ class AuctionRoom implements MessageComponentInterface
                 }
             } else if ($messageData["type"] == "updatePrice") {
                 if ($this->isVarified($from, $messageData["token"])) {
-                    // if ($this->isTime($messageData["auctionId"])) {
-                    $this->sendAll($messageData["token"], $messageData, $from);
-                    // } else {
-                    //     $from->send(json_encode(array("time_over" => true, "message" => "time is over")));
-                    //     $from->close();
-                    //     $this->client->delete($from);
-                    // }
+                    if ($this->isTime($messageData["auctionId"])) {
+                        $this->sendAll($messageData["token"], $messageData, $from);
+                    } else {
+                        $from->send(json_encode(array("time_over" => true, "message" => "time is over")));
+                        $from->close();
+                        $this->client->detach($from);
+                    }
                 }
             }
         }

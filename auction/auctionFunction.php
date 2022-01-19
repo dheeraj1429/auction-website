@@ -36,9 +36,17 @@ function isParticepeted($email, $auctionId)
     $participants = $participant->getParticipant($email, $auctionId);
     if (empty($participants)) {
         return false;
-    } else {
+    }
+    return true;
+}
+
+function validateToken($token)
+{
+    $redis = new RedisConnection($token);
+    if ($redis->isValidToken()) {
         return true;
     }
+    return false;
 }
 
 function rmUsers($token, $user)

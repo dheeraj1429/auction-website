@@ -53,6 +53,20 @@ class RedisConnection
         $this->redis->hset($this->token, "users", json_encode($data));
     }
 
+    public function createRoom()
+    {
+        $this->redis->hset($this->token, "users", json_encode(array()));
+    }
+
+    public function isValidToken()
+    {
+        $tokens = $this->redis->hget($this->token, "users");
+        if ($tokens) {
+            return true;
+        }
+        return false;
+    }
+
     public function rmUser($user)
     {
         $users = $this->getUsers();

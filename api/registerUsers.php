@@ -6,7 +6,10 @@ header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 require_once "../model/participant.php";
+require_once "../model/auction.php";
 require_once "../redis.php";
+
+date_default_timezone_set("Asia/Kolkata");
 
 
 function isParticepeted($email, $auctionId)
@@ -28,14 +31,48 @@ if (array_key_exists("email", $data) && array_key_exists("userId", $data) && arr
     $auctionId = $data["auction_id"];
     $token = $data["token"];
     $userId = $data["userId"];
-    // $redis = new RedisConnection($token);
-    if (isParticepeted($email, $auctionId)) {
-        $comfirmation = json_encode(array("email" => $email, "confirmation" => true));
-        // $redis->setUsers($userId);
+
+    $redis = new RedisConnection($token);
+    $auction = new Auction();
+    $auctionData = $auction->read($id = $auctionId)[0];
+    $startingTime = $auctionData["time"];
+    $endTime = $auctionData["end_time"];
+    $waitingTime = date("H:i:s", strtotime("+10 minutes", strtotime($startingTime)));
+
+    if (time() >= strtotime($startingTime)) {
+        if (isParticepeted($email, $auctionId)) {
+            if (time() >= strtotime($waitingTime)) {
+                $timeLeft = round(abs(strtotime($endTime) - strtotime(date("H:i:s"))) / 60, 2);
+                $confirmation = json_encode(
+                    array(
+                        "email" => $email,
+                        "confirmation" => true,
+                        "waiting" => false,
+                        "time_left" => $timeLeft
+                    )
+                );
+                if (!$redis->isValidToken()) {
+                    $redis->createRoom();
+                }
+            } else {
+                $timeLeft = round(abs(strtotime($waitingTime) - strtotime(date("H:i:s"))) / 60, 2);
+                $confirmation = json_encode(
+                    array(
+                        "email" => $email,
+                        "confirmation" => true,
+                        "time_left" => $timeLeft,
+                        "waiting" => true
+                    )
+                );
+            }
+        } else {
+            $confirmation = json_encode(array("email" => $email, "confirmation" => false));
+        }
+        echo $confirmation;
     } else {
-        $comfirmation = json_encode(array("email" => $email, "confirmation" => false));
+        $data = json_encode(array("message" => "Not started yet"));
+        echo $data;
     }
-    echo $comfirmation;
 } else {
     header('HTTP/1.0 403 Forbidden');
     echo "Invalid parameters";

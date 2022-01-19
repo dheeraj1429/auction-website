@@ -49,6 +49,36 @@ function startAuctionCalls() {
   };
 }
 
+function startClock(time) {
+  const timeElement = document.getElementById("time");
+  timeElement.innerHTML = `0${time}:00`;
+
+  const interval = setInterval(() => {
+    let currTime = timeElement.innerHTML.split(":");
+    let minutes = parseInt(currTime[0]);
+    let seconds = parseInt(currTime[1]);
+
+    if (seconds !== 0) {
+      seconds -= 1;
+    } else {
+      minutes = minutes - 1;
+      seconds = 59;
+    }
+    if (minutes === 0 && seconds === 0) {
+      stop();
+    }
+    if (seconds < 10) {
+      timeElement.innerHTML = `0${minutes}:0${seconds}`;
+    } else {
+      timeElement.innerHTML = `0${minutes}:${seconds}`;
+    }
+  }, 1000);
+  const stop = () => {
+    clearInterval(interval);
+    setAuctionCalls();
+  };
+}
+
 function setAuctionCalls() {
   fetch("./api/registerUsers.php", {
     method: "POST",
@@ -64,7 +94,11 @@ function setAuctionCalls() {
   }).then((response) => {
     response.json().then((data) => {
       if (data["confirmation"]) {
-        startAuctionCalls();
+        console.log(data);
+        if (!data["waiting"]) {
+          startAuctionCalls();
+        }
+        startClock(Math.round(data["time_left"]));
       } else {
         window.location.replace("./index.php");
       }
