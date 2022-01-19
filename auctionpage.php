@@ -15,6 +15,11 @@ if (!isset($_SESSION["email"]) && !isset($_SESSION["userId"])) {
 }
 $auction = new Auction();
 $auctionData = $auction->getAuctionByToken($_GET["token"]);
+
+if (!$auctionData) {
+    header("HTTP/1.0 404 Not Found");
+    die();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

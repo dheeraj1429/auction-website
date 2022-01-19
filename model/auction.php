@@ -193,7 +193,10 @@ class Auction extends Base
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll();
-        return $result[0];
+        if ($result) {
+            return $result[0];
+        }
+        return null;
     }
 
     public function getIdByTime($id)
