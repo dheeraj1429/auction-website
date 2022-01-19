@@ -1,6 +1,7 @@
 <?php
 require_once "./model/auction.php";
 require_once "./model/participant.php";
+require_once "./model/bids.php";
 require_once "./redis.php";
 
 
@@ -53,4 +54,15 @@ function rmUsers($token, $user)
 {
     $redis = new RedisConnection($token);
     $redis->rmUser($user);
+}
+
+function setBid($userId, $auctionId, $amount)
+{
+    $bids = new Bids();
+    $data = array(
+        "user_id" => $userId,
+        "auction_id" => $auctionId,
+        "amount" => $amount
+    );
+    $bids->create($data);
 }

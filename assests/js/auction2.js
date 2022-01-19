@@ -18,13 +18,17 @@ function startAuctionCalls() {
     const updatedData = JSON.parse(e.data);
     console.log(updatedData);
     if (updatedData["token"] === token) {
-      if (updatedData["type"] === "updatUsers") {
-        const numberOfUsers = updatedData["numberOfUsers"];
-        const users = document.getElementById("users");
-        users.innerHTML = numberOfUsers;
-      } else if (updatedData["type"] === "updatePrice") {
-        const newPrice = document.getElementById("new-price");
-        newPrice.innerHTML = updatedData["bidPrice"] + 20;
+      if (!updatedData["time_over"]) {
+        if (updatedData["type"] === "updateUsers") {
+          const numberOfUsers = updatedData["numberOfUsers"];
+          const users = document.getElementById("users");
+          users.innerHTML = numberOfUsers;
+        } else if (updatedData["type"] === "updatePrice") {
+          const newPrice = document.getElementById("new-price");
+          newPrice.innerHTML = updatedData["bidPrice"] + 20;
+        }
+      } else {
+        getWinner();
       }
     }
   };
@@ -47,6 +51,21 @@ function startAuctionCalls() {
     ws.send(data);
     newPriceElement.innerHTML = newPrice + 20;
   };
+}
+
+function getWinner() {
+  const url = `./api/winner.php?=${auctionId}`;
+
+  fetch(url, {
+    method: "GET",
+    headers: {
+      "content-type": "application/json;charset=UTF-8",
+    },
+  }).then((response) => {
+    response.json().then((data) => {
+      console.log(data);
+    });
+  });
 }
 
 function startClock(time) {
@@ -73,6 +92,7 @@ function startClock(time) {
       timeElement.innerHTML = `0${minutes}:${seconds}`;
     }
   }, 1000);
+
   const stop = () => {
     clearInterval(interval);
     setAuctionCalls();
@@ -93,14 +113,25 @@ function setAuctionCalls() {
     }),
   }).then((response) => {
     response.json().then((data) => {
-      if (data["confirmation"]) {
-        console.log(data);
-        if (!data["waiting"]) {
-          startAuctionCalls();
+      if (!data["time_over"]) {
+        if (data["confirmation"]) {
+          console.log(data);
+          if (!data["waiting"]) {
+            startAuctionCalls();
+            document.getElementById("number-of-people").style.display = "block";
+            document.getElementById("submit-btn").style.display = "block";
+            document.getElementById("waiting-time").style.display = "none";
+          } else {
+            document.getElementById("number-of-people").style.display = "none";
+            document.getElementById("submit-btn").style.display = "none";
+            document.getElementById("waiting-time").style.display = "block";
+          }
+          startClock(Math.round(data["time_left"]));
+        } else {
+          window.location.replace("./index.php");
         }
-        startClock(Math.round(data["time_left"]));
       } else {
-        window.location.replace("./index.php");
+        window.location.replace(`./winningPage.php?id=${data["auction_id"]}`);
       }
     });
   });

@@ -39,36 +39,42 @@ if (array_key_exists("email", $data) && array_key_exists("userId", $data) && arr
     $endTime = $auctionData["end_time"];
     $waitingTime = date("H:i:s", strtotime("+10 minutes", strtotime($startingTime)));
 
-    if (time() >= strtotime($startingTime)) {
-        if (isParticepeted($email, $auctionId)) {
-            if (time() >= strtotime($waitingTime)) {
-                $timeLeft = round(abs(strtotime($endTime) - strtotime(date("H:i:s"))) / 60, 2);
-                $confirmation = json_encode(
-                    array(
-                        "email" => $email,
-                        "confirmation" => true,
-                        "waiting" => false,
-                        "time_left" => $timeLeft
-                    )
-                );
-                if (!$redis->isValidToken()) {
-                    $redis->createRoom();
+    if (time() >= strtotime($startingTime) && date("Y-m-d") == $auctionData["date"]) {
+        if (time() <= strtotime($endTime)) {
+            if (isParticepeted($email, $auctionId)) {
+                if (time() >= strtotime($waitingTime)) {
+                    $timeLeft = round(abs(strtotime($endTime) - strtotime(date("H:i:s"))) / 60, 2);
+                    $confirmation = json_encode(
+                        array(
+                            "email" => $email,
+                            "confirmation" => true,
+                            "waiting" => false,
+                            "time_left" => $timeLeft,
+                            "time_over" => false
+                        )
+                    );
+                    if (!$redis->isValidToken()) {
+                        $redis->createRoom();
+                    }
+                } else {
+                    $timeLeft = round(abs(strtotime($waitingTime) - strtotime(date("H:i:s"))) / 60, 2);
+                    $confirmation = json_encode(
+                        array(
+                            "email" => $email,
+                            "confirmation" => true,
+                            "time_left" => $timeLeft,
+                            "waiting" => true,
+                            "time_over" => false
+                        )
+                    );
                 }
             } else {
-                $timeLeft = round(abs(strtotime($waitingTime) - strtotime(date("H:i:s"))) / 60, 2);
-                $confirmation = json_encode(
-                    array(
-                        "email" => $email,
-                        "confirmation" => true,
-                        "time_left" => $timeLeft,
-                        "waiting" => true
-                    )
-                );
+                $confirmation = json_encode(array("email" => $email, "confirmation" => false));
             }
+            echo $confirmation;
         } else {
-            $confirmation = json_encode(array("email" => $email, "confirmation" => false));
+            echo json_encode(array("message" => "Auction over", "time_over" => true, "auction_id" => $auctionId));
         }
-        echo $confirmation;
     } else {
         $data = json_encode(array("message" => "Not started yet"));
         echo $data;
