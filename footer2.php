@@ -27,10 +27,13 @@
                 <h1 class="text-white my-3">NEWSLETTER</h1>
 
                 <!-- News letter section -->
-                <div class="newsLetter_search">
-                    <input type="search" placeholder="Enter your email" />
-                    <div class="newlettButton">SUBSCRIBE</div>
-                </div>
+                <form action="./addNewsLetter.php" method="post">
+                    <div class="newsLetter_search">
+                        <input type="email" autocomplete="off" required name="email" placeholder="Enter your email" />
+                        <button style="border: none" type="submit" name="submit"
+                            class="newlettButton">SUBSCRIBE</button>
+                    </div>
+                </form>
                 <!-- News letter section -->
 
 
