@@ -996,7 +996,7 @@ $popularAuction = $auction->getPopular();
             <div class="row ">
                 <div class="col-12 ">
                     <div class="hot_it_works_heading text-center py-3">
-                        <h1 class="white_heading">TESTMONIALS OF OUR <span class="span_color_2">WINNERS</span></h1>
+                        <h1 class="white_heading">OUR PRICING <span class="span_color_2">PLANS</span></h1>
                         <div class="line_div my-4"></div>
                     </div>
                 </div>
