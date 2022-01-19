@@ -49,7 +49,8 @@ class Bids extends Base
 
     public function getReverceSortedBids($auctionId)
     {
-        $sql = "SELECT * FROM " . $this->tableName . " ORDER BY amount DESC";
+        // SELECT * FROM bids JOIN users ON bids.user_id = users.id WHERE auction_id = 8 ORDER BY amount DESC;
+        $sql = "SELECT * FROM " . $this->tableName . " JOIN users ON bids.user_id = users.id WHERE auction_id = '$auctionId' ORDER BY amount DESC";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll();

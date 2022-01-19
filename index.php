@@ -161,12 +161,19 @@ $popularAuction = $auction->getPopular();
 
                             <!-- Subcribe button -->
                             <div class="mt-4 mb-5">
+                                <?php if (isset($_SESSION["email"])) : ?>
                                 <?php if (!isParticepeted($_SESSION["email"], $p["id"])) : ?>
                                 <a href="./registerAuction.php?auction_id=<?php echo $p["id"] ?>&token_value=<?php echo $p["starting_price"] ?>"
                                     class="Subcribe_button">Subscribe for
                                     <?php echo $p["starting_price"] ?></a>
                                 <?php else :  ?>
                                 <button type="button" class="btn btn-primary" disabled>Subscribed</button>
+                                <?php endif; ?>
+                                <?php else : ?>
+                                <a href="./registerAuction.php?auction_id=<?php echo $p["id"] ?>&token_value=<?php echo $p["starting_price"] ?>"
+                                    class="Subcribe_button">Subscribe for
+                                    <?php echo $p["starting_price"] ?></a>
+
                                 <?php endif; ?>
                             </div>
                             <!-- Subcribe button -->
