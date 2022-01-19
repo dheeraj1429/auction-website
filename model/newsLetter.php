@@ -25,10 +25,9 @@ class NewsLetter extends Base
 
     public function create($data)
     {
-        if (array_key_exists("user_id", $data) && array_key_exists("email", $data)) {
-            $userId = $data["user_id"];
+        if (array_key_exists("email", $data)) {
             $email = $data["email"];
-            $sql = "INSERT INTO " . $this->tableName . " (user_id, email) VALUES ('$userId', '$email')";
+            $sql = "INSERT INTO " . $this->tableName . " (email, status) VALUES ('$email', '2')";
             $stmt = $this->connection->prepare($sql);
             $result = $stmt->execute();
             return $result;
