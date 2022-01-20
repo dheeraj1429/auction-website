@@ -47,7 +47,7 @@ class Auction extends Base
             $date = $data['date'];
             $time = $data['time'];
             $endTime = strtotime("+20 minutes", strtotime($time));
-            $endTime = date('h:i', $endTime);
+            $endTime = date('H:i', $endTime);
             $productImg = $data['product_img'];
             $token = $data["token"];
             $sql = "INSERT INTO " . $this->tableName . " (
