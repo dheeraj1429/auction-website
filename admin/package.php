@@ -24,6 +24,7 @@ if (isset($_GET["id"]) && isset($_GET["params"])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $price = $_POST["price"];
     $click = $_POST["click"];
+    $category = $_POST["category"];
 
     if (isset($_GET["params"]) && $_GET["params"] == "edit") {
         $updatedData = array("price" => $price, "clicks" => $click);
@@ -33,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die();
     }
 
-    $data = array("price" => $price, "clicks" => $click);
+    $data = array("price" => $price, "clicks" => $click, "category" => $category);
     $package->create($data);
     header("Refresh: 0");
 }
@@ -72,6 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 <th>Id</th>
                                                 <th>Price</th>
                                                 <th>Clicks</th>
+                                                <th>Category</th>
                                                 <th>Action</th>
                                             </thead>
                                             <tbody>
@@ -80,6 +82,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                     <td><?php echo $i + 1; ?></td>
                                                     <td>$<?php echo $packages[$i]["price"]; ?></td>
                                                     <td><?php echo $packages[$i]["clicks"]; ?></td>
+                                                    <?php if ($packages[$i]["category"] == 0) : ?>
+                                                    <td>Standard</td>
+                                                    <?php else : ?>
+                                                    <td>VIP</td>
+                                                    <?php endif; ?>
                                                     <td>
                                                         <div style="display: flex;">
                                                             <button id="<?php echo $packages[$i]["id"] ?>"
@@ -122,6 +129,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <input type="number" name="click" class="form-control" placeholder="Clicks"
                                 aria-label="Recipient's username" aria-describedby="button-addon2">
                         </div>
+                        <select class="form-control" name="category">
+                            <option value="" selected="" disabled="">Select category</option>
+                            <option value="0">Standard</option>
+                            <option value="1">VIP</option>
+                        </select>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -3,7 +3,8 @@ require_once "./session.php";
 require_once "./model/package.php";
 
 $package = new Package();
-$packages = $package->read();
+$standardTokens = $package->getStandardTokens();
+$vipTokens = $package->getVIPTokens();
 ?>
 <?php require_once "./header.php" ?>
 <!-- Header -->
@@ -50,17 +51,19 @@ $packages = $package->read();
                 </div>
                 <div class="col-12 zid_clicks mt-5">
                     <div class="row">
-                        <?php foreach ($packages as $p) : ?>
+                        <?php foreach ($standardTokens as $standardToken) : ?>
                         <div class="col-xxl-3 col-md-6 mb-5">
                             <div class="zid_click_card mx-2">
                                 <div class="zid_click_card_head text-center py-4">
-                                    <h4 class="mb-0 text-white"><?php echo $p["clicks"] ?> CLICK PACK</h4>
+                                    <h4 class="mb-0 text-white"><?php echo $standardToken["clicks"] ?> CLICK PACK</h4>
                                 </div>
                                 <div class="zid_click_card_body text-center py-4">
                                     <p class="click_card_content text-center light_para px-5">The pack allows
-                                        you to have <?php echo $p["clicks"] ?> aditional clicks to bid.</p>
-                                    <h2 class="click_card_price text-center"><sup>$</sup><?php echo $p["price"] ?></h2>
-                                    <a role="button" href="./checkout.php?package_id=<?php echo $p["id"] ?>"
+                                        you to have <?php echo $standardToken["clicks"] ?> aditional clicks to bid.</p>
+                                    <h2 class="click_card_price text-center">
+                                        <sup>$</sup><?php echo $standardToken["price"] ?>
+                                    </h2>
+                                    <a role="button" href="./checkout.php?package_id=<?php echo $standardToken["id"] ?>"
                                         class="View_More_Button my-3">Buy Now</a>
                                 </div>
                             </div>
@@ -94,62 +97,25 @@ $packages = $package->read();
                 </div>
                 <div class="col-12 vip_clicks mt-5">
                     <div class="row">
+                        <?php foreach ($vipTokens as $vipToken) : ?>
                         <div class="col-xxl-3 col-md-6 mb-5">
                             <div class="vip_click_card mx-2">
                                 <div class="vip_click_card_head text-center py-4">
                                     <img src="./assests/icons&images/vip.png" alt="" class="vip_logo_img mb-3" />
-                                    <h4 class="mb-0 text-white">10 CLICK PACK</h4>
+                                    <h4 class="mb-0 text-white"><?php echo $vipToken["clicks"] ?> CLICK PACK</h4>
                                 </div>
                                 <div class="vip_click_card_body text-center py-4">
                                     <p class="click_card_content text-center light_para px-5">The pack allows
-                                        you to have 10 aditional clicks to bid.</p>
-                                    <h2 class="click_card_price text-center">15<sup>$</sup></h2>
-                                    <button class="View_More_Button my-3">Buy Now</button>
+                                        you to have <?php echo $vipToken["clicks"] ?> aditional clicks to bid.</p>
+                                    <h2 class="click_card_price text-center">
+                                        <sup>$</sup><?php echo $vipToken["price"] ?>
+                                    </h2>
+                                    <a role="button" href="./checkout.php?package_id=<?php echo $vipToken["id"] ?>"
+                                        class="View_More_Button my-3">Buy Now</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xxl-3 col-md-6 mb-5">
-                            <div class="vip_click_card mx-2">
-                                <div class="vip_click_card_head text-center py-4">
-                                    <img src="./assests/icons&images/vip.png" alt="" class="vip_logo_img mb-3" />
-                                    <h4 class="mb-0 text-white">15 CLICK PACK</h4>
-                                </div>
-                                <div class="vip_click_card_body text-center py-4">
-                                    <p class="click_card_content text-center light_para px-5">The pack allows
-                                        you to have 10 aditional clicks to bid.</p>
-                                    <h2 class="click_card_price text-center">19<sup>$</sup></h2>
-                                    <button class="View_More_Button my-3">Buy Now</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xxl-3 col-md-6 mb-sm-5">
-                            <div class="vip_click_card mx-2">
-                                <div class="vip_click_card_head text-center py-4">
-                                    <img src="./assests/icons&images/vip.png" alt="" class="vip_logo_img mb-3" />
-                                    <h4 class="mb-0 text-white">20 CLICK PACK</h4>
-                                </div>
-                                <div class="vip_click_card_body text-center py-4">
-                                    <p class="click_card_content text-center light_para px-5">The pack allows
-                                        you to have 10 aditional clicks to bid.</p>
-                                    <h2 class="click_card_price text-center">25<sup>$</sup></h2>
-                                    <button class="View_More_Button my-3">Buy Now</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xxl-3 col-md-6">
-                            <div class="vip_click_card mx-2">
-                                <div class="vip_click_card_head text-center py-4">
-                                    <img src="./assests/icons&images/vip.png" alt="" class="vip_logo_img mb-3" />
-                                    <h4 class="mb-0 text-white">25 CLICK PACK</h4>
-                                </div>
-                                <div class="vip_click_card_body text-center py-4">
-                                    <p class="click_card_content text-center light_para px-5">The pack allows
-                                        you to have 10 aditional clicks to bid.</p>
-                                    <h2 class="click_card_price text-center">35<sup>$</sup></h2>
-                                    <button class="View_More_Button my-3">Buy Now</button>
-                                </div>
-                            </div>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>

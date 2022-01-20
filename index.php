@@ -14,7 +14,7 @@ $blog = new Blog();
 $cmsPages = new CMSPages();
 $auction = new Auction();
 
-$packages = $package->read();
+$packages = $package->getStandardTokens();
 $testomonials = $testomonial->read();
 $blogs = $blog->getLatestBlog();
 $howItWorks = $cmsPages->getCMSByType(2);

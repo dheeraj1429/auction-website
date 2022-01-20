@@ -1,6 +1,5 @@
 <?php
 require_once "../model/general.php";
-require_once "../model/functions.php";
 require_once "../session.php";
 
 $pageName = "General Details";
