@@ -139,28 +139,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                         <form method="post" enctype="multipart/form-data">
                                             <div class="form-group col-md-12">
                                                 <label for="product_name">Product Name</label>
-                                                <input type="text" class="form-control" id="product_name"
-                                                    placeholder="Product Name"
-                                                    value="<?php if (isset($_GET['id'])) {
+                                                <input type="text" class="form-control" id="product_name" placeholder="Product Name" value="<?php if (isset($_GET['id'])) {
                                                                                                                                                 echo $dataB['product_name'];
-                                                                                                                                            } ?>"
-                                                    name="product_name" autocomplete="off" required="">
+                                                                                                                                            } ?>" name="product_name" autocomplete="off" required="">
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label for="head">Auction Category</label>
-                                                <select class="form-control" name="category" autocomplete="off"
-                                                    required="">
+                                                <select class="form-control" name="category" autocomplete="off" required="">
                                                     <option value="" selected="" disabled="">Select Category</option>
                                                     <?php foreach ($categories as $category) : ?>
-                                                    <option value="<?php echo $category["id"] ?>">
-                                                        <?php echo $category["name"] ?></option>
+                                                        <option value="<?php echo $category["id"] ?>">
+                                                            <?php echo $category["name"] ?></option>
                                                     <?php endforeach; ?>
                                                 </select>
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label for="head">Auction Feature</label>
-                                                <select class="form-control" name="feature" autocomplete="off"
-                                                    required="">
+                                                <select class="form-control" name="feature" autocomplete="off" required="">
                                                     <option value="" selected="" disabled="">Select Feature</option>
                                                     <option value="featured">Featured</option>
                                                     <option value="deal_of_the_day">Deal of the Day</option>
@@ -169,67 +164,48 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label for="starting_price">Starting Price</label>
-                                                <input type="number" class="form-control" id="starting_price"
-                                                    placeholder="Starting Price"
-                                                    value="<?php if (isset($_GET['id'])) {
+                                                <input type="number" class="form-control" id="starting_price" placeholder="Starting Price" value="<?php if (isset($_GET['id'])) {
                                                                                                                                                         echo $dataB['starting_price'];
-                                                                                                                                                    } ?>"
-                                                    name="starting_price" autocomplete="off" required="">
+                                                                                                                                                    } ?>" name="starting_price" autocomplete="off" required="">
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label for="store_price">Store Price</label>
-                                                <input type="number" class="form-control" id="store_price"
-                                                    placeholder="Store Price"
-                                                    value="<?php if (isset($_GET['id'])) {
+                                                <input type="number" class="form-control" id="store_price" placeholder="Store Price" value="<?php if (isset($_GET['id'])) {
                                                                                                                                                 echo $dataB['store_price'];
-                                                                                                                                            } ?>"
-                                                    name="store_price" autocomplete="off" required="">
+                                                                                                                                            } ?>" name="store_price" autocomplete="off" required="">
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label for="capacity">Capacity</label>
-                                                <input type="number" class="form-control" id="capacity"
-                                                    placeholder="Capacity"
-                                                    value="<?php if (isset($_GET['id'])) {
+                                                <input type="number" class="form-control" id="capacity" placeholder="Capacity" value="<?php if (isset($_GET['id'])) {
                                                                                                                                             echo $dataB['capacity'];
-                                                                                                                                        } ?>"
-                                                    name="capacity" autocomplete="off" required="">
+                                                                                                                                        } ?>" name="capacity" autocomplete="off" required="">
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label for="date">Date</label>
-                                                <input type="date" class="form-control" id="date"
-                                                    placeholder="Auction Date"
-                                                    value="<?php if (isset($_GET['id'])) {
+                                                <input type="date" class="form-control" id="date" placeholder="Auction Date" value="<?php if (isset($_GET['id'])) {
                                                                                                                                         echo $dataB['date'];
-                                                                                                                                    } ?>"
-                                                    name="date" autocomplete="off" required="">
+                                                                                                                                    } ?>" name="date" autocomplete="off" required="">
                                                 <label for="time">Time</label>
-                                                <input type="time" class="form-control" id="time"
-                                                    placeholder="Auction Time"
-                                                    value="<?php if (isset($_GET['id'])) {
+                                                <input type="time" class="form-control" id="time" placeholder="Auction Time" value="<?php if (isset($_GET['id'])) {
                                                                                                                                         echo $dataB['time'];
-                                                                                                                                    } ?>"
-                                                    name="time" autocomplete="off" required="">
+                                                                                                                                    } ?>" name="time" autocomplete="off" required="">
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <div class="custom-file mt-3">
-                                                    <input type="file" class="custom-file-input" id="inputllogo02"
-                                                        name="image">
+                                                    <input type="file" class="custom-file-input" id="inputllogo02" name="image">
                                                     <label class="custom-file-label" for="inputllogo02">Image</label>
                                                 </div>
                                                 <?php if (isset($_GET['id'])) { ?>
-                                                <img src="<?php if (isset($_GET['id'])) {
+                                                    <img src="<?php if (isset($_GET['id'])) {
                                                                     echo "../media/img/product/" . $dataB['product_img'];
-                                                                } ?>" class="img-circle img-responsive m-auto mx-2"
-                                                    alt="<?php if (isset($_GET['id'])) {
+                                                                } ?>" class="img-circle img-responsive m-auto mx-2" alt="<?php if (isset($_GET['id'])) {
                                                                                                                                 echo $dataB['product_name'];
-                                                                                                                            } ?>"
-                                                    height="100px;">
+                                                                                                                            } ?>" height="100px;">
                                                 <?php } ?>
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label for="discription">Discription</label>
-                                                <textarea class="form-control" name="discription" id="discription"
-                                                    rows="3">
+                                                <textarea class="form-control" name="discription" id="discription" rows="3">
                                                     <?php
                                                     if (isset($_GET['id'])) {
                                                         echo $dataB["discription"];
@@ -239,8 +215,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                             </div>
                                             <div class="form-row pt-3">
                                                 <div class="form-group col-md-12">
-                                                    <button type="submit" class="btn btn-success m-auto"
-                                                        name="submit">Save changes</button>
+                                                    <button type="submit" class="btn btn-success m-auto" name="submit">Save changes</button>
                                                 </div>
                                             </div>
                                         </form>

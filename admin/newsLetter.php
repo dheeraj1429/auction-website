@@ -1,19 +1,24 @@
 <?php
 require_once "../session.php";
 require_once "../model/newsLetter.php";
+require_once "../model/newsLetterTopics.php";
 require_once "../sendEmail.php";
 
 $pageName = "News Letter";
 
 $newsLetter = new NewsLetter();
+$newsLetterTopics = new NewsLetterTopics();
 $newsLettersData = $newsLetter->read();
+
+$newsLetterTopicsData = $newsLetterTopics->read();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $json = file_get_contents('php://input');
     $data = json_decode($json, true);
     $emails = $data["emails"];
+    $newsLetterTemplate = $newsLetterTopics->read($id = $data["topic"])[0]["template"];
     foreach ($emails as $email) {
-        sendEmail($email, "Hello :)");
+        sendEmail($email, $newsLetterTemplate);
     }
     die();
 }
@@ -48,7 +53,21 @@ if (!isset($_SESSION['admin_email'])) {
                                 <div class="card-body">
                                     <div style="display: flex; justify-content: space-between">
                                         <h4>News Letter</h4>
-                                        <button id="send" role="button" class="btn btn-primary">Send</button>
+                                        <div style="margin: 10px;">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-success dropdown-toggle"
+                                                    data-toggle="dropdown" aria-expanded="false">
+                                                    Select Topic
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <?php foreach ($newsLetterTopicsData as $n) : ?>
+                                                    <a class="dropdown-item topic" href="#"
+                                                        id="<?php echo $n["id"] ?>"><?php echo $n["topic"]; ?></a>
+                                                    <?php endforeach; ?>
+                                                </div>
+                                            </div>
+                                            <button id="send" role="button" class="btn btn-primary">Send</button>
+                                        </div>
                                     </div>
                                     <div class="table-responsive">
                                         <table class="table" style="width: 100%">
@@ -112,8 +131,16 @@ if (!isset($_SESSION['admin_email'])) {
     <script>
     const selects = document.getElementsByClassName("select");
     const selectAll = document.getElementById("check-all");
+    const topics = document.getElementsByClassName("topic");
     const send = document.getElementById("send");
+    let selectTopic = "";
     let emails = [];
+
+    for (let topic of topics) {
+        topic.onclick = () => {
+            selectTopic = topic.id;
+        }
+    }
 
     selectAll.onclick = () => {
         if (selectAll.checked) {
@@ -124,6 +151,7 @@ if (!isset($_SESSION['admin_email'])) {
         } else {
             for (let select of selects) {
                 select.checked = false;
+                emails = [];
             }
         }
     }
@@ -131,20 +159,26 @@ if (!isset($_SESSION['admin_email'])) {
         select.onclick = () => {
             if (select.checked) {
                 emails.push(select.value);
+            } else {
+                const index = emails.indexOf(select.value);
+                emails.pop(index);
             }
         }
     }
 
     send.onclick = () => {
-        fetch("./newsLetter.php", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json;charset=UTF-8",
-            },
-            body: JSON.stringify({
-                emails: emails,
-            })
-        });
+        if (selectTopic !== "") {
+            fetch("./newsLetter.php", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json;charset=UTF-8",
+                },
+                body: JSON.stringify({
+                    emails: emails,
+                    topic: selectTopic
+                })
+            });
+        }
     }
     </script>
     <?php include_once('inc/js.php'); ?>
