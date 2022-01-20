@@ -17,16 +17,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
     $discription = htmlspecialchars($_POST["discription"]);
 
     $template = '
-    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<HTML>
-<HEAD>
-<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<TITLE>pdf-html</TITLE>
-<META name="generator" content="BCL easyConverter SDK 5.0.252">
-<META name="author" content="Uday Lal">
-<META name="title" content="Add a heading">
-<META name="keywords" content="DAE19cNmjsg,BAETHT2BosM">
-<STYLE type="text/css">
+    <!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01//en" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>' . $title . '</title>
+<meta name="generator" content="BCL easyConverter SDK 5.0.252">
+<meta name="keywords" content="DAE19cNmjsg,BAETHT2BosM">
+<style type="text/css">
 
 body {margin-top: 0px;margin-left: 0px;}
 
@@ -53,8 +51,8 @@ body {margin-top: 0px;margin-left: 0px;}
 
 
 
-</STYLE>
-</HEAD>
+</style>
+</head>
 <body>
     <div id="page_1">
       <div id="p1dimg1">
