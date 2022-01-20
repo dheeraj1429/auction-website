@@ -8,13 +8,20 @@ if (!isset($_SESSION["email"])) {
     die();
 }
 if (!isset($_GET["package_id"])) {
-    header("Location: ./Buy_token.php");
+    header("HTTP/1.0 404 Not Found");
     die();
 }
 $config = file_get_contents('config.json');
 $configData = json_decode($config, true);
 $package = new Package();
-$packageData = $package->read($id = $_GET["package_id"])[0];
+$packageData = $package->read($id = $_GET["package_id"]);
+
+if (!empty($packageData)) {
+    $packageData = $packageData[0];
+} else {
+    header("HTTP/1.0 404 Not Found");
+    die();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

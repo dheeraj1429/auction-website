@@ -1028,7 +1028,8 @@ $popularAuction = $auction->getPopular();
 
                             <h2 class="Price_Dolar "><span>$</span><?php echo $p["price"] ?></h2>
 
-                            <button class="View_More_Button my-3">Buy Now</button>
+                            <a href="./checkout.php?package_id=<?php echo $p["id"] ?>" class="View_More_Button my-3">Buy
+                                Now</a>
                         </div>
                     </div>
                 </div>
