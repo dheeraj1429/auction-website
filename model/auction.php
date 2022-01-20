@@ -148,6 +148,18 @@ class Auction extends Base
         return false;
     }
 
+    public function getCurrentAuction()
+    {
+        $sql = "SELECT * FROM " . $this->tableName . " WHERE `date` = DATE(NOW()) AND `time` >= TIME(NOW()) AND `end_time` < TIME(NOW())";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        if ($result) {
+            return $result;
+        }
+        return null;
+    }
+
     public function generateToken()
     {
         $token = $this->getToken();
