@@ -45,6 +45,7 @@ $packageData = $package->read($id = $_GET["package_id"])[0];
     <link rel="stylesheet" href="./assests/style/blog.css" />
     <link rel="stylesheet" href="./assests/style/MyAccount.css" />
     <link rel="stylesheet" href="./assests/style/buy_token.css" />
+    <link rel="stylesheet" href="./assests/style/checkout.css" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
@@ -109,7 +110,7 @@ $packageData = $package->read($id = $_GET["package_id"])[0];
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav ms-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link active_header" aria-current="page" href="./">HOME</a>
+                                    <a class="nav-link active" aria-current="page" href="./">HOME</a>
                                 </li>
 
                                 <li class="nav-item">
@@ -118,29 +119,33 @@ $packageData = $package->read($id = $_GET["package_id"])[0];
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">ENDED AUCTIONS</a>
+                                    <a class="nav-link active" aria-current="page" href="./Ended.php">ENDED AUCTIONS</a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">CURRENT AUCTION</a>
+                                    <a class="nav-link active" aria-current="page" href="./currentAuctions.php">CURRENT
+                                        AUCTION</a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">CUY TOKENS</a>
+                                    <a class="nav-link active" aria-current="page" href="Buy_token.php">BUY TOKENS</a>
                                 </li>
 
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">ALBOCHI</a>
-                                </li>
 
 
                                 <?php if (isset($_SESSION["email"])) : ?>
-                                <div class="profile-info">
-                                    <a href="./userProfile.php">
-                                        <img style="width: 50px; height: 50px; border-radius: 50%"
-                                            src="./media/img/users/default.png" alt="profile-img">
-                                    </a>
-                                </div>
+                                <li class="nav-item">
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle drop" type="button"
+                                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            AALBOUCHI
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item" href="./MyAccount.php">My Account</a></li>
+                                            <li><a class="dropdown-item" href="./signout.php">Sign Out</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
                                 <?php else : ?>
                                 <div class="sign_in_button d-flex align-items-center ms-5">
                                     <li class="nav-item">
@@ -157,9 +162,19 @@ $packageData = $package->read($id = $_GET["package_id"])[0];
         </div>
         <!-- Main-Navbar -->
     </header>
-    <div class="container">
+    <div class="container" style="width: 100vw;height: 60vh;">
         <div class="center">
-            <div id="paypal-button-container"></div>
+            <div class="card"
+                style="padding: 15px; width: 60%; margin: 10px;box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.25);">
+                <h2 class="card-title"><?php echo $packageData["clicks"] ?> CLICK PACK</h2>
+                <p class="card-text">The pack allows you to
+                    have <?php echo $packageData["clicks"] ?> aditional clicks
+                    to bid.</p>
+                <h4>Price: $<?php echo $packageData["price"] ?></h4>
+                <div class="btn-container">
+                    <div id="paypal-button-container"></div>
+                </div>
+            </div>
         </div>
     </div>
     <script src="./assests/js/paypal.js"></script>

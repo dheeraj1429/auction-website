@@ -82,12 +82,9 @@ require_once "./getValuesByName.php";
                     <div class="container-fluid">
                         <a class="navbar-brand" href="./index.php">
                             <!-- <h1>Auction</h1> -->
-                            <img width="50px" height="50px" src="<?php echo "./media/" . getValuesByName("logo") ?>"
-                                alt="logo">
+                            <img width="50px" height="50px" src="<?php echo "./media/" . getValuesByName("logo") ?>" alt="logo">
                         </a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                            aria-label="Toggle navigation">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNav">
@@ -117,26 +114,25 @@ require_once "./getValuesByName.php";
 
 
                                 <?php if (isset($_SESSION["email"])) : ?>
-                                <li class="nav-item">
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle drop" type="button"
-                                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                            AALBOUCHI
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <li><a class="dropdown-item" href="./MyAccount.php">My Account</a></li>
-                                            <li><a class="dropdown-item" href="./signout.php">Sign Out</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
+                                    <li class="nav-item">
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle drop" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                AALBOUCHI
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                <li><a class="dropdown-item" href="./MyAccount.php">My Account</a></li>
+                                                <li><a class="dropdown-item" href="./signout.php">Sign Out</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
 
                                 <?php else : ?>
-                                <div class="sign_in_button d-flex align-items-center ms-5">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="./logIn.php">SIGN IN</a>
-                                    </li>
-                                    <a href="./register.php" class="Subcribe_button_sm text-white">REGISTER</a>
-                                </div>
+                                    <div class="sign_in_button d-flex align-items-center ms-5">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" aria-current="page" href="./logIn.php">SIGN IN</a>
+                                        </li>
+                                        <a href="./register.php" class="Subcribe_button_sm text-white">REGISTER</a>
+                                    </div>
                                 <?php endif; ?>
                             </ul>
                         </div>
