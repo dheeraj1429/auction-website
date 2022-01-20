@@ -38,8 +38,14 @@ if (array_key_exists("email", $data) && array_key_exists("userId", $data) && arr
     $startingTime = $auctionData["time"];
     $endTime = $auctionData["end_time"];
     $waitingTime = date("H:i:s", strtotime("+10 minutes", strtotime($startingTime)));
+    $currentDate = date("Y-m-d");
 
-    if (time() >= strtotime($startingTime) && date("Y-m-d") == $auctionData["date"]) {
+    if (strtotime($currentDate) > strtotime($auctionData["date"])) {
+        echo json_encode(array("message" => "Auction over", "time_over" => true, "auction_id" => $auctionId));
+        die();
+    }
+
+    if (time() >= strtotime($startingTime) && $currentDate == $auctionData["date"]) {
         if (time() <= strtotime($endTime)) {
             if (isParticepeted($email, $auctionId)) {
                 if (time() >= strtotime($waitingTime)) {

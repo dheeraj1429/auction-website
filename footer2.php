@@ -48,8 +48,8 @@
             <div class="d-flex justify-content-around py-3">
                 <p class="light_para">Copyright © 2021. All Rights Reserved.</p>
                 <p class="light_para">
-                    <a href="./terms.html"> Terms of Use </a> and
-                    <a href="./policy.html"> Privacy Policy </a>
+                    <a href="./terms.php"> Terms of Use </a> and
+                    <a href="./policy.php"> Privacy Policy </a>
                 </p>
             </div>
         </div>

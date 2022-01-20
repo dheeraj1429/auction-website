@@ -20,6 +20,12 @@ if (!$auctionData) {
     header("HTTP/1.0 404 Not Found");
     die();
 }
+
+if (strtotime(date("Y-m-d")) > strtotime($auctionData["date"])) {
+    $auctionId = $auctionData["id"];
+    header("Location: ./winningPage.php?id=$auctionId");
+    die();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -283,7 +289,7 @@ if (!$auctionData) {
     <!-- Footer -->
 
     <!-- Bootsrap 5 script CDN -->
-    <script src="./assests/js/auction2.js"></script>
+    <script src="./assests/js/auction.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" class="img-fluid"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" class="img-fluid"></script>
 </body>

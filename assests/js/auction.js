@@ -114,8 +114,8 @@ function setAuctionCalls() {
   }).then((response) => {
     response.json().then((data) => {
       if (!data["time_over"]) {
+        console.log(data);
         if (data["confirmation"]) {
-          console.log(data);
           if (!data["waiting"]) {
             startAuctionCalls();
             document.getElementById("number-of-people").style.display = "block";

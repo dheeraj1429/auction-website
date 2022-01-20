@@ -35,7 +35,7 @@ $bidders = $bids->getReverceSortedBids($_GET["id"]);
                 <div class="col-12">
                     <h1 class="fw-bold text-center"><?php echo $auctionData["product_name"] ?> Auction Results</h1>
                     <h5 class="text-center light_para my-3">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, vitae!
+                        Winner of this auction is <strong><?php echo $bidders[0]["username"] ?></strong>
                     </h5>
                 </div>
             </div>
