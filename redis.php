@@ -67,6 +67,16 @@ class RedisConnection
         return false;
     }
 
+    public function setCurrentBid($bidAmount)
+    {
+        $this->redis->hset($this->token, "currentBidAmount", $bidAmount);
+    }
+
+    public function getCurrentBid()
+    {
+        return $this->redis->hget($this->token, "currentBidAmount");
+    }
+
     public function rmUser($user)
     {
         $users = $this->getUsers();

@@ -67,6 +67,7 @@ class AuctionRoom implements MessageComponentInterface
                     if ($this->isTime($messageData["auctionId"])) {
                         $this->sendAll($messageData["token"], $messageData, $from);
                         setBid($messageData["userId"], $messageData["auctionId"], $messageData["bidPrice"]);
+                        setCurrentBid($messageData["token"], $messageData["bidPrice"]);
                     } else {
                         $from->send(json_encode(array("time_over" => true, "message" => "time is over")));
                         $from->close();

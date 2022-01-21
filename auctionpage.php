@@ -2,6 +2,7 @@
 require_once "./session.php";
 require_once "./model/auction.php";
 require_once "./getValuesByName.php";
+require_once "./redis.php";
 require_once "./functions.php";
 
 if (!isset($_GET["token"])) {
@@ -15,6 +16,11 @@ if (!isset($_SESSION["email"]) && !isset($_SESSION["userId"])) {
 }
 $auction = new Auction();
 $auctionData = $auction->getAuctionByToken($_GET["token"]);
+$redis = new RedisConnection($_GET["token"]);
+$currentBid = $redis->getCurrentBid();
+if (!$currentBid) {
+    $currentBid = $auctionData["starting_price"];
+}
 
 if (!$auctionData) {
     header("HTTP/1.0 404 Not Found");
@@ -201,7 +207,7 @@ if (strtotime(date("Y-m-d")) > strtotime($auctionData["date"])) {
                             </div>
                             <div class="ms-auto">
                                 <p class="h3 fw-bolder ">New price:</p>
-                                <p id="new-price" class="h5"><?php echo $auctionData["starting_price"] + 20; ?></p>
+                                <p id="new-price" class="h5"><?php echo (int)$currentBid + 20; ?></p>
                             </div>
                         </div>
                         <div id="number-of-people">

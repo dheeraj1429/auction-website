@@ -72,3 +72,9 @@ function setBid($userId, $auctionId, $amount)
         $bids->create($data);
     }
 }
+
+function setCurrentBid($token, $bidAmount)
+{
+    $redis = new RedisConnection($token);
+    $redis->setCurrentBid($bidAmount);
+}
