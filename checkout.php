@@ -11,8 +11,6 @@ if (!isset($_GET["package_id"])) {
     header("HTTP/1.0 404 Not Found");
     die();
 }
-$config = file_get_contents('config.json');
-$configData = json_decode($config, true);
 $package = new Package();
 $packageData = $package->read($id = $_GET["package_id"]);
 
@@ -62,8 +60,7 @@ if (!empty($packageData)) {
     const packageId = <?php echo $_GET["package_id"] ?>;
     const price = <?php echo $packageData["price"] ?>
     </script>
-    <script src="https://www.paypal.com/sdk/js?client-id=<?php echo $configData["client_id"] ?>&components=buttons">
-    </script>
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 </head>
 
 <body>
@@ -179,7 +176,7 @@ if (!empty($packageData)) {
                     to bid.</p>
                 <h4>Price: $<?php echo $packageData["price"] ?></h4>
                 <div class="btn-container">
-                    <div id="paypal-button-container"></div>
+                    <div id="paypal-button"></div>
                 </div>
             </div>
         </div>
