@@ -1126,44 +1126,6 @@ $popularAuction = $auction->getPopular();
     </section>
     <!-- Latest News Update -->
 
-    <!-- News Letter Section -->
-    <section class="news_letter_sectionside_padding main_bg">
-        <div class="container-fluid padding_one">
-            <div class="row gx-0">
-                <div class="col-12 d-flex align-items-center justify-content-center">
-                    <!-- News letter div -->
-                    <div class="news_letter_inner_div">
-                        <div class="row px-3">
-                            <div class="col-12 col-sm-12 col-md-5 col-lg-5">
-                                <h1>Receive our newsletter:</h1>
-                            </div>
-                            <div class="col-12 col-sm-12 col-md-7 col-lg-7">
-                                <div class="input_group_div d-flex">
-
-                                    <!-- Input group icon and input -->
-                                    <div class="inner_input d-flex">
-                                        <input type="email" placeholder="Enter your Email">
-                                        <div class="news_icons">
-                                            <img src="./assests/icons&images/Layer 2.svg" alt="">
-                                        </div>
-                                    </div>
-                                    <!-- Input group icon and input -->
-
-
-                                    <!-- News letter button -->
-                                    <button class="send_button ms-5">Send</button>
-                                    <!-- News letter button -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- News letter div -->
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- News Letter Section -->
-
 </main>
 <!-- Main -->
 
