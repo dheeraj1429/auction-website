@@ -199,6 +199,16 @@ class Auction extends Base
         $stmt->execute();
     }
 
+    public function getCompleteAuction()
+    {
+        $sql = "SELECT * FROM " . $this->tableName . " JOIN auction_category ON 
+            auction.category = auction_category.id WHERE auction.date < DATE(NOW()) OR auction.end_time < TIME(NOW())";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
     public function getAuctionByToken($token)
     {
         $sql = "SELECT * FROM `auction` WHERE token = '$token'";
