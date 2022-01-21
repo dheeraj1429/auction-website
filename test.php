@@ -1,12 +1,14 @@
 <?php
+require_once "./model/bids.php";
 
 
-$url = "https://randomuser.me/api";
 
-$curl =  curl_init($url);
+$bids = new Bids();
 
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+$data = $bids->getOldBid(5, 8);
 
-$response = curl_exec($curl);
-curl_close($curl);
-echo $response;
+if (!$data) {
+    echo "working";
+} else {
+    print_r($data);
+}

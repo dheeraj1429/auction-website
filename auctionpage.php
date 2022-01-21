@@ -121,7 +121,7 @@ if (strtotime(date("Y-m-d")) > strtotime($auctionData["date"])) {
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav ms-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link active_header" aria-current="page" href="./">HOME</a>
+                                    <a class="nav-link active" aria-current="page" href="./">HOME</a>
                                 </li>
 
                                 <li class="nav-item">
@@ -130,29 +130,33 @@ if (strtotime(date("Y-m-d")) > strtotime($auctionData["date"])) {
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">ENDED AUCTIONS</a>
+                                    <a class="nav-link active" aria-current="page" href="./Ended.php">ENDED AUCTIONS</a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">CURRENT AUCTION</a>
+                                    <a class="nav-link active" aria-current="page" href="./currentAuctions.php">CURRENT
+                                        AUCTION</a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">CUY TOKENS</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">ALBOCHI</a>
+                                    <a class="nav-link active" aria-current="page" href="Buy_token.php">BUY TOKENS</a>
                                 </li>
 
 
                                 <?php if (isset($_SESSION["email"])) : ?>
-                                <div class="profile-info">
-                                    <a href="./userProfile.php">
-                                        <img style="width: 50px; height: 50px; border-radius: 50%"
-                                            src="./media/img/users/default.png" alt="profile-img">
-                                    </a>
-                                </div>
+                                <li class="nav-item">
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle drop" type="button"
+                                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            AALBOUCHI
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item" href="./MyAccount.php">My Account</a></li>
+                                            <li><a class="dropdown-item" href="./signout.php">Sign Out</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
                                 <?php else : ?>
                                 <div class="sign_in_button d-flex align-items-center ms-5">
                                     <li class="nav-item">

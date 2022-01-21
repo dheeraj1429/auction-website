@@ -47,6 +47,18 @@ class Bids extends Base
         }
     }
 
+    public function getOldBid($userId, $auctionId)
+    {
+        $sql = "SELECT * FROM " . $this->tableName . " WHERE user_id = '$userId' AND auction_id = '$auctionId'";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        if ($result) {
+            return $result[0];
+        }
+        return null;
+    }
+
     public function getReverceSortedBids($auctionId)
     {
         // SELECT * FROM bids JOIN users ON bids.user_id = users.id WHERE auction_id = 8 ORDER BY amount DESC;

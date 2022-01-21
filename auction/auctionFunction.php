@@ -59,10 +59,16 @@ function rmUsers($token, $user)
 function setBid($userId, $auctionId, $amount)
 {
     $bids = new Bids();
-    $data = array(
-        "user_id" => $userId,
-        "auction_id" => $auctionId,
-        "amount" => $amount
-    );
-    $bids->create($data);
+    $oldBid = $bids->getOldBid($userId, $auctionId);
+    if ($oldBid) {
+        $bidId = $oldBid["id"];
+        $bids->update(array("amount" => $amount), $bidId);
+    } else {
+        $data = array(
+            "user_id" => $userId,
+            "auction_id" => $auctionId,
+            "amount" => $amount
+        );
+        $bids->create($data);
+    }
 }
