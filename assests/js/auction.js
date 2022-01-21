@@ -1,3 +1,42 @@
+function timeConverter(UNIX_timestamp) {
+  var a = new Date(UNIX_timestamp * 1000);
+  var months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  var year = a.getFullYear();
+  var month = months[a.getMonth()];
+  var date = a.getDate();
+  var hour = a.getHours();
+  var min = a.getMinutes();
+  var sec = a.getSeconds();
+  var time =
+    date + " " + month + " " + year + " " + hour + ":" + min + ":" + sec;
+  return time;
+}
+
+function getTimeDiffrences(endTime) {
+  const date = new Date();
+  const endTimeSlice = endTime.split(":");
+  const emin = endTimeSlice[0];
+  const esec = endTimeSlice[1];
+  const cmin = date.getMinutes();
+  const csec = date.getSeconds();
+
+  const restTime = [emin - cmin, esec - csec];
+  return restTime;
+}
+
 function startAuctionCalls() {
   const ws = new WebSocket("ws://localhost:8080");
   const submitButton = document.getElementById("submit-btn");
@@ -70,7 +109,11 @@ function getWinner() {
 
 function startClock(time) {
   const timeElement = document.getElementById("time");
-  timeElement.innerHTML = `0${time}:00`;
+  const currentTime = new Date().getTime();
+  const min = time[0];
+  const second = time[1] < 10 ? `0:${time[1]}` : time[1];
+
+  timeElement.innerHTML = `0${min}:${second}`;
 
   const interval = setInterval(() => {
     let currTime = timeElement.innerHTML.split(":");
@@ -126,7 +169,18 @@ function setAuctionCalls() {
             document.getElementById("submit-btn").style.display = "none";
             document.getElementById("waiting-time").style.display = "block";
           }
-          startClock(Math.round(data["time_left"]));
+          const endTime = timeConverter(data["time_left"]);
+          const dt1 = new Date();
+          const dt2 = new Date(endTime);
+          var diff = (dt2.getTime() - dt1.getTime()) / 1000;
+          diff /= 60;
+          diff = `${diff}`;
+          const timeList = [
+            parseInt(diff.split(".")[0]),
+            60 - dt1.getSeconds(),
+          ];
+          console.log(timeList);
+          startClock(timeList);
         } else {
           window.location.replace("./index.php");
         }

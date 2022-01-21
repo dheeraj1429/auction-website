@@ -49,7 +49,9 @@ if (array_key_exists("email", $data) && array_key_exists("userId", $data) && arr
         if (time() <= strtotime($endTime)) {
             if (isParticepeted($email, $auctionId)) {
                 if (time() >= strtotime($waitingTime)) {
-                    $timeLeft = round(abs(strtotime($endTime) - strtotime(date("H:i:s"))) / 60, 2);
+                    // $timeLeft = round(abs(strtotime($endTime) - strtotime(date("H:i:s"))) / 60, 2);
+                    $timeLeft = strtotime($endTime);
+
                     $confirmation = json_encode(
                         array(
                             "email" => $email,
@@ -63,7 +65,8 @@ if (array_key_exists("email", $data) && array_key_exists("userId", $data) && arr
                         $redis->createRoom();
                     }
                 } else {
-                    $timeLeft = round(abs(strtotime($waitingTime) - strtotime(date("H:i:s"))) / 60, 2);
+                    // $timeLeft = round(abs(strtotime($waitingTime) - strtotime(date("H:i:s"))) / 60, 2);
+                    $timeLeft = strtotime($waitingTime);
                     $confirmation = json_encode(
                         array(
                             "email" => $email,
