@@ -173,7 +173,5 @@ if (isset($_GET["id"]) && isset($_GET["token"])) {
         </div> -->
     </div>
     <!-- Popular Auction products card -->
-
-    </div>
 </section>
 <?php require_once "./footer.php" ?>
