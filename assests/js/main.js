@@ -1,21 +1,31 @@
-'use strict';
-const TabDivEl = document.querySelectorAll('.tab_div');
+"use strict";
 
-const tabClFunction = function (data, active) {
-  data.classList[active]('active_tab_div');
-  const child = [...data.children];
-  child[0].classList[active]('active_tab');
-};
+function setUpTabs() {
+  const tabs = document.getElementsByClassName("tab_div");
+  const tabView = document.getElementsByClassName("tab-view");
 
-const removeActiveEl = function () {
-  TabDivEl.forEach((el) => {
-    tabClFunction(el, 'remove');
-  });
-};
+  for (let tab of tabs) {
+    tab.onclick = () => {
+      const tabIndex = Array.from(tabs).indexOf(tab);
+      const activeTab = document.getElementById("active-tab");
+      const lastActiveTab = Array.from(tabs).indexOf(activeTab);
+      tabView[lastActiveTab].style.display = "none";
+      const activeTabText = document.getElementById("active-tab-text");
+      activeTab.classList.remove("active_tab_div");
+      activeTabText.classList.remove("active_tab");
+      activeTab.removeAttribute("id");
+      activeTabText.removeAttribute("id");
 
-TabDivEl.forEach((el) => {
-  el.addEventListener('click', function () {
-    removeActiveEl();
-    tabClFunction(el, 'add');
-  });
-});
+      tab.classList.add("active_tab_div");
+      tab.id = "active-tab";
+      const tabText = tab.getElementsByTagName("p")[0];
+      tabText.classList.add("active_tab");
+      tabText.classList.add("tab");
+      tabText.id = "active-tab-text";
+
+      tabView[tabIndex].style.display = "block";
+    };
+  }
+}
+
+setUpTabs();
