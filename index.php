@@ -29,10 +29,12 @@ function getAuctionParticipants($auctionId, $totalParticipants)
     return $percent;
 }
 
-$liveAuction = $auction->getLiveAuction();
+$liveAuction = $auction->getCurrentAuction();
 $featuredAuction = $auction->getFeatured();
 $dealOfTheDay = $auction->getDealOfTheDay();
 $popularAuction = $auction->getPopular();
+$upcomingAuction = $auction->getUpcomingAuction();
+$completedAuctions = $auction->getCompleteAuction();
 ?>
 <?php require_once "./header.php" ?>
 <?php if (isset($_SESSION["flash"])) : ?>
@@ -600,245 +602,18 @@ $popularAuction = $auction->getPopular();
                         </div>
                         <!-- Popular cards -->
                     </div>
-                </div>
-                <div class="tab-view" style="display: none">
-                    <div class="row pb-5 mt-5 p-2">
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-                            <!-- Popular cards -->
-                            <div class="popular_auction_card_div text-center py-3">
-
-                                <!-- Auction Products badge-->
-                                <div class="Auction_products_badge">
-                                    <p class="text-white">Trend</p>
-                                </div>
-                                <!-- Auction Products badge-->
-
-                                <!-- Products Images -->
-                                <img src="./assests/icons&images/image 25.png" alt="" class="img-fluid">
-                                <!-- Products Images -->
-                                <!-- Products Content -->
-                                <div class="Auction_products_content mt-3">
-                                    <h2>Apple Cinema 30"</h2>
-                                    <p class="my-3 light_para">Auction house filled at:</p>
-
-                                    <!-- Product Input Progress bar -->
-                                    <div class="progress auction_progress_bar mt-2 mb-4">
-                                        <div class="progress-bar" role="progressbar" style="width: 25%;"
-                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                    </div>
-                                    <!-- Product Input Progress bar -->
-
-                                    <!-- Auction Price div -->
-                                    <div
-                                        class="auction_price_div py-2 d-flex justify-content-around align-items-center">
-                                        <!-- Store price -->
-                                        <div class="auction_price_inner_div">
-                                            <p class="light_para">Store price</p>
-                                            <h3>$109</h3>
-                                        </div>
-                                        <!-- Start Price -->
-                                        <div class="auction_price_inner_div">
-                                            <p class="light_para">Starting price</p>
-                                            <h3>$15</h3>
-                                        </div>
-                                    </div>
-                                    <!-- Auction Price div -->
-
-                                    <!-- Subcribe button -->
-                                    <div class="mt-4 mb-5">
-                                        <button class="Subcribe_button">Subscribe for $15</button>
-                                    </div>
-                                    <!-- Subcribe button -->
-
-                                    <!-- Shecdule time div -->
-                                    <div class="Shedule_div py-2">
-                                        <h3 class="text-white mb-3"> Scheduled on 2022-01-09 19:00:00 </h3>
-                                    </div>
-                                    <!-- Shecdule time div -->
-                                </div>
-                                <!-- Products Content -->
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <div class="mt-2 mb-5 d-flex justify-content-center ">
+                                <button class="Subcribe_button">See more</button>
                             </div>
-                            <!-- Popular cards -->
                         </div>
-
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-                            <!-- Popular cards -->
-                            <div class="popular_auction_card_div text-center py-3">
-
-                                <!-- Auction Products badge-->
-                                <div class="Auction_products_badge">
-                                    <p class="text-white">Trend</p>
-                                </div>
-                                <!-- Auction Products badge-->
-
-                                <!-- Products Images -->
-                                <img src="./assests/icons&images/image 26.png" alt="" class="img-fluid">
-                                <!-- Products Images -->
-                                <!-- Products Content -->
-                                <div class="Auction_products_content mt-3">
-                                    <h2>Apple Cinema 30"</h2>
-                                    <p class="my-3 light_para">Auction house filled at:</p>
-
-                                    <!-- Product Input Progress bar -->
-                                    <div class="progress auction_progress_bar mt-2 mb-4">
-                                        <div class="progress-bar" role="progressbar" style="width: 25%;"
-                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                    </div>
-                                    <!-- Product Input Progress bar -->
-
-                                    <!-- Auction Price div -->
-                                    <div
-                                        class="auction_price_div py-2 d-flex justify-content-around align-items-center">
-                                        <!-- Store price -->
-                                        <div class="auction_price_inner_div">
-                                            <p class="light_para">Store price</p>
-                                            <h3>$109</h3>
-                                        </div>
-                                        <!-- Start Price -->
-                                        <div class="auction_price_inner_div">
-                                            <p class="light_para">Starting price</p>
-                                            <h3>$15</h3>
-                                        </div>
-                                    </div>
-                                    <!-- Auction Price div -->
-
-                                    <!-- Subcribe button -->
-                                    <div class="mt-4 mb-5">
-                                        <button class="Subcribe_button">Subscribe for $15</button>
-                                    </div>
-                                    <!-- Subcribe button -->
-
-                                    <!-- Shecdule time div -->
-                                    <div class="Shedule_div py-2">
-                                        <h3 class="text-white mb-3"> Scheduled on 2022-01-09 19:00:00 </h3>
-                                    </div>
-                                    <!-- Shecdule time div -->
-                                </div>
-                                <!-- Products Content -->
-                            </div>
-                            <!-- Popular cards -->
-                        </div>
-
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-                            <!-- Popular cards -->
-                            <div class="popular_auction_card_div text-center py-3">
-
-                                <!-- Auction Products badge-->
-                                <div class="Auction_products_badge">
-                                    <p class="text-white">Trend</p>
-                                </div>
-                                <!-- Auction Products badge-->
-
-                                <!-- Products Images -->
-                                <img src="./assests/icons&images/image 27.png" alt="" class="img-fluid">
-                                <!-- Products Images -->
-                                <!-- Products Content -->
-                                <div class="Auction_products_content mt-3">
-                                    <h2>Apple Cinema 30"</h2>
-                                    <p class="my-3 light_para">Auction house filled at:</p>
-
-                                    <!-- Product Input Progress bar -->
-                                    <div class="progress auction_progress_bar mt-2 mb-4">
-                                        <div class="progress-bar" role="progressbar" style="width: 25%;"
-                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                    </div>
-                                    <!-- Product Input Progress bar -->
-
-                                    <!-- Auction Price div -->
-                                    <div
-                                        class="auction_price_div py-2 d-flex justify-content-around align-items-center">
-                                        <!-- Store price -->
-                                        <div class="auction_price_inner_div">
-                                            <p class="light_para">Store price</p>
-                                            <h3>$109</h3>
-                                        </div>
-                                        <!-- Start Price -->
-                                        <div class="auction_price_inner_div">
-                                            <p class="light_para">Starting price</p>
-                                            <h3>$15</h3>
-                                        </div>
-                                    </div>
-                                    <!-- Auction Price div -->
-
-                                    <!-- Subcribe button -->
-                                    <div class="mt-4 mb-5">
-                                        <button class="Subcribe_button">Subscribe for $15</button>
-                                    </div>
-                                    <!-- Subcribe button -->
-
-                                    <!-- Shecdule time div -->
-                                    <div class="Shedule_div py-2">
-                                        <h3 class="text-white mb-3"> Scheduled on 2022-01-09 19:00:00 </h3>
-                                    </div>
-                                    <!-- Shecdule time div -->
-                                </div>
-                                <!-- Products Content -->
-                            </div>
-                            <!-- Popular cards -->
-                        </div>
-
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-                            <!-- Popular cards -->
-                            <div class="popular_auction_card_div text-center py-3">
-
-                                <!-- Auction Products badge-->
-                                <div class="Auction_products_badge">
-                                    <p class="text-white">Trend</p>
-                                </div>
-                                <!-- Auction Products badge-->
-
-                                <!-- Products Images -->
-                                <img src="./assests/icons&images/pngwing 1.png" alt="" class="img-fluid">
-                                <!-- Products Images -->
-                                <!-- Products Content -->
-                                <div class="Auction_products_content mt-3">
-                                    <h2>Apple Cinema 30"</h2>
-                                    <p class="my-3 light_para">Auction house filled at:</p>
-
-                                    <!-- Product Input Progress bar -->
-                                    <div class="progress auction_progress_bar mt-2 mb-4">
-                                        <div class="progress-bar" role="progressbar" style="width: 100%;"
-                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">100%</div>
-                                    </div>
-                                    <!-- Product Input Progress bar -->
-
-                                    <!-- Auction Price div -->
-                                    <div
-                                        class="auction_price_div py-2 d-flex justify-content-around align-items-center">
-                                        <!-- Store price -->
-                                        <div class="auction_price_inner_div">
-                                            <p class="light_para">Store price</p>
-                                            <h3>$109</h3>
-                                        </div>
-                                        <!-- Start Price -->
-                                        <div class="auction_price_inner_div">
-                                            <p class="light_para">Starting price</p>
-                                            <h3>$15</h3>
-                                        </div>
-                                    </div>
-                                    <!-- Auction Price div -->
-
-                                    <!-- Subcribe button -->
-                                    <div class="mt-4 mb-5">
-                                        <button class="Subcribe_button">Subscribe for $15</button>
-                                    </div>
-                                    <!-- Subcribe button -->
-                                </div>
-                                <!-- Subcribe button -->
-
-                                <!-- Shecdule time div -->
-                                <div class="Shedule_div py-2">
-                                    <h3 class="text-white mb-3"> Scheduled on 2022-01-09 19:00:00 </h3>
-                                </div>
-                                <!-- Shecdule time div -->
-                            </div>
-                            <!-- Products Content -->
-                        </div>
-                        <!-- Popular cards -->
                     </div>
                 </div>
                 <div class="tab-view" style="display: none">
                     <div class="row pb-5 mt-5 p-2">
+                        <?php if ($liveAuction) : ?>
+                        <?php foreach ($liveAuction as $live) : ?>
                         <div class="col-12 col-sm-12 col-md-3 col-lg-3">
                             <!-- Popular cards -->
                             <div class="popular_auction_card_div text-center py-3">
@@ -850,17 +625,20 @@ $popularAuction = $auction->getPopular();
                                 <!-- Auction Products badge-->
 
                                 <!-- Products Images -->
-                                <img src="./assests/icons&images/image 25.png" alt="" class="img-fluid">
+                                <img src="./media/img/product/<?php echo $liveAuction["product_img"] ?>"
+                                    alt="<?php echo $liveAuction["product_name"] ?>" class="img-fluid">
                                 <!-- Products Images -->
                                 <!-- Products Content -->
                                 <div class="Auction_products_content mt-3">
-                                    <h2>Apple Cinema 30"</h2>
+                                    <h2><?php echo $live["product_name"] ?></h2>
                                     <p class="my-3 light_para">Auction house filled at:</p>
 
                                     <!-- Product Input Progress bar -->
                                     <div class="progress auction_progress_bar mt-2 mb-4">
-                                        <div class="progress-bar" role="progressbar" style="width: 25%;"
-                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                        <div class="progress-bar" role="progressbar"
+                                            style="width: <?php echo getAuctionParticipants($live['id'], $live['capacity']) ?>%;"
+                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                            <?php echo getAuctionParticipants($live['id'], $live['capacity']) ?>%</div>
                                     </div>
                                     <!-- Product Input Progress bar -->
 
@@ -870,25 +648,39 @@ $popularAuction = $auction->getPopular();
                                         <!-- Store price -->
                                         <div class="auction_price_inner_div">
                                             <p class="light_para">Store price</p>
-                                            <h3>$109</h3>
+                                            <h3><?php echo $live["store_price"] ?></h3>
                                         </div>
                                         <!-- Start Price -->
                                         <div class="auction_price_inner_div">
                                             <p class="light_para">Starting price</p>
-                                            <h3>$15</h3>
+                                            <h3><?php echo $live["starting_price"] ?></h3>
                                         </div>
                                     </div>
                                     <!-- Auction Price div -->
 
                                     <!-- Subcribe button -->
                                     <div class="mt-4 mb-5">
-                                        <button class="Subcribe_button">Subscribe for $15</button>
+                                        <?php if (isset($_SESSION["email"])) : ?>
+                                        <?php if (!isParticepeted($_SESSION['email'], $live["id"])) : ?>
+                                        <a href="./registerAuction.php?auction_id=<?php echo $live["id"] ?>&token_value=<?php echo $live["starting_price"] ?>"
+                                            class="Subcribe_button">Subscribe for
+                                            <?php echo $live["starting_price"] ?></a>
+                                        <?php else : ?>
+                                        <button type="button" class="btn btn-primary" disabled>Subscribed</button>
+                                        <?php endif; ?>
+                                        <?php else : ?>
+                                        <a href="./registerAuction.php?auction_id=<?php echo $live["id"] ?>&token_value=<?php echo $live["starting_price"] ?>"
+                                            class="Subcribe_button">Subscribe for
+                                            <?php echo $live["starting_price"] ?></a>
+
+                                        <?php endif; ?>
                                     </div>
                                     <!-- Subcribe button -->
 
                                     <!-- Shecdule time div -->
                                     <div class="Shedule_div py-2">
-                                        <h3 class="text-white mb-3"> Scheduled on 2022-01-09 19:00:00 </h3>
+                                        <h3 class="text-white mb-3"> Scheduled on <?php echo $live["date"] ?>
+                                            <?php echo $live["time"] ?> </h3>
                                     </div>
                                     <!-- Shecdule time div -->
                                 </div>
@@ -896,185 +688,30 @@ $popularAuction = $auction->getPopular();
                             </div>
                             <!-- Popular cards -->
                         </div>
-
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-                            <!-- Popular cards -->
-                            <div class="popular_auction_card_div text-center py-3">
-
-                                <!-- Auction Products badge-->
-                                <div class="Auction_products_badge">
-                                    <p class="text-white">Trend</p>
+                        <?php endforeach; ?>
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <div class="mt-2 mb-5 d-flex justify-content-center ">
+                                    <button class="Subcribe_button">See more</button>
                                 </div>
-                                <!-- Auction Products badge-->
-
-                                <!-- Products Images -->
-                                <img src="./assests/icons&images/image 26.png" alt="" class="img-fluid">
-                                <!-- Products Images -->
-                                <!-- Products Content -->
-                                <div class="Auction_products_content mt-3">
-                                    <h2>Apple Cinema 30"</h2>
-                                    <p class="my-3 light_para">Auction house filled at:</p>
-
-                                    <!-- Product Input Progress bar -->
-                                    <div class="progress auction_progress_bar mt-2 mb-4">
-                                        <div class="progress-bar" role="progressbar" style="width: 25%;"
-                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                    </div>
-                                    <!-- Product Input Progress bar -->
-
-                                    <!-- Auction Price div -->
-                                    <div
-                                        class="auction_price_div py-2 d-flex justify-content-around align-items-center">
-                                        <!-- Store price -->
-                                        <div class="auction_price_inner_div">
-                                            <p class="light_para">Store price</p>
-                                            <h3>$109</h3>
-                                        </div>
-                                        <!-- Start Price -->
-                                        <div class="auction_price_inner_div">
-                                            <p class="light_para">Starting price</p>
-                                            <h3>$15</h3>
-                                        </div>
-                                    </div>
-                                    <!-- Auction Price div -->
-
-                                    <!-- Subcribe button -->
-                                    <div class="mt-4 mb-5">
-                                        <button class="Subcribe_button">Subscribe for $15</button>
-                                    </div>
-                                    <!-- Subcribe button -->
-
-                                    <!-- Shecdule time div -->
-                                    <div class="Shedule_div py-2">
-                                        <h3 class="text-white mb-3"> Scheduled on 2022-01-09 19:00:00 </h3>
-                                    </div>
-                                    <!-- Shecdule time div -->
-                                </div>
-                                <!-- Products Content -->
                             </div>
-                            <!-- Popular cards -->
                         </div>
-
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-                            <!-- Popular cards -->
-                            <div class="popular_auction_card_div text-center py-3">
-
-                                <!-- Auction Products badge-->
-                                <div class="Auction_products_badge">
-                                    <p class="text-white">Trend</p>
+                        <?php else : ?>
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <div class="mt-2 mb-5 d-flex justify-content-center">
+                                    <h1>No auction currently going</h1>
                                 </div>
-                                <!-- Auction Products badge-->
-
-                                <!-- Products Images -->
-                                <img src="./assests/icons&images/image 27.png" alt="" class="img-fluid">
-                                <!-- Products Images -->
-                                <!-- Products Content -->
-                                <div class="Auction_products_content mt-3">
-                                    <h2>Apple Cinema 30"</h2>
-                                    <p class="my-3 light_para">Auction house filled at:</p>
-
-                                    <!-- Product Input Progress bar -->
-                                    <div class="progress auction_progress_bar mt-2 mb-4">
-                                        <div class="progress-bar" role="progressbar" style="width: 25%;"
-                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                    </div>
-                                    <!-- Product Input Progress bar -->
-
-                                    <!-- Auction Price div -->
-                                    <div
-                                        class="auction_price_div py-2 d-flex justify-content-around align-items-center">
-                                        <!-- Store price -->
-                                        <div class="auction_price_inner_div">
-                                            <p class="light_para">Store price</p>
-                                            <h3>$109</h3>
-                                        </div>
-                                        <!-- Start Price -->
-                                        <div class="auction_price_inner_div">
-                                            <p class="light_para">Starting price</p>
-                                            <h3>$15</h3>
-                                        </div>
-                                    </div>
-                                    <!-- Auction Price div -->
-
-                                    <!-- Subcribe button -->
-                                    <div class="mt-4 mb-5">
-                                        <button class="Subcribe_button">Subscribe for $15</button>
-                                    </div>
-                                    <!-- Subcribe button -->
-
-                                    <!-- Shecdule time div -->
-                                    <div class="Shedule_div py-2">
-                                        <h3 class="text-white mb-3"> Scheduled on 2022-01-09 19:00:00 </h3>
-                                    </div>
-                                    <!-- Shecdule time div -->
-                                </div>
-                                <!-- Products Content -->
                             </div>
-                            <!-- Popular cards -->
                         </div>
-
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-                            <!-- Popular cards -->
-                            <div class="popular_auction_card_div text-center py-3">
-
-                                <!-- Auction Products badge-->
-                                <div class="Auction_products_badge">
-                                    <p class="text-white">Trend</p>
-                                </div>
-                                <!-- Auction Products badge-->
-
-                                <!-- Products Images -->
-                                <img src="./assests/icons&images/pngwing 1.png" alt="" class="img-fluid">
-                                <!-- Products Images -->
-                                <!-- Products Content -->
-                                <div class="Auction_products_content mt-3">
-                                    <h2>Apple Cinema 30"</h2>
-                                    <p class="my-3 light_para">Auction house filled at:</p>
-
-                                    <!-- Product Input Progress bar -->
-                                    <div class="progress auction_progress_bar mt-2 mb-4">
-                                        <div class="progress-bar" role="progressbar" style="width: 100%;"
-                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">100%</div>
-                                    </div>
-                                    <!-- Product Input Progress bar -->
-
-                                    <!-- Auction Price div -->
-                                    <div
-                                        class="auction_price_div py-2 d-flex justify-content-around align-items-center">
-                                        <!-- Store price -->
-                                        <div class="auction_price_inner_div">
-                                            <p class="light_para">Store price</p>
-                                            <h3>$109</h3>
-                                        </div>
-                                        <!-- Start Price -->
-                                        <div class="auction_price_inner_div">
-                                            <p class="light_para">Starting price</p>
-                                            <h3>$15</h3>
-                                        </div>
-                                    </div>
-                                    <!-- Auction Price div -->
-
-                                    <!-- Subcribe button -->
-                                    <div class="mt-4 mb-5">
-                                        <button class="Subcribe_button">Subscribe for $15</button>
-                                    </div>
-                                    <!-- Subcribe button -->
-                                </div>
-                                <!-- Subcribe button -->
-
-                                <!-- Shecdule time div -->
-                                <div class="Shedule_div py-2">
-                                    <h3 class="text-white mb-3"> Scheduled on 2022-01-09 19:00:00 </h3>
-                                </div>
-                                <!-- Shecdule time div -->
-                            </div>
-                            <!-- Products Content -->
-                        </div>
+                        <?php endif; ?>
                         <!-- Popular cards -->
                     </div>
                 </div>
                 <div class="tab-view" style="display: none">
+                    <?php if ($upcomingAuction) : ?>
                     <div class="row pb-5 mt-5 p-2">
+                        <?php foreach ($upcomingAuction as $upcoming) : ?>
                         <div class="col-12 col-sm-12 col-md-3 col-lg-3">
                             <!-- Popular cards -->
                             <div class="popular_auction_card_div text-center py-3">
@@ -1086,17 +723,21 @@ $popularAuction = $auction->getPopular();
                                 <!-- Auction Products badge-->
 
                                 <!-- Products Images -->
-                                <img src="./assests/icons&images/image 25.png" alt="" class="img-fluid">
+                                <img src="./media/img/product/<?php echo $upcoming["product_img"] ?>" alt=""
+                                    class="img-fluid">
                                 <!-- Products Images -->
                                 <!-- Products Content -->
                                 <div class="Auction_products_content mt-3">
-                                    <h2>Apple Cinema 30"</h2>
+                                    <h2><?php echo $upcoming["product_name"] ?></h2>
                                     <p class="my-3 light_para">Auction house filled at:</p>
 
                                     <!-- Product Input Progress bar -->
                                     <div class="progress auction_progress_bar mt-2 mb-4">
-                                        <div class="progress-bar" role="progressbar" style="width: 25%;"
-                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                        <div class="progress-bar" role="progressbar"
+                                            style="width: <?php echo getAuctionParticipants($upcoming["id"], $upcoming["capacity"]) ?>;"
+                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                            <?php echo getAuctionParticipants($upcoming["id"], $upcoming["capacity"]) ?>%
+                                        </div>
                                     </div>
                                     <!-- Product Input Progress bar -->
 
@@ -1106,25 +747,39 @@ $popularAuction = $auction->getPopular();
                                         <!-- Store price -->
                                         <div class="auction_price_inner_div">
                                             <p class="light_para">Store price</p>
-                                            <h3>$109</h3>
+                                            <h3><?php echo $upcoming["store_price"] ?></h3>
                                         </div>
                                         <!-- Start Price -->
                                         <div class="auction_price_inner_div">
                                             <p class="light_para">Starting price</p>
-                                            <h3>$15</h3>
+                                            <h3><?php echo $upcoming["starting_price"] ?></h3>
                                         </div>
                                     </div>
                                     <!-- Auction Price div -->
 
                                     <!-- Subcribe button -->
                                     <div class="mt-4 mb-5">
-                                        <button class="Subcribe_button">Subscribe for $15</button>
+                                        <?php if (isset($_SESSION["email"])) : ?>
+                                        <?php if (!isParticepeted($_SESSION['email'], $upcoming["id"])) : ?>
+                                        <a href="./registerAuction.php?auction_id=<?php echo $upcoming["id"] ?>&token_value=<?php echo $upcoming["starting_price"] ?>"
+                                            class="Subcribe_button">Subscribe for
+                                            <?php echo $upcoming["starting_price"] ?></a>
+                                        <?php else : ?>
+                                        <button type="button" class="btn btn-primary" disabled>Subscribed</button>
+                                        <?php endif; ?>
+                                        <?php else : ?>
+                                        <a href="./registerAuction.php?auction_id=<?php echo $upcoming["id"] ?>&token_value=<?php echo $upcoming["starting_price"] ?>"
+                                            class="Subcribe_button">Subscribe for
+                                            <?php echo $upcoming["starting_price"] ?></a>
+
+                                        <?php endif; ?>
                                     </div>
                                     <!-- Subcribe button -->
 
                                     <!-- Shecdule time div -->
                                     <div class="Shedule_div py-2">
-                                        <h3 class="text-white mb-3"> Scheduled on 2022-01-09 19:00:00 </h3>
+                                        <h3 class="text-white mb-3"> Scheduled on <?php echo $upcoming["date"] ?>
+                                            <?php echo $upcoming["time"] ?> </h3>
                                     </div>
                                     <!-- Shecdule time div -->
                                 </div>
@@ -1132,190 +787,81 @@ $popularAuction = $auction->getPopular();
                             </div>
                             <!-- Popular cards -->
                         </div>
-
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-                            <!-- Popular cards -->
-                            <div class="popular_auction_card_div text-center py-3">
-
-                                <!-- Auction Products badge-->
-                                <div class="Auction_products_badge">
-                                    <p class="text-white">Trend</p>
-                                </div>
-                                <!-- Auction Products badge-->
-
-                                <!-- Products Images -->
-                                <img src="./assests/icons&images/image 26.png" alt="" class="img-fluid">
-                                <!-- Products Images -->
-                                <!-- Products Content -->
-                                <div class="Auction_products_content mt-3">
-                                    <h2>Apple Cinema 30"</h2>
-                                    <p class="my-3 light_para">Auction house filled at:</p>
-
-                                    <!-- Product Input Progress bar -->
-                                    <div class="progress auction_progress_bar mt-2 mb-4">
-                                        <div class="progress-bar" role="progressbar" style="width: 25%;"
-                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                    </div>
-                                    <!-- Product Input Progress bar -->
-
-                                    <!-- Auction Price div -->
-                                    <div
-                                        class="auction_price_div py-2 d-flex justify-content-around align-items-center">
-                                        <!-- Store price -->
-                                        <div class="auction_price_inner_div">
-                                            <p class="light_para">Store price</p>
-                                            <h3>$109</h3>
-                                        </div>
-                                        <!-- Start Price -->
-                                        <div class="auction_price_inner_div">
-                                            <p class="light_para">Starting price</p>
-                                            <h3>$15</h3>
-                                        </div>
-                                    </div>
-                                    <!-- Auction Price div -->
-
-                                    <!-- Subcribe button -->
-                                    <div class="mt-4 mb-5">
-                                        <button class="Subcribe_button">Subscribe for $15</button>
-                                    </div>
-                                    <!-- Subcribe button -->
-
-                                    <!-- Shecdule time div -->
-                                    <div class="Shedule_div py-2">
-                                        <h3 class="text-white mb-3"> Scheduled on 2022-01-09 19:00:00 </h3>
-                                    </div>
-                                    <!-- Shecdule time div -->
-                                </div>
-                                <!-- Products Content -->
-                            </div>
-                            <!-- Popular cards -->
-                        </div>
-
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-                            <!-- Popular cards -->
-                            <div class="popular_auction_card_div text-center py-3">
-
-                                <!-- Auction Products badge-->
-                                <div class="Auction_products_badge">
-                                    <p class="text-white">Trend</p>
-                                </div>
-                                <!-- Auction Products badge-->
-
-                                <!-- Products Images -->
-                                <img src="./assests/icons&images/image 27.png" alt="" class="img-fluid">
-                                <!-- Products Images -->
-                                <!-- Products Content -->
-                                <div class="Auction_products_content mt-3">
-                                    <h2>Apple Cinema 30"</h2>
-                                    <p class="my-3 light_para">Auction house filled at:</p>
-
-                                    <!-- Product Input Progress bar -->
-                                    <div class="progress auction_progress_bar mt-2 mb-4">
-                                        <div class="progress-bar" role="progressbar" style="width: 25%;"
-                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                    </div>
-                                    <!-- Product Input Progress bar -->
-
-                                    <!-- Auction Price div -->
-                                    <div
-                                        class="auction_price_div py-2 d-flex justify-content-around align-items-center">
-                                        <!-- Store price -->
-                                        <div class="auction_price_inner_div">
-                                            <p class="light_para">Store price</p>
-                                            <h3>$109</h3>
-                                        </div>
-                                        <!-- Start Price -->
-                                        <div class="auction_price_inner_div">
-                                            <p class="light_para">Starting price</p>
-                                            <h3>$15</h3>
-                                        </div>
-                                    </div>
-                                    <!-- Auction Price div -->
-
-                                    <!-- Subcribe button -->
-                                    <div class="mt-4 mb-5">
-                                        <button class="Subcribe_button">Subscribe for $15</button>
-                                    </div>
-                                    <!-- Subcribe button -->
-
-                                    <!-- Shecdule time div -->
-                                    <div class="Shedule_div py-2">
-                                        <h3 class="text-white mb-3"> Scheduled on 2022-01-09 19:00:00 </h3>
-                                    </div>
-                                    <!-- Shecdule time div -->
-                                </div>
-                                <!-- Products Content -->
-                            </div>
-                            <!-- Popular cards -->
-                        </div>
-
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-                            <!-- Popular cards -->
-                            <div class="popular_auction_card_div text-center py-3">
-
-                                <!-- Auction Products badge-->
-                                <div class="Auction_products_badge">
-                                    <p class="text-white">Trend</p>
-                                </div>
-                                <!-- Auction Products badge-->
-
-                                <!-- Products Images -->
-                                <img src="./assests/icons&images/pngwing 1.png" alt="" class="img-fluid">
-                                <!-- Products Images -->
-                                <!-- Products Content -->
-                                <div class="Auction_products_content mt-3">
-                                    <h2>Apple Cinema 30"</h2>
-                                    <p class="my-3 light_para">Auction house filled at:</p>
-
-                                    <!-- Product Input Progress bar -->
-                                    <div class="progress auction_progress_bar mt-2 mb-4">
-                                        <div class="progress-bar" role="progressbar" style="width: 100%;"
-                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">100%</div>
-                                    </div>
-                                    <!-- Product Input Progress bar -->
-
-                                    <!-- Auction Price div -->
-                                    <div
-                                        class="auction_price_div py-2 d-flex justify-content-around align-items-center">
-                                        <!-- Store price -->
-                                        <div class="auction_price_inner_div">
-                                            <p class="light_para">Store price</p>
-                                            <h3>$109</h3>
-                                        </div>
-                                        <!-- Start Price -->
-                                        <div class="auction_price_inner_div">
-                                            <p class="light_para">Starting price</p>
-                                            <h3>$15</h3>
-                                        </div>
-                                    </div>
-                                    <!-- Auction Price div -->
-
-                                    <!-- Subcribe button -->
-                                    <div class="mt-4 mb-5">
-                                        <button class="Subcribe_button">Subscribe for $15</button>
-                                    </div>
-                                    <!-- Subcribe button -->
-                                </div>
-                                <!-- Subcribe button -->
-
-                                <!-- Shecdule time div -->
-                                <div class="Shedule_div py-2">
-                                    <h3 class="text-white mb-3"> Scheduled on 2022-01-09 19:00:00 </h3>
-                                </div>
-                                <!-- Shecdule time div -->
-                            </div>
-                            <!-- Products Content -->
-                        </div>
+                        <?php endforeach; ?>
                         <!-- Popular cards -->
                     </div>
-                </div>
-            </div>
-            <!-- Upcomming changes section products -->
-            <div class="row">
-                <div class="col-12 text-center">
-                    <div class="mt-2 mb-5 d-flex justify-content-center ">
-                        <button class="Subcribe_button">See more</button>
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <div class="mt-2 mb-5 d-flex justify-content-center ">
+                                <button class="Subcribe_button">See more</button>
+                            </div>
+                        </div>
                     </div>
+                    <?php else : ?>
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <div class="mt-2 mb-5 d-flex justify-content-center ">
+                                <h1>No Upcomming auctions yet</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endif; ?>
+                </div>
+                <div class="tab-view" style="display: none">
+                    <?php if ($completedAuctions) : ?>
+                    <div class="row pb-5 mt-5 p-2">
+                        <?php foreach ($completedAuctions as $completedAuction) : ?>
+                        <div
+                            class="col-12 col-sm-9 col-md-6 col-xl-5 col-xxl-4 mb-5 d-flex justify-content-center align-items-center">
+                            <!-- Products Cards -->
+                            <div class="Auctions_products_cards text-center p-3">
+                                <!-- Products Images -->
+                                <img src="./media/img/product/<?php echo $completedAuction["product_img"] ?>"
+                                    alt="<?php echo $completedAuction["product_name"] ?>" class="img-fluid my-4" />
+                                <!-- Products Images -->
+
+                                <!-- content -->
+                                <div class="Auction_Products_Cards_content">
+                                    <h3><?php echo $completedAuction["product_name"] ?></h3>
+                                    <h5><?php echo $completedAuction["name"] ?></h5>
+
+                                    <!-- Instead price -->
+                                    <div
+                                        class="Instead_Price_div d-flex align-items-center justify-content-center my-3">
+                                        <h3 class="me-2">instead of
+                                            <strike>$<?php echo $completedAuction["store_price"] ?></strike>
+                                        </h3>
+                                        <h4>$<?php echo $completedAuction["starting_price"] ?></h4>
+                                    </div>
+                                    <!-- Instead price -->
+
+                                    <!-- Add to card -->
+                                    <!-- <button class="Add_to_cart mb-3">Add to Cart</button> -->
+                                    <!-- Add to card -->
+                                </div>
+                                <!-- content -->
+                            </div>
+                            <!-- Products Cards -->
+                        </div>
+                        <?php endforeach; ?>
+                        <!-- Popular cards -->
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <div class="mt-2 mb-5 d-flex justify-content-center ">
+                                <button class="Subcribe_button">See more</button>
+                            </div>
+                        </div>
+                    </div>
+                    <?php else : ?>
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <div class="mt-2 mb-5 d-flex justify-content-center ">
+                                <h1>No Auctions ended yet</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endif; ?>
                 </div>
             </div>
             <!-- Upcomming changes section products -->

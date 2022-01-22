@@ -13,7 +13,6 @@ function getAucitonCategory($id)
 
 $auction = new Auction();
 $pageName = "Current Auction";
-$bestSeller = $auction->getMinimumPriceAuction()[0];
 $currentAuction = $auction->getCurrentAuction();
 $isAuction = false;
 
@@ -30,34 +29,7 @@ if ($currentAuction) {
         <h1 class="text-white banner_heading">CURRENT <span>AUCTIONS</span></h1>
     </section>
     <!-- Banner section -->
-    <!--Smartphone-->
-    <div class="container-fluid main_bg pt-5">
-        <section class="container">
-            <div class="row align-items-center pt-3">
-                <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-4 mb-md-0">
-                    <img src="./media/img/product/<?php echo $bestSeller["product_img"] ?>" class="img-fluid" />
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-6 currentAuction_container1">
-                    <p class="currentAuction_container1-para mb-0">
-                        <?php echo getAucitonCategory($bestSeller["category"]) ?></p>
-                    <div class="currentAuction_heading">
-                        <h2 class="mb-0"><?php echo $bestSeller["product_name"] ?></h2>
-                        <span class="currentAuction_line"></span>
-                    </div>
-                    <p class="currentAuction_container1-para2 mt-2">
-                        <?php echo $bestSeller["discription"] ?>
-                    </p>
-                    <p class="currentAuction_container1-para">Best Seller</p>
-                    <p class="currentAuction_container1-para3">Instead of
-                        <del>$<?php echo $bestSeller["store_price"] ?></del>
-                        <span>$<?php echo $bestSeller["starting_price"] ?></span>
-                    </p>
-                    <!-- <button type="button" class="cart_btn">Add To Cart</button> -->
-                </div>
-            </div>
-        </section>
-    </div>
-    <!--Smartphone-->
+
     <!--Products-->
     <section class="side_padding main_bg">
         <div class="container-fluid padding_one">
@@ -540,46 +512,6 @@ if ($currentAuction) {
         </div>
     </section>
     <!--/ Products-->
-
-    <!-- News Letter Section -->
-
-    <section class="news_letter_sectionside_padding main_bg">
-        <div class="container-fluid padding_one">
-            <div class="row gx-0">
-                <div class="col-12 d-flex align-items-center justify-content-center">
-                    <!-- News letter div -->
-                    <div class="news_letter_inner_div">
-                        <div class="row px-3 align-items-center">
-                            <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-                                <h1>Receive our newsletter:</h1>
-                            </div>
-                            <div class="col-12 col-sm-12 col-md-6 col-xl-7 col-xxl-8">
-                                <div class="row align-items-center justify-content-center">
-                                    <div class="col-12 col-md-8 col-lg-9 my-4 my-md-0">
-                                        <div class="input_group_div">
-                                            <div class="inner_input d-flex">
-                                                <input type="email" placeholder="Enter your Email" />
-                                                <div class="news_icons">
-                                                    <img src="./assests/icons&images/Layer 2.svg" alt="" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-4 col-lg-2">
-                                        <!-- News letter button -->
-                                        <button class="send_button">Send</button>
-                                        <!-- News letter button -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- News letter div -->
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- News Letter Section -->
 </main>
 <!-- Footer -->
 <!-- Footer -->

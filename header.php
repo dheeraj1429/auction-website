@@ -52,8 +52,7 @@ require_once "./getValuesByName.php";
             <div class="Top_Header_Inner container-fluid side_padding">
                 <div class="Top_Navbar_Inner_Sm_div">
                     <i class="fas fa-envelope"></i>
-                    <a href="mailto:<?php echo getValuesByName("email") ?>"
-                        class="text-white"><?php echo getValuesByName("email") ?></a>
+                    <a href="mailto:<?php echo getValuesByName("email") ?>" class="text-white"><?php echo getValuesByName("email") ?></a>
                 </div>
 
                 <!-- Top navbar icons -->
@@ -84,93 +83,88 @@ require_once "./getValuesByName.php";
                     <div class="container-fluid">
                         <a class="navbar-brand" href="./index.php">
                             <!-- <h1>Auction</h1> -->
-                            <img width="50px" height="50px" src="<?php echo "./media/" . getValuesByName("logo") ?>"
-                                alt="logo">
+                            <img width="50px" height="50px" src="<?php echo "./media/" . getValuesByName("logo") ?>" alt="logo">
                         </a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                            aria-label="Toggle navigation">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav ms-auto">
                                 <?php if ($pageName == "Home") : ?>
-                                <li class="nav-item">
-                                    <a class="nav-link active_header" aria-current="page" href="./">HOME</a>
-                                </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active_header" aria-current="page" href="./">HOME</a>
+                                    </li>
                                 <?php else : ?>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="./">HOME</a>
-                                </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="./">HOME</a>
+                                    </li>
                                 <?php endif; ?>
                                 <?php if ($pageName == "How It Works") : ?>
-                                <li class="nav-item">
-                                    <a class="nav-link active_header " aria-current="page" href="./howItWorks.php">HOW
-                                        IT
-                                        WORKS</a>
-                                </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active_header " aria-current="page" href="./howItWorks.php">HOW
+                                            IT
+                                            WORKS</a>
+                                    </li>
                                 <?php else : ?>
-                                <li class="nav-item">
-                                    <a class="nav-link active " aria-current="page" href="./howItWorks.php">HOW IT
-                                        WORKS</a>
-                                </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active " aria-current="page" href="./howItWorks.php">HOW IT
+                                            WORKS</a>
+                                    </li>
                                 <?php endif; ?>
                                 <?php if ($pageName == "Ended") : ?>
-                                <li class="nav-item">
-                                    <a class="nav-link active_header" aria-current="page" href="./Ended.php">ENDED
-                                        AUCTIONS</a>
-                                </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active_header" aria-current="page" href="./Ended.php">ENDED
+                                            AUCTIONS</a>
+                                    </li>
                                 <?php else : ?>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="./Ended.php">ENDED AUCTIONS</a>
-                                </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="./Ended.php">ENDED AUCTIONS</a>
+                                    </li>
 
                                 <?php endif; ?>
                                 <?php if ($pageName == "Current Auction") : ?>
-                                <li class="nav-item">
-                                    <a class="nav-link active_header" aria-current="page"
-                                        href="./currentAuctions.php">CURRENT
-                                        AUCTION</a>
-                                </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active_header" aria-current="page" href="./currentAuctions.php">CURRENT
+                                            AUCTION</a>
+                                    </li>
                                 <?php else : ?>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="./currentAuctions.php">CURRENT
-                                        AUCTION</a>
-                                </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="./currentAuctions.php">CURRENT
+                                            AUCTION</a>
+                                    </li>
                                 <?php endif; ?>
                                 <?php if ($pageName == "Buy Token") : ?>
-                                <li class="nav-item">
-                                    <a class="nav-link active_header" aria-current="page" href="Buy_token.php">BUY
-                                        TOKENS</a>
-                                </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active_header" aria-current="page" href="Buy_token.php">BUY
+                                            TOKENS</a>
+                                    </li>
                                 <?php else : ?>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="Buy_token.php">BUY TOKENS</a>
-                                </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="Buy_token.php">BUY TOKENS</a>
+                                    </li>
                                 <?php endif; ?>
 
 
                                 <?php if (isset($_SESSION["email"])) : ?>
-                                <li class="nav-item">
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle drop" type="button"
-                                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                            AALBOUCHI
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <li><a class="dropdown-item" href="./MyAccount.php">My Account</a></li>
-                                            <li><a class="dropdown-item" href="./signout.php">Sign Out</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
+                                    <li class="nav-item">
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle drop" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                AALBOUCHI
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                <li><a class="dropdown-item" href="./MyAccount.php">My Account</a></li>
+                                                <li><a class="dropdown-item" href="./signout.php">Sign Out</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
 
                                 <?php else : ?>
-                                <div class="sign_in_button d-flex align-items-center ms-5">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="./logIn.php">SIGN IN</a>
-                                    </li>
-                                    <a href="./register.php" class="Subcribe_button_sm text-white">REGISTER</a>
-                                </div>
+                                    <div class="sign_in_button d-flex align-items-center ms-5">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" aria-current="page" href="./logIn.php">SIGN IN</a>
+                                        </li>
+                                        <a href="./register.php" class="Subcribe_button_sm text-white">REGISTER</a>
+                                    </div>
                                 <?php endif; ?>
                             </ul>
                         </div>
