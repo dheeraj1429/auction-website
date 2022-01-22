@@ -52,7 +52,8 @@ require_once "./getValuesByName.php";
             <div class="Top_Header_Inner container-fluid side_padding">
                 <div class="Top_Navbar_Inner_Sm_div">
                     <i class="fas fa-envelope"></i>
-                    <p class="text-white"><?php echo getValuesByName("email") ?></p>
+                    <a href="mailto:<?php echo getValuesByName("email") ?>"
+                        class="text-white"><?php echo getValuesByName("email") ?></a>
                 </div>
 
                 <!-- Top navbar icons -->
