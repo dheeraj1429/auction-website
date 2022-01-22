@@ -6,18 +6,19 @@ require_once "./model/auctionCategory.php";
 
 function getAucitonCategory($id)
 {
-   $auctionCategory = new AuctionCategory();
-   $category = $auctionCategory->read($id = $id)[0];
-   return $category["name"];
+    $auctionCategory = new AuctionCategory();
+    $category = $auctionCategory->read($id = $id)[0];
+    return $category["name"];
 }
 
 $auction = new Auction();
+$pageName = "Current Auction";
 $bestSeller = $auction->getMinimumPriceAuction()[0];
 $currentAuction = $auction->getCurrentAuction();
 $isAuction = false;
 
 if ($currentAuction) {
-   $isAuction = true;
+    $isAuction = true;
 }
 ?>
 <?php require_once "./header.php" ?>

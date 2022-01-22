@@ -2,7 +2,7 @@
 require_once "./model/cmsPages.php";
 
 $cmsPages = new CmsPages();
-
+$pageName = "How It Works";
 $howItWorks = $cmsPages->getCMSByType(3);
 ?>
 <?php require_once './header.php' ?>

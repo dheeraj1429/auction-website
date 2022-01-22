@@ -4,6 +4,7 @@ require_once "./model/package.php";
 
 $package = new Package();
 $standardTokens = $package->getStandardTokens();
+$pageName = "Buy Token";
 $vipTokens = $package->getVIPTokens();
 ?>
 <?php require_once "./header.php" ?>

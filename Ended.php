@@ -3,6 +3,7 @@ require_once "./session.php";
 require_once "./model/auction.php";
 
 $auction = new Auction();
+$pageName = "Ended";
 $completedAuctions = $auction->getCompleteAuction();
 ?>
 

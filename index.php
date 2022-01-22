@@ -14,6 +14,8 @@ $blog = new Blog();
 $cmsPages = new CMSPages();
 $auction = new Auction();
 
+$pageName = "Home";
+
 $packages = $package->getStandardTokens();
 $testomonials = $testomonial->read();
 $blogs = $blog->getLatestBlog();
