@@ -3,10 +3,11 @@ require_once "session.php";
 require_once "model/users.php";
 
 if (!isset($_SESSION["email"])) {
-   header("Location: ./logIn.php");
-   die();
+    header("Location: ./logIn.php");
+    die();
 }
 $users = new Users();
+$pageName = "Profile page";
 $userData = $users->read($userEmail = $_SESSION["email"])[0];
 ?>
 <?php require_once "./header.php" ?>

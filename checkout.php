@@ -20,6 +20,7 @@ if (!empty($packageData)) {
     header("HTTP/1.0 404 Not Found");
     die();
 }
+$pageName = "checkout";
 ?>
 <!DOCTYPE html>
 <html lang="en">

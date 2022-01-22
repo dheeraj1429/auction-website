@@ -4,13 +4,14 @@ require_once "./model/bids.php";
 require_once "./model/auction.php";
 
 if (!isset($_GET["id"])) {
-  header('HTTP/1.1 404 Not Found');
-  die();
+    header('HTTP/1.1 404 Not Found');
+    die();
 }
 
 $bids = new Bids();
 $auction = new Auction();
 
+$pageName = "winners";
 $auctionData = $auction->read($id = $_GET["id"])[0];
 $bidders = $bids->getReverceSortedBids($_GET["id"]);
 // echo "<pre>";

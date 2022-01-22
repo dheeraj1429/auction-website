@@ -1,5 +1,6 @@
 <?php
 require_once "./model/cmsPages.php";
+require_once "./session.php";
 
 $cmsPages = new CmsPages();
 $pageName = "How It Works";
@@ -135,12 +136,12 @@ $howItWorks = $cmsPages->getCMSByType(3);
                     <p class="howitworks_para">• Standard tokens: 10 tokens = 13dt / 15 tokens = 19dt / 20 tokens =
                         25dt / 25 tokens = 30dt / 100 tokens = 110dt <br>
                         • Standard tokens are only used during standard auctions where the value
-                        of the product does not exceed <20,000 dinars. <br> • VIP tokens: 12 tokens=120dt / 15
-                            tokens=140dt
-                            / 20
-                            tokens=180dt / 25 tokens=225dt / 100 tokens=900dt <br> • VIP tokens are only used during VIP
-                            auctions
-                            where the product value exceeds> 20,000 dinars</p>
+                        of the product does not exceed &lt;20,000 dinars. <br> • VIP tokens: 12 tokens=120dt / 15
+                        tokens=140dt
+                        / 20
+                        tokens=180dt / 25 tokens=225dt / 100 tokens=900dt <br> • VIP tokens are only used during VIP
+                        auctions
+                        where the product value exceeds> 20,000 dinars</p>
 
                     <p class="howitworks_para">- Please note that the token purchase costs are refundable only in the
                         event that an auction is canceled, otherwise the tokens are not

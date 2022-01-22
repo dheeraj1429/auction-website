@@ -2,6 +2,7 @@
 require_once "./model/users.php";
 
 $users = new Users();
+$pageName = "register";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST["submit"])) {
     $username = $_POST['username'];

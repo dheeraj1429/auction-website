@@ -3,21 +3,22 @@ require_once "./getValuesByName.php";
 require_once "./model/contact.php";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-  $name = $_POST['name'];
-  $email = $_POST['email'];
-  $phoneNumber = $_POST['phone_number'];
-  $message = htmlspecialchars($_POST['message']);
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $phoneNumber = $_POST['phone_number'];
+    $message = htmlspecialchars($_POST['message']);
 
-  $data = array(
-    "name" => $name,
-    "email" => $email,
-    "phone_number" => $phoneNumber,
-    "message" => $message
-  );
+    $data = array(
+        "name" => $name,
+        "email" => $email,
+        "phone_number" => $phoneNumber,
+        "message" => $message
+    );
 
-  $contact = new Contact();
-  $contact->create($data);
+    $contact = new Contact();
+    $contact->create($data);
 }
+$pageName = "contact";
 ?>
 <?php require_once "./header.php" ?>
 <!-- Header -->

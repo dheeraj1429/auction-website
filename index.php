@@ -349,10 +349,10 @@ $popularAuction = $auction->getPopular();
                                 <p>Live Auction</p>
                             </div>
                             <div class="tab_div">
-                                <p>Time Auction</p>
+                                <p>Upcomming Auctions</p>
                             </div>
                             <div class="tab_div">
-                                <p>Buy Now</p>
+                                <p>Ended Auctions</p>
                             </div>
                             <!-- Tabs Content -->
                         </div>
@@ -363,6 +363,7 @@ $popularAuction = $auction->getPopular();
             <!-- Upcomming changes section tabs div -->
 
             <!-- Upcomming changes section products -->
+
             <div class="row pb-5 mt-5 p-2">
                 <div class="col-12 col-sm-12 col-md-3 col-lg-3">
                     <!-- Popular cards -->

@@ -1,6 +1,7 @@
 <?php
 require_once "./session.php";
-// require_once "./getValuesByName.php;"
+
+$pageName = "policy";
 ?>
 <?php require_once "./header.php" ?>
 <!-- Header -->

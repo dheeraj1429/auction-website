@@ -4,10 +4,11 @@ require_once "./model/users.php";
 require_once "./model/wallet.php";
 
 if (!isset($_SESSION["email"])) {
-  header("Location: ./logIn.php");
-  die();
+    header("Location: ./logIn.php");
+    die();
 }
 
+$pageName = "wallet";
 $users = new Users();
 $wallet = new Wallet();
 $userData = $users->getUserById($_SESSION["userId"]);

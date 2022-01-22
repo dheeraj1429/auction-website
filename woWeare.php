@@ -3,6 +3,7 @@ require_once "./session.php";
 require_once "model/cmsPages.php";
 
 $cmsPages = new CMSPages();
+$pageName = "Who We Are";
 $we = explode(" ", $cmsPages->getCMSByType(4)[0]['title']);
 $type5 = $cmsPages->getCMSByType(5);
 // print_r($type5);

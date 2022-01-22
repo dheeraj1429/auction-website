@@ -62,6 +62,8 @@ if (isset($_GET["id"]) && isset($_GET["token"])) {
     header("Location: ./auction.php");
     die();
 }
+
+$pageName = "auction";
 ?>
 
 <?php require_once "./header.php" ?>

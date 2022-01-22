@@ -9,6 +9,8 @@ if (isset($_SESSION["email"])) {
     die();
 }
 
+$pageName = "login";
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
     $email = $_POST['email'];
     $password = hash("sha512", $_POST['password']);

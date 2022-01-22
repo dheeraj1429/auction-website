@@ -18,6 +18,7 @@ $auction = new Auction();
 $auctionData = $auction->getAuctionByToken($_GET["token"]);
 $redis = new RedisConnection($_GET["token"]);
 $currentBid = $redis->getCurrentBid();
+$pageName = "auction page";
 if (!$currentBid) {
     $currentBid = $auctionData["starting_price"];
 }

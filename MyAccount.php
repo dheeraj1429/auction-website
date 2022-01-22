@@ -7,6 +7,7 @@ if (!isset($_SESSION['email'])) {
     die();
 }
 $users = new Users();
+$pageName = "My Account";
 $userData = $users->read($userEmail = $_SESSION["email"])[0];
 ?>
 <?php require_once "./header.php" ?>
