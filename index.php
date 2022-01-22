@@ -201,7 +201,8 @@ $completedAuctions = $auction->getCompleteAuction();
             <div class="row">
                 <div class="col-12 text-center">
                     <div class="mt-2 mb-5 d-flex justify-content-center ">
-                        <button class="Subcribe_button">See All Auction</button>
+                        <a href="./auction.php?category=popular_auction" role="button" class="Subcribe_button">See All
+                            Auction</a>
                     </div>
                 </div>
             </div>
@@ -602,13 +603,13 @@ $completedAuctions = $auction->getCompleteAuction();
                         </div>
                         <!-- Popular cards -->
                     </div>
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-12 text-center">
                             <div class="mt-2 mb-5 d-flex justify-content-center ">
-                                <button class="Subcribe_button">See more</button>
+                                <a href="./auction.php?category=" class="Subcribe_button">See more</a>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="tab-view" style="display: none">
                     <div class="row pb-5 mt-5 p-2">
@@ -692,7 +693,7 @@ $completedAuctions = $auction->getCompleteAuction();
                         <div class="row">
                             <div class="col-12 text-center">
                                 <div class="mt-2 mb-5 d-flex justify-content-center ">
-                                    <button class="Subcribe_button">See more</button>
+                                    <a href="./currentAuctions.php" class="Subcribe_button">See more</a>
                                 </div>
                             </div>
                         </div>
@@ -793,7 +794,7 @@ $completedAuctions = $auction->getCompleteAuction();
                     <div class="row">
                         <div class="col-12 text-center">
                             <div class="mt-2 mb-5 d-flex justify-content-center ">
-                                <button class="Subcribe_button">See more</button>
+                                <a href="./auction.php?category=upcoming_auction" class="Subcribe_button">See more</a>
                             </div>
                         </div>
                     </div>

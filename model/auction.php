@@ -82,6 +82,16 @@ class Auction extends Base
         }
     }
 
+    public function getLiveAndUpcomingAuction()
+    {
+        $sql = "SELECT * FROM " . $this->tableName . " WHERE `time` > TIME(NOW()) AND `date` = DATE(NOW()) OR 
+            `time` > TIME(NOW()) AND (`date` > DATE(NOW()) OR `date` = DATE(NOW()))";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
     public function getLiveAuction()
     {
         $sql = "SELECT * FROM " . $this->tableName . " WHERE `time` > TIME(NOW()) AND `date` = DATE(NOW())";
