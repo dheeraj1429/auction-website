@@ -96,6 +96,16 @@
                             </span>
                         </a>
                     </li>
+                    <li class="menu-item">
+                        <a href="./winners.php" class="menu-link">
+                            <span class="menu-label">
+                                <span class="menu-name">Winners</span>
+                            </span>
+                            <span class="menu-icon">
+                                <i class="mdi mdi-plus-outline"></i>
+                            </span>
+                        </a>
+                    </li>
                     <li class="menu-item ">
                         <a href='./testomonial.php' class=' menu-link'>
                             <span class="menu-label">

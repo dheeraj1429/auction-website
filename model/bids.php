@@ -80,6 +80,15 @@ class Bids extends Base
         }
     }
 
+    public function getWinnerBid($auctionId)
+    {
+        $sql = "SELECT * FROM " . $this->tableName . " JOIN users ON users.id = bids.user_id  WHERE auction_id = '$auctionId' ORDER BY amount DESC";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
     public function delete($id)
     {
         $sql = "DELETE FROM " . $this->tableName . " WHERE id = '$id'";
