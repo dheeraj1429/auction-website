@@ -13,7 +13,7 @@ function getUserById($id)
 if (!isset($_GET["id"])) {
     header("Location: index.php");
 }
-
+$pageName = "blog";
 $comment = new Comment();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
