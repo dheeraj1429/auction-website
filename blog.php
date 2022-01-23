@@ -115,61 +115,56 @@ $blogData = $blog->read($id = $_GET["id"])[0];
                 </div>
 
                 <?php foreach ($comments as $c) : ?>
-                <div class="row side_padding pt-2 pt-md-5">
-                    <?php if (getUserById($c["user_id"])["profile_img"]) : ?>
-                    <div class="col-12 col-md-2">
-                        <img width="100" height="100"
-                            src="./media/img/users/<?php getUserById($c["user_id"])["profile_img"] ?>"
-                            alt="profile-pic" />
-                    </div>
-                    <?php else : ?>
-                    <div class="col-12 col-md-2">
-                        <img width="100" height="100" src="./media/img/users/default.png" alt="profile-pic" />
-                    </div>
-                    <?php endif; ?>
-                    <div class="col-12 col-md-10 pt-3 pt-md-0 commentsUsers">
-                        <h3><?php echo getUserById($c["user_id"])["username"] ?> <span
-                                class="comment_date light_para ms-2"><?php echo date_format(date_create($c["date"]), "F, d Y") ?></span>
-                        </h3>
-                        <p class="light_para">
-                            <?php echo $c["comment"] ?>
-                        </p>
-
-                        <button id="<?php echo $c["id"] ?>" class="replay_Button">Reply</button>
-                        <div class="replys">
-                            <?php foreach (json_decode($c["reply"], true)["reply"] as $r) : ?>
-                            <?php if (getUserById($r["user_id"])["profile_img"]) : ?>
+                    <div class="row side_padding pt-2 pt-md-5">
+                        <?php if (getUserById($c["user_id"])["profile_img"]) : ?>
                             <div class="col-12 col-md-2">
-                                <img width="100" height="100"
-                                    src="./media/img/users/<?php getUserById($r["user_id"])["profile_img"] ?>"
-                                    alt="profile-pic" />
+                                <img width="100" height="100" src="./media/img/users/<?php echo getUserById($c["user_id"])["profile_img"] ?>" alt="profile-pic" />
                             </div>
-                            <?php else : ?>
+                        <?php else : ?>
                             <div class="col-12 col-md-2">
                                 <img width="100" height="100" src="./media/img/users/default.png" alt="profile-pic" />
                             </div>
-                            <?php endif; ?>
-                            <div class="col-12 col-md-10 pt-3 pt-md-0 commentsUsers">
-                                <h3><?php echo getUserById($r["user_id"])["username"] ?>
-                                </h3>
-                            </div>
+                        <?php endif; ?>
+                        <div class="col-12 col-md-10 pt-3 pt-md-0 commentsUsers">
+                            <h3><?php echo getUserById($c["user_id"])["username"] ?> <span class="comment_date light_para ms-2"><?php echo date_format(date_create($c["date"]), "F, d Y") ?></span>
+                            </h3>
                             <p class="light_para">
-                                <?php echo $r["reply"] ?>
+                                <?php echo $c["comment"] ?>
                             </p>
-                            <?php endforeach; ?>
+
+                            <button id="<?php echo $c["id"] ?>" class="replay_Button">Reply</button>
+                            <div class="replys">
+                                <?php foreach (json_decode($c["reply"], true)["reply"] as $r) : ?>
+                                    <div class="reply" style="display: flex; margin: 20px 0px">
+                                        <?php if (getUserById($r["user_id"])["profile_img"]) : ?>
+                                            <div class="col-12 col-md-2">
+                                                <img width="100" height="100" src="./media/img/users/<?php echo getUserById($r["user_id"])["profile_img"] ?>" alt="profile-pic" />
+                                            </div>
+                                        <?php else : ?>
+                                            <div class="col-12 col-md-2">
+                                                <img width="100" height="100" src="./media/img/users/default.png" alt="profile-pic" />
+                                            </div>
+                                        <?php endif; ?>
+                                        <div class="col-12 col-md-10 pt-3 pt-md-0 commentsUsers">
+                                            <h3><?php echo getUserById($r["user_id"])["username"] ?>
+                                            </h3>
+                                            <p class="light_para">
+                                                <?php echo $r["reply"] ?>
+                                            </p>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                            <form action="./reply.php" method="post" style="display: none" id="reply-form-<?php echo $c["id"] ?>">
+                                <input type="hidden" name="comment-id" value="<?php echo $c["id"] ?>">
+                                <input type="hidden" name="blog-id" value="<?php echo $_GET["id"] ?>">
+                                <input type="hidden" name="user-id" value="<?php echo $_SESSION["userId"] ?>">
+                                <input type="text" name="reply" placeholder="Reply" style="margin: 10px" class="form-control" aria-describedby="replyHelpBlock">
+                                <button class="btn btn-primary" type="submit">Send</button>
+                                <button type="button" class="btn btn-secondary cancel-btn">Cancel</button>
+                            </form>
                         </div>
-                        <form action="./reply.php" method="post" style="display: none"
-                            id="reply-form-<?php echo $c["id"] ?>">
-                            <input type="hidden" name="comment-id" value="<?php echo $c["id"] ?>">
-                            <input type="hidden" name="blog-id" value="<?php echo $_GET["id"] ?>">
-                            <input type="hidden" name="user-id" value="<?php echo $_SESSION["userId"] ?>">
-                            <input type="text" name="reply" placeholder="Reply" style="margin: 10px"
-                                class="form-control" aria-describedby="replyHelpBlock">
-                            <button class="btn btn-primary" type="submit">Send</button>
-                            <button type="button" class="btn btn-secondary cancel-btn">Cancel</button>
-                        </form>
                     </div>
-                </div>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -215,15 +210,15 @@ $blogData = $blog->read($id = $_GET["id"])[0];
 <!-- main -->
 
 <script>
-const replyBtns = document.getElementsByClassName("replay_Button");
+    const replyBtns = document.getElementsByClassName("replay_Button");
 
-for (let replyBtn of replyBtns) {
-    replyBtn.onclick = () => {
-        const commentId = replyBtn.id;
-        const form = document.getElementById(`reply-form-${commentId}`);
-        form.style.display = "block";
-        form.getElementsByClassName("cancel-btn")[0].onclick = () => form.style.display = "none";
+    for (let replyBtn of replyBtns) {
+        replyBtn.onclick = () => {
+            const commentId = replyBtn.id;
+            const form = document.getElementById(`reply-form-${commentId}`);
+            form.style.display = "block";
+            form.getElementsByClassName("cancel-btn")[0].onclick = () => form.style.display = "none";
+        }
     }
-}
 </script>
 <?php require_once "./footer2.php" ?>
