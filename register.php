@@ -33,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST["submit"])) {
         die();
     }
 }
-
 ?>
 <?php if (isset($_SESSION["flash"])) : ?>
 <div class="alert alert-<?php echo $_SESSION["flash"]["type"] ?>" role="alert">
@@ -58,15 +57,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST["submit"])) {
                         </div>
                         <!-- Sing In Component content -->
 
-                        <!-- Sing in and log in buttons -->
-
-                        <div class="d-flex mt-5 devide_div align-items-center justify-content-center">
-                            <div class="line"></div>
-                            <p>Or</p>
-                            <div class="line"></div>
-                        </div>
-
-                        <!-- Sing in input div -->
                         <form method="post">
                             <div class="mt-4">
                                 <div class="sing_in_input_div d-flex align-items-center mb-4">
@@ -83,6 +73,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST["submit"])) {
                                     <input name="email" type="email" placeholder="Email Address" />
                                 </div>
 
+                                <div class="sing_in_input_div d-flex align-items-center my-4">
+                                    <div class="sing_in_icons_div">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <input name="phone-number" type="tel" placeholder="Phone number" />
+                                </div>
+
+                                <div class="sing_in_input_div d-flex align-items-center my-4">
+                                    <div class="sing_in_icons_div">
+                                        <i class="fas fa-address-card"></i>
+                                    </div>
+                                    <input name="address" type="text" placeholder="address" />
+                                </div>
+
                                 <div class="sing_in_input_div d-flex align-items-center mb-4">
                                     <div class="sing_in_icons_div">
                                         <i class="fas fa-lock"></i>
@@ -97,19 +101,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST["submit"])) {
                                     <input name="conform-password" type="password" placeholder="Conform Password" />
                                 </div>
 
-                                <div class="sing_in_input_div d-flex align-items-center my-4">
-                                    <div class="sing_in_icons_div">
-                                        <i class="fas fa-lock"></i>
-                                    </div>
-                                    <input name="phone-number" type="tel" placeholder="Phone number" />
-                                </div>
-
-                                <div class="sing_in_input_div d-flex align-items-center">
-                                    <div class="sing_in_icons_div">
-                                        <i class="fas fa-lock"></i>
-                                    </div>
-                                    <input name="address" type="text" placeholder="address" />
-                                </div>
 
                                 <!-- Forget Password -->
                                 <div class="text-center mt-5 forgot_div">

@@ -6,6 +6,7 @@ if (!isset($_SESSION["email"])) {
     header("Location: ./logIn.php");
     die();
 }
+
 $users = new Users();
 $pageName = "Profile page";
 $userData = $users->read($userEmail = $_SESSION["email"])[0];
@@ -29,13 +30,15 @@ $userData = $users->read($userEmail = $_SESSION["email"])[0];
                     <div class="user_products_card d-flex align-items-center">
                         <div class="user_CR">
                             <?php if ($userData["profile_img"]) : ?>
-                            <img src="./media/img/users/<?php echo $userData["profile_img"] ?>" alt="" />
+                                <img src="./media/img/users/<?php echo $userData["profile_img"] ?>" alt="" />
                             <?php else : ?>
-                            <img src="./media/img/users/default.png" alt="" />
+                                <img src="./media/img/users/default.png" alt="" />
                             <?php endif; ?>
-                            <div class="edit_option">
-                                <img src="./assests/icons&images/mybit/pencil 1.png" alt="" />
-                            </div>
+                            <a href="./MyAccount.php">
+                                <div class="edit_option">
+                                    <img src="./assests/icons&images/mybit/pencil 1.png" alt="" />
+                                </div>
+                            </a>
                         </div>
 
                         <div class="ms-4 mt-4 mt-mb-0">
@@ -78,8 +81,7 @@ $userData = $users->read($userEmail = $_SESSION["email"])[0];
 
                             <!-- Product Input Progress bar -->
                             <div class="progress auction_progress_bar mt-2 mb-4">
-                                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25"
-                                    aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                                     25%
                                 </div>
                             </div>
@@ -136,8 +138,7 @@ $userData = $users->read($userEmail = $_SESSION["email"])[0];
 
                             <!-- Product Input Progress bar -->
                             <div class="progress auction_progress_bar mt-2 mb-4">
-                                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25"
-                                    aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                                     25%
                                 </div>
                             </div>
@@ -194,8 +195,7 @@ $userData = $users->read($userEmail = $_SESSION["email"])[0];
 
                             <!-- Product Input Progress bar -->
                             <div class="progress auction_progress_bar mt-2 mb-4">
-                                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25"
-                                    aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                                     25%
                                 </div>
                             </div>
@@ -252,8 +252,7 @@ $userData = $users->read($userEmail = $_SESSION["email"])[0];
 
                             <!-- Product Input Progress bar -->
                             <div class="progress auction_progress_bar mt-2 mb-4">
-                                <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="25"
-                                    aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                                     100%
                                 </div>
                             </div>
@@ -316,8 +315,7 @@ $userData = $users->read($userEmail = $_SESSION["email"])[0];
 
                             <!-- Product Input Progress bar -->
                             <div class="progress auction_progress_bar mt-2 mb-4">
-                                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25"
-                                    aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                                     25%
                                 </div>
                             </div>
@@ -374,8 +372,7 @@ $userData = $users->read($userEmail = $_SESSION["email"])[0];
 
                             <!-- Product Input Progress bar -->
                             <div class="progress auction_progress_bar mt-2 mb-4">
-                                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25"
-                                    aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                                     25%
                                 </div>
                             </div>
@@ -432,8 +429,7 @@ $userData = $users->read($userEmail = $_SESSION["email"])[0];
 
                             <!-- Product Input Progress bar -->
                             <div class="progress auction_progress_bar mt-2 mb-4">
-                                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25"
-                                    aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                                     25%
                                 </div>
                             </div>
@@ -490,8 +486,7 @@ $userData = $users->read($userEmail = $_SESSION["email"])[0];
 
                             <!-- Product Input Progress bar -->
                             <div class="progress auction_progress_bar mt-2 mb-4">
-                                <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="25"
-                                    aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                                     100%
                                 </div>
                             </div>
