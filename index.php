@@ -19,6 +19,11 @@ $pageName = "Home";
 $packages = $package->getStandardTokens();
 $testomonials = $testomonial->read();
 $blogs = $blog->getLatestBlog();
+
+if (count($blogs) > 3) {
+    $blogs = array_slice($blogs, 0, 3);
+}
+
 $howItWorks = $cmsPages->getCMSByType(2);
 
 function getAuctionParticipants($auctionId, $totalParticipants)

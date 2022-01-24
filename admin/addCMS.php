@@ -1,10 +1,12 @@
 <?php
 include_once("../session.php");
 require_once("../model/cmsPages.php");
+require_once "../model/cmsCategory.php";
 
 $pageName = "Add CMS";
 $isEdit = false;
 $cmsPages = new CmsPages();
+$cmsCategory = new CmsCategory();
 
 if (!isset($_SESSION['admin_email'])) {
     $_SESSION['toast']['msg'] = "Please, Log-in to continue.";
@@ -60,6 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $cmsPages->create($data);
 }
+$categories = $cmsCategory->read();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -87,12 +90,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         <form method="POST" enctype="multipart/form-data">
                                             <div class="form-group col-md-12">
                                                 <label for="head">Type</label>
-                                                <input name="type" type="number" class="form-control" id="type"
-                                                    placeholder="Type"
-                                                    value="<?php if (isset($_GET['id'])) {
-                                                                                                                                                echo $dataB['type'];
-                                                                                                                                            } ?>"
-                                                    autocomplete="off" required="">
+                                                <select class="form-control" name="type" autocomplete="off" required="">
+                                                    <option value="" selected="" disabled="">Select Category</option>
+                                                    <?php foreach ($categories as $category) : ?>
+                                                    <option value="<?php echo $category["id"] ?>">
+                                                        <?php echo $category["name"] ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label for="head">Title</label>

@@ -6,9 +6,6 @@ $cmsPages = new CMSPages();
 $pageName = "Who We Are";
 $we = explode(" ", $cmsPages->getCMSByType(4)[0]['title']);
 $type5 = $cmsPages->getCMSByType(5);
-// print_r($type5);
-// print_r($we[0]);
-// die();
 ?>
 <?php require_once "./header.php" ?>
 <!-- Header -->
@@ -17,7 +14,9 @@ $type5 = $cmsPages->getCMSByType(5);
     <!-- Banner section -->
     <section class="Banner_Section_div"
         style="background-image: url('./media/img/cms/<?php echo $cmsPages->getCMSByType(4)[0]["img"] ?>')">
-        <h1 class="text-white banner_heading"><?php echo $we[0] ?> <?php echo $we[1] ?> <span>WE</span></h1>
+        <h1 class="text-white banner_heading"><?php echo $we[0] ?> <?php echo $we[1] ?>
+            <span><?php echo $we[2] ?></span>
+            <h1>
     </section>
     <!-- Banner section -->
 

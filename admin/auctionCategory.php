@@ -55,12 +55,10 @@ $categoryData = $auctionCategory->read();
                         <div class="col-lg-10 mx-auto mt-2">
                             <div class="card py-3 m-b-30">
                                 <div class="card-body">
-                                    <div class="center"
-                                        style="display: flex; width: 100%; align-items: center; justify-content: space-between">
+                                    <div class="center" style="display: flex; width: 100%; align-items: center; justify-content: space-between">
 
                                         <h2>Auction Categories</h2>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal"
-                                            data-target="#exampleModal">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                             Add
                                         </button>
                                     </div>
@@ -76,32 +74,26 @@ $categoryData = $auctionCategory->read();
                                             </thead>
                                             <tbody>
                                                 <?php for ($i = 0; $i < count($categoryData); $i++) : ?>
-                                                <tr>
-                                                    <td><?php echo $i + 1 ?></td>
-                                                    <td><?php echo $categoryData[$i]["name"] ?></td>
-                                                    <td><?php echo $categoryData[$i]["date"] ?></td>
-                                                    <td><?php echo $categoryData[$i]["time"] ?></td>
-                                                    <td>
-                                                        <span class="ml-5">
-                                                            <label class="cstm-switch">
-                                                                <input type="checkbox"
-                                                                    data-this-id="<?php echo $categoryData[$i]['id']; ?>"
-                                                                    <?php if ($categoryData[$i]['status'] == 2) {
+                                                    <tr>
+                                                        <td><?php echo $i + 1 ?></td>
+                                                        <td><?php echo $categoryData[$i]["name"] ?></td>
+                                                        <td><?php echo $categoryData[$i]["date"] ?></td>
+                                                        <td><?php echo $categoryData[$i]["time"] ?></td>
+                                                        <td>
+                                                            <span class="ml-5">
+                                                                <label class="cstm-switch">
+                                                                    <input type="checkbox" data-this-id="<?php echo $categoryData[$i]['id']; ?>" <?php if ($categoryData[$i]['status'] == 2) {
                                                                                                                                                         echo 'checked';
-                                                                                                                                                    } ?> name="option"
-                                                                    class="cstm-switch-input change-status">
-                                                                <span class="cstm-switch-indicator"></span>
-                                                            </label>
-                                                        </span>
-                                                    </td>
-                                                    <td id="<?php echo $categoryData[$i]["id"] ?>"
-                                                        class="<?php echo $categoryData[$i]["name"] ?>">
-                                                        <button data-toggle="modal" data-target="#editModal"
-                                                            type="button" class="btn btn-primary edit-btn">Edit</button>
-                                                        <a href="./auctionCategory.php?id=<?php echo $categoryData[$i]["id"] ?>"
-                                                            type="button" class="btn btn-danger">Delete</a>
-                                                    </td>
-                                                </tr>
+                                                                                                                                                    } ?> name="option" class="cstm-switch-input change-status">
+                                                                    <span class="cstm-switch-indicator"></span>
+                                                                </label>
+                                                            </span>
+                                                        </td>
+                                                        <td id="<?php echo $categoryData[$i]["id"] ?>" class="<?php echo $categoryData[$i]["name"] ?>">
+                                                            <button data-toggle="modal" data-target="#editModal" type="button" class="btn btn-primary edit-btn">Edit</button>
+                                                            <a href="./auctionCategory.php?id=<?php echo $categoryData[$i]["id"] ?>" type="button" class="btn btn-danger">Delete</a>
+                                                        </td>
+                                                    </tr>
                                                 <?php endfor; ?>
                                             </tbody>
                                         </table>
@@ -146,8 +138,7 @@ $categoryData = $auctionCategory->read();
                     <form action="./updateAuctionCategory.php" method="post">
                         <div class="modal-body">
                             <input type="hidden" name="id" id="id-input">
-                            <input id="edit-form" type="text" name="name" class="form-control"
-                                placeholder="Add Category">
+                            <input id="edit-form" type="text" name="name" class="form-control" placeholder="Add Category">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -159,19 +150,19 @@ $categoryData = $auctionCategory->read();
         </div>
     </main>
     <script>
-    const editButtons = document.getElementsByClassName("edit-btn");
+        const editButtons = document.getElementsByClassName("edit-btn");
 
-    for (let button of editButtons) {
-        button.onclick = () => {
-            const parentNode = button.parentElement;
-            const idInput = document.getElementById("id-input");
-            const editForm = document.getElementById("edit-form");
-            const nodeId = parentNode.id;
-            const nodeValue = parentNode.className;
-            idInput.value = nodeId;
-            editForm.value = nodeValue;
+        for (let button of editButtons) {
+            button.onclick = () => {
+                const parentNode = button.parentElement;
+                const idInput = document.getElementById("id-input");
+                const editForm = document.getElementById("edit-form");
+                const nodeId = parentNode.id;
+                const nodeValue = parentNode.className;
+                idInput.value = nodeId;
+                editForm.value = nodeValue;
+            }
         }
-    }
     </script>
 </body>
 <?php include_once('inc/js.php'); ?>

@@ -168,6 +168,44 @@
                             </span>
                             <span class="menu-icon">
                                 <i class="icon-placeholder ">
+                                    BC
+                                </i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-item active ">
+                <a href="#" class="menu-link open-dropdown menu-link">
+                    <span class="menu-label">
+                        <span class="menu-name">CMS<span class="menu-arrow"></span>
+                        </span>
+                    </span>
+                    <span class="menu-icon">
+                        <i class="icon-placeholder mdi mdi-calendar"></i>
+                    </span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="menu-item">
+                        <a href="cmsPages.php" class=" menu-link">
+                            <span class="menu-label">
+                                <span class="menu-name"> Manage CMS </span>
+                            </span>
+                            <span class="menu-icon">
+                                <i class="icon-placeholder  ">
+                                    MC
+                                </i>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="cmsCategory.php" class=" menu-link">
+                            <span class="menu-label">
+                                <span class="menu-name">CMS Category</span>
+                            </span>
+                            <span class="menu-icon">
+                                <i class="icon-placeholder ">
+                                    CC
                                 </i>
                             </span>
                         </a>
