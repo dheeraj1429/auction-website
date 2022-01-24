@@ -6,13 +6,6 @@ require_once "./functions.php";
 require_once "./model/bids.php";
 
 
-// function getAuctionWinner($auctionId)
-// {
-//     $bids = new Bids();
-//     $result = $bids->getWinnerBid($auctionId);
-//     return $result[0];
-// }
-
 function getCategory($categoryId)
 {
     $auctionCategory = new AuctionCategory();
