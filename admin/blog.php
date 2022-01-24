@@ -17,13 +17,14 @@ if (!isset($_SESSION['admin_email'])) {
     header("location:login.php");
     exit();
 }
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $updatedData = array("status" => $_POST["status"]);
+    $blog->update($updatedData, $_POST["id"]);
+    die();
+}
 // change status...
-// if (isset($_POST['id']) && $_POST['status']) {
-//     $id = mysqli_real_escape_string($conn, ak_secure_string($_POST['id']));
-//     $status = mysqli_real_escape_string($conn, ak_secure_string($_POST['status']));
-//     mysqli_query($conn, "UPDATE `" . $tblPrefix . "blog` SET `status` = '$status' WHERE `id`=$id");
-//     exit();
-// }
+
 // Delete
 if (isset($_GET['params']) && isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -31,15 +32,6 @@ if (isset($_GET['params']) && isset($_GET['id'])) {
     if ($params === "delete") {
         $blog->delete($id);
     }
-    // $id = mysqli_real_escape_string($conn, ak_secure_string($_GET['delete-row']));
-    // $dataQ = mysqli_query($conn, "UPDATE `" . $tblPrefix . "blog` SET `status` = 0 WHERE `id`=$id");
-    // if ($dataQ == true) {
-    //     $_SESSION['toast']['msg'] = "Succesfully Deleted";
-    //     header("location:alternative.php");
-    //     exit();
-    // } else {
-    //     $_SESSION['toast']['msg'] = "Something Went Wrong";
-    // }
 }
 $blogs = getBlogs();
 ?>
