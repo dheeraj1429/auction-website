@@ -1072,7 +1072,7 @@ $completedAuctions = $auction->getCompleteAuction();
             <div class="row">
                 <!-- Price div cards -->
                 <?php foreach ($packages as $p) : ?>
-                <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3" style="margin-bottom: 20px">
                     <div class="price_plan_card_inner_div">
 
                         <div class="price_plan_heading activeBar_plan text-center">
