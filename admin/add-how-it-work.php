@@ -49,14 +49,14 @@ if (isset($_POST["submit"])) {
                 "type" => 3,
                 "title" => $name,
                 "img" => $fileName,
-                "`desc`" => $content,
+                "desc" => $content,
             );
         } else {
             $data = array(
                 "type" => 3,
                 "title" => $name,
                 "img" => $fileName,
-                "desc" => $content,
+                "`desc`" => $content,
             );
         }
     } else {

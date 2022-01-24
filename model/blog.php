@@ -24,7 +24,7 @@ class Blog extends Base
 
     public function getLatestBlog()
     {
-        $sql = "SELECT * FROM " . $this->tableName . " WHERE status = '1' ORDER BY 'id' DESC";
+        $sql = "SELECT * FROM " . $this->tableName . " WHERE status = '2' ORDER BY 'id' DESC";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll();
