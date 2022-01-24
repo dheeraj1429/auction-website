@@ -49,7 +49,7 @@ class CMSCategory extends Base
 
     public function getActive()
     {
-        $sql = "SELECT * FROM " . $this->tableName . " WHERE active = 2";
+        $sql = "SELECT * FROM " . $this->tableName . " WHERE status = 2";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll();

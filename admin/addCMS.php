@@ -61,8 +61,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $data = array("type" => $type, "title" => $title, "desc" => $discription);
     }
     $cmsPages->create($data);
+    $_SESSION["toast"]["msg"] = "Added successfully";
 }
-$categories = $cmsCategory->read();
+$categories = $cmsCategory->getActive();
 ?>
 <!DOCTYPE html>
 <html lang="en">
