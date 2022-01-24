@@ -66,6 +66,7 @@ if (isset($_POST['submit'])) {
             "short_desc" => $descShort
         );
         $blog->update($data, $id);
+        $_SESSION["toast"]["msg"] = "Seccessfully updated";
         header("Location: blog.php");
         die();
     }
@@ -85,6 +86,9 @@ if (isset($_POST['submit'])) {
         "short_desc" => $descShort
     );
     $blog->create($data);
+    $_SESSION["toast"]["msg"] = "Seccessfully Added";
+    header("Location: ./blog.php");
+    die();
 }
 
 // Update data 

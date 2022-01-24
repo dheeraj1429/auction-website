@@ -30,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
     $status = 2;
     $data = array("name" => $name, "status" => $status);
     $cmsCategory->create($data);
+    $_SESSION["toast"]["msg"] = "Added Successfully";
     header("Refresh: 0");
     die();
 }

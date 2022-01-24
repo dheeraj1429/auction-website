@@ -25,7 +25,7 @@ $pageName = "terms";
             <p class="light_para">
                 <?php echo htmlspecialchars_decode(getValuesByName("privacy")) ?>
             </p>
-            <p class="light_para mt-2">Telephone number: <?php getValuesByName("phone_number") ?></p>
+            <p class="light_para mt-2">Telephone number: <?php echo getValuesByName("phone_number") ?></p>
             <p class="light_para mt-2">Email address: <?php echo getValuesByName("email") ?></p>
             <p class="light_para mt-2">Legal representative: Iheb Souilem, in his capacity as Chairman of Global bid</p>
             <p class="light_para mt-2">Responsible for publication: Iheb Souilem</p>
