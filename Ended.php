@@ -1,6 +1,23 @@
 <?php
 require_once "./session.php";
 require_once "./model/auction.php";
+require_once "./model/auctionCategory.php";
+require_once "./model/bids.php";
+
+
+function getAuctionWinner($auctionId)
+{
+    $bids = new Bids();
+    $result = $bids->getWinnerBid($auctionId);
+    return $result[0];
+}
+
+function getCategory($categoryId)
+{
+    $auctionCategory = new AuctionCategory();
+    $data = $auctionCategory->read($id = $categoryId)[0];
+    return $data;
+}
 
 $auction = new Auction();
 $pageName = "Ended";
@@ -47,8 +64,10 @@ $completedAuctions = $auction->getCompleteAuction();
                         <!-- content -->
                         <div class="Auction_Products_Cards_content">
                             <h3><?php echo $completedAuction["product_name"] ?></h3>
-                            <h5><?php echo $completedAuction["name"] ?></h5>
-
+                            <h5><?php echo getCategory($completedAuction["category"])["name"] ?></h5>
+                            <h3 style="color: lightseagreen">
+                                Won By <?php echo getAuctionWinner($completedAuction["id"])["username"] ?>
+                            </h3>
                             <!-- Instead price -->
                             <div class="Instead_Price_div d-flex align-items-center justify-content-center my-3">
                                 <h3 class="me-2">instead of

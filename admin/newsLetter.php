@@ -177,6 +177,8 @@ if (!isset($_SESSION['admin_email'])) {
                     emails: emails,
                     topic: selectTopic
                 })
+            }).then((res) => {
+                alertify.message("Message sended");
             });
         }
     }

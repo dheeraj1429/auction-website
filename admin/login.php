@@ -17,7 +17,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $users = new Users();
-    $userData = $users->read($email)[0];
+    $userData = $users->read($email);
+    if ($userData) {
+        $userData = $userData[0];
+    } else {
+        $_SESSION['toast']['type'] = "danger";
+        $_SESSION['toast']['msg'] = "Invalid users!!!";
+        header("Refresh: 0");
+        die();
+    }
     // print_r($userData);
     // die();
     $hashPassword = $userData['password'];
@@ -27,10 +35,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: ./");
         die();
     } else {
-        echo "Incorrect password";
+        $_SESSION['toast']['type'] = "danger";
+        $_SESSION['toast']['msg'] = "Invalid password!!!";
+        header("Refresh: 0");
+        die();
     }
 } else {
-    $_SESSION['toast']['msg'] = 'Currently you are not registered with us, Or your account is deactivated. <br> Please contact to senior admin.';
+    if (!isset($_SESSION['toast']["msg"])) {
+        $_SESSION['toast']['msg'] = 'Currently you are not registered with us, Or your account is deactivated. <br> Please contact to senior admin.';
+    }
 }
 ?>
 <!DOCTYPE html>

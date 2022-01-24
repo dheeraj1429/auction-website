@@ -1,13 +1,14 @@
+<?php
+require_once "getValuesByName.php";
+?>
 <footer class="footer side_padding second_footer">
     <!-- Footer -->
     <div class="container padding_one">
         <div class="row pt-4 justify-content-center">
             <div class="col-12 col-sm-6 col-md-4 col-lg-5">
-                <h1 class="text-white my-3">SMART-AUCTION</h1>
+                <h1 class="text-white my-3"><?php echo getValuesByName("footer-heading") ?></h1>
                 <p class="light_para">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio <br />
-                    voluptatem qui magnam aliquid cum atque tempore quia? Quis,<br />
-                    doloribus commodi.
+                    <?php echo getValuesByName("footer-content") ?>
                 </p>
 
 
