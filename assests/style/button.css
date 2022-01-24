@@ -128,4 +128,10 @@
   color: var(--MainColor);
   font-weight: bold;
 }
+.print {
+  padding: 0.6rem 3rem;
+  background-color: var(--DarkColor);
+  color: var(--MainColor);
+  border: none;
+}
 /* Buttons */
