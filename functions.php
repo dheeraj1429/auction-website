@@ -2,15 +2,16 @@
 require_once "./model/participant.php";
 require_once "./model/auctionCategory.php";
 
+date_default_timezone_set("Asia/Kolkata");
+
 function isParticepeted($email, $auctionId)
 {
     $participant = new Participant();
     $participants = $participant->getParticipant($email, $auctionId);
     if (empty($participants)) {
         return false;
-    } else {
-        return true;
     }
+    return true;
 }
 
 function getAucitonCategory($id)
@@ -18,4 +19,14 @@ function getAucitonCategory($id)
     $auctionCategory = new AuctionCategory();
     $category = $auctionCategory->read($id = $id)[0];
     return $category["name"];
+}
+
+function isAuctionStarted($date, $time)
+{
+    $currentDate = date("Y-m-d");
+    $currentTime = strtotime(date('H:i:s'));
+    if ($currentDate == $date && $currentTime >= strtotime($time)) {
+        return true;
+    }
+    return false;
 }
