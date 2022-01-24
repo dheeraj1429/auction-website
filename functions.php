@@ -1,6 +1,7 @@
 <?php
 require_once "./model/participant.php";
 require_once "./model/auctionCategory.php";
+require_once "./model/bids.php";
 
 date_default_timezone_set("Asia/Kolkata");
 
@@ -29,4 +30,11 @@ function isAuctionStarted($date, $time, $endTime)
         return true;
     }
     return false;
+}
+
+function getAuctionWinner($auctionId)
+{
+    $bids = new Bids();
+    $result = $bids->getWinnerBid($auctionId);
+    return $result[0];
 }

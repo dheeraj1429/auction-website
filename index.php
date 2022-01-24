@@ -834,7 +834,7 @@ $completedAuctions = $auction->getCompleteAuction();
                                 <!-- content -->
                                 <div class="Auction_Products_Cards_content">
                                     <h3><?php echo $completedAuction["product_name"] ?></h3>
-                                    <h5><?php echo $completedAuction["name"] ?></h5>
+                                    <h5><?php echo getAuctionWinner($completedAuction["id"])["username"] ?></h5>
 
                                     <!-- Instead price -->
                                     <div
