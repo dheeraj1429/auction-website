@@ -21,11 +21,11 @@ function getAucitonCategory($id)
     return $category["name"];
 }
 
-function isAuctionStarted($date, $time)
+function isAuctionStarted($date, $time, $endTime)
 {
     $currentDate = date("Y-m-d");
     $currentTime = strtotime(date('H:i:s'));
-    if ($currentDate == $date && $currentTime >= strtotime($time)) {
+    if ($currentDate == $date && $currentTime >= strtotime($time) && $currentTime <= strtotime($endTime)) {
         return true;
     }
     return false;
