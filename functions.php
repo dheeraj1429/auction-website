@@ -41,27 +41,37 @@ function getAuctionWinner($auctionId)
 
 function pagination($data, $page, $total)
 {
-    $dataLen = count($data);
-    $previousPage = $page - 1 !== 0 ? $page - 1 : null;
-    if ($dataLen <= $total) {
+    if ($data) {
+        $dataLen = count($data);
+        $previousPage = $page - 1 !== 0 ? $page - 1 : null;
+        if ($dataLen <= $total) {
+            $returnData = array(
+                "paginationLen" => 0,
+                "data" => $data,
+                "currentPage" => $page,
+                "previousPage" => $previousPage,
+                "nextPage" => null,
+            );
+            return $returnData;
+        }
+        $paginationLen = round($dataLen / $total);
+        $paginationData = array_slice($data, $page - 1, $total);
+        $nextPage = $page + 1 <= $paginationLen ? $page + 1 : null;
         $returnData = array(
-            "paginationLen" => 0,
-            "data" => $data,
-            "currentPage" => $page,
+            "paginationLen" => $paginationLen,
+            "data" => $paginationData,
             "previousPage" => $previousPage,
-            "nextPage" => null,
+            "currentPage" => $page,
+            "nextPage" => $nextPage,
         );
         return $returnData;
     }
-    $paginationLen = round($dataLen / $total);
-    $paginationData = array_slice($data, $page - 1, $total);
-    $nextPage = $page + 1 <= $paginationLen ? $page + 1 : null;
     $returnData = array(
-        "paginationLen" => $paginationLen,
-        "data" => $paginationData,
-        "previousPage" => $previousPage,
+        "paginationLen" => 0,
+        "data" => array(),
         "currentPage" => $page,
-        "nextPage" => $nextPage,
+        "previousPage" => null,
+        "nextPage" => null,
     );
     return $returnData;
 }

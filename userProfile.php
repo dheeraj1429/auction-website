@@ -2,11 +2,18 @@
 require_once "session.php";
 require_once "model/users.php";
 require_once "model/bids.php";
+require_once "functions.php";
 require_once "model/auctionCategory.php";
 
 if (!isset($_SESSION["email"])) {
     header("Location: ./logIn.php");
     die();
+}
+
+$pageNo = 1;
+
+if (isset($_GET["pageNo"])) {
+    $pageNo = $_GET["pageNo"];
 }
 
 function getCategory($categoryId)
@@ -20,7 +27,8 @@ $users = new Users();
 $bids = new Bids();
 $pageName = "Profile page";
 $userData = $users->read($userEmail = $_SESSION["email"])[0];
-$userBidData = $bids->getUserBid($_SESSION["userId"]);
+$paginationData = pagination($bids->getUserBid($_SESSION["userId"]), $pageNo, 8);
+$userBidData = $paginationData["data"];
 ?>
 <?php require_once "./header.php" ?>
 <!-- Header -->
@@ -103,13 +111,37 @@ $userBidData = $bids->getUserBid($_SESSION["userId"]);
                 </div>
                 <?php endforeach; ?>
             </div>
-            <div class="row">
-                <div class="col-12 text-center">
-                    <div class="mt-3 d-flex justify-content-center">
-                        <a href="./currentAuctions.html">
-                            <button class="Subcribe_button">See All Auction</button>
-                        </a>
+            <div class="row padding_one">
+                <div class="col-12 d-flex align-items-center justify-content-center">
+                    <!-- pagination -->
+                    <div class="d-flex">
+                        <?php if ($paginationData["previousPage"]) : ?>
+                        <div class="pagiantion_div">
+                            <a href="./Ended.php?page=<?php echo $paginationData["previousPage"]; ?>">
+                                <img class="rotate180" src="./assests/icons&images/Vector (3).svg" alt="">
+                            </a>
+                        </div>
+                        <?php endif; ?>
+                        <?php for ($i = 0; $i < $paginationData["paginationLen"]; $i++) : ?>
+                        <?php if ($i + 1 == $pageNo) : ?>
+                        <div class="pagiantion_div activepagination">
+                            <a href="./Ended.php?page=<?php echo $i + 1 ?>"><?php echo $i + 1; ?></a>
+                        </div>
+                        <?php else : ?>
+                        <div class="pagiantion_div">
+                            <a href="./Ended.php?page=<?php echo $i + 1 ?>"><?php echo $i + 1; ?></a>
+                        </div>
+                        <?php endif; ?>
+                        <?php endfor; ?>
+                        <?php if ($paginationData["nextPage"]) : ?>
+                        <div class="pagiantion_div">
+                            <a href="./Ended.php?page=<?php echo $paginationData["nextPage"] ?>">
+                                <img src="./assests/icons&images/Vector (3).svg" alt="" />
+                            </a>
+                        </div>
+                        <?php endif; ?>
                     </div>
+                    <!-- pagination -->
                 </div>
             </div>
         </div>
