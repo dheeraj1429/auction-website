@@ -2,6 +2,8 @@
 require_once "./model/auction.php";
 require_once "./model/participant.php";
 require_once "./model/bids.php";
+require_once "./model/wallet.php";
+require_once "./model/users.php";
 require_once "./redis.php";
 
 
@@ -77,4 +79,25 @@ function setCurrentBid($token, $bidAmount)
 {
     $redis = new RedisConnection($token);
     $redis->setCurrentBid($bidAmount);
+}
+
+function updateBidToken($auctionId, $userId, $amount)
+{
+    $users = new Users();
+
+    try {
+        $users->updateBidToken("remove", $amount, $userId);
+    } catch (Exception $e) {
+        return false;
+    }
+
+    $wallet = new Wallet();
+    $walletData = array(
+        "user_id" => $userId,
+        "use_type" => "remove",
+        "token_value" => $amount,
+        "auction_id" => $auctionId
+    );
+    $wallet->create($walletData);
+    return true;
 }
