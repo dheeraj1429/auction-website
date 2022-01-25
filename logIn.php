@@ -23,8 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
     }
 
     if (!$userData) {
-        $_SESSION["flash"]["message"] = "You're logged in";
-        $_SESSION["flash"]["type"] = "success";
+        $_SESSION["flash"]["message"] = "Invalid user";
+        $_SESSION["flash"]["type"] = "danger";
         header("Refresh: 0");
         die();
     }
