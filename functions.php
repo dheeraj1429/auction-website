@@ -38,3 +38,30 @@ function getAuctionWinner($auctionId)
     $result = $bids->getWinnerBid($auctionId);
     return $result[0];
 }
+
+function pagination($data, $page, $total)
+{
+    $dataLen = count($data);
+    $previousPage = $page - 1 !== 0 ? $page - 1 : null;
+    if ($dataLen <= $total) {
+        $returnData = array(
+            "paginationLen" => 0,
+            "data" => $data,
+            "currentPage" => $page,
+            "previousPage" => $previousPage,
+            "nextPage" => null,
+        );
+        return $returnData;
+    }
+    $paginationLen = round($dataLen / $total);
+    $paginationData = array_slice($data, $page - 1, $total);
+    $nextPage = $page + 1 <= $paginationLen ? $page + 1 : null;
+    $returnData = array(
+        "paginationLen" => $paginationLen,
+        "data" => $paginationData,
+        "previousPage" => $previousPage,
+        "currentPage" => $page,
+        "nextPage" => $nextPage,
+    );
+    return $returnData;
+}
