@@ -57,7 +57,7 @@ $completedAuction = $auction->getCompleteAuctionONJoin();
                                             <th>#</th>
                                             <th>Username</th>
                                             <th>Email</th>
-                                            <th>Auction Name</th>
+                                            <th>Auction Id</th>
                                             <th>Delivery Status</th>
                                         </thead>
                                         <tbody>
