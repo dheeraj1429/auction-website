@@ -69,6 +69,15 @@ class Bids extends Base
         return $result;
     }
 
+    public function getUserBid($userId)
+    {
+        $sql = "SELECT * FROM " . $this->tableName . " JOIN auction ON bids.auction_id = auction.id WHERE user_id = '$userId'";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
     public function update($updatedData, $id)
     {
         $keys = array_keys($updatedData);

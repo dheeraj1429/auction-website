@@ -42,12 +42,6 @@ $upcomingAuction = $auction->getUpcomingAuction();
 $completedAuctions = $auction->getCompleteAuction();
 ?>
 <?php require_once "./header.php" ?>
-<?php if (isset($_SESSION["flash"])) : ?>
-<div class="alert alert-<?php echo $_SESSION["flash"]["type"] ?>" role="alert">
-    <?php echo $_SESSION["flash"]["message"] ?>
-</div>
-<?php unset($_SESSION["flash"]); ?>
-<?php endif; ?>
 <!-- Main-Navbar -->
 
 <!-- Header -->

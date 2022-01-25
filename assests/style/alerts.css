@@ -1,0 +1,34 @@
+div.c-alert {
+  position: fixed;
+  bottom: 1px;
+  margin: 20px;
+  padding: 15px;
+  left: 1px;
+  width: 15%;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+  color: ghostwhite;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  justify-content: space-between;
+}
+
+button#close {
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+div.success {
+  background-color: rgb(56, 142, 60);
+}
+
+div.warning {
+  background-color: rgb(245, 124, 0);
+}
+
+div.danger {
+  background-color: rgb(211, 47, 47);
+}

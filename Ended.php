@@ -46,39 +46,37 @@ $completedAuctions = $auction->getCompleteAuction();
             <!-- Catalog section products -->
             <div class="row mt-5 justify-content-center">
                 <?php foreach ($completedAuctions as $completedAuction) : ?>
-                <div
-                    class="col-12 col-sm-9 col-md-6 col-xl-5 col-xxl-4 mb-5 d-flex justify-content-center align-items-center">
-                    <!-- Products Cards -->
-                    <div class="Auctions_products_cards text-center p-3">
-                        <!-- Products Images -->
-                        <img src="./media/img/product/<?php echo $completedAuction["product_img"] ?>"
-                            alt="<?php echo $completedAuction["product_name"] ?>" class="img-fluid my-4" />
-                        <!-- Products Images -->
+                    <div class="col-12 col-sm-9 col-md-6 col-xl-5 col-xxl-4 mb-5 d-flex justify-content-center align-items-center">
+                        <!-- Products Cards -->
+                        <div class="Auctions_products_cards text-center p-3">
+                            <!-- Products Images -->
+                            <img src="./media/img/product/<?php echo $completedAuction["product_img"] ?>" alt="<?php echo $completedAuction["product_name"] ?>" class="img-fluid my-4" />
+                            <!-- Products Images -->
 
-                        <!-- content -->
-                        <div class="Auction_Products_Cards_content">
-                            <h3><?php echo $completedAuction["product_name"] ?></h3>
-                            <h5><?php echo getCategory($completedAuction["category"])["name"] ?></h5>
-                            <h3 style="color: lightseagreen">
-                                Won By <?php echo getAuctionWinner($completedAuction["id"])["username"] ?>
-                            </h3>
-                            <!-- Instead price -->
-                            <div class="Instead_Price_div d-flex align-items-center justify-content-center my-3">
-                                <h3 class="me-2">instead of
-                                    <strike>$<?php echo $completedAuction["store_price"] ?></strike>
+                            <!-- content -->
+                            <div class="Auction_Products_Cards_content">
+                                <h3><?php echo $completedAuction["product_name"] ?></h3>
+                                <h5><?php echo getCategory($completedAuction["category"])["name"] ?></h5>
+                                <h3 style="color: lightseagreen">
+                                    Won By <?php echo getAuctionWinner($completedAuction["id"])["username"] ?>
                                 </h3>
-                                <h4>$<?php echo $completedAuction["starting_price"] ?></h4>
-                            </div>
-                            <!-- Instead price -->
+                                <!-- Instead price -->
+                                <div class="Instead_Price_div d-flex align-items-center justify-content-center my-3">
+                                    <h3 class="me-2">instead of
+                                        <strike>$<?php echo $completedAuction["store_price"] ?></strike>
+                                    </h3>
+                                    <h4>$<?php echo $completedAuction["starting_price"] ?></h4>
+                                </div>
+                                <!-- Instead price -->
 
-                            <!-- Add to card -->
-                            <!-- <button class="Add_to_cart mb-3">Add to Cart</button> -->
-                            <!-- Add to card -->
+                                <!-- Add to card -->
+                                <!-- <button class="Add_to_cart mb-3">Add to Cart</button> -->
+                                <!-- Add to card -->
+                            </div>
+                            <!-- content -->
                         </div>
-                        <!-- content -->
+                        <!-- Products Cards -->
                     </div>
-                    <!-- Products Cards -->
-                </div>
                 <?php endforeach; ?>
             </div>
 

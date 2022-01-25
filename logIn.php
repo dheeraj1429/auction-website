@@ -14,11 +14,17 @@ $pageName = "login";
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
     $email = $_POST['email'];
     $password = hash("sha512", $_POST['password']);
-    $userData = $users->read($userEmail = $email)[0];
+    $userData = $users->read($userEmail = $email);
 
-    if (count($userData) == 0) {
-        $_SESSION["flash"]["message"] = "Invalid Username or email";
-        $_SESSION["flash"]["type"] = "warning";
+    if (!$userData) {
+        $userData = null;
+    } else {
+        $userData = $userData[0];
+    }
+
+    if (!$userData) {
+        $_SESSION["flash"]["message"] = "You're logged in";
+        $_SESSION["flash"]["type"] = "success";
         header("Refresh: 0");
         die();
     }
@@ -26,8 +32,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
         $_SESSION["email"] = $userData["email"];
         $_SESSION["username"] = $userData["username"];
         $_SESSION["userId"] = $userData["id"];
-        unset($_SESSION["flash"]);
+        // unset($_SESSION["flash"]);
+        $_SESSION["flash"]["message"] = "Invalid password";
+        $_SESSION["flash"]["type"] = "success";
         header("Location: ./userProfile.php");
+        die();
     } else {
         $_SESSION["flash"]["message"] = "Invalid password";
         $_SESSION["flash"]["type"] = "warning";
@@ -38,11 +47,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
 ?>
 
 <!-- Header -->
-<?php if (isset($_SESSION["flash"])) : ?>
-<div class="alert alert-<?php echo $_SESSION["flash"]["type"] ?>" role="alert">
-    <?php echo $_SESSION["flash"]["message"] ?>
-</div>
-<?php endif; ?>
 <?php require_once "./header.php" ?>
 <!-- Main -->
 <main>
@@ -112,69 +116,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
 <!-- Main -->
 
 <!-- Footer -->
-<footer class="footer second_footer">
-    <!-- Footer -->
-    <div class="container padding_one">
-        <div class="row pt-4">
-            <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-                <h1 class="text-white my-3">OUT STORE</h1>
-                <p class="light_para">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing <br />
-                    elit. Optio voluptatem qui magnam aliquid cum atque tempore quia? Quis, doloribus commodi.
-                </p>
-
-                <!-- Footer icons -->
-                <div class="footer_icons">
-                    <i class="fab fa-facebook-f"></i>
-                    <i class="fab fa-instagram"></i>
-                    <i class="fab fa-linkedin-in"></i>
-                    <i class="fab fa-twitter"></i>
-                </div>
-                <!-- Footer icons -->
-            </div>
-            <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-                <h1 class="text-white my-3">My Account</h1>
-                <p class="light_para"><a href="#">Sign In</a></p>
-                <p class="light_para"><a href="#">View Cart</a></p>
-                <p class="light_para"><a href="#">My Wishlist</a></p>
-                <p class="light_para"><a href="#">Track My Order</a></p>
-                <p class="light_para"><a href="#">Help</a></p>
-            </div>
-
-            <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-                <h1 class="text-white my-3">Information</h1>
-                <p class="light_para"><a href="#">About Me</a></p>
-                <p class="light_para"><a href="#">How to shop ?</a></p>
-                <p class="light_para"><a href="#">FAQ</a></p>
-                <p class="light_para"><a href="#">Contact Us</a></p>
-                <p class="light_para"><a href="#">Log in</a></p>
-            </div>
-
-            <div class="col-12 col-sm-12 col-md-2 col-lg-2">
-                <h1 class="text-white my-3">Customer Service</h1>
-                <p class="light_para"><a href="#">Payment Methods</a></p>
-                <p class="light_para"><a href="#">Money-back gurantee</a></p>
-                <p class="light_para"><a href="#">Return</a></p>
-                <p class="light_para"><a href="#">Shipping</a></p>
-                <p class="light_para"><a href="#">Terms and conditions</a></p>
-                <p class="light_para"><a href="#">Privacy Prolicy</a></p>
-            </div>
-        </div>
-    </div>
-    <!-- Footer -->
-
-    <!-- Footer Second -->
-    <div class="container-fluid footer_second">
-        <div class="row">
-            <div class="d-flex justify-content-around py-3">
-                <p class="light_para">Copyright © 2021 Molla Store. All Rights Reserved.</p>
-                <p class="light_para">Terms Of Use Privacy Policy</p>
-            </div>
-        </div>
-    </div>
-    <!-- Footer Second -->
-</footer>
-<!-- Footer -->
-</body>
-
-</html>
+<?php require_once "./footer2.php" ?>
