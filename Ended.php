@@ -21,7 +21,7 @@ if (isset($_GET["page"])) {
 
 $auction = new Auction();
 $pageName = "Ended";
-$paginationData = pagination($auction->getCompleteAuction(), $pageNo, 1);
+$paginationData = pagination($auction->getCompleteAuction(), $pageNo, 18);
 
 $completedAuctions = $paginationData["data"];
 ?>
