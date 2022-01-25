@@ -69,8 +69,10 @@ if (isset($_POST["submit"])) {
 
     if (isset($_GET['id'])) {
         $cmsPages->update($data, $_GET['id']);
+        $_SESSION["toast"]["msg"] = "Successfully updated";
     } else {
         $cmsPages->create($data);
+        $_SESSION["toast"]["msg"] = "Successfully created";
     }
     header("Location: ./how-it-work.php");
     die();

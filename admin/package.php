@@ -29,12 +29,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_GET["params"]) && $_GET["params"] == "edit") {
         $updatedData = array("price" => $price, "clicks" => $click);
         $id = $_POST["id"];
+        $_SESSION["toast"]["msg"] = "Package updated successfully";
         $package->update($updatedData, $id);
         header("Location: ./package.php");
         die();
     }
 
     $data = array("price" => $price, "clicks" => $click, "category" => $category);
+    $_SESSION["toast"]["msg"] = "Package created successfully";
     $package->create($data);
     header("Refresh: 0");
 }
@@ -62,7 +64,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <div class="card-body">
                                     <div style="display: flex; justify-content: space-between">
                                         <h4>Package</h4>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#package-model">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                            data-target="#package-model">
                                             Add
                                         </button>
                                     </div>
@@ -77,22 +80,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             </thead>
                                             <tbody>
                                                 <?php for ($i = 0; $i < count($packages); $i++) : ?>
-                                                    <tr>
-                                                        <td><?php echo $i + 1; ?></td>
-                                                        <td>$<?php echo $packages[$i]["price"]; ?></td>
-                                                        <td><?php echo $packages[$i]["clicks"]; ?></td>
-                                                        <?php if ($packages[$i]["category"] == 0) : ?>
-                                                            <td>Standard</td>
-                                                        <?php else : ?>
-                                                            <td>VIP</td>
-                                                        <?php endif; ?>
-                                                        <td>
-                                                            <div style="display: flex;">
-                                                                <button id="<?php echo $packages[$i]["id"] ?>" data-toggle="modal" data-target="#editModal" type="button" class="btn btn-primary edit-btn <?php echo $packages[$i]["clicks"] ?> <?php echo $packages[$i]["price"] ?>">Edit</button>
-                                                                <a href="./package.php?id=<?php echo $packages[$i]["id"] ?>&params=delete" type="button" class="btn btn-danger">Delete</a>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
+                                                <tr>
+                                                    <td><?php echo $i + 1; ?></td>
+                                                    <td>$<?php echo $packages[$i]["price"]; ?></td>
+                                                    <td><?php echo $packages[$i]["clicks"]; ?></td>
+                                                    <?php if ($packages[$i]["category"] == 0) : ?>
+                                                    <td>Standard</td>
+                                                    <?php else : ?>
+                                                    <td>VIP</td>
+                                                    <?php endif; ?>
+                                                    <td>
+                                                        <div style="display: flex;">
+                                                            <button id="<?php echo $packages[$i]["id"] ?>"
+                                                                data-toggle="modal" data-target="#editModal"
+                                                                type="button"
+                                                                class="btn btn-primary edit-btn <?php echo $packages[$i]["clicks"] ?> <?php echo $packages[$i]["price"] ?>">Edit</button>
+                                                            <a href="./package.php?id=<?php echo $packages[$i]["id"] ?>&params=delete"
+                                                                type="button" class="btn btn-danger">Delete</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
                                                 <?php endfor; ?>
                                             </tbody>
                                         </table>
@@ -117,10 +124,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <form method="post">
                     <div class="modal-body">
                         <div class="input-group mb-3">
-                            <input type="number" name="price" class="form-control" placeholder="$Price" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <input type="number" name="price" class="form-control" placeholder="$Price"
+                                aria-label="Recipient's username" aria-describedby="button-addon2">
                         </div>
                         <div class="input-group mb-3">
-                            <input type="number" name="click" class="form-control" placeholder="Clicks" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <input type="number" name="click" class="form-control" placeholder="Clicks"
+                                aria-label="Recipient's username" aria-describedby="button-addon2">
                         </div>
                         <select class="form-control" name="category">
                             <option value="" selected="" disabled="">Select category</option>
@@ -149,10 +158,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="modal-body">
                         <input id="id" type="hidden" name="id">
                         <div class="input-group mb-3">
-                            <input type="number" name="price" id="price" class="form-control" placeholder="$Price" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <input type="number" name="price" id="price" class="form-control" placeholder="$Price"
+                                aria-label="Recipient's username" aria-describedby="button-addon2">
                         </div>
                         <div class="input-group mb-3">
-                            <input type="number" name="click" id="click" class="form-control" placeholder="Clicks" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <input type="number" name="click" id="click" class="form-control" placeholder="Clicks"
+                                aria-label="Recipient's username" aria-describedby="button-addon2">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -164,18 +175,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
     <script>
-        const editBtns = document.getElementsByClassName("edit-btn");
-        for (let btn of editBtns) {
-            btn.onclick = () => {
-                const id = btn.id;
-                const clicks = btn.classList[3];
-                const price = btn.classList[4];
-                console.log(btn.classList);
-                document.getElementById("price").value = price;
-                document.getElementById("click").value = clicks;
-                document.getElementById("id").value = id;
-            }
+    const editBtns = document.getElementsByClassName("edit-btn");
+    for (let btn of editBtns) {
+        btn.onclick = () => {
+            const id = btn.id;
+            const clicks = btn.classList[3];
+            const price = btn.classList[4];
+            console.log(btn.classList);
+            document.getElementById("price").value = price;
+            document.getElementById("click").value = clicks;
+            document.getElementById("id").value = id;
         }
+    }
     </script>
 </body>
 <?php include_once('inc/js.php'); ?>

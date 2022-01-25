@@ -22,6 +22,7 @@ if (isset($_GET["id"]) && isset($_GET["params"])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_POST["submit"])) {
     $updatedData = array("status" => $_POST["status"]);
     $cmsCategory->update($updatedData, $_POST["id"]);
+    $_SESSION["toast"]["msg"] = "Updated Successfully";
     die();
 }
 

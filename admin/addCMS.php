@@ -50,6 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         $data = array("type" => $type, "title" => $title, "`desc`" => $discription);
         $cmsPages->update($data, $_GET["id"]);
+        $_SESSION["toast"]["msg"] = "Updated successfully";
         header("Location: ./cmsPages.php");
         die();
     }
