@@ -402,12 +402,12 @@ $completedAuctions = $completedAuctionsPaginationData["data"];
                                         <!-- Store price -->
                                         <div class="auction_price_inner_div">
                                             <p class="light_para">Store price</p>
-                                            <h3><?php $ad["store_price"] ?></h3>
+                                            <h3><?php echo $ad["store_price"] ?></h3>
                                         </div>
                                         <!-- Start Price -->
                                         <div class="auction_price_inner_div">
                                             <p class="light_para">Starting price</p>
-                                            <h3><?php $ad["starting_price"] ?></h3>
+                                            <h3><?php echo $ad["starting_price"] ?></h3>
                                         </div>
                                     </div>
                                     <!-- Auction Price div -->
@@ -558,7 +558,7 @@ $completedAuctions = $completedAuctionsPaginationData["data"];
                                     <!-- Product Input Progress bar -->
                                     <div class="progress auction_progress_bar mt-2 mb-4">
                                         <div class="progress-bar" role="progressbar"
-                                            style="width: <?php echo getAuctionParticipants($upcoming["id"], $upcoming["capacity"]) ?>;"
+                                            style="width: <?php echo getAuctionParticipants($upcoming["id"], $upcoming["capacity"]) ?>%;"
                                             aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                                             <?php echo getAuctionParticipants($upcoming["id"], $upcoming["capacity"]) ?>%
                                         </div>
