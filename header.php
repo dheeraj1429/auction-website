@@ -37,6 +37,7 @@ require_once "./getValuesByName.php";
     <link rel="stylesheet" href="./assests/style/currentAuctions.css" />
     <link rel="stylesheet" href="./assests/style/winningPage.css" />
     <link rel="stylesheet" href="./assests/style/policy.css" />
+    <link rel="stylesheet" href="./assests/style/bets.css" />
     <link rel="stylesheet" href="./assests/style/alerts.css" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />

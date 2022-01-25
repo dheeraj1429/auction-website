@@ -381,7 +381,8 @@ $completedAuctions = $completedAuctionsPaginationData["data"];
                         <div class="col-12 col-sm-12 col-md-3 col-lg-3">
                             <!-- Popular cards -->
                             <div class="popular_auction_card_div text-center py-3">
-                                <img src="./assests/icons&images/image 25.png" alt="" class="img-fluid">
+                                <img src="./media/img/product/<?php echo $ad["product_img"] ?>" alt=""
+                                    class="img-fluid">
                                 <div class="Auction_products_content mt-3">
                                     <h2><?php echo $ad["product_name"] ?></h2>
                                     <p class="my-3 light_para">Auction house filled at:</p>
@@ -543,11 +544,6 @@ $completedAuctions = $completedAuctionsPaginationData["data"];
                         <div class="col-12 col-sm-12 col-md-3 col-lg-3">
                             <!-- Popular cards -->
                             <div class="popular_auction_card_div text-center py-3">
-
-                                <!-- Auction Products badge-->
-                                <div class="Auction_products_badge">
-                                    <p class="text-white">Trend</p>
-                                </div>
                                 <!-- Auction Products badge-->
 
                                 <!-- Products Images -->
@@ -588,7 +584,7 @@ $completedAuctions = $completedAuctionsPaginationData["data"];
                                     <!-- Subcribe button -->
                                     <div class="mt-4 mb-5">
                                         <?php if (isset($_SESSION["email"])) : ?>
-                                        <?php if (!isAuctionStarted($upcoming["date"], $upcoming["time"], $upcoming["end_time"]) && isParticepeted($_SESSION["email"], $upcoming["id"])) : ?>
+                                        <?php if (!isAuctionStarted($upcoming["date"], $upcoming["time"], $upcoming["end_time"]) && !isParticepeted($_SESSION["email"], $upcoming["id"])) : ?>
                                         <?php if (!isParticepeted($_SESSION["email"], $upcoming["id"])) : ?>
                                         <a href="./registerAuction.php?auction_id=<?php echo $upcoming["id"] ?>&token_value=<?php echo $upcoming["starting_price"] ?>"
                                             class="Subcribe_button">Subscribe for
@@ -622,7 +618,7 @@ $completedAuctions = $completedAuctionsPaginationData["data"];
                         <?php endforeach; ?>
                         <!-- Popular cards -->
                     </div>
-                    <?php if ($upcomingAuctionPagoinationData["nextPage"]) : ?>
+                    <?php if ($upcomingAuctionPaginationData["nextPage"]) : ?>
                     <div class="row">
                         <div class="col-12 text-center">
                             <div class="mt-2 mb-5 d-flex justify-content-center ">
