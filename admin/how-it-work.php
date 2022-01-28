@@ -45,39 +45,33 @@ $data = $cmsPages->getCMSByType(3);
                             <div class="card py-3 m-b-30">
                                 <div class="card-body row justify-content-center">
                                     <?php foreach ($data as $datahit) : ?>
-                                    <div class="col-lg-5 my-2">
-                                        <div class="card m-b-30">
-                                            <div class="card-media col-12 text-center">
-                                                <img class="card-img-top img-responsive img-fluid"
-                                                    src="../media/img/cms/<?php echo $datahit['img'] ?>" alt="">
-                                            </div>
-                                            <div class="card-header">
-                                                <h5 class="card-title m-b-0"><?php echo $datahit['title']; ?></h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <p class="card-text"><?php echo $datahit['desc']; ?></p>
-                                            </div>
-                                            <div class="card-footer">
-                                                <a href="add-how-it-work.php?id=<?php echo $datahit['id'] ?>"
-                                                    class="edit-this btn btn-primary">Edit</a>
+                                        <div class="col-lg-5 my-2">
+                                            <div class="card m-b-30">
+                                                <div class="card-media col-12 text-center">
+                                                    <img class="card-img-top img-responsive img-fluid" src="../media/img/cms/<?php echo $datahit['img'] ?>" alt="">
+                                                </div>
+                                                <div class="card-header">
+                                                    <h5 class="card-title m-b-0"><?php echo $datahit['title']; ?></h5>
+                                                </div>
+                                                <div class="card-body">
+                                                    <p class="card-text"><?php echo $datahit['desc']; ?></p>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <a href="add-how-it-work.php?id=<?php echo $datahit['id'] ?>" class="edit-this btn btn-primary">Edit</a>
 
-                                                <a href="#" class="btn btn-danger delete-row"
-                                                    data-this-id="<?php echo $datahit['id'] ?>">Delete</a>
+                                                    <a href="#" class="btn btn-danger delete-row" data-this-id="<?php echo $datahit['id'] ?>">Delete</a>
 
-                                                <span class="ml-5">
-                                                    <label class="cstm-switch">
-                                                        <input type="checkbox"
-                                                            data-this-id="<?php echo $datahit['id']; ?>" name="option"
-                                                            class="cstm-switch-input change-status"
-                                                            <?php if ($datahit['status'] == 2) {
+                                                    <span class="ml-5">
+                                                        <label class="cstm-switch">
+                                                            <input type="checkbox" data-this-id="<?php echo $datahit['id']; ?>" name="option" class="cstm-switch-input change-status" <?php if ($datahit['status'] == 2) {
                                                                                                                                                                                             echo 'checked';
                                                                                                                                                                                         } ?>>
-                                                        <span class="cstm-switch-indicator"></span>
-                                                    </label>
-                                                </span>
+                                                            <span class="cstm-switch-indicator"></span>
+                                                        </label>
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                     <?php endforeach; ?>
                                 </div>
                             </div>
@@ -88,8 +82,7 @@ $data = $cmsPages->getCMSByType(3);
         </section>
     </main>
 
-    <a href="add-how-it-work.php" class="btn-floating btn btn-primary" id="Add Section" data-toggle="tooltip"
-        data-placement="top" title="" data-original-title="Add">
+    <a href="add-how-it-work.php" class="btn-floating btn btn-primary" id="Add Section" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add">
         <i class="mdi mdi-plus"></i>
     </a>
 

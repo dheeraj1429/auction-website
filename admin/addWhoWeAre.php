@@ -7,7 +7,7 @@ if (!isset($_SESSION["admin_email"])) {
     die();
 }
 
-$pageName = "Add How It Works";
+$pageName = "Add Who We Are";
 
 function uploadFile($fileObj)
 {
@@ -46,14 +46,14 @@ if (isset($_POST["submit"])) {
     if ($fileName) {
         if (!isset($_GET["id"])) {
             $data = array(
-                "type" => 3,
+                "type" => 4,
                 "title" => $name,
                 "img" => $fileName,
                 "desc" => $content,
             );
         } else {
             $data = array(
-                "type" => 3,
+                "type" => 4,
                 "title" => $name,
                 "img" => $fileName,
                 "`desc`" => $content,
@@ -61,7 +61,7 @@ if (isset($_POST["submit"])) {
         }
     } else {
         $data = array(
-            "type" => 3,
+            "type" => 4,
             "title" => $name,
             "`desc`" => $content,
         );
@@ -74,7 +74,7 @@ if (isset($_POST["submit"])) {
         $cmsPages->create($data);
         $_SESSION["toast"]["msg"] = "Successfully created";
     }
-    header("Location: ./how-it-work.php");
+    header("Location: ./whoWeAre.php");
     die();
 }
 
@@ -107,25 +107,30 @@ if (isset($_GET["id"])) {
                                     <form method="POST" enctype="multipart/form-data">
                                         <div class="form-group col-md-12">
                                             <label for="name">Name</label>
-                                            <input type="text" class="form-control" id="name" placeholder="name" value="<?php if (isset($_GET['id'])) {
+                                            <input type="text" class="form-control" id="name" placeholder="name"
+                                                value="<?php if (isset($_GET['id'])) {
                                                                                                                             echo $hitData['title'];
                                                                                                                         } ?>" name="name" autocomplete="OFF" required="">
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label for="content">Content</label>
-                                            <input type="text" class="form-control" id="content" placeholder="Content" value="<?php if (isset($_GET['id'])) {
+                                            <input type="text" class="form-control" id="content" placeholder="Content"
+                                                value="<?php if (isset($_GET['id'])) {
                                                                                                                                     echo $hitData['desc'];
-                                                                                                                                } ?>" name="content" autocomplete="OFF" required="">
+                                                                                                                                } ?>"
+                                                name="content" autocomplete="OFF" required="">
                                         </div>
                                         <div class="form-group col-md-12">
                                             <div class="custom-file mt-3">
-                                                <input type="file" class="custom-file-input" id="inputllogo02" name="image">
+                                                <input type="file" class="custom-file-input" id="inputllogo02"
+                                                    name="image">
                                                 <label class="custom-file-label" for="inputllogo02">Image</label>
                                             </div>
                                         </div>
                                         <div class="form-row pt-3">
                                             <div class="form-group col-md-12">
-                                                <button type="submit" class="btn btn-success m-auto" name="submit">Save</button>
+                                                <button type="submit" class="btn btn-success m-auto"
+                                                    name="submit">Save</button>
                                             </div>
                                         </div>
                                     </form>
@@ -141,7 +146,8 @@ if (isset($_GET["id"])) {
                                                                                 echo $hitData['img'];
                                                                             } else {
                                                                                 echo 'default.png';
-                                                                            } ?>" class="img-fluid img-responsive m-auto mx-2">
+                                                                            } ?>"
+                                                    class="img-fluid img-responsive m-auto mx-2">
                                             </div>
                                 </div>
                             </div>
