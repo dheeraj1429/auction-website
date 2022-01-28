@@ -5,7 +5,6 @@ require_once "model/cmsPages.php";
 $cmsPages = new CMSPages();
 $pageName = "Who We Are";
 $we = $cmsPages->getCMSByType(4);
-// $type5 = $cmsPages->getCMSByType(4);
 ?>
 <?php require_once "./header.php" ?>
 <!-- Header -->
