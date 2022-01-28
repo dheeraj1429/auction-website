@@ -33,6 +33,8 @@ require_once "./getValuesByName.php";
     <link rel="stylesheet" href="./assests/style/buy_token.css" />
     <link rel="stylesheet" href="./assests/style/ended.css" />
     <link rel="stylesheet" href="./assests/style/wallet.css" />
+    <link rel="stylesheet" href="./assests/style/PaymentSuccessful.css">
+    <link rel="stylesheet" href="./assests/style/paymentFail.css">
     <link rel="stylesheet" href="./assests/style/responsive.css">
     <link rel="stylesheet" href="./assests/style/currentAuctions.css" />
     <link rel="stylesheet" href="./assests/style/winningPage.css" />

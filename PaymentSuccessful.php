@@ -1,5 +1,23 @@
 <?php
-require_once "./session.php"
+require_once "./session.php";
+require_once "./model/package.php";
+require_once "./model/users.php";
+
+if (!isset($_SESSION["userId"])) {
+  header("Location: ./logIn.php");
+  die();
+}
+$pageName = "payement-successfull";
+
+if (!isset($_GET["package_id"])) {
+  header("Location: ./index.php");
+  die();
+}
+
+$package = new Package();
+$users = new Users();
+$packageData = $package->read($id = $_GET["package_id"])[0];
+$userData = $users->getUserById($_SESSION["userId"]);
 ?>
 <?php require_once "./header.php"; ?>
 <!-- Header -->
@@ -31,22 +49,22 @@ require_once "./session.php"
                             <div class="row mb-3">
                                 <div
                                     class="col-12 d-flex justify-content-sm-start justify-content-center col-sm-6 col-md-6">
-                                    <h4>Bank</h4>
+                                    <h4>Token Buy</h4>
                                 </div>
                                 <div
                                     class="col-12 d-flex justify-content-center  justify-content-sm-end mt-2 mt-sm-0 col-sm-6 col-md-6">
-                                    <h5>HDFC</h5>
+                                    <h5><?php echo $packageData["clicks"] ?></h5>
                                 </div>
                             </div>
 
                             <div class="row mb-3">
                                 <div
                                     class="col-12 d-flex justify-content-sm-start justify-content-center col-sm-6 col-md-6">
-                                    <h4>Mobile</h4>
+                                    <h4>Contact No.</h4>
                                 </div>
                                 <div
                                     class="col-12 d-flex justify-content-center  justify-content-sm-end mt-2 mt-sm-0 col-sm-6 col-md-6">
-                                    <h5>9844335509</h5>
+                                    <h5><?php echo $userData["contact"] ?></h5>
                                 </div>
                             </div>
 
@@ -57,7 +75,7 @@ require_once "./session.php"
                                 </div>
                                 <div
                                     class="col-12 d-flex justify-content-center  justify-content-sm-end mt-2 mt-sm-0 col-sm-6 col-md-6">
-                                    <h5>demo@gmail.com</h5>
+                                    <h5><?php echo $userData["email"] ?></h5>
                                 </div>
                             </div>
 
@@ -68,11 +86,11 @@ require_once "./session.php"
                                 </div>
                                 <div
                                     class="col-12 d-flex justify-content-center  justify-content-sm-end mt-2 mt-sm-0 col-sm-12 col-md-6">
-                                    <h5>$500</h5>
+                                    <h5>$<?php echo $packageData["price"] ?></h5>
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
+                            <!-- <div class="row mb-3">
                                 <div
                                     class="col-12 d-flex justify-content-sm-start justify-content-center col-sm-6 col-md-6">
                                     <h4>Transaction id</h4>
@@ -81,9 +99,9 @@ require_once "./session.php"
                                     class="col-12 d-flex justify-content-center  justify-content-sm-end mt-2 mt-sm-0 col-sm-6 col-md-6">
                                     <h5>1233412344123</h5>
                                 </div>
-                            </div>
+                            </div> -->
 
-                            <div class="row mt-0 mt-sm-5">
+                            <!-- <div class="row mt-0 mt-sm-5">
                                 <div
                                     class="col-12 d-flex justify-content-center  justify-content-sm-end mt-2 mt-sm-0  col-sm-6">
                                     <button class="print">PRINT</button>
@@ -92,7 +110,7 @@ require_once "./session.php"
                                     class="col-12 d-flex justify-content-sm-start justify-content-center mt-4 mt-sm-0 col-sm-6">
                                     <button class="print">CLOSE</button>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

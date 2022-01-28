@@ -13,7 +13,9 @@ function sendDetails(data) {
     if (res.ok) {
       res.json().then((data) => {
         if (data.isComplete) {
-          window.location.replace("./wallet.php");
+          window.location.replace(
+            `./PaymentSuccessful.php?package_id=${packageId}`
+          );
         }
       });
     }
@@ -46,9 +48,7 @@ paypal
       });
     },
     onError: function (err) {
-      console.log(err);
-      // For example, redirect to a specific error page
-      // window.location.href = "/your-error-page-here";
+      window.location.replace("./paymentFail.php");
     },
     onClick: function () {
       console.log("click");
