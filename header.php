@@ -160,6 +160,7 @@ require_once "./getValuesByName.php";
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                             <li><a class="dropdown-item" href="./MyAccount.php">My Account</a></li>
+                                            <li><a class="dropdown-item" href="./wallet.php">Your Wallet</a></li>
                                             <li><a class="dropdown-item" href="./signout.php">Sign Out</a></li>
                                         </ul>
                                     </div>
