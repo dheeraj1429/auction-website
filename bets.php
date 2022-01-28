@@ -6,13 +6,13 @@ require_once "./redis.php";
 require_once "./functions.php";
 
 if (!isset($_GET["token"])) {
-  header("Location: ./auction.php");
-  die();
+    header("Location: ./auction.php");
+    die();
 }
 
 if (!isset($_SESSION["email"]) && !isset($_SESSION["userId"])) {
-  header("Location: ./logIn.php");
-  die();
+    header("Location: ./logIn.php");
+    die();
 }
 $auction = new Auction();
 $auctionData = $auction->getAuctionByToken($_GET["token"]);
@@ -20,18 +20,18 @@ $redis = new RedisConnection($_GET["token"]);
 $currentBid = $redis->getCurrentBid();
 $pageName = "bets";
 if (!$currentBid) {
-  $currentBid = $auctionData["starting_price"];
+    $currentBid = $auctionData["starting_price"];
 }
 
 if (!$auctionData) {
-  header("HTTP/1.0 404 Not Found");
-  die();
+    header("HTTP/1.0 404 Not Found");
+    die();
 }
 
 if (strtotime(date("Y-m-d")) > strtotime($auctionData["date"])) {
-  $auctionId = $auctionData["id"];
-  header("Location: ./winningPage.php?id=$auctionId");
-  die();
+    $auctionId = $auctionData["id"];
+    header("Location: ./winningPage.php?id=$auctionId");
+    die();
 }
 ?>
 <!DOCTYPE html>

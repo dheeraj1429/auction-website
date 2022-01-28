@@ -11,14 +11,6 @@ if (!isset($_SESSION['admin_email'])) {
     exit();
 }
 
-if (isset($_GET["id"]) && isset($_GET["params"])) {
-    if ($_GET["params"] == "delete") {
-        $cmsCategory->delete($_GET["id"]);
-    }
-    header("Location: ./cmsCategory.php");
-    die();
-}
-
 if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_POST["submit"])) {
     $updatedData = array("status" => $_POST["status"]);
     $cmsCategory->update($updatedData, $_POST["id"]);
@@ -96,8 +88,6 @@ $data = $cmsCategory->read();
                                                         <button type="button" data-toggle="modal"
                                                             data-target="#updateCategory" style="text-align: center"
                                                             class="btn btn-primary edit-btn">Edit</button>
-                                                        <a href="./cmsCategory.php?id=<?php echo $data[$i]["id"] ?>&params=delete"
-                                                            type="button" class="btn btn-danger">Delete</a>
                                                     </td>
                                                 </tr>
                                                 <?php endfor; ?>
