@@ -61,7 +61,9 @@ $pageName = "checkout";
     const packageId = <?php echo $_GET["package_id"] ?>;
     const price = <?php echo $packageData["price"] ?>
     </script>
-    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+    <script
+        src="https://www.paypal.com/sdk/js?client-id=AX8rYbH2qmL2pqkWUp1Ofd3FXLOv3x4ZjhT6Jbcpfe3gWfzdBIvkdwAbJSs5ISmAc36eNtkqZw0nIUhu&components=buttons">
+    </script>
 </head>
 
 <body>
@@ -177,7 +179,7 @@ $pageName = "checkout";
                     to bid.</p>
                 <h4>Price: $<?php echo $packageData["price"] ?></h4>
                 <div class="btn-container">
-                    <div id="paypal-button"></div>
+                    <div id="paypal-button-container"></div>
                 </div>
             </div>
         </div>
