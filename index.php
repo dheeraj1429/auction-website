@@ -91,21 +91,57 @@ $completedAuctions = $completedAuctionsPaginationData["data"];
 
             <!-- How it works box seaction -->
             <div class="row">
-                <?php foreach ($howItWorks as $w) : ?>
                 <div class="col-12 col-sm-12 col-md-3 col-lg-3 text-center">
                     <!-- Step Images -->
-                    <img src="./media/img/cms/<?php echo $w["img"] ?>" />
+                    <img src="./assests/icons&images/Group 382.png" />
                     <!-- Step Images -->
 
                     <div class="step_Content_Div my-4">
-                        <h3><?php echo $w["title"] ?></h3>
+                        <h3>Create your account</h3>
                         <div class="line_div my-3"></div>
-                        <p><?php echo $w["desc"] ?></p>
+                        <p>Create your account and complete your profile.</p>
                     </div>
                 </div>
-                <?php endforeach; ?>
-                <!-- How it works box seaction -->
+
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 text-center">
+                    <!-- Step Images -->
+                    <img src="./assests/icons&images/Group 324.png" />
+                    <!-- Step Images -->
+
+                    <div class="step_Content_Div my-4">
+                        <h3>Log In</h3>
+                        <div class="line_div my-3"></div>
+                        <p>Log In</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 text-center">
+                    <!-- Step Images -->
+                    <img src="./assests/icons&images/Group 326.png" />
+                    <!-- Step Images -->
+
+                    <div class="step_Content_Div my-4">
+                        <h3>Participate in the auction</h3>
+                        <div class="line_div my-3"></div>
+                        <p>Participate in the auction you are interested in</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 text-center">
+                    <!-- Step Images -->
+                    <img src="./assests/icons&images/Group 327.png" />
+                    <!-- Step Images -->
+
+                    <div class="step_Content_Div my-4">
+                        <h3>Win the auction</h3>
+                        <div class="line_div my-3"></div>
+                        <p>Win the auction and win a products at less than 70% of its value</p>
+                    </div>
+                </div>
+
             </div>
+            <!-- How it works box seaction -->
+        </div>
     </section>
     <!-- How it works -->
 
