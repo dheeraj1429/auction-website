@@ -89,28 +89,6 @@ $userData = $users->getUserById($_SESSION["userId"]);
                                     <h5>$<?php echo $packageData["price"] ?></h5>
                                 </div>
                             </div>
-
-                            <!-- <div class="row mb-3">
-                                <div
-                                    class="col-12 d-flex justify-content-sm-start justify-content-center col-sm-6 col-md-6">
-                                    <h4>Transaction id</h4>
-                                </div>
-                                <div
-                                    class="col-12 d-flex justify-content-center  justify-content-sm-end mt-2 mt-sm-0 col-sm-6 col-md-6">
-                                    <h5>1233412344123</h5>
-                                </div>
-                            </div> -->
-
-                            <!-- <div class="row mt-0 mt-sm-5">
-                                <div
-                                    class="col-12 d-flex justify-content-center  justify-content-sm-end mt-2 mt-sm-0  col-sm-6">
-                                    <button class="print">PRINT</button>
-                                </div>
-                                <div
-                                    class="col-12 d-flex justify-content-sm-start justify-content-center mt-4 mt-sm-0 col-sm-6">
-                                    <button class="print">CLOSE</button>
-                                </div>
-                            </div> -->
                         </div>
                     </div>
                 </div>
