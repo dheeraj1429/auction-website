@@ -12,7 +12,7 @@ $cmsPages = new CmsPages();
 
 if (isset($_GET["delete-row"])) {
     $cmsPages->delete($_GET["delete-row"]);
-    header("Location: ./how-it-work.php");
+    header("Location: ./whoWeAre.php");
     die();
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -58,7 +58,7 @@ $data = $cmsPages->getCMSByType(4);
                                                 <p class="card-text"><?php echo $datahit['desc']; ?></p>
                                             </div>
                                             <div class="card-footer">
-                                                <a href="add-how-it-work.php?id=<?php echo $datahit['id'] ?>"
+                                                <a href="addWhoWeAre.php?id=<?php echo $datahit['id'] ?>"
                                                     class="edit-this btn btn-primary">Edit</a>
 
                                                 <a href="#" class="btn btn-danger delete-row"
