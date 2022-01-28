@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
                                     <div class="sing_in_icons_div">
                                         <i class="fas fa-lock"></i>
                                     </div>
-                                    <input name="password" type="password" placeholder="Email Password" />
+                                    <input name="password" type="password" placeholder="Enter Password" />
                                 </div>
 
                                 <!-- Forget Password -->
