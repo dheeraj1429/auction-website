@@ -61,7 +61,7 @@ $dataQuery = mysqli_query($conn,"SELECT `id`, `type`, `title`, `img`, `desc`, `d
                                                 <h5 class="card-title m-b-0"><?php echo $datahit['title'];?></h5>
                                             </div>
                                             <div class="card-body">
-                                                <p class="card-text"><?php echo $datahit['desc'];?></p>
+                                                <p class="card-text"><?php echo htmlspecialchars_decode(substr($datahit['desc'],0,170));?>...</p>
                                             </div>
                                             <div class="card-footer">
                                                 <a  href="add-how-it-work.php?id=<?php echo $datahit['id']?>" class="edit-this btn btn-primary">Edit</a>

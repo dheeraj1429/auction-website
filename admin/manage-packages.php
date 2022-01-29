@@ -56,6 +56,7 @@ if(isset($_GET['delete-row'])){
                                         <div class="col-lg-5 my-2">
                                             <div class="card m-b-30">
                                                 <div class="card-header">
+                                                <h5 class="card-title mb-2"><?php if($dataPackage['type']==1){echo "Nomal";}else if($dataPackage['type']==2){echo "VIP";}?></h5>
                                                     <h5 class="card-title m-b-0"><?php echo $dataPackage['name'];?></h5>
                                                 </div>
                                                 <div class="card-body">

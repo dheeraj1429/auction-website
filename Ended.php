@@ -1,3 +1,8 @@
+<?php
+   require_once 'inc/config.php';
+   $pageName="Ended Auctions";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -576,6 +581,7 @@
       <!-- Catelog section -->
 
       <!-- News Letter Section -->
+
       <?php require_once 'inc/newsletter.php';?>
       <!-- News Letter Section -->
    </main>

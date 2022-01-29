@@ -11,7 +11,7 @@
 
 if(isset($_POST['submit'])){
     $name = mysqli_real_escape_string($conn,ak_secure_string($_POST['name']));
-    $content = mysqli_real_escape_string($conn,ak_secure_string($_POST['content']));
+    $content = htmlspecialchars($_POST['content']);
     
     if(isset($_GET['id'])){
         $id = mysqli_real_escape_string($conn,ak_secure_string($_GET['id']));
@@ -82,7 +82,8 @@ if(isset($_GET['id'])){
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label for="content">Content</label>
-                                            <input type="text" class="form-control" id="content" placeholder="Content" value="<?php  if(isset($_GET['id'])){echo $hitData['desc'];}?>" name="content" autocomplete="OFF" required="">
+                                            <textarea name="content" autocomplete="OFF" required="" id="editor"><?php  if(isset($_GET['id'])){echo $hitData['desc'];}?></textarea>
+                                            <!-- <input type="text" class="form-control" id="content" placeholder="Content" value="<?php  if(isset($_GET['id'])){echo $hitData['desc'];}?>" name="content" autocomplete="OFF" required=""> -->
                                         </div>
                                         <div class="form-group col-md-12">
                                             <div class="custom-file mt-3">

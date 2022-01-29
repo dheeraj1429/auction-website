@@ -1,13 +1,35 @@
+<?php
+   require_once 'inc/config.php';
+   $pageName="Contact";
+
+   if(isset($_POST['submitContact'])){
+      $name = mysqli_real_escape_string($conn,ak_secure_string($_POST['name']));
+      $email = mysqli_real_escape_string($conn,ak_secure_string($_POST['email']));
+      $contact = mysqli_real_escape_string($conn,ak_secure_string($_POST['contact']));
+      $message = mysqli_real_escape_string($conn,ak_secure_string($_POST['message']));
+
+      $query = "INSERT INTO `bnmi_query`(`name`, `email`, `contact`, `msg`, `status`, `date_time`) VALUES ('$name','$email','$contact','$message',1,'$cTime')";
+      if(mysqli_query($conn,$query) ==  TRUE){
+         $_SESSION['toast']['type'] = "success";
+         $_SESSION['toast']['msg'] = "aksk";
+         header('refresh:0');
+         exit();
+      }else{
+         $_SESSION['toast']['type'] = "warning";
+         $_SESSION['toast']['msg'] = "llkl";
+         header('refresh:0');
+         exit();
+      }
+
+   }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
       <?php require_once 'inc/head.php';?>
       <link rel="stylesheet" href="./assests/style/content.css" />
       <link rel="stylesheet" href="./assests/style/howItWorks.css" />
-
-      <!-- Slick Slider CDN -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
    </head>
 
    <body>
@@ -35,51 +57,52 @@
                            <img src="./assests/icons&images/cons.svg" alt="" />
                         </div>
                         <!-- Contact content -->
-
-                        <!-- Contact inputs -->
-                        <div class="contact_input_group_div mt-3">
-                           <!-- Inputs -->
-                           <div class="contact_page_input_inner mb-3 d-flex">
-                              <div class="contact_icons">
-                                 <img src="./assests/icons&images/user-solid 1.svg" alt="" />
+                        <form method="POST">
+                           <!-- Contact inputs -->
+                           <div class="contact_input_group_div mt-3">
+                              <!-- Inputs -->
+                              <div class="contact_page_input_inner mb-3 d-flex">
+                                 <div class="contact_icons">
+                                    <img src="./assests/icons&images/user-solid 1.svg" alt="" />
+                                 </div>
+                                 <input type="text" name="name" autocomplete="OFF" required placeholder="Full Name" />
                               </div>
-                              <input type="text" placeholder="Full Name" />
-                           </div>
-                           <!-- Inputs -->
-
-                           <!-- Inputs -->
-                           <div class="contact_page_input_inner mb-3 d-flex">
-                              <div class="contact_icons">
-                                 <img src="./assests/icons&images/mail.svg" alt="" />
+                              <!-- Inputs -->
+   
+                              <!-- Inputs -->
+                              <div class="contact_page_input_inner mb-3 d-flex">
+                                 <div class="contact_icons">
+                                    <img src="./assests/icons&images/mail.svg" alt="" />
+                                 </div>
+                                 <input type="email" name="email" autocomplete="OFF" required placeholder="Email Address" />
                               </div>
-                              <input type="email" placeholder="Email Address" />
-                           </div>
-                           <!-- Inputs -->
-
-                           <!-- Inputs -->
-                           <div class="contact_page_input_inner mb-3 d-flex">
-                              <div class="contact_icons">
-                                 <img src="./assests/icons&images/phone-solid 1.svg" alt="" />
+                              <!-- Inputs -->
+   
+                              <!-- Inputs -->
+                              <div class="contact_page_input_inner mb-3 d-flex">
+                                 <div class="contact_icons">
+                                    <img src="./assests/icons&images/phone-solid 1.svg" alt="" />
+                                 </div>
+                                 <input type="number" name="contact" autocomplete="OFF" required placeholder="Phone Number" />
                               </div>
-                              <input type="number" placeholder="Phone Number" />
-                           </div>
-                           <!-- Inputs -->
-
-                           <!-- Inputs -->
-                           <div class="contact_page_input_inner text-aria-div mb-3 d-flex">
-                              <div class="contact_icons message_icons_div">
-                                 <img src="./assests/icons&images/d.svg" alt="" />
+                              <!-- Inputs -->
+   
+                              <!-- Inputs -->
+                              <div class="contact_page_input_inner text-aria-div mb-3 d-flex">
+                                 <div class="contact_icons message_icons_div">
+                                    <img src="./assests/icons&images/d.svg" alt="" />
+                                 </div>
+                                 <textarea class="message_aria" name="message" autocomplete="OFF" required id="" cols="30" rows="10" placeholder="Message"></textarea>
+                                 <!-- <input type="number" placeholder="Phone Number"> -->
                               </div>
-                              <textarea class="message_aria" name="" id="" cols="30" rows="10" placeholder="Message"></textarea>
-                              <!-- <input type="number" placeholder="Phone Number"> -->
+                              <!-- Inputs -->
+   
+                              <!-- Send Button -->
+                              <button type="submit" name="submitContact" class="send_Button mt-3">Send <img src="./assests/icons&images/send.svg" alt="" /></button>
+                              <!-- Send Button -->
                            </div>
-                           <!-- Inputs -->
-
-                           <!-- Send Button -->
-                           <button class="send_Button mt-3">Send <img src="./assests/icons&images/send.svg" alt="" /></button>
-                           <!-- Send Button -->
-                        </div>
-                        <!-- Contact inputs -->
+                           <!-- Contact inputs -->
+                        </form>
                      </div>
                   </div>
                </div>
@@ -87,7 +110,7 @@
             <!-- Map section -->
             <div class="container-fluid p-0 map_container">
                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d167826.84650539697!2d77.1514821703051!3d28.679377810345667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1641379916794!5m2!1sen!2sin"
+                  src="<?php echo getGeneral('maps');?>"
                   width="100%"
                   height="450"
                   allowfullscreen=""
@@ -99,13 +122,16 @@
          <!-- Content us section -->
 
          <!-- News Letter Section -->
-         <?php require_once 'inc/newsetter.php';?>
+
+         <?php require_once 'inc/newsletter.php';?>
          <!-- News Letter Section -->
       </main>
       <!-- Main -->
 
       <!-- Footer -->
-      <?php require_once 'inc/fotter.php';?>
+      <?php require_once 'inc/footer.php';?>
       <!-- Footer -->
+
+      <?php require_once 'inc/js.php';?>
    </body>
 </html>

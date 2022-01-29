@@ -1,3 +1,8 @@
+<?php
+   require_once 'inc/config.php';
+   $pageName="Auction Bets";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 

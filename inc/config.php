@@ -1,6 +1,6 @@
 <?php
 session_start();
-date_default_timezone_set('Asia/Kolkata');
+date_default_timezone_set('Canada/Mountain');
 $cTime = date('Y-m-d H:i:s');
 $cDate = date('Y-m-d');
 $metaPage =0;
@@ -14,12 +14,12 @@ define('RECAP_KEY', '');
 
 
 if(PROD){
-define('SITE_URL', 'https://www.website.com');
+define('SITE_URL', 'https://smart-auction.net/');
 
-    $hostName = '';
-	$userName = '';
-	$password = '';
-	$database = '';
+    $hostName = 'localhost';
+	$userName = 'smartauc_auction';
+	$password = 'n-KA~r~3Uheq';
+	$database = 'smartauc_auction';
 	
 }else{
 	define('SITE_URL', 'http://localhost/auction-website/');
@@ -35,7 +35,9 @@ if($conn!=true){
 	exit();
 }
 
-require_once('functions.php');
+require_once 'functions.php';
+require_once 'action-newsletter.php';
+require_once 'sendMails.php';
 
 
 $genDataQ = mysqli_query($conn, "SELECT key_name, key_value FROM `".$tblPrefix."general` WHERE key_name!=''");
@@ -45,3 +47,4 @@ while($genData = mysqli_fetch_assoc($genDataQ)){
 
 
 define('SITE_NAME', $_SESSION['general']['website_name']);
+define('SITE_EMAIL', $_SESSION['general']['mailer_email']);

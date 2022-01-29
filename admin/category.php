@@ -13,7 +13,7 @@
             $id=mysqli_real_escape_string($conn,ak_secure_string($_GET['id']));
             $query="UPDATE `".$tblPrefix."category` SET `name`='$name' WHERE id='$id'";
         }else{
-            $query="INSERT INTO `".$tblPrefix."category`( `name`, `status`, `date_time`) VALUES ('$name',2,'$cTime')";
+            $query="INSERT INTO `".$tblPrefix."category`( `type`, `name`, `status`, `date_time`) VALUES (1, '$name',2,'$cTime')";
         }
         if(mysqli_query($conn,$query)==true){
             $_SESSION['toast']['type']="success";
@@ -29,7 +29,7 @@
     // category Data 
     if(isset($_GET['id'])){
         $id=mysqli_real_escape_string($conn,ak_secure_string($_GET['id']));
-        $data=mysqli_fetch_assoc(mysqli_query($conn,"SELECT `id`,`name` FROM `".$tblPrefix."category` WHERE id='$id'"));
+        $data=mysqli_fetch_assoc(mysqli_query($conn,"SELECT `id`,`name` FROM `".$tblPrefix."category` WHERE id='$id' AND type=1"));
     }
     //change status...
     if(isset($_POST['id']) && $_POST['status']){
@@ -97,7 +97,7 @@
                                                 <tbody>
                                                 <?php 
                                                 $s=0;
-                                                    $dataCat=mysqli_query($conn,"SELECT `id`,`name`,`status`,`date_time` FROM `".$tblPrefix."category` WHERE status>0 ");
+                                                    $dataCat=mysqli_query($conn,"SELECT `id`,`name`,`status`,`date_time` FROM `".$tblPrefix."category` WHERE status>0 AND type= 1");
                                                     while($dataC=mysqli_fetch_assoc($dataCat)){
                                                         $s++;
                                                 ?>

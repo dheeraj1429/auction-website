@@ -29,47 +29,44 @@
       <!-- How to works section -->
       <section class="register_and_account_div padding_Two">
          <div class="container">
-         <?php
-            $i=00;
-            while($dataHit = mysqli_fetch_assoc($howitWorks)){
-               $i++;
-         ?>
-         <div class="row mb-4 mb-lg-4 mb-xl-0 justify-content-evenly <?php if($i%2 == 0){echo 'flex-row-reverse';}?>">
-            <div class="col-12 col-sm-12 col-md-6 col-lg-5">
-               <img src="./assets/img/<?php echo $dataHit['img'];?>" alt="<?php echo $dataHit['title'];?>" class="img-fluid howItWorks_image" />
+            <?php    
+               if(mysqli_num_rows($howitWorks)){
+                  $i = 0;
+                  while($data = mysqli_fetch_assoc($howitWorks)){
+                     $i++;
+            ?>
+            <div class="row mb-4 mb-lg-4 mb-xl-0 justify-content-evenly <?php if($i %2 == 0){echo 'flex-row-reverse';}?>">
+               <div class="col-12 col-sm-12 col-md-6 col-lg-5">
+                  <img src="./assets/img/<?php echo $data['img']?>" alt="<?php echo $data['title']?>" class="img-fluid howItWorks_image" />
+               </div>
+               <div class="col-1 d-none d-xl-block">
+                  <div class="number_circle">0<?php echo $i;?></div>
+                  <div class="dot_container mt-3">
+                     <span class="doted"></span>
+                     <span class="doted"></span>
+                     <span class="doted"></span>
+                     <span class="doted"></span>
+                     <span class="doted"></span>
+                     <span class="doted"></span>
+                     <span class="doted"></span>
+                     <span class="doted"></span>
+                     <span class="doted"></span>
+                     <span class="doted"></span>
+                     <span class="doted"></span>
+                     <span class="doted"></span>
+                  </div>
+               </div>
+               <div class="col-12 col-sm-12 col-md-6 col-lg-5 my-auto">
+                  <div class="How_it_works_content">
+                     <h3 class="howitworks_heading mt-4 mt-md-0 mb-1 p-0"><?php echo $data['title']?></h3>
+                     <p class="howitworks_para">
+                        <?php echo htmlspecialchars_decode($data['desc']);?>
+                     </p>
+                  </div>
+               </div>
             </div>
-            <div class="col-1 d-none d-xl-block">
-               <div class="number_circle"><?php echo $i;?></div>
+            <?php } }?>
 
-               <div class="dot_container mt-3">
-               <span class="doted"></span>
-               <span class="doted"></span>
-               <span class="doted"></span>
-               <span class="doted"></span>
-               <span class="doted"></span>
-               <span class="doted"></span>
-               <span class="doted"></span>
-               <span class="doted"></span>
-               <span class="doted"></span>
-               <span class="doted"></span>
-               <span class="doted"></span>
-               <span class="doted"></span>
-               </div>
-               
-            </div>
-            <div class="col-12 col-sm-12 col-md-6 col-lg-5 my-auto">
-               <div class="How_it_works_content">
-               <h3 class="howitworks_heading mt-4 mt-md-0 mb-1 p-0"><?php echo $dataHit['title'];?></h3>
-               <p class="howitworks_para">
-                     <!-- First of all you must register on our website www.Smartauction.com by creating your personal account. Then you must choose
-                     the auction room of the desired product. As soon as the product has been chosen, you must register for the corresponding
-                     room by paying the participation fees. -->
-                     <?php echo $dataHit['desc'];?>
-               </p>
-               </div>
-            </div>
-         </div>
-         <?php }?>
             <div class="row py-0 py-md-4">
                <div class="col-12">
                   <p class="howitworks_para">In short, here are the simplified registration steps:</p>
@@ -167,6 +164,7 @@
                      Instagram page.</p>
                </div>
             </div>
+
          </div>
       </section>
       <!-- How to works section -->

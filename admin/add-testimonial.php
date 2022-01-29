@@ -117,6 +117,16 @@
                                 </div>
                             </div>
                         </div>
+                        <div class= "col-lg-4 mx-auto mt-2">
+                            <div class="card py-3 m-b-30">
+                                <div class="card-body">
+                                    <h3 class="card-title text-center">Media<h3>
+                                    <div class="col-lg-12 mb-3 text-center">
+                                        <img src="../assets/img/testimonial/<?php if(isset($_GET['id'])){echo $dataT['media'];}else{echo 'default.png';}?>" class="img-fluid img-responsive m-auto mx-2"  >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>

@@ -5,7 +5,8 @@
 .currentAuction_heading {
   line-height: 30px;
 }
-.currentAuction_heading > p {
+
+.currentAuction_heading > h2 {
   font-weight: 700;
   font-size: 2.7rem;
   text-transform: uppercase;

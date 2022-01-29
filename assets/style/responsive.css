@@ -95,6 +95,15 @@
     text-align: center;
   }
 }
+@media (max-width: 680px) {
+  .full_width {
+    width: 100% !important;
+    text-align: center !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0.5rem 0;
+  }
+}
 @media (max-width: 568px) {
   .side_padding {
     padding: 0 30px;
@@ -178,6 +187,14 @@
   .footer p {
     font-size: 12px;
     line-height: normal;
+  }
+  .user_sub_img {
+    width: 50px !important;
+    height: 50px !important;
+  }
+  .User_Winner_Div {
+    width: 70px !important;
+    height: 70px !important;
   }
 }
 /* Media */

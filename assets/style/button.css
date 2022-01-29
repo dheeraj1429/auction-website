@@ -49,7 +49,7 @@
 .send_button {
   border: none;
   background-color: var(--LightRedColor);
-  padding: 0.8rem 4rem;
+  padding: 1.3rem 4rem;
   box-shadow: 0px 10px 20px -10px rgba(202, 0, 0, 0.5);
   font-weight: bold;
   color: var(--MainColor);
@@ -95,5 +95,37 @@
   border: none;
   background-color: var(--LightRedColor);
   color: var(--MainColor);
+}
+.send_Button {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 4px;
+  background-color: var(--LightRedColor);
+  color: var(--MainColor);
+  border: none;
+  font-size: 1.4rem;
+}
+.replay_Button {
+  border: none;
+  background-color: transparent;
+  color: var(--LightRedColor);
+}
+.post_button {
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+  cursor: pointer;
+  background-color: var(--LightRedColor);
+  border: none;
+  color: var(--MainColor);
+  font-size: 0.8rem;
+}
+.placeabit_Button {
+  padding: 0.6rem 3rem;
+  background-color: var(--Price);
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  color: var(--MainColor);
+  font-weight: bold;
 }
 /* Buttons */

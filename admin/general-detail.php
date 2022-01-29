@@ -66,7 +66,8 @@ if(isset($_POST['sub-favicon'])){
 		$instagram = mysqli_real_escape_string($conn,ak_secure_string($_POST['instagram']));
 		$footerContent = mysqli_real_escape_string($conn,ak_secure_string($_POST['footerContent']));
 		$footerHeading = mysqli_real_escape_string($conn,ak_secure_string($_POST['footerHeading']));
-		$socialArr = array('website_name'=> $site, 'phone_number'=> $contact, 'email' => $email,'mailer_email' => $mailer, 'address' => $address,'facebook' => $facebook, 'twitter' => $twitter, 'linkedin' => $linkedin, 'instagram' => $instagram,'footerContent' => $footerContent,'footerHeading' => $footerHeading);
+		$map = mysqli_real_escape_string($conn,ak_secure_string($_POST['map']));
+		$socialArr = array('website_name'=> $site, 'phone_number'=> $contact, 'email' => $email,'mailer_email' => $mailer, 'address' => $address,'facebook' => $facebook, 'twitter' => $twitter, 'linkedin' => $linkedin, 'instagram' => $instagram,'footerContent' => $footerContent,'footerHeading' => $footerHeading, 'maps' => $map );
 
 		$actionQ = "";
 		foreach($socialArr as $key => $value){
@@ -185,6 +186,11 @@ $dataBanner=mysqli_fetch_assoc($homeBanner);
 												<div class="form-group col-md-6">
 													<div class="input-group mb-3">
 														<input type="text" class="form-control" placeholder="Twitter" autocomplete="off" name="twitter" value="<?php echo $_SESSION['general']['twitter'];?>" >
+													</div>
+												</div>
+												<div class="form-group col-12">
+													<div class="input-group mb-3">
+														<input type="text" class="form-control" placeholder="Map" autocomplete="off" name="map" value="<?php echo $_SESSION['general']['maps'];?>" >
 													</div>
 												</div>
 												<div class="form-group col-md-12">

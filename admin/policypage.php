@@ -29,6 +29,17 @@
     		exit();
     	}
     }
+    // Legal
+    if(isset($_POST['submit-legal'])){
+    	$legal=htmlspecialchars($_POST['legal']);
+    	$query=mysqli_query($conn,"UPDATE `".$tblPrefix."general` SET `key_value`='$legal' WHERE id=504");
+    	if($query==true){
+    		$_SESSION['toast']['type']="success";
+    		$_SESSION['toast']['msg']="Succesfully Submited";
+    		header("location:policypage.php");
+    		exit();
+    	}
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,6 +68,9 @@
                                     <li class="nav-item">
                                         <a class="nav-link show" id="profile-tab2" data-toggle="tab" href="#line-profile" role="tab" aria-controls="profile" aria-selected="false">Terms & Condition</a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link show" id="profile-tab3" data-toggle="tab" href="#legal-tab" role="tab" aria-controls="profile" aria-selected="false">Legal</a>
+                                    </li>
                                 </ul>
                                 <div class="tab-content" id="myTabContent2">
                                     <div class="tab-pane fade show active" id="line-home" role="tabpanel" aria-labelledby="home-tab">
@@ -81,7 +95,17 @@
 	                                        </form>
                                     	</div>
                                     </div>
-
+                                    <div class="tab-pane fade" id="legal-tab" role="tabpanel" aria-labelledby="legal-tab">
+                                    	<div class="col-lg-12 mt-4">
+	                                        <form method="POST" enctype="multipart/form-data">
+	                                            <h3 class="text-center">Legal</h3>
+	                                            <textarea class="form-control" id="editor3" name="legal">
+	                                            	<?php echo $_SESSION['general']['legal'];?>
+	                                            </textarea>
+	                                            <button type="submit" class="btn btn-success m-auto" name="submit-legal">Save</button>
+	                                        </form>
+                                    	</div>
+                                    </div>
                                 </div>
                             </div>
                             </div>

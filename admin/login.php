@@ -52,7 +52,7 @@ if(isset($_POST['login'])){
                                     <img src="assets/img/logo.svg" width="80" alt="">
                                 </p>
                                 <p class="admin-brand-content">
-                                    Aditya Kundra
+                                    Auction
                                 </p>
                             </div>
                             <h3 class="text-center p-b-20 fw-400">Login</h3>

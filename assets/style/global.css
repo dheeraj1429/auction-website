@@ -5,7 +5,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+a:hover,a:active{
+  color: #fff;
+}
 html,
 body {
   font-family: 'Nunito', sans-serif;
@@ -15,6 +17,8 @@ body {
 /* Colors */
 :root {
   --SmNavbarColorGreen: #1abc9c;
+  --Price: #79cd30;
+  --downPrice: #fb5f5f;
   --DarkColor: #000000;
   --LightRedColor: #ff6000;
   --MainColor: #ffffff;
@@ -28,6 +32,10 @@ body {
   --FooterBgColor: #262626;
   --lightbg: #f1f1f1;
   --tabsbgColor: #f2f2f2;
+  --borderColor: #ebebeb;
+  --darkbg: #003853;
+  --smoothlightGray: #f8f8f8;
+  --DsColor: #e8eaee;
 }
 /* Colors */
 
@@ -55,6 +63,7 @@ body {
 span {
   color: var(--SmNavbarColorGreen);
 }
+
 .secondey_text {
   color: var(--MainColor);
 }
@@ -92,4 +101,10 @@ span {
 
 a {
   text-decoration: none;
+}
+
+.drop {
+  border: none;
+  background-color: transparent;
+  color: var(--darkbg);
 }

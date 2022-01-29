@@ -13,6 +13,9 @@ if ($('#editor').length) {
 if ($('#editor2').length) {
     CKEDITOR.replace('editor2');
 }
+if ($('#editor3').length) {
+    CKEDITOR.replace('editor3');
+}
 
 </script>
 <script type="text/javascript">

@@ -83,14 +83,14 @@
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label for="head">Blog Url</label>
-                                                <input type="text" class="form-control" id="url" placeholder="Heading" value="<?php if(isset($_GET['id'])){echo $dataB['url'];}?>" name="url" autocomplete="off" required="">
+                                                <input type="text" class="form-control slug" id="url" placeholder="Heading" value="<?php if(isset($_GET['id'])){echo $dataB['url'];}?>" name="url" autocomplete="off" required="">
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label for="head">Blog Category</label>
                                                 <select class="form-control" name="cat" autocomplete="off" required="">
                                                     <option value="" selected="" disabled="">Select Category</option>
                                                     <?php 
-                                                        $dataCat=mysqli_query($conn,"SELECT `id`,`name` FROM `".$tblPrefix."category` WHERE status=2");
+                                                        $dataCat=mysqli_query($conn,"SELECT `id`,`name` FROM `".$tblPrefix."category` WHERE status=2 AND type = 1 ");
                                                         while($cat=mysqli_fetch_assoc($dataCat)){
                                                     ?>
                                                     <option value="<?php echo $cat['id'];?>" <?php if(isset($_GET['id'])){if($dataB['cat']==$cat['id']){echo "selected";}}?> > <?php echo $cat['name'];?></option>
@@ -125,7 +125,7 @@
                                             </div>
                                             <div class="form-row pt-3">
                                                 <div class="form-group col-md-12">
-                                                    <button type="submit" class="btn btn-success m-auto" name="submit">Save</button>
+                                                    <button type="submit" class="btn btn-success m-auto submitButton" name="submit">Save</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -151,4 +151,31 @@
 </body>
     <?php include_once('inc/js.php');?>
     <?php include_once('inc/search-bar.php');?>
+
+    <script>
+        const slug = document.querySelector(`.slug`);
+        const submitButton = document.querySelector('.submitButton')
+
+        slug.addEventListener('blur', function () {
+            $.ajax({
+                type: 'post',
+                url : 'inc/checkSlug.php',
+                data: {slug : slug.value},
+                success: function(response){
+                        console.log(response);
+                    if(response == 1){
+                        // alertify.message("Changes saved.", 3000);
+                    }else{
+                        alertify.message("Slug already exists .", 3000);
+                        submitButton.disabled = true
+                    }
+                },
+                error: function(response){
+                    console.log(response);
+                    alertify.message("Something went wrong, Please try again.", 3000);
+                }
+            });
+        });
+    </script>
+
 </html>

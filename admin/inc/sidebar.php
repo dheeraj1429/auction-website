@@ -54,6 +54,26 @@
                             </a>
                         </li>
                         <li class="menu-item ">
+                            <a href='who-we-are.php' class=' menu-link'> 
+                                <span class="menu-label"> 
+                                    <span class="menu-name">Who We Are</span> 
+                                </span> 
+                                <span class="menu-icon"> 
+                                     <i class="mdi mdi-plus-outline"></i>
+                                </span> 
+                            </a>
+                        </li>
+                        <li class="menu-item ">
+                            <a href='manage-banners.php' class=' menu-link'> 
+                                <span class="menu-label"> 
+                                    <span class="menu-name">Manage Banner</span> 
+                                </span> 
+                                <span class="menu-icon"> 
+                                     <i class="mdi mdi-plus-outline"></i>
+                                </span> 
+                            </a>
+                        </li>
+                        <li class="menu-item ">
                             <a href='policypage.php' class=' menu-link'> 
                                 <span class="menu-label"> 
                                     <span class="menu-name">Policy Page</span> 
@@ -99,6 +119,39 @@
                     </ul>
                 </li>
                 <li class="menu-item active ">
+                    <a href="#" class="open-dropdown menu-link"> 
+                        <span class="menu-label"> 
+                            <span class="menu-name">Auctions<span class="menu-arrow"></span> 
+                        </span>
+                        </span> 
+                        <span class="menu-icon">
+                            <i class="icon-placeholder mdi mdi-calendar"></i> 
+                        </span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="menu-item ">
+                            <a href='manage-auctions.php' class=' menu-link'> 
+                                <span class="menu-label"> 
+                                    <span class="menu-name">Manage Auctions</span> 
+                                </span> 
+                                <span class="menu-icon"> 
+                                     <i class="mdi mdi-plus-outline"></i>
+                                </span> 
+                            </a>
+                        </li>
+                        <li class="menu-item ">
+                            <a href='auction_category.php' class=' menu-link'> 
+                                <span class="menu-label"> 
+                                    <span class="menu-name">Auction Categories</span> 
+                                </span> 
+                                <span class="menu-icon"> 
+                                     <i class="mdi mdi-plus-outline"></i>
+                                </span> 
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu-item active ">
                     <a href="#" class="menu-link open-dropdown menu-link"> 
                         <span class="menu-label"> 
                             <span class="menu-name">Blogs<span class="menu-arrow"></span> 
@@ -134,11 +187,55 @@
                         </li>
                     </ul>
                 </li>
-               
                 <li class="menu-item active ">
-                    <a href="feedback.php" class="menu-link"> 
+                    <a href="manage-users.php" class=" menu-link"> 
                         <span class="menu-label"> 
-                            <span class="menu-name">Feedback</span>
+                            <span class="menu-name">Users
+                        </span>
+                        </span> 
+                        <span class="menu-icon">
+                            <i class="icon-placeholder mdi mdi-view-split-vertical "></i> 
+                        </span>
+                    </a>
+                </li>
+                <li class="menu-item active ">
+                    <a href="wallet-transactions.php" class=" menu-link"> 
+                        <span class="menu-label"> 
+                            <span class="menu-name">Wallet
+                        </span>
+                        </span> 
+                        <span class="menu-icon">
+                            <i class="icon-placeholder mdi mdi-view-split-vertical "></i> 
+                        </span>
+                    </a>
+                </li>
+                <li class="menu-item active ">
+                    <a href="#" class="open-dropdown menu-link"> 
+                        <span class="menu-label"> 
+                            <span class="menu-name">Campaign<span class="menu-arrow"></span> 
+                        </span>
+                        </span> 
+                        <span class="menu-icon">
+                            <i class="icon-placeholder mdi mdi-calendar"></i> 
+                        </span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="menu-item ">
+                            <a href='campaigns.php' class=' menu-link'> 
+                                <span class="menu-label"> 
+                                    <span class="menu-name">Manage Campaigns</span> 
+                                </span> 
+                                <span class="menu-icon"> 
+                                     <i class="mdi mdi-plus-outline"></i>
+                                </span> 
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu-item active ">
+                    <a href="newsletter.php" class="menu-link"> 
+                        <span class="menu-label"> 
+                            <span class="menu-name">NewsLetter</span>
                         </span> 
                         <span class="menu-icon">
                             <i class="icon-placeholder mdi mdi-comment-account "></i> 
