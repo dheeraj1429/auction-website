@@ -1,48 +1,44 @@
 <?php
-require_once "./model/users.php";
 require_once "./session.php";
+require_once "./model/authToken.php";
+require_once "./model/users.php";
+require_once "./sendEmail.php";
 
-$users = new Users();
+$pageName = "change-password";
 
-if (isset($_SESSION["email"])) {
-    header("Location: ./userProfile.php");
+if (!isset($_GET["token"])) {
+    header("HTTP/1.0 404 Not Found");
     die();
 }
 
-$pageName = "login";
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
-    $email = $_POST['email'];
-    $password = hash("sha512", $_POST['password']);
-    $userData = $users->read($userEmail = $email);
-
-    if (!$userData) {
-        $userData = null;
-    } else {
-        $userData = $userData[0];
+$token = $_GET["token"];
+$authToken = new AuthToken();
+if ($authToken->varify($token)) {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
+        $tokenData = $authToken->read($token);
+        $users = new Users();
+        $usersData = $users->read($userEmail = $tokenData[0]['email']);
+        $password = $_POST["password"];
+        $conformPassword = $_POST["conform-password"];
+        if ($password == $conformPassword) {
+            $updatedData = array("password" => hash("sha512", $password));
+            $users->update($updatedData, $usersData[0]["id"]);
+            $authToken->delete($token);
+            $_SESSION["flash"]["type"] = "success";
+            $_SESSION["flash"]["message"] = "Your password in reset";
+            sendEmail($usersData[0]["email"], "Your password is just changed!!");
+            header("Location: ./logIn.php");
+            die();
+        } else {
+            $_SESSION["flash"]["type"] = "warning";
+            $_SESSION["flash"]["message"] = "Password dose not match";
+            header("Refresh: 0");
+            die();
+        }
     }
-
-    if (!$userData) {
-        $_SESSION["flash"]["message"] = "Invalid user";
-        $_SESSION["flash"]["type"] = "danger";
-        header("Refresh: 0");
-        die();
-    }
-    if ($password === $userData["password"]) {
-        $_SESSION["email"] = $userData["email"];
-        $_SESSION["username"] = $userData["username"];
-        $_SESSION["userId"] = $userData["id"];
-        $_SESSION["token"] = $userData["token"];
-        $_SESSION["flash"]["message"] = "Welcome, " . $userData["username"] . " :)";
-        $_SESSION["flash"]["type"] = "success";
-        header("Location: ./userProfile.php");
-        die();
-    } else {
-        $_SESSION["flash"]["message"] = "Invalid password";
-        $_SESSION["flash"]["type"] = "warning";
-        header("Refresh: 0");
-        die();
-    }
+} else {
+    header('HTTP/1.0 403 Forbidden');
+    die();
 }
 ?>
 
@@ -59,8 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
                     <div class="sign_in_inner_div">
                         <!-- Sing In Component content -->
                         <div class="text-center">
-                            <h1>HI, THERE</h1>
-                            <p class="light_para my-3">You can log in to your account here.</p>
+                            <h1>Forget Password</h1>
+                            <p class="light_para my-3">Change your password</p>
                         </div>
                         <!-- Sing In Component content -->
 
@@ -69,22 +65,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
                             <form method="post">
                                 <div class="sing_in_input_div d-flex align-items-center mb-4">
                                     <div class="sing_in_icons_div">
-                                        <img src="./assests/icons&images/Layer 2.svg" alt="" />
+                                        <i class="fas fa-lock"></i>
                                     </div>
-                                    <input name="email" type="email" placeholder="Email Address" />
+                                    <input name="password" type="password" placeholder="Enter Password" />
                                 </div>
                                 <div class="sing_in_input_div d-flex align-items-center">
                                     <div class="sing_in_icons_div">
                                         <i class="fas fa-lock"></i>
                                     </div>
-                                    <input name="password" type="password" placeholder="Enter Password" />
+                                    <input name="conform-password" type="password" placeholder="Conform Password" />
                                 </div>
 
                                 <!-- Forget Password -->
                                 <div class="text-center mt-5 forgot_div">
-                                    <a href="./forgetPassword.php">Forgot Password?</a>
+                                    <a href="./logIn.php">Back to login</a>
                                     <div class="mt-4">
-                                        <button type="submit" name="submit" class="logIn_button">LOG IN</button>
+                                        <button type="submit" name="submit" class="logIn_button">Submit</button>
                                     </div>
                                 </div>
                             </form>
@@ -99,11 +95,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
                     <!-- Switch section -->
                     <div class="switch_section text-center">
                         <!-- Content -->
-                        <h1 class="text-white">NEW HERE?</h1>
-                        <p class="text-white mb-4">Sign up and create your Account</p>
-                        <div>
-                            <a class="logIn_button" href="./register.php">SIGN UP</a>
-                        </div>
+                        <h1 class="text-white">Forget your password?</h1>
+                        <p class="text-white mb-4">Change your password by getting an email</p>
                         <!-- Content -->
                     </div>
                     <!-- Switch section -->
