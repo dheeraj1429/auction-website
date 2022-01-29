@@ -44,7 +44,6 @@ paypal
         const status = details.status === "COMPLETED" ? 0 : 1;
         data["status"] = status;
         sendDetails(data);
-        alert("Transaction completed by " + details.payer.name.given_name);
       });
     },
     onError: function (err) {

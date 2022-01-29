@@ -51,6 +51,7 @@ class AuctionRoom implements MessageComponentInterface
                             array(
                                 "email" => $messageData["email"],
                                 "confirmation" => true,
+                                "number_of_users" => getUserCount($messageData["token"]),
                                 "type" => "varify"
                             )
                         )
@@ -65,13 +66,17 @@ class AuctionRoom implements MessageComponentInterface
             } else if ($messageData["type"] == "updatePrice") {
                 if ($this->isVarified($from, $messageData["token"])) {
                     if ($this->isTime($messageData["auctionId"])) {
-                        $this->sendAll($messageData["token"], $messageData, $from);
-                        $updateStatus = updateBidToken($messageData["auctionId"], $messageData["userId"], $messageData["bidPrice"]);
-                        if ($updateStatus) {
-                            setBid($messageData["userId"], $messageData["auctionId"], $messageData["bidPrice"]);
-                            setCurrentBid($messageData["token"], $messageData["bidPrice"]);
+                        if (isset($messageData["bidPrice"]) && $messageData["bidPrice"] > getCurrentBid($messageData["token"])) {
+                            $updateStatus = updateBidToken($messageData["auctionId"], $messageData["userId"], $messageData["bidPrice"]);
+                            if ($updateStatus) {
+                                setBid($messageData["userId"], $messageData["auctionId"], $messageData["bidPrice"]);
+                                setCurrentBid($messageData["token"], $messageData["bidPrice"]);
+                            } else {
+                                $from->send(json_encode(array("token_finish" => true, "message" => "You don't have enough tokens to bid")));
+                            }
+                            $this->sendAll($messageData["token"], $messageData, $from);
                         } else {
-                            $from->send(json_encode(array("token_finish" => true, "message" => "You don't have enough tokens to bid")));
+                            $from->send(json_encode(array("error" => true, "message" => "Invalid bids")));
                         }
                     } else {
                         $from->send(json_encode(array("time_over" => true, "message" => "time is over")));

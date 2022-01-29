@@ -8,7 +8,7 @@ class Wallet extends Base
 
     public function read($userId)
     {
-        $sql = "SELECT * FROM " . $this->tableName . " WHERE userId = '$userId'";
+        $sql = "SELECT * FROM " . $this->tableName . " WHERE user_id = '$userId' ORDER BY date DESC";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll();

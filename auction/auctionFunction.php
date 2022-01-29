@@ -20,6 +20,12 @@ function setUsers($token, $user)
     $redis->setUsers($user);
 }
 
+function getCurrentBid($token)
+{
+    $redis = new RedisConnection($token);
+    return $redis->getCurrentBid();
+}
+
 function getUserCount($token)
 {
     $redis = new RedisConnection($token);

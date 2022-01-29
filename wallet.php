@@ -12,7 +12,7 @@ $pageName = "wallet";
 $users = new Users();
 $wallet = new Wallet();
 $userData = $users->getUserById($_SESSION["userId"]);
-$walletData = $wallet->getDataByUserId($_SESSION["userId"]);
+$walletData = $wallet->read($_SESSION["userId"]);
 ?>
 <?php require_once "./header.php" ?>
 <!-- Header -->

@@ -2,6 +2,7 @@
 require_once "./model/participant.php";
 require_once "./model/users.php";
 require_once "./model/wallet.php";
+require_once "./model/auction.php";
 require_once "functions.php";
 require_once "session.php";
 
@@ -17,7 +18,19 @@ if (!isset($_GET["auction_id"]) && !isset($_GET["token_value"])) {
 
 $participant = new Participant();
 $users = new Users();
+$auction = new Auction();
+$auctionData = $auction->read($id = $_GET["auction_id"]);
 $wallet = new Wallet();
+
+if (!$auctionData) {
+    header('HTTP/1.0 403 Forbidden');
+    die();
+}
+
+if (strtotime($auctionData[0]["date"]) != strtotime(date("Y-m-d")) && strtotime(date("H:i:s")) > strtotime($auctionData[0]["end_time"])) {
+    header('HTTP/1.0 403 Forbidden');
+    die();
+}
 
 if (!isParticepeted($_SESSION['email'], $_GET["auction_id"])) {
     try {

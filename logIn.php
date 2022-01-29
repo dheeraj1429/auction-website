@@ -33,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
         $_SESSION["username"] = $userData["username"];
         $_SESSION["userId"] = $userData["id"];
         $_SESSION["token"] = $userData["token"];
+        $_SESSION["profile_img"] = $userData["profile_img"] ? $userData["profile_img"] : "default.png";
         $_SESSION["flash"]["message"] = "Welcome, " . $userData["username"] . " :)";
         $_SESSION["flash"]["type"] = "success";
         header("Location: ./userProfile.php");

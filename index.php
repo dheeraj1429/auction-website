@@ -203,7 +203,7 @@ $completedAuctions = $completedAuctionsPaginationData["data"];
                             <!-- Subcribe button -->
                             <div class="mt-4 mb-5">
                                 <?php if (isset($_SESSION["email"])) : ?>
-                                <?php if (!isAuctionStarted($p["date"], $p["time"], $p["end_time"]) && isParticepeted($_SESSION["email"], $p["id"])) : ?>
+                                <?php if (!isAuctionStarted($p["date"], $p["time"], $p["end_time"])) : ?>
                                 <?php if (!isParticepeted($_SESSION["email"], $p["id"])) : ?>
                                 <a href="./registerAuction.php?auction_id=<?php echo $p["id"] ?>&token_value=<?php echo $p["starting_price"] ?>"
                                     class="Subcribe_button">Subscribe for
@@ -212,8 +212,10 @@ $completedAuctions = $completedAuctionsPaginationData["data"];
                                 <button type="button" class="btn btn-primary" disabled>Subscribed</button>
                                 <?php endif; ?>
                                 <?php else : ?>
+                                <?php if (isParticepeted($_SESSION["email"], $p["id"])) : ?>
                                 <a href="./auctionpage.php?token=<?php echo $p["token"] ?>"
                                     class="Subcribe_button">Participate</a>
+                                <?php endif; ?>
                                 <?php endif; ?>
                                 <?php else : ?>
                                 <a href="./registerAuction.php?auciton_id=<?php echo $p["id"] ?>&token_value=<?php echo $p["starting_price"] ?>"
@@ -450,7 +452,7 @@ $completedAuctions = $completedAuctionsPaginationData["data"];
 
                                     <!-- Subcribe button -->
                                     <div class="mt-4 mb-5">
-                                        <a href="./registerAuction.php?auction_id=<?php echo $ad["id"] ?>&token=<?php echo $ad["token"] ?>"
+                                        <a href="./registerAuction.php?auction_id=<?php echo $ad["id"] ?>&token_value=<?php echo $ad["starting_price"] ?>"
                                             class="Subcribe_button">Subscribe for
                                             <?php echo $ad["starting_price"] ?></a>
                                     </div>
