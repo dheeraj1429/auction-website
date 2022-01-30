@@ -47,4 +47,3 @@ $blogs = $blog->getLatestBlog();
     </div>
 </div>
 <?php require_once "footer2.php" ?>
-<?php require_once "footer2.php" ?>
