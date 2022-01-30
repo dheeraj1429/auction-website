@@ -103,7 +103,7 @@ class Auction extends Base
 
     public function getFeatured()
     {
-        $sql = "SELECT * FROM " . $this->tableName . " WHERE featured_status = 'featured'";
+        $sql = "SELECT * FROM " . $this->tableName . " WHERE featured_status = 'featured' AND `date` >= DATE(NOW()) AND end_time < TIME(NOW())";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll();
@@ -112,7 +112,7 @@ class Auction extends Base
 
     public function getDealOfTheDay()
     {
-        $sql = "SELECT * FROM " . $this->tableName . " WHERE featured_status = 'deal_of_the_day'";
+        $sql = "SELECT * FROM " . $this->tableName . " WHERE featured_status = 'deal_of_the_day' AND `date` >= DATE(NOW()) AND end_time < TIME(NOW())";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll();
@@ -121,7 +121,7 @@ class Auction extends Base
 
     public function getPopular()
     {
-        $sql = "SELECT * FROM " . $this->tableName . " WHERE featured_status = 'popular-auction'";
+        $sql = "SELECT * FROM " . $this->tableName . " WHERE featured_status = 'popular-auction' AND `date` >= DATE(NOW()) AND end_time < TIME(NOW())";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll();
