@@ -1047,7 +1047,15 @@ $completedAuctions = $completedAuctionsPaginationData["data"];
                     <!-- Posts -->
                 </div>
                 <?php endforeach; ?>
-
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div class="mt-2 mb-5 d-flex justify-content-center ">
+                            <a href="./blogs.php" role="button" class="Subcribe_button">See
+                                All
+                                Blog</a>
+                        </div>
+                    </div>
+                </div>
             </div>
     </section>
     <!-- Latest News Update -->
