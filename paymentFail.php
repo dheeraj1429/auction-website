@@ -1,5 +1,7 @@
 <?php
 require_once "session.php";
+
+$pageName = "paymentFail";
 ?>
 <?php require_once "./header.php" ?>
 

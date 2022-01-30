@@ -39,9 +39,9 @@ class Users extends Base
         return $result[0];
     }
 
-    public function updateBidToken($action, $tokenValue, $userId)
+    public function updateBidToken($action, $tokenValue, $userId, $isVip = false)
     {
-        $totalTokens = $this->getUserById($userId)["bid_token"];
+        $totalTokens = !$isVip ? $this->getUserById($userId)["bid_token"] : $this->getUserById($userId)["vip_token"];
         if ($action == "add") {
             $totalTokens += $tokenValue;
         } else if ($action == "remove") {
@@ -49,7 +49,11 @@ class Users extends Base
         }
 
         if ($totalTokens >= 0) {
-            $this->update(array("bid_token" => $totalTokens), $userId);
+            if (!$isVip) {
+                $this->update(array("bid_token" => $totalTokens), $userId);
+            } else {
+                $this->update(array("vip_token" => $totalTokens), $userId);
+            }
         } else {
             throw new Exception("You Don't have enough token");
         }

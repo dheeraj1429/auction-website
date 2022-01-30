@@ -2,6 +2,7 @@ function sendDetails(data) {
   const url = "./payment.php";
   data["user_id"] = userId;
   data["package_id"] = packageId;
+  data["isVip"] = isVip;
 
   fetch(url, {
     method: "POST",
@@ -47,7 +48,7 @@ paypal
       });
     },
     onError: function (err) {
-      window.location.replace("./paymentFail.php");
+      // window.location.replace("./paymentFail.php");
     },
     onClick: function () {
       console.log("click");

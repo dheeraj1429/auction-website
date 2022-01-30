@@ -59,7 +59,8 @@ $pageName = "checkout";
     <script>
     const userId = <?php echo $_SESSION["userId"] ?>;
     const packageId = <?php echo $_GET["package_id"] ?>;
-    const price = <?php echo $packageData["price"] ?>
+    const price = <?php echo $packageData["price"] ?>;
+    const isVip = <?php echo $packageData["category"] ?> === 1 ? true : false;
     </script>
     <script
         src="https://www.paypal.com/sdk/js?client-id=AX8rYbH2qmL2pqkWUp1Ofd3FXLOv3x4ZjhT6Jbcpfe3gWfzdBIvkdwAbJSs5ISmAc36eNtkqZw0nIUhu&components=buttons">

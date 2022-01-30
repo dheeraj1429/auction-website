@@ -26,7 +26,11 @@ if (isset($_SESSION["token"])) {
     $numberOfToken = $package->read($id = $data["package_id"])[0]["clicks"];
 
     $users = new Users();
-    $users->updateBidToken("add", $numberOfToken, $data["user_id"]);
+    if (!$data["isVip"]) {
+        $users->updateBidToken("add", $numberOfToken, $data["user_id"]);
+    } else {
+        $users->updateBidToken("add", $numberOfToken, $data["user_id"], $isVip = true);
+    }
 
     $wallet = new Wallet();
     $walletData = array(

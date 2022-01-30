@@ -36,12 +36,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
         $fileName = null;
     }
 
-    $updatedData = array(
+
+    $updatedData = ($fileName) ? array(
         "username" => $username,
         "address" => $address,
         "contact" => $contact,
         "profile_img" => $fileName
+    ) : array(
+        "username" => $username,
+        "address" => $address,
+        "contact" => $contact,
     );
+
     $users->update($updatedData, $_SESSION["userId"]);
     header("Refresh: 0");
 }
@@ -78,12 +84,14 @@ $userData = $users->read($userEmail = $_SESSION["email"])[0];
                     <div class="row">
                         <div class="col-12 myAccountOptionNum col-sm-12 col-md-6 col-lg-6">
                             <p>Number of tokens purchased</p>
-                            <input type="text" style="color: white" class="NumberInputDis" value="<?php echo $userData["bid_token"] ?>" placeholder="Bid Token" disabled />
+                            <input type="text" style="color: white" class="NumberInputDis"
+                                value="<?php echo $userData["bid_token"] ?>" placeholder="Bid Token" disabled />
                         </div>
                         <div class="col-12 col-sm-12 col-md-6 col-md-6 col-lg-6">
                             <div class="col-12 myAccountOptionNum col-sm-12 mt-4 mt-md-0">
                                 <p>Number of vip tokens purchased</p>
-                                <input type="text" style="color: white" class="NumberInputDis" value="<?php echo $userData["vip_token"] ?>" placeholder="Vip token" disabled />
+                                <input type="text" style="color: white" class="NumberInputDis"
+                                    value="<?php echo $userData["vip_token"] ?>" placeholder="Vip token" disabled />
                             </div>
                         </div>
                     </div>
@@ -92,7 +100,8 @@ $userData = $users->read($userEmail = $_SESSION["email"])[0];
                         <div class="row mt-4">
                             <div class="col-12 myAccountOption col-sm-12 col-md-6 col-lg-6">
                                 <p>Username (*)</p>
-                                <input value="<?php echo $userData["username"] ?>" name="username" type="text" placeholder="Your name" />
+                                <input value="<?php echo $userData["username"] ?>" name="username" type="text"
+                                    placeholder="Your name" />
                             </div>
                         </div>
 
@@ -100,7 +109,8 @@ $userData = $users->read($userEmail = $_SESSION["email"])[0];
                             <div class="col-12 col-sm-12 col-md-6 col-md-6 col-lg-6 mt-4 mt-md-0">
                                 <div class="col-12 myAccountOption col-sm-12">
                                     <p>E-mail (*)</p>
-                                    <input value="<?php echo $userData["email"] ?>" type="text" placeholder="Your email address" disabled />
+                                    <input value="<?php echo $userData["email"] ?>" type="text"
+                                        placeholder="Your email address" disabled />
                                 </div>
                             </div>
                         </div>
@@ -108,12 +118,14 @@ $userData = $users->read($userEmail = $_SESSION["email"])[0];
                         <div class="row mt-4">
                             <div class="col-12 myAccountOption col-sm-12 col-md-6 col-lg-6">
                                 <p>Telephone number (*)</p>
-                                <input type="tel" name="contact" value="<?php echo $userData["contact"] ?>" placeholder="Telephone number" />
+                                <input type="tel" name="contact" value="<?php echo $userData["contact"] ?>"
+                                    placeholder="Telephone number" />
                             </div>
                             <div class="col-12 col-sm-12 col-md-6 col-md-6 col-lg-6 mt-4 mt-md-0">
                                 <div class="col-12 myAccountOption col-sm-12">
                                     <p>Address (*)</p>
-                                    <input type="text" name="address" value="<?php echo $userData["address"] ?>" placeholder="<?php echo $userData["address"] ?>" />
+                                    <input type="text" name="address" value="<?php echo $userData["address"] ?>"
+                                        placeholder="<?php echo $userData["address"] ?>" />
                                 </div>
                             </div>
                             <div style="margin-top: 20px">
@@ -123,7 +135,9 @@ $userData = $users->read($userEmail = $_SESSION["email"])[0];
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" name="submit" class="btn btn-primary" style="margin: 20px 0px; background-color: var(--LightRedColor); border: 1px solid var(--LightRedColor)">Save Changes</button>
+                        <button type="submit" name="submit" class="btn btn-primary"
+                            style="margin: 20px 0px; background-color: var(--LightRedColor); border: 1px solid var(--LightRedColor)">Save
+                            Changes</button>
                     </form>
                 </div>
                 <div class="col-12 col-sm-12 col-md-4 col-lg-4"></div>
