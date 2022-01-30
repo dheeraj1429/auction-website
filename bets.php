@@ -4,6 +4,7 @@ require_once "./model/auction.php";
 require_once "./getValuesByName.php";
 require_once "./redis.php";
 require_once "./model/bids.php";
+require_once "./model/users.php";
 require_once "./functions.php";
 
 if (!isset($_GET["token"])) {
@@ -15,10 +16,19 @@ if (!isset($_SESSION["email"]) && !isset($_SESSION["userId"])) {
     header("Location: ./logIn.php");
     die();
 }
+
+function getUserById($id)
+{
+    $users = new Users();
+    $data = $users->getUserById($id);
+    return $data;
+}
+
 $auction = new Auction();
 $bids = new Bids();
 $auctionData = $auction->getAuctionByToken($_GET["token"]);
 $redis = new RedisConnection($_GET["token"]);
+$auctionBid = $bids->getBidByAuctionId($auctionData["id"]);
 $currentBid = $redis->getCurrentBid();
 $auctionBid = $bids->getBidByAuctionId($auctionData["id"]);
 $pageName = "bets";
@@ -370,7 +380,44 @@ if (strtotime(date("Y-m-d")) > strtotime($auctionData["date"])) {
                     </div>
                 </div>
 
-                <div id="bid-bubbles"></div>
+                <div id="bid-bubbles">
+                    <?php foreach ($auctionBid as $ab) : ?>
+                    <div class="col-12">
+                        <?php $userData = getUserById($ab["user_id"]) ?>
+                        <div class="userBitting_current">
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-6">
+                                    <div class="row">
+                                        <div class="col-4 full_width col-md-4">
+                                            <h1><?php echo $auctionData["product_name"] ?></h1>
+                                            <p class="light_para"><?php echo $userData["username"] ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-6 pt-3 pt-md-0">
+                                    <div class="row">
+                                        <div class="col-4 full_width col-md-5 d-flex align-items-center">
+                                            <div class="user_icons_profile">
+                                                <?php if ($userData["profile_img"]) : ?>
+                                                <img src="./media/img/users/<?php echo $userData["profile_img"] ?>"
+                                                    alt="" />
+                                                <?php else : ?>
+                                                <img src="./media/img/users/default.png" alt="" />
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="col-4 full_width col-md-3 d-flex align-items-center justify-content-start justify-content-md-end">
+                                            <p class="light_para"><?php echo $ab["amount"] ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
             </div>
         </section>
         <!-- bets section -->
