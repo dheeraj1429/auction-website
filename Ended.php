@@ -28,25 +28,6 @@ $completedAuctions = $paginationData["data"];
 
 <?php require_once "./header.php" ?>
 <!-- Header -->
-<style>
-.rotate180 {
-    -webkit-transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
-    -o-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-    transform: rotate(180deg);
-}
-
-div.pagiantion_div>a {
-    color: black;
-    text-decoration: none;
-}
-
-div.activepagination>a {
-    color: ghostwhite;
-    text-decoration: none;
-}
-</style>
 <!-- Main -->
 <main>
     <!-- Banner section -->
@@ -115,29 +96,33 @@ div.activepagination>a {
                     <!-- pagination -->
                     <div class="d-flex">
                         <?php if ($paginationData["previousPage"]) : ?>
-                        <div class="pagiantion_div">
-                            <a href="./Ended.php?page=<?php echo $paginationData["previousPage"]; ?>">
+                        <a href="./Ended.php?page=<?php echo $paginationData["previousPage"]; ?>">
+                            <div class="pagiantion_div">
                                 <img class="rotate180" src="./assests/icons&images/Vector (3).svg" alt="">
-                            </a>
-                        </div>
+                            </div>
+                        </a>
                         <?php endif; ?>
                         <?php for ($i = 0; $i < $paginationData["paginationLen"]; $i++) : ?>
                         <?php if ($i + 1 == $pageNo) : ?>
-                        <div class="pagiantion_div activepagination">
-                            <a href="./Ended.php?page=<?php echo $i + 1 ?>"><?php echo $i + 1; ?></a>
-                        </div>
+                        <a href="./Ended.php?page=<?php echo $i + 1 ?>">
+                            <div class="pagiantion_div activepagination">
+                                <?php echo $i + 1; ?>
+                            </div>
+                        </a>
                         <?php else : ?>
-                        <div class="pagiantion_div">
-                            <a href="./Ended.php?page=<?php echo $i + 1 ?>"><?php echo $i + 1; ?></a>
-                        </div>
+                        <a href="./Ended.php?page=<?php echo $i + 1 ?>">
+                            <div class="pagiantion_div">
+                                <?php echo $i + 1; ?>
+                            </div>
+                        </a>
                         <?php endif; ?>
                         <?php endfor; ?>
                         <?php if ($paginationData["nextPage"]) : ?>
-                        <div class="pagiantion_div">
-                            <a href="./Ended.php?page=<?php echo $paginationData["nextPage"] ?>">
+                        <a href="./Ended.php?page=<?php echo $paginationData["nextPage"] ?>">
+                            <div class="pagiantion_div">
                                 <img src="./assests/icons&images/Vector (3).svg" alt="" />
-                            </a>
-                        </div>
+                            </div>
+                        </a>
                         <?php endif; ?>
                     </div>
                     <!-- pagination -->

@@ -48,6 +48,25 @@ require_once "./getValuesByName.php";
 </head>
 
 <body>
+    <style>
+    .rotate180 {
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+
+    div.pagiantion_div>a {
+        color: black;
+        text-decoration: none;
+    }
+
+    div.activepagination>a {
+        color: ghostwhite;
+        text-decoration: none;
+    }
+    </style>
     <!-- Header -->
     <header>
         <!-- Top Header -->

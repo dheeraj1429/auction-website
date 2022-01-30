@@ -1,6 +1,7 @@
 <?php
 require_once "./session.php";
 require_once "./model/users.php";
+require_once "./functions.php";
 require_once "./model/wallet.php";
 
 if (!isset($_SESSION["email"])) {
@@ -11,8 +12,15 @@ if (!isset($_SESSION["email"])) {
 $pageName = "wallet";
 $users = new Users();
 $wallet = new Wallet();
+$pageNo = 1;
+
+if (isset($_GET["page"])) {
+    $pageNo = $_GET["page"];
+}
+
 $userData = $users->getUserById($_SESSION["userId"]);
-$walletData = $wallet->read($_SESSION["userId"]);
+$paginationData = pagination($wallet->read($_SESSION["userId"]), $pageNo, 8);
+$walletData = $paginationData["data"];
 ?>
 <?php require_once "./header.php" ?>
 <!-- Header -->
@@ -110,6 +118,43 @@ $walletData = $wallet->read($_SESSION["userId"]);
                                 </div>
                             </div>
                             <?php endforeach; ?>
+                        </div>
+                        <div class="row padding_one">
+                            <div class="col-12 d-flex align-items-center justify-content-center">
+                                <!-- pagination -->
+                                <div class="d-flex">
+                                    <?php if ($paginationData["previousPage"]) : ?>
+                                    <a href="./wallet.php?page=<?php echo $paginationData["previousPage"]; ?>">
+                                        <div class="pagiantion_div">
+                                            <img class="rotate180" src="./assests/icons&images/Vector (3).svg" alt="">
+                                        </div>
+                                    </a>
+                                    <?php endif; ?>
+                                    <?php for ($i = 0; $i < $paginationData["paginationLen"]; $i++) : ?>
+                                    <?php if ($i + 1 == $pageNo) : ?>
+                                    <a href="./wallet.php?page=<?php echo $i + 1 ?>">
+                                        <div class="pagiantion_div activepagination">
+                                            <?php echo $i + 1; ?>
+                                        </div>
+                                    </a>
+                                    <?php else : ?>
+                                    <a href="./wallet.php?page=<?php echo $i + 1 ?>">
+                                        <div class="pagiantion_div">
+                                            <?php echo $i + 1; ?>
+                                        </div>
+                                    </a>
+                                    <?php endif; ?>
+                                    <?php endfor; ?>
+                                    <?php if ($paginationData["nextPage"]) : ?>
+                                    <a href="./wallet.php?page=<?php echo $paginationData["nextPage"] ?>">
+                                        <div class="pagiantion_div">
+                                            <img src="./assests/icons&images/Vector (3).svg" alt="" />
+                                        </div>
+                                    </a>
+                                    <?php endif; ?>
+                                </div>
+                                <!-- pagination -->
+                            </div>
                         </div>
                     </div>
                 </div>
