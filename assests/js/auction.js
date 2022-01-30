@@ -38,7 +38,7 @@ function createBidBubble(data) {
   const bidBubbles = document.getElementById("bid-bubbles");
   bubbleElement.className = "row py-3";
   const time = convertTimeStamp(data["time"]);
-
+  console.log(data);
   const bubbleElementData = `
   <div class="col-12">
   <div class="userBitting_current">
@@ -46,7 +46,7 @@ function createBidBubble(data) {
       <div class="col-12 col-sm-12 col-md-6">
         <div class="row">
           <div class="col-4 full_width col-md-4">
-            <h1>iPhone Pro</h1>
+            <h1>${productName}</h1>
             <p class="light_para">${data["username"]}</p>
           </div>
         </div>
@@ -59,7 +59,7 @@ function createBidBubble(data) {
           >
             <div class="user_icons_profile">
               <img
-                src=./media/img/users"${data["profile_img"]}"
+                src="./media/img/users/${data["profile_img"]}"
                 alt=""
               />
             </div>
@@ -72,7 +72,7 @@ function createBidBubble(data) {
           <div
             class="col-4 full_width col-md-3 d-flex align-items-center justify-content-start justify-content-md-end"
           >
-            <p class="light_para">${data["bidPrice"]}/p>
+            <p class="light_para">${data["bidPrice"]}</p>
           </div>
         </div>
       </div>
@@ -139,14 +139,19 @@ function startAuctionCalls() {
   submitButton.onclick = () => {
     const newPriceElement = document.getElementById("new-price");
     const newPrice = parseInt(newPriceElement.innerHTML);
+    const date = new Date();
     const data = JSON.stringify({
       userId: userId,
       email: email,
       token: token,
       auctionId: auctionId,
+      profile_img: profileImg,
+      username: username,
       bidPrice: newPrice,
+      time: date.getTime(),
       type: "updatePrice",
     });
+    createBidBubble(JSON.parse(data));
     ws.send(data);
     newPriceElement.innerHTML = newPrice + 20;
   };

@@ -71,10 +71,11 @@ class AuctionRoom implements MessageComponentInterface
                             if ($updateStatus) {
                                 setBid($messageData["userId"], $messageData["auctionId"], $messageData["bidPrice"]);
                                 setCurrentBid($messageData["token"], $messageData["bidPrice"]);
+                                $messageData["time"] = time();
+                                $this->sendAll($messageData["token"], $messageData, $from);
                             } else {
                                 $from->send(json_encode(array("token_finish" => true, "message" => "You don't have enough tokens to bid")));
                             }
-                            $this->sendAll($messageData["token"], $messageData, $from);
                         } else {
                             $from->send(json_encode(array("error" => true, "message" => "Invalid bids")));
                         }
