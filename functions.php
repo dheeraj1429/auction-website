@@ -75,3 +75,15 @@ function pagination($data, $page, $total)
     );
     return $returnData;
 }
+
+
+function isAuctionEnded($date, $endTime)
+{
+    $currentDate = strtotime(date("Y-m-d"));
+    $currentTime = strtotime(date("H:i:s"));
+
+    if ($currentDate <= strtotime($date) && $currentTime < strtotime($endTime)) {
+        return false;
+    }
+    return true;
+}

@@ -203,6 +203,7 @@ $completedAuctions = $completedAuctionsPaginationData["data"];
                             <!-- Subcribe button -->
                             <div class="mt-4 mb-5">
                                 <?php if (isset($_SESSION["email"])) : ?>
+                                <?php if (!isAuctionEnded($p["date"], $p["end_time"])) : ?>
                                 <?php if (!isAuctionStarted($p["date"], $p["time"], $p["end_time"])) : ?>
                                 <?php if (!isParticepeted($_SESSION["email"], $p["id"])) : ?>
                                 <a href="./registerAuction.php?auction_id=<?php echo $p["id"] ?>&token_value=<?php echo $p["starting_price"] ?>"
@@ -215,6 +216,7 @@ $completedAuctions = $completedAuctionsPaginationData["data"];
                                 <?php if (isParticepeted($_SESSION["email"], $p["id"])) : ?>
                                 <a href="./auctionpage.php?token=<?php echo $p["token"] ?>"
                                     class="Subcribe_button">Participate</a>
+                                <?php endif; ?>
                                 <?php endif; ?>
                                 <?php endif; ?>
                                 <?php else : ?>
@@ -324,7 +326,8 @@ $completedAuctions = $completedAuctionsPaginationData["data"];
                                     <!-- Subcribe button -->
                                     <div class="mt-4 mb-5">
                                         <?php if (isset($_SESSION["email"])) : ?>
-                                        <?php if (!isAuctionStarted($d["date"], $d["time"], $d["end_time"]) && isParticepeted($_SESSION["email"], $d["id"])) : ?>
+                                        <?php if (!isAuctionEnded($d['date'], $d['end_time'])) : ?>
+                                        <?php if (!isAuctionStarted($d["date"], $d["time"], $d["end_time"])) : ?>
                                         <?php if (!isParticepeted($_SESSION["email"], $d["id"])) : ?>
                                         <a href="./registerAuction.php?auction_id=<?php echo $d["id"] ?>&token_value=<?php echo $d["starting_price"] ?>"
                                             class="Subcribe_button">Subscribe for
@@ -333,8 +336,11 @@ $completedAuctions = $completedAuctionsPaginationData["data"];
                                         <button type="button" class="btn btn-primary" disabled>Subscribed</button>
                                         <?php endif; ?>
                                         <?php else : ?>
+                                        <?php if (isParticepeted($_SESSION["email"], $p["id"])) : ?>
                                         <a href="./auctionpage.php?token=<?php echo $d["token"] ?>"
                                             class="Subcribe_button">Participate</a>
+                                        <?php endif; ?>
+                                        <?php endif; ?>
                                         <?php endif; ?>
                                         <?php else : ?>
                                         <a href="./registerAuction.php?auciton_id=<?php echo $d["id"] ?>&token_value=<?php echo $d["starting_price"] ?>"
@@ -622,7 +628,8 @@ $completedAuctions = $completedAuctionsPaginationData["data"];
                                     <!-- Subcribe button -->
                                     <div class="mt-4 mb-5">
                                         <?php if (isset($_SESSION["email"])) : ?>
-                                        <?php if (!isAuctionStarted($upcoming["date"], $upcoming["time"], $upcoming["end_time"]) && !isParticepeted($_SESSION["email"], $upcoming["id"])) : ?>
+                                        <?php if (!isAuctionEnded($upcoming['date'], $upcoming['end_time'])) : ?>
+                                        <?php if (!isAuctionStarted($upcoming["date"], $upcoming["time"], $upcoming["end_time"])) : ?>
                                         <?php if (!isParticepeted($_SESSION["email"], $upcoming["id"])) : ?>
                                         <a href="./registerAuction.php?auction_id=<?php echo $upcoming["id"] ?>&token_value=<?php echo $upcoming["starting_price"] ?>"
                                             class="Subcribe_button">Subscribe for
@@ -631,8 +638,11 @@ $completedAuctions = $completedAuctionsPaginationData["data"];
                                         <button type="button" class="btn btn-primary" disabled>Subscribed</button>
                                         <?php endif; ?>
                                         <?php else : ?>
+                                        <?php if (isParticepeted($_SESSION["email"], $p["id"])) : ?>
                                         <a href="./auctionpage.php?token=<?php echo $upcoming["token"] ?>"
                                             class="Subcribe_button">Participate</a>
+                                        <?php endif; ?>
+                                        <?php endif; ?>
                                         <?php endif; ?>
                                         <?php else : ?>
                                         <a href="./registerAuction.php?auciton_id=<?php echo $upcoming["id"] ?>&token_value=<?php echo $upcoming["starting_price"] ?>"
@@ -825,6 +835,7 @@ $completedAuctions = $completedAuctionsPaginationData["data"];
                                     <!-- Subcribe button -->
                                     <div class="mt-4 mb-5">
                                         <?php if (isset($_SESSION["email"])) : ?>
+                                        <?php if (!isAuctionEnded($f['date'], $f['end_time'])) : ?>
                                         <?php if (!isAuctionStarted($f["date"], $f["time"], $f["end_time"])) : ?>
                                         <?php if (!isParticepeted($_SESSION["email"], $f["id"])) : ?>
                                         <a href="./registerAuction.php?auction_id=<?php echo $f["id"] ?>&token_value=<?php echo $f["starting_price"] ?>"
@@ -837,6 +848,7 @@ $completedAuctions = $completedAuctionsPaginationData["data"];
                                         <?php if (isParticepeted($_SESSION["email"], $f["id"])) : ?>
                                         <a href="./auctionpage.php?token=<?php echo $f["token"] ?>"
                                             class="Subcribe_button">Participate</a>
+                                        <?php endif; ?>
                                         <?php endif; ?>
                                         <?php endif; ?>
                                         <?php else : ?>
