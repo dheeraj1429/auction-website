@@ -1032,7 +1032,6 @@ $completedAuctions = $completedAuctionsPaginationData["data"];
                         <!-- Post Details -->
                         <div class="my-3 d-flex align-items-center">
                             <img src="./assests/icons&images/Group 4.svg" alt="">
-                            <p class="ms-3 light_para">By Giulia May</p>
                         </div>
 
                         <h1><?php echo $b["name"] ?></h1>
