@@ -3,6 +3,7 @@ require_once "./session.php";
 require_once "./model/auction.php";
 require_once "./getValuesByName.php";
 require_once "./redis.php";
+require_once "./model/bids.php";
 require_once "./functions.php";
 
 if (!isset($_GET["token"])) {
@@ -15,9 +16,11 @@ if (!isset($_SESSION["email"]) && !isset($_SESSION["userId"])) {
     die();
 }
 $auction = new Auction();
+$bids = new Bids();
 $auctionData = $auction->getAuctionByToken($_GET["token"]);
 $redis = new RedisConnection($_GET["token"]);
 $currentBid = $redis->getCurrentBid();
+$auctionBid = $bids->getBidByAuctionId($auctionData["id"]);
 $pageName = "bets";
 // $connectedUsers = count($redis->getUsers());
 

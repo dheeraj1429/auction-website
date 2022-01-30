@@ -55,39 +55,49 @@ $bidders = $bids->getReverceSortedBids($_GET["id"]);
                             <div class="User_Winner py-3 mt-3 mb-2">
                                 <!-- all winner users -->
                                 <div class="User_Winner_Div second_winner">
-                                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                                        alt="" class="img-fluid">
-
+                                    <?php if ($bidders[1]["profile_img"]) : ?>
+                                    <img src="./media/img/users/<?php echo $bidders[1]["profile_img"] ?>" alt=""
+                                        class="img-fluid">
+                                    <?php else : ?>
+                                    <img src="./media/img/users/default.png" alt="" class="img-fluid">
+                                    <?php endif; ?>
                                     <!-- user content -->
                                     <div class="user_Price_Contnet">
-                                        <p>@Player Second</p>
-                                        <h3>$908</h3>
+                                        <p><?php echo $bidders[1]["username"] ?></p>
+                                        <h3><?php echo $bidders[1]["amount"] ?></h3>
                                     </div>
                                     <!-- user content -->
 
                                 </div>
-                                <div class="User_Winner_Div first_winner">
-                                    <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2080&q=80"
-                                        alt="">
-
+                                <div class="User_Winner_Div second_winner">
+                                    <?php if ($bidders[0]["profile_img"]) : ?>
+                                    <img src="./media/img/users/<?php echo $bidders[0]["profile_img"] ?>" alt=""
+                                        class="img-fluid">
+                                    <?php else : ?>
+                                    <img src="./media/img/users/default.png" alt="" class="img-fluid">
+                                    <?php endif; ?>
                                     <!-- user content -->
                                     <div class="user_Price_Contnet">
-                                        <p>@Player One</p>
-                                        <h3>$9088</h3>
+                                        <p><?php echo $bidders[0]["username"] ?></p>
+                                        <h3><?php echo $bidders[0]["amount"] ?></h3>
                                     </div>
                                     <!-- user content -->
 
                                 </div>
-                                <div class="User_Winner_Div third_winner">
-                                    <img src="https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                                        alt="" class="img-fluid">
-
+                                <div class="User_Winner_Div second_winner">
+                                    <?php if ($bidders[2]["profile_img"]) : ?>
+                                    <img src="./media/img/users/<?php echo $bidders[2]["profile_img"] ?>" alt=""
+                                        class="img-fluid">
+                                    <?php else : ?>
+                                    <img src="./media/img/users/default.png" alt="" class="img-fluid">
+                                    <?php endif; ?>
                                     <!-- user content -->
                                     <div class="user_Price_Contnet">
-                                        <p>@Plyear Threed</p>
-                                        <h3>$809</h3>
+                                        <p><?php echo $bidders[2]["username"] ?></p>
+                                        <h3><?php echo $bidders[2]["amount"] ?></h3>
                                     </div>
                                     <!-- user content -->
+
                                 </div>
                                 <!-- all winner users -->
                             </div>
@@ -97,10 +107,6 @@ $bidders = $bids->getReverceSortedBids($_GET["id"]);
                         </div>
                         <!-- Acution winning inner card -->
                         <div class="auctionCard_Content py-3">
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 70%;" aria-valuenow="25"
-                                    aria-valuemin="0" aria-valuemax="100">70%</div>
-                            </div>
                             <!-- All Card -->
                             <?php for ($i = 0; $i < count($bidders); $i++) : ?>
                             <div class="allCard_div my-3">
@@ -155,181 +161,28 @@ $bidders = $bids->getReverceSortedBids($_GET["id"]);
                     </div>
 
                     <div class="row mt-5">
+                        <?php foreach ($bidders as $bidder) : ?>
                         <div class="col-12 my-4 my-xxl-0 col-xxl-6 d-flex justify-content-center">
                             <div class="row user_sub_cards">
                                 <div
                                     class="col-12 col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start mb-3 mb-md-0">
                                     <div class="user_sub_img ">
-                                        <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                                            alt="" class="img-fluid">
+                                        <?php if ($bidder["profile_img"]) : ?>
+                                        <img src="./media/img/users/<?php echo $bidder["profile_img"] ?>" alt=""
+                                            class="img-fluid">
+                                        <?php else : ?>
+                                        <img src="./media/img/users/default.png" alt="" class="img-fluid">
+                                        <?php endif; ?>
                                     </div>
                                     <div class="user_sub_card ms-4">
-                                        <h1>Jhon</h1>
-                                        <p class="light_para">$9000</p>
+                                        <h1><?php echo $bidder["username"] ?></h1>
+                                        <p class="light_para"><?php echo $bidder["amount"] ?></p>
                                     </div>
-                                </div>
-                                <div
-                                    class="col-12 col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end ">
-                                    <button class="View_More_Button">View More</button>
                                 </div>
                             </div>
-
                         </div>
-
-                        <div class="col-12 my-4 my-xxl-0 col-xxl-6 d-flex justify-content-center">
-                            <div class="row user_sub_cards">
-                                <div
-                                    class="col-12 col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start mb-3 mb-md-0">
-                                    <div class="user_sub_img ">
-                                        <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                                            alt="" class="img-fluid">
-                                    </div>
-                                    <div class="user_sub_card ms-4">
-                                        <h1>Jhon</h1>
-                                        <p class="light_para">$9000</p>
-                                    </div>
-                                </div>
-                                <div
-                                    class="col-12 col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end ">
-                                    <button class="View_More_Button">View More</button>
-                                </div>
-                            </div>
-
-                        </div>
+                        <?php endforeach; ?>
                     </div>
-
-                    <div class="row mt-lg-0 mt-xxl-5">
-                        <div class="col-12 my-4 my-xxl-0 col-xxl-6 d-flex justify-content-center">
-                            <div class="row user_sub_cards">
-                                <div
-                                    class="col-12 col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start mb-3 mb-md-0">
-                                    <div class="user_sub_img ">
-                                        <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                                            alt="" class="img-fluid">
-                                    </div>
-                                    <div class="user_sub_card ms-4">
-                                        <h1>Jhon</h1>
-                                        <p class="light_para">$9000</p>
-                                    </div>
-                                </div>
-                                <div
-                                    class="col-12 col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end ">
-                                    <button class="View_More_Button">View More</button>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="col-12 my-4 my-xxl-0 col-xxl-6 d-flex justify-content-center">
-                            <div class="row user_sub_cards">
-                                <div
-                                    class="col-12 col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start mb-3 mb-md-0">
-                                    <div class="user_sub_img ">
-                                        <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                                            alt="" class="img-fluid">
-                                    </div>
-                                    <div class="user_sub_card ms-4">
-                                        <h1>Jhon</h1>
-                                        <p class="light_para">$9000</p>
-                                    </div>
-                                </div>
-                                <div
-                                    class="col-12 col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end ">
-                                    <button class="View_More_Button">View More</button>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="row mt-lg-0 mt-xxl-5">
-                        <div class="col-12 my-4 my-xxl-0 col-xxl-6 d-flex justify-content-center">
-                            <div class="row user_sub_cards">
-                                <div
-                                    class="col-12 col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start mb-3 mb-md-0">
-                                    <div class="user_sub_img ">
-                                        <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                                            alt="" class="img-fluid">
-                                    </div>
-                                    <div class="user_sub_card ms-4">
-                                        <h1>Jhon</h1>
-                                        <p class="light_para">$9000</p>
-                                    </div>
-                                </div>
-                                <div
-                                    class="col-12 col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end ">
-                                    <button class="View_More_Button">View More</button>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="col-12 my-4 my-xxl-0 col-xxl-6 d-flex justify-content-center">
-                            <div class="row user_sub_cards">
-                                <div
-                                    class="col-12 col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start mb-3 mb-md-0">
-                                    <div class="user_sub_img ">
-                                        <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                                            alt="" class="img-fluid">
-                                    </div>
-                                    <div class="user_sub_card ms-4">
-                                        <h1>Jhon</h1>
-                                        <p class="light_para">$9000</p>
-                                    </div>
-                                </div>
-                                <div
-                                    class="col-12 col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end ">
-                                    <button class="View_More_Button">View More</button>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="row mt-lg-0 mt-xxl-5">
-                        <div class="col-12 my-4 my-xxl-0 col-xxl-6 d-flex justify-content-center">
-                            <div class="row user_sub_cards">
-                                <div
-                                    class="col-12 col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start mb-3 mb-md-0">
-                                    <div class="user_sub_img ">
-                                        <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                                            alt="" class="img-fluid">
-                                    </div>
-                                    <div class="user_sub_card ms-4">
-                                        <h1>Jhon</h1>
-                                        <p class="light_para">$9000</p>
-                                    </div>
-                                </div>
-                                <div
-                                    class="col-12 col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end ">
-                                    <button class="View_More_Button">View More</button>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="col-12 my-4 my-xxl-0 col-xxl-6 d-flex justify-content-center">
-                            <div class="row user_sub_cards">
-                                <div
-                                    class="col-12 col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start mb-3 mb-md-0">
-                                    <div class="user_sub_img ">
-                                        <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                                            alt="" class="img-fluid">
-                                    </div>
-                                    <div class="user_sub_card ms-4">
-                                        <h1>Jhon</h1>
-                                        <p class="light_para">$9000</p>
-                                    </div>
-                                </div>
-                                <div
-                                    class="col-12 col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end ">
-                                    <button class="View_More_Button">View More</button>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
                     <!-- all auction winner -->
                 </div>
 

@@ -47,6 +47,15 @@ class Bids extends Base
         }
     }
 
+    public function getBidByAuctionId($auctionId)
+    {
+        $sql = "SELECT * FROM " . $this->tableName . " WHERE auction_id = '$auctionId' ORDER BY amount DESC";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
     public function getOldBid($userId, $auctionId)
     {
         $sql = "SELECT * FROM " . $this->tableName . " WHERE user_id = '$userId' AND auction_id = '$auctionId'";

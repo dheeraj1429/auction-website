@@ -65,11 +65,6 @@ function createBidBubble(data) {
             </div>
           </div>
           <div
-            class="col-4 full_width col-md-3 d-flex align-items-center"
-          >
-            <p class="light_para">${time}</p>
-          </div>
-          <div
             class="col-4 full_width col-md-3 d-flex align-items-center justify-content-start justify-content-md-end"
           >
             <p class="light_para">${data["bidPrice"]}</p>
@@ -117,10 +112,8 @@ function startAuctionCalls() {
     if (!updatedData["time_over"]) {
       if (updatedData["type"]) {
         if (updatedData["type"] === "varify") {
-          if (updatedData["confirmation"]) {
-            document.getElementById("number-of-people").innerHTML =
-              updatedData["number_of_users"];
-          }
+          document.getElementById("number-of-people").innerHTML =
+            updatedData["number_of_users"];
         } else if (updatedData["type"] === "updatePrice") {
           const newPrice = document.getElementById("new-price");
           newPrice.innerHTML = updatedData["bidPrice"] + 20;
