@@ -46,16 +46,24 @@ class AuctionRoom implements MessageComponentInterface
         ) {
             if ($messageData["type"] == "varify") {
                 if (isParticepeted($messageData["email"], $messageData["auctionId"])) {
+                    $numberOfUsers = getUserCount($messageData["token"]);
                     $from->send(
                         json_encode(
                             array(
                                 "email" => $messageData["email"],
                                 "confirmation" => true,
-                                "number_of_users" => getUserCount($messageData["token"]),
+                                "number_of_users" => $numberOfUsers,
                                 "type" => "varify"
                             )
                         )
                     );
+                    $messageData = json_encode(
+                        array(
+                            "type" => "connection",
+                            "number_of_users" => $numberOfUsers
+                        )
+                    );
+                    $this->sendAll($messageData["token"], $messageData, $from);
                     if (!$this->isVarified($from, $messageData["token"])) {
                         setUsers($messageData["token"], $from->resourceId);
                     }
@@ -85,6 +93,15 @@ class AuctionRoom implements MessageComponentInterface
                         $this->clients->detach($from);
                     }
                 }
+            } else if ($messageData["type"] == "disconnect") {
+                $token =  $messageData["token"];
+                rmUsers($token, $from->resourceId);
+                $userCount = getUserCount($token);
+                $message = json_encode(array(
+                    "type" => "connnection",
+                    "number_of_users" => $userCount
+                ));
+                $this->sendAll($token, $message, $from);
             }
         }
     }
@@ -92,6 +109,7 @@ class AuctionRoom implements MessageComponentInterface
     public function onClose(ConnectionInterface $conn)
     {
         // The connection is closed, remove it, as we can no longer send it messages
+        $conn->close();
         $this->clients->detach($conn);
         echo "Connection {$conn->resourceId} has disconnected\n";
     }

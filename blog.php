@@ -59,13 +59,6 @@ $blogData = $blog->read($id = $_GET["id"])[0];
                 <div class="col-12 col-md-6 col-lg-6">
                     <h1><?php echo $blogData["name"] ?></h1>
                 </div>
-                <div class="col-12 col-md-6 col-lg-6 d-flex user_icons_blog align-items-center justify-content-end">
-                    <img src="./assests/icons&images/useGrop.svg" alt="" />
-                    <div>
-                        <p>bretskymd@gmail.com</p>
-                        <p><?php echo date_format(date_create($blogData["post_date"]), "F, d Y") ?></p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>

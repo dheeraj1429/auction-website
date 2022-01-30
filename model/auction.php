@@ -247,4 +247,13 @@ class Auction extends Base
         $result = $stmt->fetchAll();
         return $result[0];
     }
+
+    public function getAuctionByDateAndTime($date, $time)
+    {
+        $sql = "SELECT * FROM " . $this->tableName . " WHERE `date` = '$date' AND `time` = '$time'";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
 }

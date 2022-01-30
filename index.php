@@ -213,7 +213,7 @@ $completedAuctions = $completedAuctionsPaginationData["data"];
                                 <?php endif; ?>
                                 <?php else : ?>
                                 <?php if (isParticepeted($_SESSION["email"], $p["id"])) : ?>
-                                <a href="./auctionpage.php?token=<?php echo $p["token"] ?>"
+                                <a href="./bets.php?token=<?php echo $p["token"] ?>"
                                     class="Subcribe_button">Participate</a>
                                 <?php endif; ?>
                                 <?php endif; ?>
@@ -465,7 +465,7 @@ $completedAuctions = $completedAuctionsPaginationData["data"];
                                         <?php endif; ?>
                                         <?php else : ?>
                                         <?php if (isParticepeted($_SESSION["email"], $p["id"])) : ?>
-                                        <a href="./auctionpage.php?token=<?php echo $ad["token"] ?>"
+                                        <a href="./bets.php?token=<?php echo $ad["token"] ?>"
                                             class="Subcribe_button">Participate</a>
                                         <?php endif; ?>
                                         <?php endif; ?>
@@ -547,7 +547,7 @@ $completedAuctions = $completedAuctionsPaginationData["data"];
                                     <div class="mt-4 mb-5">
                                         <?php if (isset($_SESSION["email"])) : ?>
                                         <?php if (isParticepeted($_SESSION["email"], $live["id"])) : ?>
-                                        <a href="./auctionpage.php?token=<?php echo $live["token"] ?>"
+                                        <a href="./bets.php?token=<?php echo $live["token"] ?>"
                                             class="Subcribe_button">Participate</a>
                                         <?php endif; ?>
                                         <?php endif; ?>
@@ -644,7 +644,7 @@ $completedAuctions = $completedAuctionsPaginationData["data"];
                                         <?php endif; ?>
                                         <?php else : ?>
                                         <?php if (isParticepeted($_SESSION["email"], $p["id"])) : ?>
-                                        <a href="./auctionpage.php?token=<?php echo $upcoming["token"] ?>"
+                                        <a href="./bets.php?token=<?php echo $upcoming["token"] ?>"
                                             class="Subcribe_button">Participate</a>
                                         <?php endif; ?>
                                         <?php endif; ?>

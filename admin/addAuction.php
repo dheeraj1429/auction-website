@@ -52,6 +52,41 @@ function addCron($date, $time, $token)
     shell_exec("php /opt/lampp/htdocs/auction/addCron.php");
 }
 
+function updateCron($date, $time, $token)
+{
+    $cronJobs = new CronJobs();
+    $cronJobs->update(array("date" => $date, "time" => $time), $token);
+    $cronData = $cronJobs->read();
+    $text = "";
+    foreach ($cronData as $d) {
+        $dateData = explode("-", $d['date']);
+        $timeData = explode(":", $d['time']);
+        $token = $d['token'];
+
+        $day = $dateData[2];
+        $month = $dateData[1];
+        $hour = $timeData[0];
+        $minute = $timeData[1];
+
+        $cronText = "$minute $hour $day $month * wget -O /dev/null 'http://localhost/auction/auctionJob.php?token=$token'\n";
+        $text .= $cronText;
+    }
+    $file = fopen("../cronFile.txt", "w");
+    fwrite($file, $text);
+    shell_exec("php /opt/lampp/htdocs/auction/addCron.php");
+    fclose($file);
+}
+
+function validateAuction($date, $time)
+{
+    $auction = new Auction();
+    $data = $auction->getAuctionByDateAndTime($date, $time);
+    if ($data) {
+        return false;
+    }
+    return true;
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $productName = $_POST['product_name'];
     $startingPrice = $_POST['starting_price'];
@@ -62,9 +97,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $time = $_POST['time'];
     $category = $_POST['category'];
     $discription = htmlspecialchars($_POST['discription']);
+    $currentTime = strtotime(date("H:i:s"));
+    $currentDate = strtotime(date("Y-m-d"));
     $image = $_FILES['image'];
-    $token = $auction->generateToken();
+    $token = (!isset($_GET["id"])) ? $auction->generateToken() : $dataB["token"];
 
+    if ($currentTime >= strtotime($time) || $currentDate > strtotime($date)) {
+        $_SESSION["toast"]["msg"] = "Invalid date time";
+        header("Refresh: 0");
+        die();
+    }
+    if (!validateAuction($date, $time)) {
+        $_SESSION["toast"]["msg"] = "You already have a auction on same date and time.";
+        header("Refresh: 0");
+        die();
+    }
+
+    if ($capacity < 3) {
+        $_SESSION["toast"]["msg"] = "Capacity need to be grater than or equal to 3";
+        header("Refresh: 0");
+        die();
+    }
     if (isset($_GET['id'])) {
         if ($image["size"] !== 0) {
             $fileName = uploadImage($image);
@@ -104,9 +157,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         );
     }
     if (isset($_GET['id'])) {
+        unset($data["token"]);
+        $endTime = strtotime("+20 minutes", strtotime($time));
+        $data["end_time"] = date('H:i', $endTime);
         $auction->update($data, $_GET["id"]);
+        updateCron($date, $time, $token);
         $_SESSION["toast"]["msg"] = "Successfully updated";
-        header("Refresh: 0");
+        header("Location: ./addAuction.php");
         die();
     } else {
         $auction->create($data);
@@ -156,8 +213,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                     required="">
                                                     <option value="" selected="" disabled="">Select Category</option>
                                                     <?php foreach ($categories as $category) : ?>
+                                                    <?php if (isset($_GET["id"])) : ?>
+                                                    <?php if ($dataB["category"] == $category["id"]) : ?>
+                                                    <option selected="" value="<?php echo $category["id"] ?>">
+                                                        <?php echo $category["name"] ?></option>
+                                                    <?php else : ?>
                                                     <option value="<?php echo $category["id"] ?>">
                                                         <?php echo $category["name"] ?></option>
+                                                    <?php endif; ?>
+                                                    <?php else : ?>
+                                                    <option value="<?php echo $category["id"] ?>">
+                                                        <?php echo $category["name"] ?></option>
+                                                    <?php endif; ?>
                                                     <?php endforeach; ?>
                                                 </select>
                                             </div>
@@ -165,10 +232,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                 <label for="head">Auction Feature</label>
                                                 <select class="form-control" name="feature" autocomplete="off"
                                                     required="">
+                                                    <?php if (isset($_GET["id"])) : ?>
+                                                    <?php if ($dataB["featured_status"] == "featured") : ?>
+                                                    <option selected="" value="featured">Featured</option>
+                                                    <option value="deal_of_the_day">Deal of the Day</option>
+                                                    <option value="popular-auction">Popular</option>
+                                                    <?php elseif ($dataB["featured_status"] == "deal_of_the_day") : ?>
+                                                    <option value="featured">Featured</option>
+                                                    <option selected="" value="deal_of_the_day">Deal of the Day</option>
+                                                    <option value="popular-auction">Popular</option>
+                                                    <?php elseif ($dataB["featured_status"] == "popular-auction") : ?>
+                                                    <option value="featured">Featured</option>
+                                                    <option value="deal_of_the_day">Deal of the Day</option>
+                                                    <option selected="" value="popular-auction">Popular</option>
+                                                    <?php endif; ?>
+                                                    <?php else : ?>
                                                     <option value="" selected="" disabled="">Select Feature</option>
                                                     <option value="featured">Featured</option>
                                                     <option value="deal_of_the_day">Deal of the Day</option>
                                                     <option value="popular-auction">Popular</option>
+                                                    <?php endif; ?>
                                                 </select>
                                             </div>
                                             <div class="form-group col-md-12">

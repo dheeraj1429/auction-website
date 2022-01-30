@@ -20,7 +20,7 @@ function auctionFunction($token)
         }
     } else {
         foreach ($participantData as $p) {
-            sendEmail($p["email"], "We are starting the auction you can participate at -> http://localhost/auction/auctionpage.php?token=$token");
+            sendEmail($p["email"], "We are starting the auction you can participate at -> http://localhost/auction/bets.php?token=$token");
         }
     }
     refreshCron();

@@ -125,6 +125,9 @@ function startAuctionCalls() {
           const newPrice = document.getElementById("new-price");
           newPrice.innerHTML = updatedData["bidPrice"] + 20;
           createBidBubble(updatedData);
+        } else if (updatedData["type"] === "connection") {
+          document.getElementById("number-of-people").innerHTML =
+            updatedData["number_of_users"];
         }
       }
     } else {
@@ -134,6 +137,11 @@ function startAuctionCalls() {
 
   ws.onclose = () => {
     console.log("closed");
+    const data = JSON.stringify({
+      type: "disconnect",
+      token: token,
+    });
+    ws.send(data);
   };
 
   submitButton.onclick = () => {

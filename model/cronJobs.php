@@ -29,12 +29,12 @@ class CronJobs extends Base
         }
     }
 
-    public function update($updatedData, $id)
+    public function update($updatedData, $token)
     {
         $keys = array_keys($updatedData);
         foreach ($keys as $key) {
             $value = $updatedData[$key];
-            $sql = "UPDATE " . $this->tableName . " SET " . $key . " = " . " '$value' " . " WHERE id = '$id'";
+            $sql = "UPDATE " . $this->tableName . " SET " . $key . " = " . " '$value' " . " WHERE token = '$token'";
             $stmt = $this->connection->prepare($sql);
             $stmt->execute();
         }
