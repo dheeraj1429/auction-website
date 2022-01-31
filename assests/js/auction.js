@@ -25,6 +25,15 @@ function timeConverter(UNIX_timestamp) {
   return time;
 }
 
+function closeAlerts() {
+  const closeBtns = document.getElementsByClassName("close");
+  for (let closeBtn of closeBtns) {
+    closeBtn.onclick = () => {
+      closeBtn.parentElement.style.display = "none";
+    };
+  }
+}
+
 function createAlert(type, message) {
   const alertElement = `
   <div class="c-alert ${type}">
@@ -42,6 +51,7 @@ function createAlert(type, message) {
   `;
   const alert = document.getElementById("alert");
   alert.innerHTML = alertElement;
+  closeAlerts();
 }
 
 function convertTimeStamp(time) {
