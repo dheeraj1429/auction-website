@@ -118,8 +118,8 @@ class AuctionRoom implements MessageComponentInterface
     public function onClose(ConnectionInterface $conn)
     {
         // The connection is closed, remove it, as we can no longer send it messages
-        $conn->close();
         $this->clients->detach($conn);
+        $conn->close();
         echo "Connection {$conn->resourceId} has disconnected\n";
     }
 

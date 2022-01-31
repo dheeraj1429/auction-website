@@ -316,8 +316,8 @@ if (strtotime(date("Y-m-d")) > strtotime($auctionData["date"])) {
             <div class="container-fluid padding_one">
                 <div class="row">
                     <div class="col-12">
-                        <h1>Bids</h1>
-                        <p class="light_para">Welcome Smart Auction Bids page</p>
+                        <h1><?php echo $auctionData["product_name"] ?> Auction</h1>
+                        <p class="light_para">Welcome <?php echo $auctionData["product_name"] ?> Auction Bids page</p>
                     </div>
                 </div>
 
@@ -382,34 +382,36 @@ if (strtotime(date("Y-m-d")) > strtotime($auctionData["date"])) {
 
                 <div id="bid-bubbles">
                     <?php foreach ($auctionBid as $ab) : ?>
-                    <div class="col-12">
-                        <?php $userData = getUserById($ab["user_id"]) ?>
-                        <div class="userBitting_current">
-                            <div class="row">
-                                <div class="col-12 col-sm-12 col-md-6">
-                                    <div class="row">
-                                        <div class="col-4 full_width col-md-4">
-                                            <h1><?php echo $auctionData["product_name"] ?></h1>
-                                            <p class="light_para"><?php echo $userData["username"] ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 col-sm-12 col-md-6 pt-3 pt-md-0">
-                                    <div class="row">
-                                        <div class="col-4 full_width col-md-5 d-flex align-items-center">
-                                            <div class="user_icons_profile">
-                                                <?php if ($userData["profile_img"]) : ?>
-                                                <img src="./media/img/users/<?php echo $userData["profile_img"] ?>"
-                                                    alt="" />
-                                                <?php else : ?>
-                                                <img src="./media/img/users/default.png" alt="" />
-                                                <?php endif; ?>
+                    <div class="row py-3">
+                        <div class="col-12">
+                            <?php $userData = getUserById($ab["user_id"]) ?>
+                            <div class="userBitting_current">
+                                <div class="row">
+                                    <div class="col-12 col-sm-12 col-md-6">
+                                        <div class="row">
+                                            <div class="col-4 full_width col-md-4">
+                                                <h1><?php echo $auctionData["product_name"] ?></h1>
+                                                <p class="light_para"><?php echo $userData["username"] ?></p>
                                             </div>
                                         </div>
-                                        <div
-                                            class="col-4 full_width col-md-3 d-flex align-items-center justify-content-start justify-content-md-end">
-                                            <p class="light_para"><?php echo $ab["amount"] ?></p>
+                                    </div>
+
+                                    <div class="col-12 col-sm-12 col-md-6 pt-3 pt-md-0">
+                                        <div class="row">
+                                            <div class="col-4 full_width col-md-5 d-flex align-items-center">
+                                                <div class="user_icons_profile">
+                                                    <?php if ($userData["profile_img"]) : ?>
+                                                    <img src="./media/img/users/<?php echo $userData["profile_img"] ?>"
+                                                        alt="" />
+                                                    <?php else : ?>
+                                                    <img src="./media/img/users/default.png" alt="" />
+                                                    <?php endif; ?>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="col-4 full_width col-md-3 d-flex align-items-center justify-content-start justify-content-md-end">
+                                                <p class="light_para"><?php echo $ab["amount"] ?></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
