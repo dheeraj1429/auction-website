@@ -13,6 +13,7 @@ $auction = new Auction();
 
 $pageName = "winners";
 $auctionData = $auction->read($id = $_GET["id"])[0];
+$winnerData = array_slice($auctionData, 0, 3);
 $bidders = $bids->getReverceSortedBids($_GET["id"]);
 // echo "<pre>";
 // print_r($bidders);
@@ -69,7 +70,7 @@ $bidders = $bids->getReverceSortedBids($_GET["id"]);
                                     <!-- user content -->
 
                                 </div>
-                                <div class="User_Winner_Div second_winner">
+                                <div class="User_Winner_Div first_winner">
                                     <?php if ($bidders[0]["profile_img"]) : ?>
                                     <img src="./media/img/users/<?php echo $bidders[0]["profile_img"] ?>" alt=""
                                         class="img-fluid">
@@ -84,7 +85,7 @@ $bidders = $bids->getReverceSortedBids($_GET["id"]);
                                     <!-- user content -->
 
                                 </div>
-                                <div class="User_Winner_Div second_winner">
+                                <div class="User_Winner_Div third_winner">
                                     <?php if ($bidders[2]["profile_img"]) : ?>
                                     <img src="./media/img/users/<?php echo $bidders[2]["profile_img"] ?>" alt=""
                                         class="img-fluid">
@@ -108,7 +109,7 @@ $bidders = $bids->getReverceSortedBids($_GET["id"]);
                         <!-- Acution winning inner card -->
                         <div class="auctionCard_Content py-3">
                             <!-- All Card -->
-                            <?php for ($i = 0; $i < count($bidders); $i++) : ?>
+                            <?php for ($i = 0; $i < count($winnerData); $i++) : ?>
                             <div class="allCard_div my-3">
                                 <div class="row  gx-0">
                                     <div
