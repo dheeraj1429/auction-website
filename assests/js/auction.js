@@ -118,9 +118,14 @@ function startAuctionCalls() {
           const newPrice = document.getElementById("new-price");
           newPrice.innerHTML = updatedData["bidPrice"] + 20;
           createBidBubble(updatedData);
-        } else if (updatedData["type"] === "connection") {
-          document.getElementById("number-of-people").innerHTML =
-            updatedData["number_of_users"];
+        } else if (updatedData["type"] === "connect") {
+          const total =
+            parseInt(document.getElementById("number-of-people").innerHTML) + 1;
+          document.getElementById("number-of-people").innerHTML = total;
+        } else if (updatedData["type"] === "disconnect") {
+          const total =
+            parseInt(document.getElementById("number-of-people").innerHTML) - 1;
+          document.getElementById("number-of-people").innerHTML = total;
         }
       }
     } else {

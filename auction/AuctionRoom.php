@@ -46,7 +46,7 @@ class AuctionRoom implements MessageComponentInterface
         ) {
             if ($messageData["type"] == "varify") {
                 if (isParticepeted($messageData["email"], $messageData["auctionId"])) {
-                    $numberOfUsers = getUserCount($messageData["token"]);
+                    $numberOfUsers = $this->getUserCount($messageData["token"]);
                     $from->send(
                         json_encode(
                             array(
@@ -57,13 +57,12 @@ class AuctionRoom implements MessageComponentInterface
                             )
                         )
                     );
-                    $messageData = json_encode(
+                    $message = json_encode(
                         array(
-                            "type" => "connection",
-                            "number_of_users" => $numberOfUsers
+                            "type" => "connect",
                         )
                     );
-                    $this->sendAll($messageData["token"], $messageData, $from);
+                    $this->sendAll($messageData["token"], $message, $from);
                     if (!$this->isVarified($from, $messageData["token"])) {
                         setUsers($messageData["token"], $from->resourceId);
                     }
@@ -95,14 +94,25 @@ class AuctionRoom implements MessageComponentInterface
             } else if ($messageData["type"] == "disconnect") {
                 $token =  $messageData["token"];
                 rmUsers($token, $from->resourceId);
-                $userCount = getUserCount($token);
+                // $userCount = getUserCount($token);
                 $message = json_encode(array(
-                    "type" => "connnection",
-                    "number_of_users" => $userCount
+                    "type" => "disconnect",
                 ));
                 $this->sendAll($token, $message, $from);
             }
         }
+    }
+
+    private function getUserCount($token)
+    {
+        $total = 0;
+        $allUsers = getAllUsers($token);
+        foreach ($this->clients  as $client) {
+            if (in_array($client->resourceId, $allUsers)) {
+                $total++;
+            }
+        }
+        return $total;
     }
 
     public function onClose(ConnectionInterface $conn)

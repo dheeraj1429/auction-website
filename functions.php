@@ -36,7 +36,10 @@ function getAuctionWinner($auctionId)
 {
     $bids = new Bids();
     $result = $bids->getWinnerBid($auctionId);
-    return $result[0];
+    if ($result) {
+        return $result[0];
+    }
+    return null;
 }
 
 function pagination($data, $page, $total)
