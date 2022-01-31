@@ -13,8 +13,13 @@ $auction = new Auction();
 
 $pageName = "winners";
 $auctionData = $auction->read($id = $_GET["id"])[0];
-$winnerData = array_slice($auctionData, 0, 3);
 $bidders = $bids->getReverceSortedBids($_GET["id"]);
+if ($bidders) {
+    $winnerData = array_slice($bidders, 0, 3);
+} else {
+    $bidders = null;
+    $winnerData = null;
+}
 // echo "<pre>";
 // print_r($bidders);
 // echo "</pre>";
@@ -29,10 +34,12 @@ $bidders = $bids->getReverceSortedBids($_GET["id"]);
 
 <main>
     <!-- winning> -->
+    <?php if ($bidders) : ?>
     <section class="winner_section side_padding">
         <div class="container-fluid padding_one">
 
             <!-- Auction win heading -->
+
             <div class="row">
                 <div class="col-12">
                     <h1 class="fw-bold text-center"><?php echo $auctionData["product_name"] ?> Auction Results</h1>
@@ -45,7 +52,6 @@ $bidders = $bids->getReverceSortedBids($_GET["id"]);
 
             <!-- Auction win cards section -->
             <div class="row pt-5 pb-3 justify-content-center">
-
                 <div class="col-12 col-sm-10 col-md-10 col-lg-5 col-xxl-3 mb-5 mb-lg-0">
                     <!-- auction win card -->
                     <div class="AuctionWinner_Card_div">
@@ -186,14 +192,21 @@ $bidders = $bids->getReverceSortedBids($_GET["id"]);
                     </div>
                     <!-- all auction winner -->
                 </div>
-
             </div>
             <!-- Auction win cards section -->
         </div>
     </section>
+    <?php else : ?>
+    <div style="margin: 30px">
+        <h1 class="fw-bold text-center"><?php echo $auctionData["product_name"] ?> Auction Results</h1>
+        <h2 class="text-center">No one won this auction</h2>
+    </div>
+    <?php endif; ?>
     <!-- winning> -->
 </main>
 
 
 <!-- Footer -->
+<?php if ($bidders) : ?>
 <?php require_once "./footer2.php" ?>
+<?php endif; ?>
