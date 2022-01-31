@@ -95,6 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $capacity = $_POST['capacity'];
     $date = $_POST['date'];
     $time = $_POST['time'];
+    $isVip = $_POST['is_vip'];
     $category = $_POST['category'];
     $discription = htmlspecialchars($_POST['discription']);
     $currentTime = strtotime(date("H:i:s"));
@@ -140,7 +141,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             "discription" => $discription,
             "store_price" => $storePrice,
             "product_img" => $fileName,
-            "token"  => $token
+            "token"  => $token,
+            "isVip" => $isVip
         );
     } else {
         $data = array(
@@ -153,7 +155,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             "category" => $category,
             "discription" => $discription,
             "store_price" => $storePrice,
-            "token"  => $token
+            "token"  => $token,
+            "isVip" => $isVip
         );
     }
     if (isset($_GET['id'])) {
@@ -226,6 +229,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                         <?php echo $category["name"] ?></option>
                                                     <?php endif; ?>
                                                     <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <label for="head">Is Vip</label>
+                                                <select class="form-control" name="is_vip" autocomplete="off"
+                                                    required="">
+                                                    <?php if (isset($_GET["id"])) : ?>
+                                                    <?php if ($dataB["isVip"] == "1") : ?>
+                                                    <option selected="" value="1">True</option>
+                                                    <option value="0">False</option>
+                                                    <?php elseif ($dataB["isVip"] == "0") : ?>
+                                                    <option value="1">True</option>
+                                                    <option selected="" value="0">False</option>
+                                                    <?php endif; ?>
+                                                    <?php else : ?>
+                                                    <option value="" selected="" disabled="">Select</option>
+                                                    <option value="1">True</option>
+                                                    <option value="0">False</option>
+                                                    <?php endif; ?>
                                                 </select>
                                             </div>
                                             <div class="form-group col-md-12">

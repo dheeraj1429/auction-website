@@ -20,6 +20,7 @@ $participant = new Participant();
 $users = new Users();
 $auction = new Auction();
 $auctionData = $auction->read($id = $_GET["auction_id"]);
+$isVip = $auctionData["is_vip"] == 1 ? true : false;
 $wallet = new Wallet();
 
 if (!$auctionData) {
@@ -34,7 +35,11 @@ if (strtotime($auctionData[0]["date"]) != strtotime(date("Y-m-d")) && strtotime(
 
 if (!isParticepeted($_SESSION['email'], $_GET["auction_id"])) {
     try {
-        $users->updateBidToken("remove", $_GET["token_value"], $_SESSION["userId"]);
+        if (!$isVip) {
+            $users->updateBidToken("remove", $_GET["token_value"], $_SESSION["userId"]);
+        } else {
+            $users->updateBidToken("remove", $_GET["token_value"], $_SESSION["userId"], $isVip = true);
+        }
     } catch (Exception $e) {
         $_SESSION["flash"]["message"] = "You don't have enough tokens to buy";
         $_SESSION["flash"]["type"] = "warning";

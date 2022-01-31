@@ -34,7 +34,8 @@ class Auction extends Base
             array_key_exists("featured_status", $data) &&
             array_key_exists("token", $data) &&
             array_key_exists("category", $data) &&
-            array_key_exists("discription", $data)
+            array_key_exists("discription", $data) &&
+            array_key_exists("isVip", $data)
         ) {
             $productName = $data['product_name'];
             $startingPrice = $data['starting_price'];
@@ -46,6 +47,7 @@ class Auction extends Base
             $feature = $data['featured_status'];
             $date = $data['date'];
             $time = $data['time'];
+            $isVip = $data['isVip'];
             $endTime = strtotime("+20 minutes", strtotime($time));
             $endTime = date('H:i', $endTime);
             $productImg = $data['product_img'];
@@ -62,7 +64,8 @@ class Auction extends Base
                 product_img,
                 category,
                 discription,
-                featured_status
+                featured_status,
+                isVip
             ) VALUES (
                 '$productName',
                 '$startingPrice',
@@ -75,7 +78,8 @@ class Auction extends Base
                 '$productImg',
                 '$category',
                 '$discription',
-                '$feature'
+                '$feature',
+                '$isVip'
             )";
             $stmt = $this->connection->prepare($sql);
             $stmt->execute();

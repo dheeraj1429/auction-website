@@ -49,23 +49,23 @@ require_once "./getValuesByName.php";
 
 <body>
     <style>
-    .rotate180 {
-        -webkit-transform: rotate(180deg);
-        -moz-transform: rotate(180deg);
-        -o-transform: rotate(180deg);
-        -ms-transform: rotate(180deg);
-        transform: rotate(180deg);
-    }
+        .rotate180 {
+            -webkit-transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
 
-    div.pagiantion_div>a {
-        color: black;
-        text-decoration: none;
-    }
+        div.pagiantion_div>a {
+            color: black;
+            text-decoration: none;
+        }
 
-    div.activepagination>a {
-        color: ghostwhite;
-        text-decoration: none;
-    }
+        div.activepagination>a {
+            color: ghostwhite;
+            text-decoration: none;
+        }
     </style>
     <!-- Header -->
     <header>
@@ -74,8 +74,7 @@ require_once "./getValuesByName.php";
             <div class="Top_Header_Inner container-fluid side_padding">
                 <div class="Top_Navbar_Inner_Sm_div">
                     <i class="fas fa-envelope"></i>
-                    <a href="mailto:<?php echo getValuesByName("email") ?>"
-                        class="text-white"><?php echo getValuesByName("email") ?></a>
+                    <a href="mailto:<?php echo getValuesByName("email") ?>" class="text-white"><?php echo getValuesByName("email") ?></a>
                 </div>
 
                 <!-- Top navbar icons -->
@@ -106,94 +105,89 @@ require_once "./getValuesByName.php";
                     <div class="container-fluid">
                         <a class="navbar-brand" href="./index.php">
                             <!-- <h1>Auction</h1> -->
-                            <img width="50px" height="50px" src="<?php echo "./media/" . getValuesByName("logo") ?>"
-                                alt="logo">
+                            <img width="50px" height="50px" src="<?php echo "./media/" . getValuesByName("logo") ?>" alt="logo">
                         </a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                            aria-label="Toggle navigation">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav ms-auto">
                                 <?php if ($pageName == "Home") : ?>
-                                <li class="nav-item">
-                                    <a class="nav-link active_header" aria-current="page" href="./">HOME</a>
-                                </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active_header" aria-current="page" href="./">HOME</a>
+                                    </li>
                                 <?php else : ?>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="./">HOME</a>
-                                </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="./">HOME</a>
+                                    </li>
                                 <?php endif; ?>
                                 <?php if ($pageName == "How It Works") : ?>
-                                <li class="nav-item">
-                                    <a class="nav-link active_header " aria-current="page" href="./howItWorks.php">HOW
-                                        IT
-                                        WORKS</a>
-                                </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active_header " aria-current="page" href="./howItWorks.php">HOW
+                                            IT
+                                            WORKS</a>
+                                    </li>
                                 <?php else : ?>
-                                <li class="nav-item">
-                                    <a class="nav-link active " aria-current="page" href="./howItWorks.php">HOW IT
-                                        WORKS</a>
-                                </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active " aria-current="page" href="./howItWorks.php">HOW IT
+                                            WORKS</a>
+                                    </li>
                                 <?php endif; ?>
                                 <?php if ($pageName == "Ended") : ?>
-                                <li class="nav-item">
-                                    <a class="nav-link active_header" aria-current="page" href="./Ended.php">ENDED
-                                        AUCTIONS</a>
-                                </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active_header" aria-current="page" href="./Ended.php">ENDED
+                                            AUCTIONS</a>
+                                    </li>
                                 <?php else : ?>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="./Ended.php">ENDED AUCTIONS</a>
-                                </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="./Ended.php">ENDED AUCTIONS</a>
+                                    </li>
 
                                 <?php endif; ?>
                                 <?php if ($pageName == "Current Auction") : ?>
-                                <li class="nav-item">
-                                    <a class="nav-link active_header" aria-current="page"
-                                        href="./currentAuctions.php">CURRENT
-                                        AUCTION</a>
-                                </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active_header" aria-current="page" href="./currentAuctions.php">CURRENT
+                                            AUCTION</a>
+                                    </li>
                                 <?php else : ?>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="./currentAuctions.php">CURRENT
-                                        AUCTION</a>
-                                </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="./currentAuctions.php">CURRENT
+                                            AUCTION</a>
+                                    </li>
                                 <?php endif; ?>
                                 <?php if ($pageName == "Buy Token") : ?>
-                                <li class="nav-item">
-                                    <a class="nav-link active_header" aria-current="page" href="Buy_token.php">BUY
-                                        TOKENS</a>
-                                </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active_header" aria-current="page" href="Buy_token.php">BUY
+                                            TOKENS</a>
+                                    </li>
                                 <?php else : ?>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="Buy_token.php">BUY TOKENS</a>
-                                </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="Buy_token.php">BUY TOKENS</a>
+                                    </li>
                                 <?php endif; ?>
 
 
                                 <?php if (isset($_SESSION["email"])) : ?>
-                                <li class="nav-item">
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle drop" type="button"
-                                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                            AALBOUCHI
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <li><a class="dropdown-item" href="./userProfile.php">My Profile</a></li>
-                                            <li><a class="dropdown-item" href="./wallet.php">Your Wallet</a></li>
-                                            <li><a class="dropdown-item" href="./signout.php">Sign Out</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
+                                    <li class="nav-item">
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle drop" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                AALBOUCHI
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                <li><a class="dropdown-item" href="./userProfile.php">My Profile</a></li>
+                                                <li><a class="dropdown-item" href="./wallet.php">Your Wallet</a></li>
+                                                <li><a class="dropdown-item" href="./signout.php">Sign Out</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
 
                                 <?php else : ?>
-                                <div class="sign_in_button d-flex align-items-center ms-5">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="./logIn.php">SIGN IN</a>
-                                    </li>
-                                    <a href="./register.php" class="Subcribe_button_sm text-white">REGISTER</a>
-                                </div>
+                                    <div class="sign_in_button d-flex align-items-center ms-5">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" aria-current="page" href="./logIn.php">SIGN IN</a>
+                                        </li>
+                                        <a href="./register.php" class="Subcribe_button_sm text-white">REGISTER</a>
+                                    </div>
                                 <?php endif; ?>
                             </ul>
                         </div>
@@ -205,69 +199,56 @@ require_once "./getValuesByName.php";
 
     </header>
     <?php if (isset($_SESSION["flash"])) : ?>
-    <?php if ($_SESSION["flash"]["type"] == "warning") : ?>
-    <div class="c-alert warning">
-        <div class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16">
-                <path
-                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
-            </svg>
-        </div>
-        <div class="message"><?php echo $_SESSION['flash']['message'] ?></div>
-        <div class="close">
-            <button id="close">
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x"
-                    viewBox="0 0 16 16">
-                    <path
-                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-                </svg>
-            </button>
-        </div>
-    </div>
-    <?php elseif ($_SESSION["flash"]["type"] == "danger") : ?>
-    <div class="c-alert danger">
-        <div class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
-                class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16">
-                <path
-                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
-            </svg>
-        </div>
-        <div class="message"><?php echo $_SESSION['flash']['message'] ?></div>
-        <div class="close">
-            <button id="close">
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x"
-                    viewBox="0 0 16 16">
-                    <path
-                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-                </svg>
-            </button>
-        </div>
-    </div>
+        <?php if ($_SESSION["flash"]["type"] == "warning") : ?>
+            <div class="c-alert warning">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                    </svg>
+                </div>
+                <div class="message"><?php echo $_SESSION['flash']['message'] ?></div>
+                <div class="close">
+                    <button id="close">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        <?php elseif ($_SESSION["flash"]["type"] == "danger") : ?>
+            <div class="c-alert danger">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                    </svg>
+                </div>
+                <div class="message"><?php echo $_SESSION['flash']['message'] ?></div>
+                <div class="close">
+                    <button id="close">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
 
-    <?php elseif ($_SESSION["flash"]["type"] == "success") : ?>
-    <div class="c-alert success">
-        <div class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
-                class="bi bi-check2-circle" viewBox="0 0 16 16">
-                <path
-                    d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z" />
-                <path
-                    d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z" />
-            </svg>
-        </div>
-        <div class="message"><?php echo $_SESSION["flash"]["message"]; ?></div>
-        <div class="close">
-            <button id="close">
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x"
-                    viewBox="0 0 16 16">
-                    <path
-                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-                </svg>
-            </button>
-        </div>
-    </div>
-    <?php endif; ?>
-    <?php unset($_SESSION["flash"]) ?>
+        <?php elseif ($_SESSION["flash"]["type"] == "success") : ?>
+            <div class="c-alert success">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                        <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z" />
+                        <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z" />
+                    </svg>
+                </div>
+                <div class="message"><?php echo $_SESSION["flash"]["message"]; ?></div>
+                <div class="close">
+                    <button id="close">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        <?php endif; ?>
+        <?php unset($_SESSION["flash"]) ?>
     <?php endif; ?>

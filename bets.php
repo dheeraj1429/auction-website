@@ -26,7 +26,9 @@ function getUserById($id)
 
 $auction = new Auction();
 $bids = new Bids();
+$userData = getUserById($_SESSION["userId"]);
 $auctionData = $auction->getAuctionByToken($_GET["token"]);
+$totalToken = $auctionData["isVip"] == 1 ? $userData["vip_token"] : $userData["bid_token"];
 $redis = new RedisConnection($_GET["token"]);
 $auctionBid = $bids->getBidByAuctionId($auctionData["id"]);
 $currentBid = $redis->getCurrentBid();
@@ -100,6 +102,7 @@ if (strtotime(date("Y-m-d")) > strtotime($auctionData["date"])) {
     const productName = "<?php echo $auctionData["product_name"] ?>";
     const username = "<?php echo $_SESSION["username"] ?>"
     const profileImg = "<?php echo $_SESSION["profile_img"] ?>";
+    const totalToken = parseInt("<?php echo $totalToken ?>");
     </script>
 </head>
 
@@ -424,7 +427,7 @@ if (strtotime(date("Y-m-d")) > strtotime($auctionData["date"])) {
         </section>
         <!-- bets section -->
     </main>
-
+    <div id="alert"></div>
     <!-- Footer -->
     <footer class="footer side_padding second_footer">
         <!-- Footer -->
