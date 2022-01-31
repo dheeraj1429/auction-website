@@ -15,8 +15,8 @@ function pospondAuction($auctionData, $posponedTime = 14)
     if ($isAuctionOnTime) {
         return pospondAuction($auctionData, $posponedTime = $posponedTime + 1);
     } else {
-        $cronData = array("date" => $updatedDate);
-        $cronJobs->update($cronData, $auctionData["token"]);
+        $cronData = array("date" => $updatedDate, "time" => $auctionData["time"], "token" => $auctionData["token"]);
+        $cronJobs->create($cronData);
         $auctionModel->update(array("date" => $updatedDate), $auctionData["id"]);
         $cronData = $cronJobs->read();
         $text = "";
