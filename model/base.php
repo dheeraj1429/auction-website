@@ -15,8 +15,16 @@ class Base
 
     public function preventSqlInjection($sql)
     {
-        $sql = mysqli_real_escape_string($this->connection, $this->akSecureString($sql));
-        return $sql;
+        $invalidChar = array("!", "?", "'", "\"", "\\", "-", "<", ">");
+        $sql = str_split($sql);
+        $filterSql = "";
+        foreach ($sql as $s) {
+            if (in_array($s, $invalidChar)) {
+                $s = "\\" . $s;
+            }
+            $filterSql .= $s;
+        }
+        return $filterSql;
     }
 
     private function akSecureString($param)

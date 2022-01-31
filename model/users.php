@@ -8,12 +8,13 @@ class Users extends Base
     public function read($userEmail = null)
     {
         if ($userEmail) {
+            $userEmail = $this->preventSqlInjection($userEmail);
             $sql = "SELECT * FROM " . $this->tableName . " WHERE email = '$userEmail'";
             $stmt = $this->connection->prepare($sql);
             $stmt->execute();
             $result = $stmt->fetchAll();
         } else {
-            $sql = "SELECT * FROM " . $this->tableName;
+            $sql = $this->preventSqlInjection("SELECT * FROM " . $this->tableName);
             $stmt = $this->connection->prepare($sql);
             $stmt->execute();
             $result = $stmt->fetchAll();
@@ -23,6 +24,7 @@ class Users extends Base
 
     public function getUserByToken($token)
     {
+        $token = $this->preventSqlInjection($token);
         $sql = "SELECT * FROM " . $this->tableName . " WHERE token = '$token'";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
@@ -32,6 +34,7 @@ class Users extends Base
 
     public function getUserById($id)
     {
+        $id = $this->preventSqlInjection($id);
         $sql = "SELECT * FROM " . $this->tableName . " WHERE id = '$id'";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
