@@ -9,6 +9,9 @@
   font-weight: 600;
   font-size: 14px;
 }
+.Subcribe_button:hover{
+  color: var(--LightRedColor);
+}
 
 .Subcribe_button_sm {
   padding: 0.3rem 1.3rem;

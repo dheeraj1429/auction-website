@@ -2,6 +2,65 @@
    require_once 'inc/config.php';
    $pageName="Auction";
 
+   if(isset($_GET['id']) && isset($_GET['auction'])){
+       $id = mysqli_real_escape_string($conn,ak_secure_string($_GET['id']));
+       $query = mysqli_query($conn,"SELECT ac.id, ac.cat, ac.type, ac.name, ac.image, ac.short_desc, ac.desc, ac.store_price, ac.starting_price, ac.entry_price, ac.starting_from, ac.capacity,ct.name as category FROM `".$tblPrefix."auctions` ac LEFT JOIN `".$tblPrefix."category` ct ON ac.cat = ct.id WHERE ac.id = $id");
+       if(mysqli_num_rows($query) == 0){
+           $_SESSION['toast']['type']="error";
+           $_SESSION['toast']['type']="Something went wrong, Please try again later.";
+           header("location:index.php");
+       }else{
+           $data = mysqli_fetch_assoc($query);
+       }
+   }else{
+       $_SESSION['toast']['type']="error";
+       $_SESSION['toast']['type']="Something went wrong, Please try again later.";
+    header("location:index.php");
+   }
+   $usersJoined = getUsersJoined($data['id']);
+   $totalUsers = $data['capacity'];
+//    $percentage = ($usersJoined * $totalUsers) / 100;
+   $percentage = 50;
+// Enter Auction
+   if(isset($_POST['enterAuction'])){
+       $user = $_SESSION['user']['id'];
+       $auctionId = mysqli_real_escape_string($conn,ak_secure_string($_GET['id']));
+       if(validateWallet($data['entry_price'])){
+           $enterAuction = mysqli_query($conn,"INSERT INTO `".$tblPrefix."auction_participant`(`auction_id`, `user_id`, `date_time`, `status`) VALUES ('$auctionId','$user','$cTime',2)");
+           if($enterAuction == TRUE){
+                makeAuctionTransaction($data['entry_price'],$auctionId);
+               $_SESSION['toast']['type']="alert";
+               $_SESSION['toast']['msg']="You've Successfully Registed";
+               header("refresh:0");
+               exit();
+           }else{
+            $_SESSION['toast']['type']="error";
+            $_SESSION['toast']['msg']="Something went wrong, Please try again later";
+            header("refresh:0");
+               exit();
+           }
+
+       }else{
+        $_SESSION['toast']['type']="warning";
+        $_SESSION['toast']['msg']="You've Insufficient Token Wallet Balance";
+        header("refresh:0");
+               exit();
+       }
+
+   }
+
+   if(isset($_POST['participateAuction'])){
+       $userId = $_SESSION['user']['id'];
+       $auctionId = mysqli_real_escape_string($conn,ak_secure_string($_GET['id']));
+       $query = mysqli_query($conn,"INSERT INTO `".$tblPrefix."attendance`(`auction_id`, `user_id`, `date_time`) VALUES ('$auctionId','$userId','$cTime')");
+       if($query== true){
+           $_SESSION['toast']['type']="success";
+           $_SESSION['toast']['msg']="Entered Auction Successfully";
+           header('location:bets.php');
+           exit();
+       }
+   }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,80 +83,70 @@
             <div class="container">
                 <div class="row g-3">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-6">
-                        <img src="./assests/icons&images/image 58.png " class="d-block w-75 img-fluid img_slide"
-                            alt="..." />
+                        <img src="./assets/img/auction/<?php echo $data['image']?> " alt = "<?php echo $data['name']?>" class="d-block w-75 img-fluid img_slide"/>
                     </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-6  ">
-                        <h3 class="fw-bold">White Solo 2 Wireless </h3>
-                        <h5>Headphones </h5>
+                        <h3 class="fw-bold"><?php echo $data['name']?> </h3>
+                        <h5><?php echo $data['category']?> </h5>
                         <div class="col-6 col-sm-6 col-md-6 col-lg-6">
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus aut officia
-                                accusantium cupiditate iusto fugiat unde quod reiciendis debitis illum?</p>
+                            <p><?php echo $data['short_desc']?></p>
                         </div>
-
-                        <h3 class="h2">time:</h3>
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="text-muted fw-bolder">Auction scheduled on:</p>
+                            </div>
+                            <div class="col-6">
+                                <?php echo date("d/m/Y h:i:s a",strtotime($data['starting_from']))?>
+                            </div>
+                        </div>
                            <div class="d-flex mt-2">
-                            <div>
-                                <p class="h3">Store price:</p>
-                                <p class="h5">$123</p>
+                            <div class="d-flex">
+                                <p class="text-muted fw-bolder pe-5">Store price:</p>
+                                <p>$<?php echo $data['store_price']?></p>
                             </div>
-                            <div class="ms-auto">
-                                <p class="h3 fw-bolder ">New price:</p>
-                                <p class="h5">$111</p>
-
+                            <div class="ms-auto d-flex">
+                                <p class="text-muted fw-bolder pe-5">New price:</p>
+                                <p>$<?php echo $data['starting_price']?></p>
                             </div>
                         </div>
-                        <p class="h3 mt-1 ">Number of coupons</p>
-                        <p class="h4 fw-light">0</p>
                         <div class="mt-3">
                             <div class="card border-0 ">
-                                <h5 class="card-title  mb-1">Specification</h5>
                                 <div class="card-body">
-                                    <h5 class="card-subtitle mb-2 ">General</h5>
-                                    <p> <span class="h6 ">Battery:</span> <span class="h6 px-5">99wh</span> </p>
-                                    <p> <span class="h6 ">Storage:</span> <span class="h6 px-5">99wh</span> </p>
-                                    <p> <span class="h6 ">Display:</span> <span class="h6 px-5">99wh</span> </p>
+                                    <?php echo htmlspecialchars_decode($data['desc']);?>
                                 </div>
                             </div>
                         </div>
-
-                        <button class="btn btn-lg rounded-pill h4 fw-bolder btn-danger buy_Button mb-5">Submit</button>
+                        <div class="row py-4">
+                            <div class="col-6">
+                                <p class="text-muted fw-bolder auctionText">Auction Starting In :</p>
+                            </div>
+                            <div class="col-6" id="demo"></div>
+                            <div class="col-6" id="demo2" style="display:none;"></div>
+                        </div>
+                        <div class="timeComplete" style="display:none;">Works</div>
+                        <?php if(isset($_SESSION['user'])){
+                            if(isUserAlreadyInAuction($_GET['id'])){
+                                if(validateWallet($data['entry_price'])){
+                        ?>
+                        
+                        <form method="POST">
+                            <button type="submit" class="btn btn-lg rounded-pill h4 fw-bolder btn-danger buy_Button mb-5" name="enterAuction">Participate In <?php echo $data['entry_price'] ;?> Tokens</button>
+                        </form>
+                        <?php }else{ ?>
+                            <a target="_blank" href="buy-token.php" class="btn btn-lg rounded-pill h4 fw-bolder btn-danger buy_Button mb-5" name="enterAuction">Please top up your tokens</a>
+                        <?php } }else{ ?>
+                            <button class="btn btn-lg rounded-pill h4 fw-bolder btn-danger buy_Button mb-5 alreadyInAuction" >ALready Registered in Auction</button>
+                            <form method="POST">
+                                <button type="submit" class="btn btn-lg rounded-pill h4 fw-bolder btn-danger buy_Button mb-5 enterAuction" style="display:none;" name="participateAuction">
+                                Enter Auction
+                            </button>
+                        </form>
+                        <?php } }else{?>
+                            <a target="_blank" href="login.php?redirect=<?php echo $_SERVER['REQUEST_URI']?>" class="btn btn-lg rounded-pill h4 fw-bolder btn-danger buy_Button mb-5" name="enterAuction">Please Login to Enter Auction</a>
+                            <?php }?>
                     </div>
                 </div>
         </section>
-        <!-- <section class="news_letter_sectionside_padding main_bg">
-            <div class="container-fluid padding_one">
-                <div class="row gx-0">
-                    <div class="col-12 d-flex align-items-center justify-content-center">
-                        News letter div 
-                        <div class="news_letter_inner_div">
-                            <div class="row px-3 align-items-center">
-                                <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-                                    <h1>Receive our newsletter:</h1>
-                                </div>
-                                <div class="col-12 col-sm-12 col-md-6 col-xl-7 col-xxl-8">
-                                    <div class="row align-items-center justify-content-center">
-                                        <div class="col-12 col-md-8 col-lg-9 my-4 my-md-0">
-                                            <div class="input_group_div">
-                                                <div class="inner_input d-flex">
-                                                    <input type="email" placeholder="Enter your Email" />
-                                                    <div class="news_icons">
-                                                        <img src="./assests/icons&images/Layer 2.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-4 col-lg-2">
-                                            <button class="send_button">Send</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
         <!-- News Letter Section -->
     </main>
     <!-- Main -->
@@ -110,6 +159,86 @@
     <!-- Footer -->
 
     <?php require_once 'inc/js.php';?>
+    <script>
+        // Set the date we're counting down to
+        // var countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
+        var countDownDate = new Date("<?php echo $data['starting_from']; ?>").getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+
+        // Get today's date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display the result in the element with id="demo"
+        document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+
+        // If the count down is finished, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            document.querySelector(".enterAuction").style.display ='block'
+            document.getElementById("demo").innerHTML = "Started";
+            document.getElementById("demo2").style.display = "block";
+
+            document.querySelector(".timeComplete").style.display ='block'
+            document.querySelector(".alreadyInAuction").style.display ='none'
+            
+            document.querySelector(".auctionText").innerHtml = 'Entry Closing In'
+
+
+                var countDownDate2 = new Date("<?php echo date('Y-m-d H:i',strtotime('+10 minutes',strtotime($data['starting_from'])));?>").getTime();
+
+                // Update the count down every 1 second
+                var x2 = setInterval(function() {
+
+                // Get today's date and time
+                var now2 = new Date().getTime();
+
+                // Find the distance between now2 and the count down date
+                var distance2 = countDownDate2 - now2;
+
+                // Time calculations for days, hours, minutes and seconds
+                var days2 = Math.floor(distance2 / (1000 * 60 * 60 * 24));
+                var hours2 = Math.floor((distance2 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes2 = Math.floor((distance2 % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds2 = Math.floor((distance2 % (1000 * 60)) / 1000);
+
+                // Display the result in the element with id="demo"
+                document.getElementById("demo2").innerHTML = days2 + "d " + hours2 + "h "
+                + minutes2 + "m " + seconds2 + "s ";
+                
+                document.querySelector('.auctionText').innerHtml = `Entry Closing In`
+
+                if(distance2 > 0){
+                    document.getElementById("demo").innerHTML = "Expired";
+                    document.querySelector(".enterAuction").style.display ='none'
+                    document.getElementById("#demo2").style.display ='none'
+                    document.getElementById("demo").innerHTML = `Auction has been started and Entry is closed`;g
+                }
+                },1000);
+            
+            }
+        }, 1000);
+        
+</script>
+
+<script>
+    setInterval(function() {
+        window.location.reload();
+    }, 18000); 
+
+</script>
+
 </body>
 
 </html>

@@ -159,26 +159,30 @@ function getUsersJoined($auction_id){
 	return $queryA;
 }
 
-function auctionCard ($type,$limit,$category){
-	global $conn,$tblPrefix;
+function auctionCard ($type,$limit,$category=null){
+	global $conn,$tblPrefix,$cTime;
 	$condition = "";
 	if($type == 2){
-		$condition .= "type = 2";
+		$condition .= " AND type = 2";
 	}else if($type == 3){
-		$condition .= "type = 3";
+		$condition .= " AND type = 3";
 	}else if($type == 1){
-		$condition .= "type = 1";
+		$condition .= " AND type = 1";
+	}else if($type == 0){
+		$condition .= "";
 	}
 
-	if($category != Null){
-		$condition .= " AND categrory =".$category;
+	if($category != null){
+		$condition .= " AND categrory = ".$category;
 	}
 
 	if($limit != 0 ) {
 		$condition .= " LIMIT " . $limit;
 	}
 
-	$queryCards = mysqli_query($conn,"SELECT `id`, `name`, `image`, `store_price`, `starting_price`, `starting_from`, `capacity` FROM `".$tblPrefix."auctions` WHERE status = 2 AND $condition ");
+	$queryCards = mysqli_query($conn,"SELECT `id`, `name`, `image`, `store_price`, `starting_price`, `starting_from`, `capacity` FROM `".$tblPrefix."auctions` WHERE status = 2 $condition ");
+	// echo "SELECT `id`, `name`, `image`, `store_price`, `starting_price`, `starting_from`, `capacity` FROM `".$tblPrefix."auctions` WHERE status = 2  $condition AND `starting_from` < '$cTime'";
+	// echo $condition;
 	
 	while($cards=mysqli_fetch_assoc($queryCards)){
 		$usersJoined = getUsersJoined($cards['id']);
@@ -186,7 +190,7 @@ function auctionCard ($type,$limit,$category){
 		// $percentage = ($usersJoined * $totalUsers) / 100;
 		$percentage = 50;
 
-		echo '<div class="col-12 col-sm-9 col-md-6 col-xl-5 col-xxl-3 ">
+		echo '<div class="col-12 col-sm-9 col-md-6 col-xl-5 col-xxl-3 my-3">
 		<!-- Popular cards -->
 		<div class="popular_auction_card_div text-center py-3">
 
@@ -228,7 +232,7 @@ function auctionCard ($type,$limit,$category){
 
 			<!-- Subcribe button -->
 			<div class="mt-4 mb-5">
-			  <button class="Subcribe_button">Subscribe for $'.$cards['starting_price'].'</button>
+			  <a href="auction.php?auction='.urldecode($cards["name"]).'&id='.$cards["id"].'" class="Subcribe_button">Subscribe for $'.$cards['starting_price'].'</a>
 			</div>
 			<!-- Subcribe button -->
 
@@ -244,4 +248,60 @@ function auctionCard ($type,$limit,$category){
 	  </div>';
 	}
 	
+}
+
+function validateWallet($token){
+	global $conn,$tblPrefix;
+
+	$user = $_SESSION['user']['id'];
+
+	$checkTokens = mysqli_fetch_assoc(mysqli_query($conn,"SELECT `balance` FROM `".$tblPrefix."wallet` WHERE user_id = '$user'"))['balance'];
+	
+	if($checkTokens > $token){
+		return TRUE;
+	}else{
+		return FALSE;
+	}
+}
+
+function updateWallet($token){
+	global $conn,$tblPrefix,$cTime;
+
+	$user = $_SESSION['user']['id'];
+
+	if(mysqli_query($conn,"UPDATE `".$tblPrefix."wallet` SET `balance`= `balance`- $token ,`last_transiction`='$cTime' WHERE user_id = '$user'")==TRUE){
+		return TRUE;
+	}else{
+		return FALSE;
+	}
+}
+
+function makeAuctionTransaction($token,$auction_id){
+	global $conn,$tblPrefix,$cTime;
+
+	$user = $_SESSION['user']['id'];
+
+	$query = mysqli_query($conn,"INSERT INTO `".$tblPrefix."auction_transactions`(`user_id`, `auction_id`, `token`, `date_time`, `status`) VALUES ('$user','$auction_id','$token','$cTime','2')");
+	if($query==TRUE){
+		if(updateWallet($token)){
+			return TRUE;
+		}else { 
+			return FALSE;
+		}
+	}else{
+		return FALSE;
+	}
+}
+function isUserAlreadyInAuction($auction_id){
+	global $conn,$tblPrefix;
+
+	$user = $_SESSION['user']['id'];
+	
+	$query = mysqli_query($conn,"SELECT `id` FROM `".$tblPrefix."auction_participant` WHERE user_id = '$user' AND auction_id = $auction_id");
+	
+	if(mysqli_num_rows($query) == 0){
+		return TRUE;
+	}else{
+		return FALSE;
+	}
 }

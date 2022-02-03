@@ -1,3 +1,6 @@
+header{
+  box-shadow: 0px 0px 15px 10px rgb(0 0 0 / 10%);
+}
 /* Top Header */
 .Top_Header {
   background-color: var(--SmNavbarColorGreen);

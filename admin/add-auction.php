@@ -11,14 +11,15 @@
         $startFrom = mysqli_real_escape_string($conn,$_POST['startFrom']);
         $startTime = mysqli_real_escape_string($conn,$_POST['startTime']);
         $capacity = mysqli_real_escape_string($conn,$_POST['capacity']);
+        $entryPrice =  mysqli_real_escape_string($conn,$_POST['entryPrice']);
         $short_desc = mysqli_real_escape_string($conn,ak_secure_string($_POST['short_desc']));
         $desc = htmlspecialchars($_POST['desc']);
         $dateTime = $startFrom.' '.$startTime.':00';
         if(isset($_GET['id'])){
             $id = mysqli_real_escape_string($conn,ak_secure_string($_GET['id']));
-            $query = mysqli_query($conn,"UPDATE `".$tblPrefix."auctions` SET `cat`='$cat',`type`='$type',`name`='$name',`short_desc`='$short_desc',`desc`='$desc',`store_price`='$storePrice',`starting_price`='$startingPrice',`starting_from`='$dateTime',`date_time`='$cTime' WHERE id = '$id'") ;
+            $query = mysqli_query($conn,"UPDATE `".$tblPrefix."auctions` SET `cat`='$cat',`type`='$type',`name`='$name',`short_desc`='$short_desc',`desc`='$desc',`store_price`='$storePrice',`starting_price`='$startingPrice', `entry_price`='$entryPrice',`starting_from`='$dateTime',`date_time`='$cTime' WHERE id = '$id'") ;
         }else{
-            $query = mysqli_query($conn,"INSERT INTO `".$tblPrefix."auctions`( `cat`, `type`, `name`, `short_desc`, `desc`, `store_price`, `starting_price`, `starting_from`, `capacity`, `date_time`, `status`) VALUES ('$cat','$type','$name','$short_desc','$desc','$storePrice','$startingPrice','$dateTime', '$capacity','$cTime',2)") ;
+            $query = mysqli_query($conn,"INSERT INTO `".$tblPrefix."auctions`( `cat`, `type`, `name`, `short_desc`, `desc`, `store_price`, `starting_price`, `entry_price`, `starting_from`, `capacity`, `date_time`, `status`) VALUES ('$cat','$type','$name','$short_desc','$desc','$storePrice','$startingPrice', '$entryPrice','$dateTime', '$capacity','$cTime',2)") ;
             $id = mysqli_insert_id($conn);
         }
         if($query == true){
@@ -56,7 +57,7 @@
 
     if(isset($_GET['id'])){
         $id = mysqli_real_escape_string($conn,ak_secure_string($_GET['id']));
-        $data = mysqli_query($conn,"SELECT `id`, `cat`, `type`, `name`, `image`, `short_desc`, `desc`, `store_price`, `starting_price`, `starting_from`, `capacity`, `date_time`, `status` FROM `".$tblPrefix."auctions` WHERE `id` = '$id'");
+        $data = mysqli_query($conn,"SELECT `id`, `cat`, `type`, `name`, `image`, `short_desc`, `desc`, `store_price`, `starting_price`, `entry_price`, `starting_from`, `capacity`, `date_time`, `status` FROM `".$tblPrefix."auctions` WHERE `id` = '$id'");
         $dataAuc = mysqli_fetch_assoc($data);
     }
 
@@ -127,6 +128,10 @@
                                                 <input type="number" name="startingPrice" placeholder="Starting Price" value="<?php echo $dataAuc['starting_price'];?>" class="form-control" aria-label="Amount (to the nearest dollar)">
                                             </div>
                                         </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="entryPrice">Entry Price in Tokens</label>
+                                            <input type="text" class="form-control" id="entryPrice" placeholder="Entry Price" value="<?php echo $dataAuc['entry_price'];?>" name="entryPrice" autocomplete="OFF" required="">
+                                        </div>
                                         <div class="form-group row">
                                             <div class="col-6">
                                                 <label for="startFrom">Starting Date </label>
@@ -134,7 +139,7 @@
                                             </div>
                                             <div class="col-6">
                                                 <label for="startFrom">Starting Time</label>
-                                                <input type="time" class="form-control" placeholder="Select a Time" value="<?php echo date("h:i",strtotime($dataAuc['starting_from']));?>" name="startTime" autocomplete="OFF" required="">
+                                                <input type="time" class="form-control" placeholder="Select a Time" value="<?php echo date("H:i",strtotime($dataAuc['starting_from']));?>" name="startTime" autocomplete="OFF" required="">
 
                                             </div>
                                         </div>

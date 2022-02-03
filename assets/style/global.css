@@ -5,9 +5,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-a:hover,a:active{
-  color: #fff;
-}
+
 html,
 body {
   font-family: 'Nunito', sans-serif;

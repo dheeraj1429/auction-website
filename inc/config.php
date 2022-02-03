@@ -1,6 +1,7 @@
 <?php
 session_start();
-date_default_timezone_set('Canada/Mountain');
+// date_default_timezone_set('Canada/Mountain');
+date_default_timezone_set('Asia/Kolkata');
 $cTime = date('Y-m-d H:i:s');
 $cDate = date('Y-m-d');
 $metaPage =0;

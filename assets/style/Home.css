@@ -186,11 +186,14 @@
   align-items: center;
   cursor: pointer;
 }
-.active_tab_div {
+.tabs_card .active {
   border-bottom: 2px solid var(--LightRedColor);
+  color: var(--LightRedColor) !important;
+  background-color: transparent !important;
+  border-radius: 0px;
 }
-.active_tab {
-  color: var(--LightRedColor);
+.nav-pills .nav-link{
+  color: #000;
 }
 .tabs_card p {
   margin: 0 !important;
