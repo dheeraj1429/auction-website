@@ -243,9 +243,9 @@
                     </a>
                 </li>
                 <li class="menu-item active ">
-                    <a href="share.php" class="menu-link"> 
+                    <a href="#" class="menu-link"> 
                         <span class="menu-label"> 
-                            <span class="menu-name">Statics</span>
+                            <span class="menu-name">Contact Query</span>
                         </span> 
                         <span class="menu-icon">
                             <i class="icon-placeholder mdi mdi-share"></i> 

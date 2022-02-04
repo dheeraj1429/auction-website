@@ -103,8 +103,25 @@
           </div>
         </div>
 
-        <div class="row py-3">
-          <div class="col-12">
+        <div class="row py-3 bidsShow" id="bidsShow">
+          
+        </div>
+
+      </div>
+    </section>
+    <!-- bets section -->
+  </main>
+
+  <!-- Footer -->
+  <?php require_once 'inc/footer.php';?>
+  <!-- Footer -->
+
+  <?php require_once 'inc/js.php';?>
+
+  <script>
+    const bidBtn = document.querySelector(`.placeabit_Button`)
+    const bids = document.querySelector(`.bidsShow`)
+    const html = `<div class="col-12">
             <div class="userBitting_current">
 
               <div class="row">
@@ -147,210 +164,19 @@
               </div>
 
             </div>
-          </div>
-        </div>
+          </div>`
 
-        <div class="row py-3">
-          <div class="col-12">
-            <div class="userBitting_current">
-
-              <div class="row">
-                <div class="col-12 col-sm-12 col-md-6">
-                  <div class="row">
-                    <div class="col-4 full_width col-md-4">
-                      <h1>iPhone Pro</h1>
-                      <p class="light_para">Jhon Abram</p>
-                    </div>
-                    <div class="col-4 full_width col-md-4 d-flex align-items-center">
-                      <p class="light_para">0.0025 ETH</p>
-                    </div>
-
-                    <div class="col-4  full_width col-md-4 d-flex align-items-center">
-                      <p class="light_para">0.0025 ETH</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-12 col-sm-12 col-md-6 pt-3 pt-md-0">
-                  <div class="row">
-                    <div class="col-4 full_width col-md-5 d-flex align-items-center">
-                      <div class="user_icons_profile">
-                        <img
-                          src="https://images.unsplash.com/photo-1543965860-82ed7d542cc4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1460&q=80"
-                          alt="">
-                      </div>
-                      <p class="light_para ms-3">0.0023 ETH</p>
-                    </div>
-                    <div class="col-4 full_width col-md-3 d-flex align-items-center">
-                      <p class="light_para">2 Hours 2 min 30s</p>
-                    </div>
-                    <div
-                      class="col-4 full_width col-md-3 d-flex align-items-center justify-content-start justify-content-md-end">
-                      <p class="light_para">$200.9</p>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <div class="row py-3">
-          <div class="col-12">
-            <div class="userBitting_current">
-
-              <div class="row">
-                <div class="col-12 col-sm-12 col-md-6">
-                  <div class="row">
-                    <div class="col-4 full_width col-md-4">
-                      <h1>iPhone Pro</h1>
-                      <p class="light_para">Jhon Abram</p>
-                    </div>
-                    <div class="col-4 full_width col-md-4 d-flex align-items-center">
-                      <p class="light_para">0.0025 ETH</p>
-                    </div>
-
-                    <div class="col-4  full_width col-md-4 d-flex align-items-center">
-                      <p class="light_para">0.0025 ETH</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-12 col-sm-12 col-md-6 pt-3 pt-md-0">
-                  <div class="row">
-                    <div class="col-4 full_width col-md-5 d-flex align-items-center">
-                      <div class="user_icons_profile">
-                        <img
-                          src="https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=644&q=80"
-                          alt="">
-                      </div>
-                      <p class="light_para ms-3">0.0023 ETH</p>
-                    </div>
-                    <div class="col-4 full_width col-md-3 d-flex align-items-center">
-                      <p class="light_para">3 Hours 20 min 25s</p>
-                    </div>
-                    <div
-                      class="col-4 full_width col-md-3 d-flex align-items-center justify-content-start justify-content-md-end">
-                      <p class="light_para">$200.9</p>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <div class="row py-3">
-          <div class="col-12">
-            <div class="userBitting_current">
-
-              <div class="row">
-                <div class="col-12 col-sm-12 col-md-6">
-                  <div class="row">
-                    <div class="col-4 full_width col-md-4">
-                      <h1>iPhone Pro</h1>
-                      <p class="light_para">Jhon Abram</p>
-                    </div>
-                    <div class="col-4 full_width col-md-4 d-flex align-items-center">
-                      <p class="light_para">0.0025 ETH</p>
-                    </div>
-
-                    <div class="col-4  full_width col-md-4 d-flex align-items-center">
-                      <p class="light_para">0.0025 ETH</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-12 col-sm-12 col-md-6 pt-3 pt-md-0">
-                  <div class="row">
-                    <div class="col-4 full_width col-md-5 d-flex align-items-center">
-                      <div class="user_icons_profile">
-                        <img
-                          src="https://images.unsplash.com/photo-1513956589380-bad6acb9b9d4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-                          alt="">
-                      </div>
-                      <p class="light_para ms-3">0.0023 ETH</p>
-                    </div>
-                    <div class="col-4 full_width col-md-3 d-flex align-items-center">
-                      <p class="light_para">3 Hours 1 min 30s</p>
-                    </div>
-                    <div
-                      class="col-4 full_width col-md-3 d-flex align-items-center justify-content-start justify-content-md-end">
-                      <p class="light_para">$200.9</p>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <div class="row py-3">
-          <div class="col-12">
-            <div class="userBitting_current">
-
-              <div class="row">
-                <div class="col-12 col-sm-12 col-md-6">
-                  <div class="row">
-                    <div class="col-4 full_width col-md-4">
-                      <h1>iPhone Pro</h1>
-                      <p class="light_para">Jhon Abram</p>
-                    </div>
-                    <div class="col-4 full_width col-md-4 d-flex align-items-center">
-                      <p class="light_para">0.0025 ETH</p>
-                    </div>
-
-                    <div class="col-4  full_width col-md-4 d-flex align-items-center">
-                      <p class="light_para">0.0025 ETH</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-12 col-sm-12 col-md-6 pt-3 pt-md-0">
-                  <div class="row">
-                    <div class="col-4 full_width col-md-5 d-flex align-items-center">
-                      <div class="user_icons_profile">
-                        <img
-                          src="https://images.unsplash.com/photo-1514794749374-fb67509dbb7f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
-                          alt="">
-                      </div>
-                      <p class="light_para ms-3">0.0023 ETH</p>
-                    </div>
-                    <div class="col-4 full_width col-md-3 d-flex align-items-center">
-                      <p class="light_para">5 Hours 17 min 10s</p>
-                    </div>
-                    <div
-                      class="col-4 full_width col-md-3 d-flex align-items-center justify-content-start justify-content-md-end">
-                      <p class="light_para">$200.9</p>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-
-
-
-      </div>
-    </section>
-    <!-- bets section -->
-  </main>
-
-  <!-- Footer -->
-  <?php require_once 'inc/footer.php';?>
-  <!-- Footer -->
-
-  <?php require_once 'inc/js.php';?>
+    bidBtn.addEventListener(`click`, function(){
+          // bids.insertAdjacentHTML(`afterbegin`,html)
+          document.getElementById(`bidsShow`).load(bids.insertAdjacentHTML(`afterbegin`,html))
+    })
+    
+  </script>
+  <!-- <script>
+    setInterval(function() {
+      document.getElementById(`bidsShow`).load(html)
+    }, 10000);
+  </script> -->
 </body>
 
 </html>

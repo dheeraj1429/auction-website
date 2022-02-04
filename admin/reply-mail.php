@@ -2,7 +2,7 @@
     include_once("../inc/config.php");
     $pageName="View/Reply Mail";
     
-    if(!isset($_SESSION['adi'])){
+    if(!isset($_SESSION['user'])){
         $_SESSION['toast']['msg']="Please, Log-in to continue.";
         header("location:login.php");
         exit();
