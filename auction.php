@@ -56,7 +56,13 @@
        if($query== true){
            $_SESSION['toast']['type']="success";
            $_SESSION['toast']['msg']="Entered Auction Successfully";
-           header('location:bets.php');
+
+           $auctionName = $_GET['auction'];
+           $auctionid = $_GET['id'];
+          
+           print_r($auctionName);
+
+           header('location:bets.php?auction='.$auctionName.'&&id='.$auctionid.'');
            exit();
        }
    }
@@ -179,6 +185,10 @@
     // Display the result in the element with id="demo"
     document.getElementById(elem).innerHTML = days + "d " + hours + "h " +
       minutes + "m " + seconds + "s ";
+
+      if(days && hours && minutes && seconds === 0){
+        window.location.reload();
+      }
   }
 
   // Set the date we're counting down to
@@ -209,6 +219,8 @@
         document.querySelector(".alreadyInAuction").style.display = 'none'
 
         document.querySelector(".auctionText").innerHtml = 'Entry Closing In'
+
+        
 
 
         var countDownDate2 = new Date(
@@ -243,6 +255,8 @@
       }
     },
     1000);
+
+   
   </script>
 
   <script>
