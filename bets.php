@@ -2,6 +2,13 @@
    require_once 'inc/config.php';
    $pageName="Auction Bets";
 
+   $productname ="";
+   if(isset($_GET['id']) && isset($_GET['auction'])){
+    $id = mysqli_real_escape_string($conn,ak_secure_string($_GET['id']));
+    $query = mysqli_query($conn ,"SELECT * FROM ".$tblPrefix."auctions WHERE id = $id");
+    $data = mysqli_fetch_assoc($query);
+    $productname = $data['name'];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -99,7 +106,7 @@
             <h1 class="mb-4 mb-md-0">Active Bids</h1>
           </div>
           <div class="col-12 col-sm-12 col-md-6 d-flex justify-content-center  justify-content-md-end">
-            <button class="placeabit_Button">Place a Bid</button>
+            <button class="placeabit_Button" name ="placebid" id="placeBid">Place a Bid</button>
           </div>
         </div>
 
@@ -166,10 +173,10 @@
             </div>
           </div>`
 
-    bidBtn.addEventListener(`click`, function(){
-          // bids.insertAdjacentHTML(`afterbegin`,html)
-          document.getElementById(`bidsShow`).load(bids.insertAdjacentHTML(`afterbegin`,html))
-    })
+    // bidBtn.addEventListener(`click`, function(){
+    //       // bids.insertAdjacentHTML(`afterbegin`,html)
+    //       document.getElementById(`bidsShow`).load(bids.insertAdjacentHTML(`afterbegin`,html))
+    // })
     
   </script>
   <!-- <script>
@@ -177,6 +184,43 @@
       document.getElementById(`bidsShow`).load(html)
     }, 10000);
   </script> -->
+
+  <script>
+ $('.placeabit_Button').on('click', function(e){
+  e.preventDefault();
+  $.ajax({
+                type: "POST",
+                url: 'bid.php',
+                data:{productid :<?php echo $_GET['id']?> },
+                success: function(data){
+                  console.log(data);
+                  biddata()
+                }
+            });
+ })
+
+
+
+ function biddata(){
+   $.ajax({
+    type: "POST",
+                url: 'biddata.php',
+                data:{productid :<?php echo $_GET['id']?> },
+                success: function(biddata){
+                  $('#bidsShow').html(biddata)
+                }
+   })
+ }
+
+ setInterval(function () {
+  biddata()
+    },1000);
+
+
+ 
+  
+</script>
+
 </body>
 
 </html>
