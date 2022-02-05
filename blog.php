@@ -102,7 +102,7 @@
                      <h1>Comments</h1>
                   </div>
                   <div class="col-6">
-                     <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Comment</button>
+                     <button class="btn View_More_Button" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Comment</button>
                   </div>
 
                   <?php 

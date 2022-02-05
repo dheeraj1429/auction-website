@@ -11,7 +11,7 @@
 
 // Sign In
 if(isset($_POST['login'])){
-  $email= strtolower(mysqli_real_escape_string($conn,ak_secure_string($_POST['email'])));
+  $email= trim(strtolower(mysqli_real_escape_string($conn,ak_secure_string($_POST['email']))));
   $pass=mysqli_real_escape_string($conn,$_POST['password']);
   $password=hash('sha512',$pass.HASH_KEY);
 

@@ -181,8 +181,6 @@ function auctionCard ($type,$limit,$category=null){
 	}
 
 	$queryCards = mysqli_query($conn,"SELECT `id`, `name`, `image`, `store_price`, `starting_price`, `starting_from`, `capacity` FROM `".$tblPrefix."auctions` WHERE status = 2 $condition ");
-	// echo "SELECT `id`, `name`, `image`, `store_price`, `starting_price`, `starting_from`, `capacity` FROM `".$tblPrefix."auctions` WHERE status = 2  $condition AND `starting_from` < '$cTime'";
-	// echo $condition;
 	
 	while($cards=mysqli_fetch_assoc($queryCards)){
 		$usersJoined = getUsersJoined($cards['id']);
