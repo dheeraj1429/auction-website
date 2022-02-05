@@ -1,4 +1,6 @@
-<?php require_once 'inc/config.php';?>
+<?php require_once 'inc/config.php';
+  $pageName="Winner";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
