@@ -1,5 +1,7 @@
 <?php require_once 'inc/config.php';
   $pageName="Winner";
+  $dataquery = mysqli_query($conn ,"SELECT * FROM ".$tblPrefix."winnig");
+  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -187,19 +189,22 @@
               </div>
             </div>
 
-            <div class="row mt-5">
-              <div class="col-12 my-4 my-xxl-0 col-xxl-6 d-flex justify-content-center">
-                <div class="row user_sub_cards">
+            <div class="row mt-3">
+              <?php 
+              while($res = mysqli_fetch_assoc($dataquery)){
+              ?>
+               <div class="col-12 my-4 my-xxl-0 col-xxl-6 mt-5 d-flex justify-content-center">
+                <div class="row user_sub_cards mt-3">
                   <div
-                    class="col-12 col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start mb-3 mb-md-0">
+                    class="col-12 col-sm-12 col-md-6  d-flex align-items-center justify-content-center justify-content-md-start mb-3 mb-md-0">
                     <div class="user_sub_img ">
                       <img
                         src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
                         alt="" class="img-fluid">
                     </div>
-                    <div class="user_sub_card ms-4">
-                      <h1>Jhon</h1>
-                      <p class="light_para">$9000</p>
+                    <div class="user_sub_card ms-4 ">
+                      <h1><?php echo $res['winner_name']?></h1>
+                      <p class="light_para">$<?php echo $res['amount']?></p>
                     </div>
                   </div>
                   <div class="col-12 col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end ">
@@ -207,166 +212,9 @@
                   </div>
                 </div>
 
-              </div>
-
-              <div class="col-12 my-4 my-xxl-0 col-xxl-6 d-flex justify-content-center">
-                <div class="row user_sub_cards">
-                  <div
-                    class="col-12 col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start mb-3 mb-md-0">
-                    <div class="user_sub_img ">
-                      <img
-                        src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                        alt="" class="img-fluid">
-                    </div>
-                    <div class="user_sub_card ms-4">
-                      <h1>Jhon</h1>
-                      <p class="light_para">$9000</p>
-                    </div>
-                  </div>
-                  <div class="col-12 col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end ">
-                    <button class="View_More_Button">View More</button>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-            <div class="row mt-lg-0 mt-xxl-5">
-              <div class="col-12 my-4 my-xxl-0 col-xxl-6 d-flex justify-content-center">
-                <div class="row user_sub_cards">
-                  <div
-                    class="col-12 col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start mb-3 mb-md-0">
-                    <div class="user_sub_img ">
-                      <img
-                        src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                        alt="" class="img-fluid">
-                    </div>
-                    <div class="user_sub_card ms-4">
-                      <h1>Jhon</h1>
-                      <p class="light_para">$9000</p>
-                    </div>
-                  </div>
-                  <div class="col-12 col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end ">
-                    <button class="View_More_Button">View More</button>
-                  </div>
-                </div>
-
-              </div>
-
-              <div class="col-12 my-4 my-xxl-0 col-xxl-6 d-flex justify-content-center">
-                <div class="row user_sub_cards">
-                  <div
-                    class="col-12 col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start mb-3 mb-md-0">
-                    <div class="user_sub_img ">
-                      <img
-                        src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                        alt="" class="img-fluid">
-                    </div>
-                    <div class="user_sub_card ms-4">
-                      <h1>Jhon</h1>
-                      <p class="light_para">$9000</p>
-                    </div>
-                  </div>
-                  <div class="col-12 col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end ">
-                    <button class="View_More_Button">View More</button>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-            <div class="row mt-lg-0 mt-xxl-5">
-              <div class="col-12 my-4 my-xxl-0 col-xxl-6 d-flex justify-content-center">
-                <div class="row user_sub_cards">
-                  <div
-                    class="col-12 col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start mb-3 mb-md-0">
-                    <div class="user_sub_img ">
-                      <img
-                        src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                        alt="" class="img-fluid">
-                    </div>
-                    <div class="user_sub_card ms-4">
-                      <h1>Jhon</h1>
-                      <p class="light_para">$9000</p>
-                    </div>
-                  </div>
-                  <div class="col-12 col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end ">
-                    <button class="View_More_Button">View More</button>
-                  </div>
-                </div>
-
-              </div>
-
-              <div class="col-12 my-4 my-xxl-0 col-xxl-6 d-flex justify-content-center">
-                <div class="row user_sub_cards">
-                  <div
-                    class="col-12 col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start mb-3 mb-md-0">
-                    <div class="user_sub_img ">
-                      <img
-                        src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                        alt="" class="img-fluid">
-                    </div>
-                    <div class="user_sub_card ms-4">
-                      <h1>Jhon</h1>
-                      <p class="light_para">$9000</p>
-                    </div>
-                  </div>
-                  <div class="col-12 col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end ">
-                    <button class="View_More_Button">View More</button>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-            <div class="row mt-lg-0 mt-xxl-5">
-              <div class="col-12 my-4 my-xxl-0 col-xxl-6 d-flex justify-content-center">
-                <div class="row user_sub_cards">
-                  <div
-                    class="col-12 col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start mb-3 mb-md-0">
-                    <div class="user_sub_img ">
-                      <img
-                        src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                        alt="" class="img-fluid">
-                    </div>
-                    <div class="user_sub_card ms-4">
-                      <h1>Jhon</h1>
-                      <p class="light_para">$9000</p>
-                    </div>
-                  </div>
-                  <div class="col-12 col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end ">
-                    <button class="View_More_Button">View More</button>
-                  </div>
-                </div>
-
-              </div>
-
-              <div class="col-12 my-4 my-xxl-0 col-xxl-6 d-flex justify-content-center">
-                <div class="row user_sub_cards">
-                  <div
-                    class="col-12 col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start mb-3 mb-md-0">
-                    <div class="user_sub_img ">
-                      <img
-                        src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                        alt="" class="img-fluid">
-                    </div>
-                    <div class="user_sub_card ms-4">
-                      <h1>Jhon</h1>
-                      <p class="light_para">$9000</p>
-                    </div>
-                  </div>
-                  <div class="col-12 col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end ">
-                    <button class="View_More_Button">View More</button>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-            <!-- all auction winner -->
-          </div>
-
-        </div>
+              </div> <?php
+              } 
+              ?>         
         <!-- Auction win cards section -->
       </div>
     </section>

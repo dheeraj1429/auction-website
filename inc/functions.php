@@ -248,6 +248,7 @@ function auctionCard ($type,$limit,$category=null){
 	
 }
 
+
 function validateWallet($token){
 	global $conn,$tblPrefix;
 

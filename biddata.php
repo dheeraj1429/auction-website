@@ -1,10 +1,7 @@
 <?php
  require_once 'inc/config.php';
  $productname = $_POST['productid'];
-$dataquery = mysqli_query($conn ,"SELECT * FROM ".$tblPrefix."bid WHERE auction_id= $productname");
-
-
-
+$dataquery = mysqli_query($conn ,"SELECT * FROM ".$tblPrefix."bid WHERE auction_id= $productname  ORDER BY id DESC" );
 
 if(mysqli_num_rows($dataquery)>0){
 
@@ -44,7 +41,7 @@ if(mysqli_num_rows($dataquery)>0){
             </div>
             <div
               class="col-4 full_width col-md-3 d-flex align-items-center justify-content-start justify-content-md-end">
-              <p class="light_para">$200.9</p>
+              <p class="light_para">$'.$biddata["amount"].'</p>
             </div>
           </div>
         </div>
@@ -55,4 +52,3 @@ if(mysqli_num_rows($dataquery)>0){
   </div>';
    }
 }
-?>
