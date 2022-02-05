@@ -17,7 +17,7 @@
             if($insertUser == TRUE){
                $id = mysqli_insert_id($conn);
                $wallet = mysqli_query($conn,"INSERT INTO `".$tblPrefix."wallet`(`user_id`, `balance`, `date_time`, `status`) VALUES ('$id',0,'$cTime',2)");
-               $userData = mysqli_fetch_assoc(mysqli_query($conn,"SELECT `type`, `name`, `email`, `img`, `date_time` FROM `bnmi_users` WHERE id = ".$id));
+               $userData = mysqli_fetch_assoc(mysqli_query($conn,"SELECT `id`,`type`, `name`, `email`, `img`, `date_time` FROM `bnmi_users` WHERE id = ".$id));
                if($userData == TRUE){
                   $_SESSION['user'] = $userData;
                   $_SESSION['toast']['type'] = "success";
