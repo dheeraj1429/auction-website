@@ -1,8 +1,5 @@
 <?php
 require_once 'inc/config.php';
-
-
-
 $productname = $_POST['productid'];
 $firstAmount = mysqli_query($conn, "SELECT  amount FROM " . $tblPrefix . "bid WHERE auction_id =  $productname");
 $bidingAmount =  mysqli_query($conn, "SELECT MAX(amount)  FROM " . $tblPrefix . "bid WHERE auction_id =  $productname");
@@ -17,7 +14,7 @@ $Amount = $data['starting_price'];
 
 $result;
 if (mysqli_num_rows($firstAmount) > 0) {
-    $incrementAmount = $inc['MAX(amount)'] + 20;
+    $incrementAmount = $inc['MAX(amount)'] + 1;
     $insert = mysqli_query($conn, "INSERT INTO " . $tblPrefix . "bid(`userdata`,`email`, `amount`, `auction_id`,auction_name) VALUES ('$userid','$userEmail','$incrementAmount','$productname','$title')");
     $result = mysqli_fetch_assoc($insert);
 } else {

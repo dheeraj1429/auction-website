@@ -1,13 +1,14 @@
 <?php require_once 'inc/config.php';
-  $pageName="Winner";
-  $dataquery = mysqli_query($conn ,"SELECT * FROM ".$tblPrefix."winnig");
-  
+$pageName = "Winner";
+$dataquery = mysqli_query($conn, "SELECT * FROM " . $tblPrefix . "winnig");
+$topWining = mysqli_query($conn, "SELECT * FROM " . $tblPrefix . "bid  ORDER BY " . $tblPrefix . "bid. amount DESC LIMIT 3");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-<?php require_once 'inc/head.php'; ?>
+  <?php require_once 'inc/head.php'; ?>
   <link rel="stylesheet" href="./assests/style/auctionpage.css" />
   <link rel="stylesheet" href="./assests/style/winningPage.css" />
 </head>
@@ -46,9 +47,7 @@
                 <div class="User_Winner py-3 mt-3 mb-2">
                   <!-- all winner users -->
                   <div class="User_Winner_Div second_winner">
-                    <img
-                      src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                      alt="" class="img-fluid">
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" class="img-fluid">
 
                     <!-- user content -->
                     <div class="user_Price_Contnet">
@@ -59,9 +58,7 @@
 
                   </div>
                   <div class="User_Winner_Div first_winner">
-                    <img
-                      src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2080&q=80"
-                      alt="">
+                    <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2080&q=80" alt="">
 
                     <!-- user content -->
                     <div class="user_Price_Contnet">
@@ -72,9 +69,7 @@
 
                   </div>
                   <div class="User_Winner_Div third_winner">
-                    <img
-                      src="https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                      alt="" class="img-fluid">
+                    <img src="https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" class="img-fluid">
 
                     <!-- user content -->
                     <div class="user_Price_Contnet">
@@ -92,75 +87,39 @@
               <!-- Acution winning inner card -->
               <div class="auctionCard_Content py-3">
                 <div class="progress">
-                  <div class="progress-bar" role="progressbar" style="width: 70%;" aria-valuenow="25" aria-valuemin="0"
-                    aria-valuemax="100">70%</div>
+                  <div class="progress-bar" role="progressbar" style="width: 70%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">70%</div>
                 </div>
                 <!-- All Card -->
-                <div class="allCard_div my-3">
-                  <div class="row  gx-0">
-                    <div class="col-12 col-sm-12 col-md-2 d-flex justify-content-center align-items-center">
-                      <p>1</p>
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-2 d-flex justify-content-center my-2 my-md-0">
-                      <div class="uerWinner_icons">
-                        <i class="fas fa-user"></i>
-                      </div>
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-5 d-flex justify-content-center align-items-center">
-                      <p>@Player One</p>
-                    </div>
-                    <div
-                      class="col-12 col-sm-12 col-md-2 d-flex justify-content-center align-items-center my-2 my-md-0">
-                      <p>$4250</p>
-                    </div>
-                  </div>
+
+                <?php
+                $i = 1;
+                while ($winres = mysqli_fetch_assoc($topWining)) {
+
+                  echo '<div class="allCard_div my-3">
+                   <div class="row  gx-0">
+                     <div class="col-12 col-sm-12 col-md-2 d-flex justify-content-center align-items-center">
+                       <p>' . $i . '</p>
+                     </div>
+                     <div class="col-12 col-sm-12 col-md-2 d-flex justify-content-center my-2 my-md-0">
+                       <div class="uerWinner_icons">
+                         <i class="fas fa-user"></i>
+                       </div>
+                     </div>
+                     <div class="col-12 col-sm-12 col-md-5 d-flex justify-content-center align-items-center">
+                       <p>' . $winres['userdata'] . '</p>
+                     </div>
+                     <div
+                       class="col-12 col-sm-12 col-md-2 d-flex justify-content-center align-items-center my-2 my-md-0">
+                       <p>$' . $winres['amount'] . '</p>
+                     </div>
+                   </div>
+                 </div>';
+                  $i++;
+                }
+
+                ?>
 
 
-                </div>
-
-                <div class="allCard_div my-3">
-                  <div class="row gx-0">
-                    <div class="col-12 col-sm-12 col-md-2 d-flex justify-content-center align-items-center">
-                      <p>2</p>
-                    </div>
-                    <div class="col-12 col-sm-12 d-flex justify-content-center col-md-2">
-                      <div class="uerWinner_icons my-2 my-md-0">
-                        <i class="fas fa-user"></i>
-                      </div>
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-5 d-flex justify-content-center align-items-center">
-                      <p>@Player Two</p>
-                    </div>
-                    <div
-                      class="col-12 col-sm-12 col-md-2 d-flex justify-content-center align-items-center my-2 my-md-0">
-                      <p>$4250</p>
-                    </div>
-                  </div>
-
-
-                </div>
-
-                <div class="allCard_div my-3">
-                  <div class="row gx-0">
-                    <div class="col-12 col-sm-12 col-md-2 d-flex justify-content-center align-items-center">
-                      <p>3</p>
-                    </div>
-                    <div class="col-12 col-sm-12 d-flex justify-content-center col-md-2 my-2 my-md-0">
-                      <div class="uerWinner_icons">
-                        <i class="fas fa-user"></i>
-                      </div>
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-5 d-flex justify-content-center align-items-center">
-                      <p>@Player Three</p>
-                    </div>
-                    <div
-                      class="col-12 col-sm-12 col-md-2 d-flex justify-content-center align-items-center my-2 my-md-0">
-                      <p>$4250</p>
-                    </div>
-                  </div>
-
-
-                </div>
                 <!-- All Card -->
               </div>
 
@@ -175,8 +134,7 @@
               <div class="col-12">
                 <div class="auctionList_div_content">
                   <div class="row">
-                    <div
-                      class="col-12 col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-center">
+                    <div class="col-12 col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-center">
                       <h2 class="text-white mb-3 mb-md-0">AUCTION LIST</h2>
                     </div>
                     <div class="col-12 col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-center">
@@ -190,33 +148,34 @@
             </div>
 
             <div class="row mt-3">
-              <?php 
-              while($res = mysqli_fetch_assoc($dataquery)){
-              ?>
-               <div class="col-12 my-4 my-xxl-0 col-xxl-6 mt-5 d-flex justify-content-center">
-                <div class="row user_sub_cards mt-3">
-                  <div
-                    class="col-12 col-sm-12 col-md-6  d-flex align-items-center justify-content-center justify-content-md-start mb-3 mb-md-0">
-                    <div class="user_sub_img ">
-                      <img
-                        src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                        alt="" class="img-fluid">
-                    </div>
-                    <div class="user_sub_card ms-4 ">
-                      <h1><?php echo $res['winner_name']?></h1>
-                      <p class="light_para">$<?php echo $res['amount']?></p>
-                    </div>
-                  </div>
-                  <div class="col-12 col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end ">
-                    <button class="View_More_Button">View More</button>
-                  </div>
-                </div>
+              <?php
+              while ($res = mysqli_fetch_assoc($dataquery)) {
+                $email = $res['Winner_email'];
+                $img = mysqli_query($conn, "SELECT img FROM " . $tblPrefix . "users WHERE email = '$email'");
+                $imgdata = mysqli_fetch_assoc($img);
 
-              </div> <?php
-              } 
-              ?>         
-        <!-- Auction win cards section -->
-      </div>
+              ?>
+                <div class="col-12 my-4 my-xxl-0 col-xxl-6 mt-5 d-flex justify-content-center">
+                  <div class="row user_sub_cards mt-3">
+                    <div class="col-12 col-sm-12 col-md-6  d-flex align-items-center justify-content-center justify-content-md-start mb-3 mb-md-0">
+                      <div class="user_sub_img ">
+                        <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" class="img-fluid">
+                      </div>
+                      <div class="user_sub_card ms-4 ">
+                        <h1><?php echo $res['winner_name'] ?></h1>
+                        <p class="light_para">$<?php echo $res['amount'] ?></p>
+                      </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end ">
+                      <button class="View_More_Button">View More</button>
+                    </div>
+                  </div>
+
+                </div> <?php
+                      }
+                        ?>
+              <!-- Auction win cards section -->
+            </div>
     </section>
     <!-- winning> -->
   </main>

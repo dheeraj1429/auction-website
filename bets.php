@@ -2,15 +2,18 @@
 require_once 'inc/config.php';
 $pageName = "Auction Bets";
 
+if (!isset($_SESSION['user'])) {
+  $_SESSION['toast']['msg'] = "Please login to continue.";
+  header('location:login.php');
+  exit();
+}
+
 $productname = "";
 if (isset($_GET['id']) && isset($_GET['auction'])) {
   $id = mysqli_real_escape_string($conn, ak_secure_string($_GET['id']));
   $query = mysqli_query($conn, "SELECT * FROM " . $tblPrefix . "auctions WHERE id = $id");
   $bidingAmount =  mysqli_query($conn, "SELECT  userdata, email, MAX(amount) ,auction_id, auction_name FROM " . $tblPrefix . "bid WHERE auction_id = $id ");
   $winassoc = mysqli_fetch_assoc($bidingAmount);
-
-
-
   $userName = $winassoc['userdata'];
   $winamount = $winassoc['MAX(amount)'];
   $auctionid = $winassoc['auction_id'];
@@ -148,7 +151,6 @@ if (isset($_GET['id']) && isset($_GET['auction'])) {
           productid: <?php echo $_GET['id'] ?>
         },
         success: function(data) {
-          console.log(data);
           biddata()
         }
       });
@@ -194,30 +196,27 @@ if (isset($_GET['id']) && isset($_GET['auction'])) {
       var distance2 = countDownDate2 - now2;
 
       timerFunction(distance2, 'timer');
-      console.log("hi")
       if (distance2 < 0) {
-        console.log('lock')
         clearInterval(x);
         document.getElementById('timer').innerHTML =
           "00" + "m " + "00" + "s ";
 
         <?php
 
-          $winnercheck = mysqli_query($conn, "SELECT * FROM " . $tblPrefix ."winnig WHERE auction_id = '$auctionid' AND auction_name= '$auctionname'");
+        $winnercheck = mysqli_query($conn, "SELECT * FROM " . $tblPrefix . "winnig WHERE auction_id = '$auctionid' AND auction_name= '$auctionname'");
 
-          if(mysqli_num_rows($winnercheck)>0){
-            ?>
-            window.location.replace("winningPage.php");
-          <?php
-          }
-          else{
-        $bidinginsert =  mysqli_query($conn, "INSERT INTO " . $tblPrefix ."winnig(`winner_name`, `Winner_email`, `amount`, `auction_id`, `auction_name`) VALUES ('$userName','$useremail','$winamount','$auctionid','$auctionname')");
-        if ($bidinginsert) {
+        if (mysqli_num_rows($winnercheck) > 0) {
         ?>
-          window.location.replace("winningPage.php");
+          // window.location.replace("winningPage.php");
+          <?php
+        } else {
+          $bidinginsert =  mysqli_query($conn, "INSERT INTO " . $tblPrefix . "winnig(`winner_name`, `Winner_email`, `amount`, `auction_id`, `auction_name`) VALUES ('$userName','$useremail','$winamount','$auctionid','$auctionname')");
+          if ($bidinginsert) {
+          ?>
+            // window.location.replace("winningPage.php");
         <?php
+          }
         }
-      }
         ?>
 
 

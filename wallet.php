@@ -1,6 +1,13 @@
 <?php
    require_once 'inc/config.php';
    $pageName="Wallet";
+echo $_SESSION['user']['id'];
+   $data = mysqli_query($conn,"SELECT wt.id, wt.user, wt.package, wt.data, wt.date_time, at.user_id, at.auction_id, at.token, at.date_time as auctionTransactioTime  FROM `".$tblPrefix."wallet_transactions` wt LEFT JOIN `".$tblPrefix."auction_transactions` at ON wt.user = at.user_id WHERE wt.user = 9");
+   
+   echo "<pre/>";
+
+   print_r(mysqli_fetch_assoc($data));
+   die();
 
 ?>
 <!DOCTYPE html>
