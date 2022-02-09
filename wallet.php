@@ -2,6 +2,12 @@
   require_once 'inc/config.php';
   $pageName="Wallet";
 
+  if(!isset($_SESSION['user'])){
+    $_SESSION['toast']['msg'] = "Please login to continue.";
+    header('location:login.php');
+    exit();
+ }
+
   $data = mysqli_query($conn,"SELECT `id`, `user`, `package`, `data`, `date_time` FROM `".$tblPrefix."wallet_transactions` WHERE user = 2");
   $data1 = mysqli_query($conn,"SELECT `user_id`, `auction_id`, `token`, `date_time` FROM `".$tblPrefix."auction_transactions` WHERE user_id = 2" );
 
@@ -12,6 +18,8 @@
   $arr2 = array();
   while($d =mysqli_fetch_assoc($data1)){
     array_push($arr2,$d);
+
+
   }
     $array = array_merge($arr1,$arr2);
 
@@ -65,8 +73,8 @@
               </div>
 
               <div class="ms-4 mt-4 mt-mb-0">
-                <h3>Percy Reed</h3>
-                <p>John@gmail.com</p>
+                <h3><?php echo   $_SESSION['user']['name'];?> </h3>
+                <p><?php echo   $_SESSION['user']['email'];?></p>
               </div>
             </div>
           </div>

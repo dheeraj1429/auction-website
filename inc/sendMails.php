@@ -104,4 +104,48 @@ function SendBulk($emails,$template){
 	}
 }
 
+function auctionMail($emails,$message){
+	//required parameters...
+	$production = PROD;
+	$siteName = SITE_NAME;
+	$MailFrom = SITE_EMAIL;
+
+	global $conn;
+	global $idMail;
+
+	//smtp request...
+	$mail = new PHPMailer;
+	$mail->Host       = 'smart-auction.net';                     //Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+    $mail->SMTPSecure = 'tls'; // Which security method to use. TLS is most secure.
+    $mail->Username   = 'info@smart-auction.net';                     //SMTP username
+    $mail->Password   = 'EN1u0n1c(v{9';                  
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+    $mail->Port       = 465;  
+	$mail->setFrom($MailFrom, $siteName);         
+	
+	foreach($emails as $singleemail){
+	$mail->addAddress($singleemail);   
+	}  
+	    //Add a recipient
+    $mail->addReplyTo($MailFrom, $siteName);
+
+	$mail->Subject = "Testing";
+	$mail->IsHTML(true);
+    $mail->Body    = $message;
+
+	if($production != 1){
+		$file = fopen(rand(99999,999999).'.html', 'w');
+		fwrite($file, $message);
+		fclose($file);
+		return true;
+	} else {
+		if(!$mail->send()) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+}
+
 ?>

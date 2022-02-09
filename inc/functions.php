@@ -185,8 +185,8 @@ function auctionCard ($type,$limit,$category=null){
 	while($cards=mysqli_fetch_assoc($queryCards)){
 		$usersJoined = getUsersJoined($cards['id']);
 		$totalUsers = $cards['capacity'];
-		// $percentage = ($usersJoined * $totalUsers) / 100;
-		$percentage = 50;
+		$percentage = ($usersJoined * $totalUsers) / 100;
+		// $percentage = 50;
 
 		echo '<div class="col-12 col-sm-9 col-md-6 col-xl-5 col-xxl-3 my-3">
 		<!-- Popular cards -->

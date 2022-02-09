@@ -33,9 +33,12 @@
 </head>
 
 <body>
-
+<!-- <div class="loader_div">
+    <img src="./assets/icons&images/mybit/download.svg" alt="">
+  </div> -->
   <!-- Header -->
   <?php require_once 'inc/header.php';?>
+
   <!-- Header -->
 
   <!-- Main -->
@@ -464,6 +467,8 @@
   <!-- Footer -->
   <?php require_once 'inc/footer.php';?>
   <!-- Footer -->
+
+  <?php require_once 'inc/js.php'; ?>
 
   <!-- jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

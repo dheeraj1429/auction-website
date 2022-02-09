@@ -17,17 +17,17 @@ define('RECAP_KEY', '');
 if(PROD){
 define('SITE_URL', 'https://smart-auction.net/');
 
-    $hostName = 'localhost';
-	$userName = 'smartauc_auction';
-	$password = 'n-KA~r~3Uheq';
-	$database = 'smartauc_auction';
+$hostName = 'localhost';
+$userName = 'root';
+$password = '';
+$database = 'bnmi_auction';
 	
 }else{
 	define('SITE_URL', 'http://localhost/auction-website/');
 	$hostName = 'localhost';
 	$userName = 'root';
 	$password = '';
-	$database = 'bnmi_auction';
+	$database = 'auction';
 }
 $conn = mysqli_connect($hostName, $userName, $password, $database);
 

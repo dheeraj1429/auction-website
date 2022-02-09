@@ -19,8 +19,8 @@ if (isset($_GET['id']) && isset($_GET['auction'])) {
 }
 $usersJoined = getUsersJoined($data['id']);
 $totalUsers = $data['capacity'];
-//    $percentage = ($usersJoined * $totalUsers) / 100;
-$percentage = 50;
+   $percentage = ($usersJoined * $totalUsers) / 100;
+// $percentage = 50;
 // Enter Auction
 if (isset($_POST['enterAuction'])) {
   $user = $_SESSION['user']['id'];
@@ -77,6 +77,9 @@ if (isset($_POST['participateAuction'])) {
 </head>
 
 <body>
+  <!-- <div class="loader_div">
+    <img src="./assets/icons&images/mybit/download.svg" alt="">
+  </div> -->
   <!-- Header -->
   <?php require_once 'inc/header.php'; ?>
   <!-- Header -->
@@ -128,7 +131,7 @@ if (isset($_POST['participateAuction'])) {
               <div class="col-6" id="demo"></div>
               <div class="col-6" id="demo2" style="display:none;"></div>
             </div>
-            <div class="timeComplete" style="display:none;">Works</div>
+            <div class="timeComplete" style="display:none;"></div>
             <?php if (isset($_SESSION['user'])) {
               if (isUserAlreadyInAuction($_GET['id'])) {
                 if (validateWallet($data['entry_price'])) {
@@ -142,13 +145,14 @@ if (isset($_POST['participateAuction'])) {
                     your tokens</a>
                 <?php }
               } else { ?>
-                <button class="btn btn-lg rounded-pill h4 fw-bolder btn-danger buy_Button mb-5 alreadyInAuction">ALready
+                <button class="btn btn-lg rounded-pill h4 fw-bolder btn-danger buy_Button mb-5 alreadyInAuction" style="display:none;">ALready
                   Registered in Auction</button>
                 <form method="POST">
-                  <button type="submit" class="btn btn-lg rounded-pill h4 fw-bolder btn-danger buy_Button mb-5 enterAuction" style="display:none;" name="participateAuction">
+                  <button type="submit" class="btn btn-lg rounded-pill h4 fw-bolder btn-danger buy_Button mb-5 enterAuction" <?php if($cTime>  $data['starting_from']){echo 'style="display:block;"';}else{echo 'style="display:none;"';}?> name="participateAuction">
                     Enter Auction
                   </button>
                 </form>
+
               <?php }
             } else { ?>
               <a target="_blank" href="login.php?redirect=<?php echo $_SERVER['REQUEST_URI'] ?>" class="btn btn-lg rounded-pill h4 fw-bolder btn-danger buy_Button mb-5" name="enterAuction">Please Login
@@ -171,6 +175,8 @@ if (isset($_POST['participateAuction'])) {
 
   <?php require_once 'inc/js.php'; ?>
   <script>
+    
+
     const timerFunction = function(distance, elem) {
       // Time calculations for days, hours, minutes and seconds
       var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -216,12 +222,11 @@ if (isset($_POST['participateAuction'])) {
         // If the count down is finished, write some text
         if (distance < 0) {
           clearInterval(x);
-          document.querySelector(".enterAuction").style.display = 'block'
+          // document.querySelector(".enterAuction").style.display = 'block'
           document.getElementById("demo").innerHTML = "Started";
           document.getElementById("demo2").style.display = "block";
 
           document.querySelector(".timeComplete").style.display = 'block'
-          document.querySelector(".alreadyInAuction").style.display = 'none'
 
           document.querySelector(".auctionText").innerHtml = 'Entry Closing In'
 

@@ -8,6 +8,7 @@ if($_SESSION['userWallet'] <  $inc['MAX(amount)'] + 1){
     echo "error";
 }else{
     $_SESSION['userWallet']  = $_SESSION['userWallet'] - 1;
+    
     $userid = $_SESSION['user']['name'];
     $query = mysqli_query($conn, "SELECT * FROM " . $tblPrefix . "auctions WHERE id = $productname");
     $data = mysqli_fetch_assoc($query);
