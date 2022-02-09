@@ -73,6 +73,7 @@
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                         <li>
                                             <a class="dropdown-item" href="./dashboard.php">My Account</a>
+                                            <a class="dropdown-item" href="./wallet.php">Wallet</a>
                                         </li>
                                         <li><a class="dropdown-item" href="./logout.php">Sign Out</a></li>
                                     </ul>

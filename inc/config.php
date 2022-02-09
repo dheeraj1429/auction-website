@@ -27,7 +27,7 @@ define('SITE_URL', 'https://smart-auction.net/');
 	$hostName = 'localhost';
 	$userName = 'root';
 	$password = '';
-	$database = 'auction';
+	$database = 'bnmi_auction';
 }
 $conn = mysqli_connect($hostName, $userName, $password, $database);
 

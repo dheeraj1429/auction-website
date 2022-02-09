@@ -7,7 +7,6 @@ if (!isset($_SESSION['user'])) {
   header('location:login.php');
   exit();
 }
-print_r($_SESSION['userWallet']);
 $productname = "";
 if (isset($_GET['id']) && isset($_GET['auction'])) {
   $id = mysqli_real_escape_string($conn, ak_secure_string($_GET['id']));
@@ -140,8 +139,6 @@ if (isset($_GET['id']) && isset($_GET['auction'])) {
 
   <?php require_once 'inc/js.php'; ?>
 
-
-
   <script>
     $('.placeabit_Button').on('click', function(e) {
       e.preventDefault();
@@ -217,15 +214,16 @@ if (isset($_GET['id']) && isset($_GET['auction'])) {
 
         if (mysqli_num_rows($winnercheck) > 0) {
         ?>
-          // window.location.replace("winningPage.php");
+          // window.location.replace("page.php");
           <?php
         } else {
           $bidinginsert =  mysqli_query($conn, "INSERT INTO " . $tblPrefix . "winnig(`winner_name`, `Winner_email`, `amount`, `auction_id`, `auction_name`) VALUES ('$userName','$useremail','$winamount','$auctionid','$auctionname')");
           if ($bidinginsert) {
-            $userId = mysqli_fetch_assoc(mysqli_query($conn,"SELECT  `id` as userID  FROM `".$tblPrefix."users` WHERE `email` = $useremail"))['userID'];
-            updateWallet($userId);
+            if(updateWallet($winamount)){
+              makeAuctionTransaction($winamount,$auctionid);
+            }
           ?>
-            // window.location.replace("winningPage.php");
+            window.location.replace("page1.php");
         <?php
           }
         }

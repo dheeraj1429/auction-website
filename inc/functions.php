@@ -268,7 +268,7 @@ function updateWallet($token){
 
 	$user = $_SESSION['user']['id'];
 
-	if(mysqli_query($conn,"UPDATE `".$tblPrefix."wallet` SET `balance`= `balance`- $token ,`last_transiction`='$cTime' WHERE user_id = '$user'")==TRUE){
+	if(mysqli_query($conn,"UPDATE `".$tblPrefix."wallet` SET `balance`= `balance`- $token ,`last_transiction`='$cTime' WHERE user_id = '$user'") == TRUE){
 		return TRUE;
 	}else{
 		return FALSE;
@@ -311,5 +311,10 @@ function getWallet($userId){
 	$query = mysqli_fetch_assoc(mysqli_query($conn,"SELECT  `balance` FROM `bnmi_wallet` WHERE user_id = '$userId'  "))['balance'];
 	
 	return $query;
+}
 	
+function getTokens($packageId){
+	global $conn,$tblPrefix;
+	$data = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `sale_price` FROM `".$tblPrefix."packages` WHERE id = ".$packageId))['sale_price'];
+	return $data;
 }
