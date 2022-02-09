@@ -1,43 +1,48 @@
 <?php
 require_once 'inc/config.php';
-$query = mysqli_query($conn, "SELECT * FROM `bnmi_auction_participant` ORDER BY `date_time` DESC");
+$today =  date('Y-m-d ');
 
-echo "SELECT * FROM `bnmi_auction_participant` ORDER BY `date_time` DESC";
+$data = mysqli_query($conn, "SELECT  ap.auction_id,ap. user_id as auctionParticipitant, us.name,us.email,ba.name,ba.starting_from  FROM `bnmi_auction_participant` ap LEFT JOIN  `bnmi_users`  us  ON  ap.user_id = us.id  LEFT JOIN   `bnmi_auctions` ba ON ap.auction_id  = ba.id ");
 
-while ($res = mysqli_fetch_assoc($query)) {
-?>
 
-    <script>
-        const timerFunction = function(distance, elem) {
-            // Time calculations for days, hours, minutes and seconds
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Display the result in the element with id="demo"
-            document.getElementById(elem).innerHTML =
-                minutes + "m " + seconds + "s ";
-        }
+while ($res = mysqli_fetch_assoc($data)) {
 
-        let x = setInterval(function() {
-                    var countDownDate2 = new Date(
-                        "<?php echo date('Y-m-d H:i', strtotime('+10 minutes', strtotime($data['starting_from']))); ?>").getTime();
+// print_r($res);
 
-                    var now2 = new Date().getTime();
+    $date = $res['starting_from'];
 
-                    var distance2 = countDownDate2 - now2;
+    
+    $convertedTime = date('Y-m-d H:i:s', strtotime('-15 minutes', strtotime($date)));
 
-                    timerFunction(distance2, 'timer');
-                    if (distance2 < 0) {
-                        clearInterval(x);
-                        document.getElementById('timer').innerHTML =
-                            "00" + "m " + "00" + "s ";
-                    }
-    </script>
 
-<?php
+    $time_exc = mysqli_query($conn, "SELECT  ap.auction_id,ap. user_id as auctionParticipitant, us.name,us.email,ba.name,ba.starting_from  FROM `bnmi_auction_participant` ap LEFT JOIN  `bnmi_users`  us  ON  ap.user_id = us.id  LEFT JOIN   `bnmi_auctions` ba ON ap.auction_id  = ba.id  where   ba.starting_from = '$date ' ");
+
+
+while ($result = mysqli_fetch_assoc($time_exc )) {
+print_r($result);
 
 }
 
+    echo '<br>';
+
+    $today = date('Y-m-d ');
+
+
+
+    //  echo "SELECT DATE_ADD(date_time, INTERVAL -15 MINUTE) FROM bnmi_auction_participant WHERE  date_time =$today";
+
+
+
+}
+
+
+// Data Print 
+
+
+
+
+// echo "<pre/>";
+// while ($da =  mysqli_fetch_assoc($data)) {
+//     print_r($da);
 ?>

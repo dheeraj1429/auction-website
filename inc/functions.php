@@ -304,3 +304,12 @@ function isUserAlreadyInAuction($auction_id){
 		return FALSE;
 	}
 }
+
+function getWallet($userId){
+	global $conn,$tblPrefix;
+
+	$query = mysqli_fetch_assoc(mysqli_query($conn,"SELECT  `balance` FROM `bnmi_wallet` WHERE user_id = '$userId'  "))['balance'];
+	
+	return $query;
+	
+}

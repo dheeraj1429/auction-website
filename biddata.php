@@ -7,7 +7,7 @@ if(mysqli_num_rows($dataquery)>0){
      $email =$biddata['email'];
      $img = mysqli_query($conn ,"SELECT img FROM ".$tblPrefix."users WHERE email = '$email'" );
      $imgdata = mysqli_fetch_assoc($img);
-      echo $output = '<div class="col-12">
+      echo $output = '<div class="col-12 my-3">
     <div class="userBitting_current">
       <div class="row">
         <div class="col-12 col-sm-12 col-md-6">

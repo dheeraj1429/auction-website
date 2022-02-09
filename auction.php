@@ -48,21 +48,22 @@ if (isset($_POST['enterAuction'])) {
 }
 
 if (isset($_POST['participateAuction'])) {
-  $userId = $_SESSION['user']['id'];
-  $auctionId = mysqli_real_escape_string($conn, ak_secure_string($_GET['id']));
-  $query = mysqli_query($conn, "INSERT INTO `" . $tblPrefix . "attendance`(`auction_id`, `user_id`, `date_time`) VALUES ('$auctionId','$userId','$cTime')");
-  if ($query == true) {
-    $_SESSION['toast']['type'] = "success";
-    $_SESSION['toast']['msg'] = "Entered Auction Successfully";
+    $userId = $_SESSION['user']['id'];
+    $auctionId = mysqli_real_escape_string($conn, ak_secure_string($_GET['id']));
+    $query = mysqli_query($conn, "INSERT INTO `" . $tblPrefix . "attendance`(`auction_id`, `user_id`, `date_time`) VALUES ('$auctionId','$userId','$cTime')");
+      if ($query == true) {
+        $_SESSION['userWallet'] = getWallet($_SESSION['user']['id']);
+          $_SESSION['toast']['type'] = "success";
+          $_SESSION['toast']['msg'] = "Entered Auction Successfully";
 
-    $auctionName = $_GET['auction'];
-    $auctionid = $_GET['id'];
+          $auctionName = $_GET['auction'];
+          $auctionid = $_GET['id'];
 
-    print_r($auctionName);
+          print_r($auctionName);
 
-    header('location:bets.php?auction=' . $auctionName . '&&id=' . $auctionid . '');
-    exit();
-  }
+          header('location:bets.php?auction=' . $auctionName . '&&id=' . $auctionid . '');
+          exit();
+      }
 }
 
 ?>

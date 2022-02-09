@@ -7,7 +7,7 @@ if (!isset($_SESSION['user'])) {
   header('location:login.php');
   exit();
 }
-
+print_r($_SESSION['userWallet']);
 $productname = "";
 if (isset($_GET['id']) && isset($_GET['auction'])) {
   $id = mysqli_real_escape_string($conn, ak_secure_string($_GET['id']));
@@ -22,6 +22,7 @@ if (isset($_GET['id']) && isset($_GET['auction'])) {
   $data = mysqli_fetch_assoc($query);
   $productname = $data['name'];
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -91,7 +92,7 @@ if (isset($_GET['id']) && isset($_GET['auction'])) {
               <!-- icon -->
               <!-- content -->
               <div class="bitCard_Contnet">
-                <h1>200</h1>
+                <h1 class="walletBalance"><?php echo $_SESSION['userWallet'];?></h1>
                 <p class="light_para">Creators</p>
               </div>
               <!-- content -->
@@ -151,7 +152,16 @@ if (isset($_GET['id']) && isset($_GET['auction'])) {
           productid: <?php echo $_GET['id'] ?>
         },
         success: function(data) {
+         if(data == 'error'){
+           alertify.alert('Insuficient Ballance, Please top up your wallet to proceed. ')
+
+         }
+
+         else{
+          document.querySelector(`.walletBalance`).textContent = document.querySelector(`.walletBalance`).textContent-1;
+         }
           biddata()
+
         }
       });
     })
@@ -212,6 +222,8 @@ if (isset($_GET['id']) && isset($_GET['auction'])) {
         } else {
           $bidinginsert =  mysqli_query($conn, "INSERT INTO " . $tblPrefix . "winnig(`winner_name`, `Winner_email`, `amount`, `auction_id`, `auction_name`) VALUES ('$userName','$useremail','$winamount','$auctionid','$auctionname')");
           if ($bidinginsert) {
+            $userId = mysqli_fetch_assoc(mysqli_query($conn,"SELECT  `id` as userID  FROM `".$tblPrefix."users` WHERE `email` = $useremail"))['userID'];
+            updateWallet($userId);
           ?>
             // window.location.replace("winningPage.php");
         <?php
