@@ -29,7 +29,7 @@ if (isset($_POST['enterAuction'])) {
     $enterAuction = mysqli_query($conn, "INSERT INTO `" . $tblPrefix . "auction_participant`(`auction_id`, `user_id`, `date_time`, `status`) VALUES ('$auctionId','$user','$cTime',2)");
     if ($enterAuction == TRUE) {
       makeAuctionTransaction($data['entry_price'], $auctionId);
-      $_SESSION['toast']['type'] = "alert";
+      $_SESSION['toast']['type'] = "success";
       $_SESSION['toast']['msg'] = "You've Successfully Registed";
       header("refresh:0");
       exit();
@@ -61,7 +61,7 @@ if (isset($_POST['participateAuction'])) {
 
           print_r($auctionName);
 
-          header('location:bets.php?auction=' . $auctionName . '&&id=' . $auctionid . '');
+          header('location:bets.php?auction=' . $auctionName . '&id=' . $auctionid . '');
           exit();
       }
 }
@@ -106,6 +106,10 @@ if (isset($_POST['participateAuction'])) {
               <div class="col-6">
                 <?php echo date("d/m/Y h:i:s a", strtotime($data['starting_from'])) ?>
               </div>
+              <div class="col-12 d-flex mt-2">
+                <p class="text-muted fw-bolder pe-5">Entry Price:</p>
+                <p>$<?php echo $data['entry_price'] ?></p>
+              </div>
             </div>
             <div class="d-flex mt-2">
               <div class="d-flex">
@@ -145,7 +149,7 @@ if (isset($_POST['participateAuction'])) {
                     your tokens</a>
                 <?php }
               } else { ?>
-                <button class="btn btn-lg rounded-pill h4 fw-bolder btn-danger buy_Button mb-5 alreadyInAuction" style="display:none;">ALready
+                <button class="btn btn-lg rounded-pill h4 fw-bolder btn-danger buy_Button mb-5 alreadyInAuction">Already
                   Registered in Auction</button>
                 <form method="POST">
                   <button type="submit" class="btn btn-lg rounded-pill h4 fw-bolder btn-danger buy_Button mb-5 enterAuction" <?php if($cTime>  $data['starting_from']){echo 'style="display:block;"';}else{echo 'style="display:none;"';}?> name="participateAuction">
@@ -155,7 +159,7 @@ if (isset($_POST['participateAuction'])) {
 
               <?php }
             } else { ?>
-              <a target="_blank" href="login.php?redirect=<?php echo $_SERVER['REQUEST_URI'] ?>" class="btn btn-lg rounded-pill h4 fw-bolder btn-danger buy_Button mb-5" name="enterAuction">Please Login
+              <a target="_blank" href="login.php?redirect=<?php echo $_SERVER['REQUEST_URI'] ?>" class="btn btn-lg rounded-pill h4 fw-bolder btn-danger buy_Button mb-5">Please Login
                 to Enter Auction</a>
             <?php } ?>
           </div>

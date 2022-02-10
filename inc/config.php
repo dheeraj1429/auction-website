@@ -27,7 +27,7 @@ $database = 'bnmi_auction';
 	$hostName = 'localhost';
 	$userName = 'root';
 	$password = '';
-	$database = 'auction';
+	$database = 'bnmi_auction';
 }
 $conn = mysqli_connect($hostName, $userName, $password, $database);
 

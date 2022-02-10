@@ -9,12 +9,12 @@ $queryCards = mysqli_query($conn, "SELECT `id`, `name`, `image`, `store_price`, 
 // echo "SELECT `id`, `name`, `image`, `store_price`, `starting_price`, `starting_from`, `capacity` FROM `".$tblPrefix."auctions` WHERE status = 2 AND  starting_from = '$full' " ;
 
 $array = array();
-
 while ($res = mysqli_fetch_assoc($data)) {
     array_push($array, $res['email']);
 }
-
-auctionMail($array, "Testing Mailer");
+$subject1 = "Test Mail Auction Url";
+$message1 = "Auction You Participated in Will be starting in 10 mins. Hurry up and join by clicking the below Link <a href='#' target='_blank'>Join Here</a>";
+auctionMail($array,$subject1,$message1);
 
 while ($postpond = mysqli_fetch_assoc($queryCards)) {
 
@@ -34,7 +34,9 @@ while ($postpond = mysqli_fetch_assoc($queryCards)) {
         $update =  mysqli_query($conn, "UPDATE  bnmi_auctions  SET starting_from ='$incdate'   WHERE `bnmi_auctions`.`name` = '$auctionName' ");
 
         if ($update) {
-            auctionMail($array, "Testing Mailer");
+            $subject2 = "Test Mail AUction Postpond";
+            $message2 = "Auction You Participated is postpond till ".$incdate." beacause of insuficient members in auction room.";
+            auctionMail($array,$subject2,$message2);
         }
     }
 }
