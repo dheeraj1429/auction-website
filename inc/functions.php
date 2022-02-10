@@ -154,7 +154,7 @@ function star_rating($rating){
 function getUsersJoined($auction_id){
 	global $conn,$tblPrefix;
 
-	$queryA = mysqli_fetch_assoc(mysqli_query($conn,"SELECT count(user_id) as usersJoined FROM `".$tblPrefix."auction_participant` WHERE id = $auction_id"))['usersJoined'];
+	$queryA = mysqli_fetch_assoc(mysqli_query($conn,"SELECT count(user_id) as usersJoined FROM `".$tblPrefix."auction_participant` WHERE auction_id = $auction_id"))['usersJoined'];
 	 
 	return $queryA;
 }
@@ -181,12 +181,14 @@ function auctionCard ($type,$limit,$category=null){
 	}
 
 	$queryCards = mysqli_query($conn,"SELECT `id`, `name`, `image`, `store_price`, `starting_price`, `starting_from`, `capacity` FROM `".$tblPrefix."auctions` WHERE status = 2 $condition ");
+
 	
 	while($cards=mysqli_fetch_assoc($queryCards)){
-		$usersJoined = getUsersJoined($cards['id']);
+		 $usersJoined = getUsersJoined($cards['id']);
 		$totalUsers = $cards['capacity'];
-		$percentage = ($usersJoined * $totalUsers) / 100;
+		$percentage = ($usersJoined / $totalUsers) *100;
 		// $percentage = 50;
+
 
 		echo '<div class="col-12 col-sm-9 col-md-6 col-xl-5 col-xxl-3 my-3">
 		<!-- Popular cards -->
