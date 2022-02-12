@@ -8,7 +8,6 @@ if (!isset($_SESSION['user'])) {
   exit();
 }
 $productname = "";
-
 if (isset($_GET['id']) && isset($_GET['auction'])) {
   $id = mysqli_real_escape_string($conn, ak_secure_string($_GET['id']));
   $query = mysqli_query($conn, "SELECT * FROM " . $tblPrefix . "auctions WHERE id = $id");
@@ -22,9 +21,8 @@ if (isset($_GET['id']) && isset($_GET['auction'])) {
   $data = mysqli_fetch_assoc($query);
   $productname = $data['name'];
 }
-
-$sql = mysqli_query($conn,"SELECT `user_id` FROM `".$tblPrefix."auction_participant` WHERE auction_id = '".$_GET['auction']."' AND user_id = ".$_SESSION['user']['id']);
-if(mysqli_num_rows($sql) == 0){
+$sql = mysqli_query($conn,"SELECT `id` FROM `".$tblPrefix."auction_participant` WHERE auction_id = '".$_GET['id']."' AND user_id = ".$_SESSION['user']['id']." ");
+if(mysqli_num_rows($sql) != 1){
   $_SESSION['toast']['type'] = "error";
   $_SESSION['toast']['msg'] = "You're not in auction.";
   header("location:index.php");
@@ -222,17 +220,19 @@ if(mysqli_num_rows($sql) == 0){
         $winnercheck = mysqli_query($conn, "SELECT * FROM " . $tblPrefix . "winnig WHERE auction_id = '$auctionid' AND auction_name= '$auctionname'");
 
         if (mysqli_num_rows($winnercheck) > 0) {
+          unset($_SESSION['userWallet']);
         ?>
-          // window.location.replace("page.php");
+          window.location.replace("winningPage.php");
           <?php
         } else {
           $bidinginsert =  mysqli_query($conn, "INSERT INTO " . $tblPrefix . "winnig(`winner_name`, `Winner_email`, `amount`, `auction_id`, `auction_name`) VALUES ('$userName','$useremail','$winamount','$auctionid','$auctionname')");
           if ($bidinginsert) {
             if(updateWallet($winamount)){
               makeAuctionTransaction($winamount,$auctionid);
+              unset($_SESSION['userWallet']);
             }
           ?>
-            window.location.replace("page1.php");
+            window.location.replace("winningPage.php");
         <?php
           }
         }

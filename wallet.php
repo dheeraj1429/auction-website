@@ -73,8 +73,8 @@
               </div>
 
               <div class="ms-4 mt-4 mt-mb-0">
-                <h3><?php echo   $_SESSION['user']['name'];?> </h3>
-                <p><?php echo   $_SESSION['user']['email'];?></p>
+                <h3><?php echo $_SESSION['user']['name'];?> </h3>
+                <p><?php echo $_SESSION['user']['email'];?></p>
               </div>
             </div>
           </div>
@@ -111,7 +111,7 @@
                               <i class="fas fa-plus"></i>
                             </div>
                             <div>
-                              <h3>Money Transfer Jhone</h3>
+                              <h3> Tokens Credit </h3>
                               <div class="d-flex mt-2">
                                 <p class="light_para">'.date("d/m/Y",strtotime($a['date_time'])).'</p>
                                 <p class="light_para ms-3">'.date("H:i:a",strtotime($a['date_time'])).'</p>
@@ -121,7 +121,7 @@
                         </div>
                         <div class="col-12 transferData upperPrice col-sm-12 col-md-6 d-flex justify-content-end">
                           <div>
-                            <h3>+'.json_decode($a["data"])->package.'</h3>
+                            <h3>+'.getTokens(json_decode($a["data"])->package).'</h3>
                             <p class="light_para mt-1">Transfer</p>
                           </div>
                         </div>
@@ -135,7 +135,7 @@
                                 <i class="fas fa-minus"></i>
                               </div>
                               <div>
-                                <h3>Money Transfer Jhone</h3>
+                                <h3> Tokens Debit </h3>
                                 <div class="d-flex mt-2">
                                   <p class="light_para">'.date("d/m/Y",strtotime($a['date_time'])).'</p>
                                   <p class="light_para ms-3">'.date("H:i:a",strtotime($a['date_time'])).'</p>

@@ -156,7 +156,7 @@ if (isset($_POST['participateAuction'])) {
                 <button class="btn btn-lg rounded-pill h4 fw-bolder btn-danger buy_Button mb-5 alreadyInAuction">Already
                   Registered in Auction</button>
                 <form method="POST">
-                  <button type="submit" class="btn btn-lg rounded-pill h4 fw-bolder btn-danger buy_Button mb-5 enterAuction" <?php if($cTime>  $data['starting_from']){echo 'style="display:block;"';}else{echo 'style="display:none;"';}?> name="participateAuction">
+                  <button type="submit" class="btn btn-lg rounded-pill h4 fw-bolder btn-danger buy_Button mb-5 enterAuction" name="participateAuction">
                     Enter Auction
                   </button>
                 </form>

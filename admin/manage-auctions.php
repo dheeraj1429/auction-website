@@ -27,7 +27,7 @@
             $_SESSION['toast']['msg']="Something Went Wrong";
         }
     }
-    $dataA = mysqli_query($conn,"SELECT ac.*,ct.name as category FROM `".$tblPrefix."auctions` ac LEFT JOIN `".$tblPrefix."category` ct ON ac.cat = ct.id WHERE ac.status > 0");
+    $dataA = mysqli_query($conn,"SELECT ac.*,ct.name as category FROM `".$tblPrefix."auctions` ac LEFT JOIN `".$tblPrefix."category` ct ON ac.cat = ct.id WHERE ac.status BETWEEN  1 AND 2 ");
 ?>
 <!DOCTYPE html>
 <html lang="en">
