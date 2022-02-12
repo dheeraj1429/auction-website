@@ -21,9 +21,14 @@ if (isset($_GET['id']) && isset($_GET['auction'])) {
   $useremail = $winassoc['email'];
   $data = mysqli_fetch_assoc($query);
   $productname = $data['name'];
+
+  $totaldata = mysqli_query($conn,"SELECT * FROM `bnmi_attendance`  Where  auction_id = $id ");
+
+  $totaluser = mysqli_num_rows($totaldata);
+
 }
 
-$sql = mysqli_query($conn,"SELECT `user_id` FROM `".$tblPrefix."auction_participant` WHERE auction_id = '".$_GET['auction']."' AND user_id = ".$_SESSION['user']['id']);
+$sql = mysqli_query($conn,"SELECT `id` FROM `".$tblPrefix."auction_participant` WHERE auction_id = '".$_GET['id']."' AND user_id = ".$_SESSION['user']['id']);
 if(mysqli_num_rows($sql) == 0){
   $_SESSION['toast']['type'] = "error";
   $_SESSION['toast']['msg'] = "You're not in auction.";
@@ -84,7 +89,7 @@ if(mysqli_num_rows($sql) == 0){
               <!-- icon -->
               <!-- content -->
               <div class="bitCard_Contnet">
-                <h1>82K</h1>
+                <h1><?php echo $totaluser ?></h1>
                 <p class="light_para">Auction</p>
               </div>
               <!-- content -->
@@ -218,28 +223,31 @@ if(mysqli_num_rows($sql) == 0){
           "00" + "m " + "00" + "s ";
 
         <?php
-
-        $winnercheck = mysqli_query($conn, "SELECT * FROM " . $tblPrefix . "winnig WHERE auction_id = '$auctionid' AND auction_name= '$auctionname'");
-
-        if (mysqli_num_rows($winnercheck) > 0) {
-        ?>
-          // window.location.replace("page.php");
-          <?php
-        } else {
-          $bidinginsert =  mysqli_query($conn, "INSERT INTO " . $tblPrefix . "winnig(`winner_name`, `Winner_email`, `amount`, `auction_id`, `auction_name`) VALUES ('$userName','$useremail','$winamount','$auctionid','$auctionname')");
-          if ($bidinginsert) {
-            if(updateWallet($winamount)){
-              makeAuctionTransaction($winamount,$auctionid);
+        $full = date('Y-m-d H:i');
+        $winningData = mysqli_query($conn, "SELECT Date_Add(starting_from , INTERVAL +10 MINUTE ) starting_from FROM `bnmi_auctions` where id = '$id' AND Date_Add(starting_from , INTERVAL +10 MINUTE )= ' $full '");
+        
+        if (mysqli_num_rows($winningData) > 0) {
+         
+          $winnercheck = mysqli_query($conn, "SELECT * FROM " . $tblPrefix . "winnig WHERE auction_id = '$auctionid' AND auction_name= '$auctionname'");
+          if (mysqli_num_rows($winnercheck) > 0) {
+            header("location:winning.php");
+            } else {
+              $bidinginsert =  mysqli_query($conn, "INSERT INTO " . $tblPrefix . "winnig(`winner_name`, `Winner_email`, `amount`, `auction_id`, `auction_name`) VALUES ('$userName','$useremail','$winamount','$auctionid','$auctionname')");
+              if ($bidinginsert) {
+                if(updateWallet($winamount)){
+                  makeAuctionTransaction($winamount,$auctionid);
+                }
+                header("location : winning.php");
+              }
             }
-          ?>
-            window.location.replace("page1.php");
-        <?php
-          }
-        }
-        ?>
 
+           
+          }
+            ?>
+          window.location.reload();
 
       }
+
     }, 1000);
   </script>
 </body>

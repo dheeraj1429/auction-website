@@ -35,7 +35,7 @@ if(mysqli_num_rows($dataquery)>0){
               <p class="light_para ms-3">0.0023 ETH</p>
             </div>
             <div class="col-4 full_width col-md-3 d-flex align-items-center">
-              <p class="light_para">2 Hours 1 min 30s</p>
+              <p class="light_para">'.$biddata['time'].'</p>
             </div>
             <div
               class="col-4 full_width col-md-3 d-flex align-items-center justify-content-start justify-content-md-end">

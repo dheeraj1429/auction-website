@@ -27,7 +27,7 @@ $database = 'smartauc_auction';
 	$hostName = 'localhost';
 	$userName = 'root';
 	$password = '';
-	$database = 'bnmi_auction';
+	$database = 'auction';
 }
 $conn = mysqli_connect($hostName, $userName, $password, $database);
 
