@@ -4,7 +4,7 @@ $productname = $_POST['productid'];
 $firstAmount = mysqli_query($conn, "SELECT  amount FROM " . $tblPrefix . "bid WHERE auction_id =  $productname");
 $bidingAmount =  mysqli_query($conn, "SELECT MAX(amount)  FROM " . $tblPrefix . "bid WHERE auction_id =  $productname");
 $inc = mysqli_fetch_assoc($bidingAmount);
-if($_SESSION['userWallet'] <  $inc['MAX(amount)'] + 1){
+if($_SESSION['userWallet'] < 1){
     echo "error";
 }else{
     $_SESSION['userWallet']  = $_SESSION['userWallet'] - 1;
