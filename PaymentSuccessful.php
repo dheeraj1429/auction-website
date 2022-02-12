@@ -8,6 +8,9 @@
     $pay = mysqli_fetch_assoc($payData);
     $json = json_decode($pay['data']);
   }
+  if(isset($_SESSION['userWallet'])){
+    $_SESSION['userWallet'] = getWallet($_SESSION['user']['id']);
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">

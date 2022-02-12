@@ -8,6 +8,7 @@ if (!isset($_SESSION['user'])) {
   exit();
 }
 $productname = "";
+
 if (isset($_GET['id']) && isset($_GET['auction'])) {
   $id = mysqli_real_escape_string($conn, ak_secure_string($_GET['id']));
   $query = mysqli_query($conn, "SELECT * FROM " . $tblPrefix . "auctions WHERE id = $id");
@@ -20,6 +21,14 @@ if (isset($_GET['id']) && isset($_GET['auction'])) {
   $useremail = $winassoc['email'];
   $data = mysqli_fetch_assoc($query);
   $productname = $data['name'];
+}
+
+$sql = mysqli_query($conn,"SELECT `user_id` FROM `".$tblPrefix."auction_participant` WHERE auction_id = '".$_GET['auction']."' AND user_id = ".$_SESSION['user']['id']);
+if(mysqli_num_rows($sql) == 0){
+  $_SESSION['toast']['type'] = "error";
+  $_SESSION['toast']['msg'] = "You're not in auction.";
+  header("location:index.php");
+  exit();
 }
 
 ?>

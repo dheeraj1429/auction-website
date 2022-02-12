@@ -281,10 +281,7 @@ function makeAuctionTransaction($token,$auction_id){
 	global $conn,$tblPrefix,$cTime;
 
 	$user = $_SESSION['user']['id'];
-echo $token;
 	$query = mysqli_query($conn,"INSERT INTO `".$tblPrefix."auction_transactions`(`user_id`, `auction_id`, `token`, `date_time`, `status`) VALUES ('$user','$auction_id','$token','$cTime','2')");
-	// echo "INSERT INTO `".$tblPrefix."auction_transactions`(`user_id`, `auction_id`, `token`, `date_time`, `status`) VALUES ('$user','$auction_id','$token','$cTime','2')";
-	// print_r(mysqli_error($conn));
 	if($query==TRUE){
 		if(updateWallet($token)){
 			return TRUE;

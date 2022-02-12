@@ -17,12 +17,12 @@ $message1 = "Auction You Participated in Will be starting in 10 mins. Hurry up a
 auctionMail($array,$subject1,$message1);
 
 while ($postpond = mysqli_fetch_assoc($queryCards)) {
+    print_r($postpond);
 
     $auctionName = $postpond['name'];
 
     echo $auctionName;
 
-    print_r($postpond);
     $usersJoined = getUsersJoined($postpond['id']);
     $totalUsers = $postpond['capacity'];
     echo $percentage = ($usersJoined / $totalUsers) * 100;

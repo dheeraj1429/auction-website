@@ -2,7 +2,7 @@
     include_once("../inc/config.php");
     $pageName="Feedback";
     
-    if(!isset($_SESSION['user'])){
+    if(!isset($_SESSION['adminUser'])){
         $_SESSION['toast']['msg']="Please, Log-in to continue.";
         header("location:login.php");
         exit();

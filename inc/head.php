@@ -2,6 +2,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?php echo SITE_NAME ." | ". $pageName; ?></title>
+  <link rel="icon" href="./assets/img/<?php echo getGeneral('favicon');?>">
 
   <!-- Bootstarp 5 CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">

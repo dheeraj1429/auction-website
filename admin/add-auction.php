@@ -102,7 +102,7 @@
                                                 <?php 
                                                     foreach(auctionType(0) as $key =>  $value){
                                                 ?>
-                                                <option value="<?php echo $key;?>" <?php if(isset($_GET['id'])){if($value==$dataAuc['type']){echo "selected";}}?> > <?php echo $value;?></option>
+                                                <option value="<?php echo $key;?>" <?php if(isset($_GET['id'])){if($key==$dataAuc['type']){echo "selected";}}?> > <?php echo $value;?></option>
                                             <?php }?>
                                             </select>
                                         </div>
@@ -135,7 +135,7 @@
                                         <div class="form-group row">
                                             <div class="col-6">
                                                 <label for="startFrom">Starting Date </label>
-                                                <input type="date" class="form-control" placeholder="Select a Date" value="<?php echo date("d/m/Y",strtotime($dataAuc['starting_from']));?>" name="startFrom" autocomplete="OFF" required="">
+                                                <input type="date" class="form-control" placeholder="Select a Date" value="<?php echo date("Y-m-d",strtotime($dataAuc['starting_from']));?>" name="startFrom" autocomplete="OFF" required="">
                                             </div>
                                             <div class="col-6">
                                                 <label for="startFrom">Starting Time</label>

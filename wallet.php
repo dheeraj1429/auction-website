@@ -8,8 +8,8 @@
     exit();
  }
 
-  $data = mysqli_query($conn,"SELECT `id`, `user`, `package`, `data`, `date_time` FROM `".$tblPrefix."wallet_transactions` WHERE user = 2");
-  $data1 = mysqli_query($conn,"SELECT `user_id`, `auction_id`, `token`, `date_time` FROM `".$tblPrefix."auction_transactions` WHERE user_id = 2" );
+  $data = mysqli_query($conn,"SELECT `id`, `user`, `package`, `data`, `date_time` FROM `".$tblPrefix."wallet_transactions` WHERE user = ".$_SESSION['user']['id']);
+  $data1 = mysqli_query($conn,"SELECT `user_id`, `auction_id`, `token`, `date_time` FROM `".$tblPrefix."auction_transactions` WHERE user_id = ".$_SESSION['user']['id'] );
 
   $arr1 = array();
   while($d =mysqli_fetch_assoc($data)){
@@ -121,7 +121,7 @@
                         </div>
                         <div class="col-12 transferData upperPrice col-sm-12 col-md-6 d-flex justify-content-end">
                           <div>
-                            <h3>+'.json_decode($a["data"])->amount.'</h3>
+                            <h3>+'.json_decode($a["data"])->package.'</h3>
                             <p class="light_para mt-1">Transfer</p>
                           </div>
                         </div>

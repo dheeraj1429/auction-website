@@ -1,6 +1,6 @@
 <?php
    require_once 'inc/config.php';
-   $pageName="Auctions";
+   $pageName="Current Auctions";
 
 ?>
 <!DOCTYPE html>

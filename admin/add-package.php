@@ -11,15 +11,16 @@
 
     if(isset($_POST['submit'])){
         $name = mysqli_real_escape_string($conn,ak_secure_string($_POST['name']));
+        $token = mysqli_real_escape_string($conn,ak_secure_string($_POST['token']));
         $type = mysqli_real_escape_string($conn,ak_secure_string($_POST['type']));
         $description = htmlspecialchars($_POST['description']);
         $amount = mysqli_real_escape_string($conn,ak_secure_string($_POST['amount']));
 
         if(isset($_GET['id'])){
-            $query = mysqli_query($conn,"UPDATE `".$tblPrefix."packages` SET `type` = '$type', `name`='$name',`description`='$description',`sale_price`='$amount' WHERE id = ".$_GET['id']);
+            $query = mysqli_query($conn,"UPDATE `".$tblPrefix."packages` SET `type` = '$type', `token`='$token', `name`='$name',`description`='$description',`sale_price`='$amount' WHERE id = ".$_GET['id']);
             $id = mysqli_real_escape_string($conn,ak_secure_string($_GET['id']));
         }else{
-            $query = mysqli_query($conn,"INSERT INTO `".$tblPrefix."packages`(`type`, `name`, `description`, `price`, `sale_price`, `date_time`, `status`) VALUES ('$type', '$name','$description','$amount','$amount','$cTime',2)");
+            $query = mysqli_query($conn,"INSERT INTO `".$tblPrefix."packages`(`type`, `token`, `name`, `description`, `price`, `sale_price`, `date_time`, `status`) VALUES ('$type', '$token','$name','$description','$amount','$amount','$cTime',2)");
             $id = mysqli_insert_id($conn);
         }
 
@@ -69,6 +70,10 @@
                                         <div class="form-group col-md-12">
                                             <label for="name">Name</label>
                                             <input type="text" class="form-control" id="name" placeholder="name" value="<?php if(isset($_GET['id'])){echo $dataP['name'];}?>" name="name" autocomplete="OFF" required="">
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="token">Number of Tokens</label>
+                                            <input type="text" class="form-control" id="token" placeholder="token" value="<?php if(isset($_GET['id'])){echo $dataP['token'];}?>" name="token" autocomplete="OFF" required="">
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label for="description">Description</label>

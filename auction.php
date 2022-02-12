@@ -20,22 +20,28 @@ if (isset($_GET['id']) && isset($_GET['auction'])) {
 $usersJoined = getUsersJoined($data['id']);
 $totalUsers = $data['capacity'];
    $percentage = ($usersJoined * $totalUsers) / 100;
-// $percentage = 50;
 // Enter Auction
 if (isset($_POST['enterAuction'])) {
   $user = $_SESSION['user']['id'];
   $auctionId = mysqli_real_escape_string($conn, ak_secure_string($_GET['id']));
   if (validateWallet($data['entry_price'])) {
-    $enterAuction = mysqli_query($conn, "INSERT INTO `" . $tblPrefix . "auction_participant`(`auction_id`, `user_id`, `date_time`, `status`) VALUES ('$auctionId','$user','$cTime',2)");
-    if ($enterAuction == TRUE) {
-      makeAuctionTransaction($data['entry_price'], $auctionId);
-      $_SESSION['toast']['type'] = "success";
-      $_SESSION['toast']['msg'] = "You've Successfully Registed";
-      header("refresh:0");
-      exit();
-    } else {
+    if(mysqli_query($conn,"SELECT `user_id` FROM `".$tblPrefix."auction_participant` WHERE  auction_id = ".$id." AND user_id = ".$_SESSION['user']['id'])){
+      $enterAuction = mysqli_query($conn, "INSERT INTO `" . $tblPrefix . "auction_participant`(`auction_id`, `user_id`, `date_time`, `status`) VALUES ('$auctionId','$user','$cTime',2)");
+      if ($enterAuction == TRUE) {
+        makeAuctionTransaction($data['entry_price'], $auctionId);
+        $_SESSION['toast']['type'] = "success";
+        $_SESSION['toast']['msg'] = "You've Successfully Registed";
+        header("refresh:0");
+        exit();
+      } else {
+        $_SESSION['toast']['type'] = "error";
+        $_SESSION['toast']['msg'] = "Something went wrong, Please try again later";
+        header("refresh:0");
+        exit();
+      }
+    }else{
       $_SESSION['toast']['type'] = "error";
-      $_SESSION['toast']['msg'] = "Something went wrong, Please try again later";
+      $_SESSION['toast']['msg'] = "You're already in auction.";
       header("refresh:0");
       exit();
     }
@@ -58,8 +64,6 @@ if (isset($_POST['participateAuction'])) {
 
           $auctionName = $_GET['auction'];
           $auctionid = $_GET['id'];
-
-          print_r($auctionName);
 
           header('location:bets.php?auction=' . $auctionName . '&id=' . $auctionid . '');
           exit();

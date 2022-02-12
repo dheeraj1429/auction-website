@@ -19,8 +19,8 @@ define('SITE_URL', 'https://smart-auction.net/');
 
 $hostName = 'localhost';
 $userName = 'root';
-$password = '';
-$database = 'bnmi_auction';
+$password = '8izI[?t($0ck';
+$database = 'smartauc_auction';
 	
 }else{
 	define('SITE_URL', 'http://localhost/auction-website/');

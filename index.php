@@ -94,7 +94,7 @@
             <div class="step_Content_Div my-4">
               <h3><?php echo $datahit['title'];?></h3>
               <div class="line_div my-3"></div>
-              <p><?php echo substr($datahit['desc'],0,120);?></p>
+              <p><?php echo htmlspecialchars_decode(substr($datahit['desc'],0,120));?></p>
             </div>
           </div>
           <?php }?>
