@@ -34,7 +34,7 @@ $img = mysqli_query($conn, "SELECT * FROM " . $tblPrefix ."users`");
           <div class="col-12">
             <h1 class="fw-bold text-center">AUCTION LIST</h1>
             <h5 class="text-center light_para my-3">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, vitae!
+              <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, vitae! -->
             </h5>
           </div>
         </div>
