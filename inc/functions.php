@@ -327,3 +327,4 @@ function auctionDeactivate($id){
 
 	return $deactivateAuction;
 }
+

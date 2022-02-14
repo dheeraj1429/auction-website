@@ -1,20 +1,37 @@
 <?php
 require_once 'inc/config.php';
+include "./simple.php";
 $full = date('Y-m-d H:i');
 
 $data = mysqli_query($conn, "SELECT ap.auction_id,ap. user_id as auctionParticipitant, us.name,us.email,ba.name, Date_Add(ba.starting_from , INTERVAL -10 MINUTE )FROM `bnmi_auction_participant` ap LEFT JOIN `bnmi_users` us ON ap.user_id = us.id LEFT JOIN `bnmi_auctions` ba ON ap.auction_id = ba.id Where Date_Add(ba.starting_from , INTERVAL -10 MINUTE ) = '$full' ");
 
 $queryCards = mysqli_query($conn, "SELECT `id`, `name`, `image`, `store_price`, `starting_price`, `starting_from`, `capacity` FROM `" . $tblPrefix . "auctions` WHERE status = 2 AND  starting_from = '$full' ");
 
+echo "SELECT ap.auction_id,ap. user_id as auctionParticipitant, us.name,us.email,ba.name, Date_Add(ba.starting_from , INTERVAL -10 MINUTE )FROM `bnmi_auction_participant` ap LEFT JOIN `bnmi_users` us ON ap.user_id = us.id LEFT JOIN `bnmi_auctions` ba ON ap.auction_id = ba.id Where Date_Add(ba.starting_from , INTERVAL -10 MINUTE ) = '$full'";
 // echo "SELECT `id`, `name`, `image`, `store_price`, `starting_price`, `starting_from`, `capacity` FROM `".$tblPrefix."auctions` WHERE status = 2 AND  starting_from = '$full' " ;
 
 $array = array();
 while ($res = mysqli_fetch_assoc($data)) {
     array_push($array, $res['email']);
+    print_r($res);
+
+   
+    
 }
-$subject1 = "Test Mail Auction Url";
+
+foreach ($array as $value) {
+  
+    $subject1 = "Test Mail Auction Url";
 $message1 = "Auction You Participated in Will be starting in 10 mins. Hurry up and join by clicking the below Link <a href='#' target='_blank'>Join Here</a>";
-auctionMail($array,$subject1,$message1);
+smtp_mailer($value,$subject1,$message1);
+  }
+
+
+// $subject1 = "Test Mail Auction Url";
+// $message1 = "Auction You Participated in Will be starting in 10 mins. Hurry up and join by clicking the below Link <a href='#' target='_blank'>Join Here</a>";
+// smtp_mailer($res['email'],$subject1,$message1);
+// print_r($array);
+
 
 while ($postpond = mysqli_fetch_assoc($queryCards)) {
     print_r($postpond);
@@ -36,7 +53,12 @@ while ($postpond = mysqli_fetch_assoc($queryCards)) {
         if ($update) {
             $subject2 = "Test Mail AUction Postpond";
             $message2 = "Auction You Participated is postpond till ".$incdate." beacause of insuficient members in auction room.";
-            auctionMail($array,$subject2,$message2);
+            foreach ($array as $post) {
+
+                $subject1 = "Test Mail Auction Url";
+            $message1 = "Auction You Participated in Will be starting in 10 mins. Hurry up and join by clicking the below Link <a href='#' target='_blank'>Join Here</a>";
+            smtp_mailer($post,$subject1,$message1);
+              }
         }
     }
 }

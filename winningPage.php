@@ -1,7 +1,9 @@
 <?php require_once 'inc/config.php';
 $pageName = "Winner";
 $dataquery = mysqli_query($conn, "SELECT * FROM " . $tblPrefix . "winnig");
-$topWining = mysqli_query($conn, "SELECT * FROM " . $tblPrefix . "bid  ORDER BY " . $tblPrefix . "bid. amount DESC LIMIT 3");
+$topWining = mysqli_query($conn, "SELECT * FROM bnmi_bid LEFT JOIN bnmi_users ON bnmi_bid.email = bnmi_users.email ORDER BY bnmi_bid.amount DESC LIMIT 3;");
+
+// $img = mysqli_query($conn, "SELECT * FROM " . $tblPrefix ."users Where ");
 
 $img = mysqli_query($conn, "SELECT * FROM " . $tblPrefix ."users`");
 
@@ -50,38 +52,24 @@ $img = mysqli_query($conn, "SELECT * FROM " . $tblPrefix ."users`");
 
                 <div class="User_Winner py-3 mt-3 mb-2">
                   <!-- all winner users -->
-                  <div class="User_Winner_Div second_winner">
-                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" class="img-fluid">
+<?php
+while ($img = mysqli_fetch_array($topWining)){
 
-                    <!-- user content -->
-                    <div class="user_Price_Contnet">
-                      <p>@Player Second</p>
-                      <h3>$908</h3>
-                    </div>
-                    <!-- user content -->
+  echo   ' <div class="User_Winner_Div second_winner">
+  <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" class="img-fluid">
 
-                  </div>
-                  <div class="User_Winner_Div first_winner">
-                    <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2080&q=80" alt="">
+  <!-- user content -->
+  <div class="user_Price_Contnet">
+    <p>@Player Second</p>
+    <h3>$908</h3>
+  </div>
+  <!-- user content -->
 
-                    <!-- user content -->
-                    <div class="user_Price_Contnet">
-                      <p>@Player One</p>
-                      <h3>$9088</h3>
-                    </div>
-                    <!-- user content -->
-
-                  </div>
-                  <div class="User_Winner_Div third_winner">
-                    <img src="https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" class="img-fluid">
-
-                    <!-- user content -->
-                    <div class="user_Price_Contnet">
-                      <p>@Plyear Threed</p>
-                      <h3>$809</h3>
-                    </div>
-                    <!-- user content -->
-                  </div>
+</div>';
+}
+              
+               ?>
+                
                   <!-- all winner users -->
                 </div>
 
