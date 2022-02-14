@@ -11,6 +11,7 @@ $productname = "";
 if (isset($_GET['id']) && isset($_GET['auction'])) {
   $id = mysqli_real_escape_string($conn, ak_secure_string($_GET['id']));
   $query = mysqli_query($conn, "SELECT * FROM " . $tblPrefix . "auctions WHERE id = $id");
+  
   $bidingAmount =  mysqli_query($conn, "SELECT  userdata, email, MAX(amount) ,auction_id, auction_name FROM " . $tblPrefix . "bid WHERE auction_id = $id ");
   $winassoc = mysqli_fetch_assoc($bidingAmount);
   $userName = $winassoc['userdata'];
@@ -18,7 +19,9 @@ if (isset($_GET['id']) && isset($_GET['auction'])) {
   $auctionid = $winassoc['auction_id'];
   $auctionname = $winassoc['auction_name'];
   $useremail = $winassoc['email'];
+  
   $data = mysqli_fetch_assoc($query);
+  
   $productname = $data['name'];
 
   $totaldata = mysqli_query($conn,"SELECT * FROM `bnmi_attendance`  Where  auction_id = $id ");
@@ -34,7 +37,6 @@ if(mysqli_num_rows($sql) == 0){
   header("location:index.php");
   exit();
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

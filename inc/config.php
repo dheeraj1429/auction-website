@@ -19,7 +19,7 @@ define('SITE_URL', 'https://smart-auction.net/');
 
 $hostName = 'localhost';
 $userName = 'root';
-$password = '8izI[?t($0ck';
+$password = 'Y&YH{7*827)B';
 $database = 'smartauc_auction';
 	
 }else{
