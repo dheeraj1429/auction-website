@@ -112,7 +112,7 @@ if (isset($_POST['participateAuction'])) {
               </div>
               <div class="col-12 d-flex mt-2">
                 <p class="text-muted fw-bolder pe-5">Entry Price:</p>
-                <p>$<?php echo $data['entry_price'] ?></p>
+                <p><?php echo $data['entry_price'] ?> Tokens</p>
               </div>
             </div>
             <div class="d-flex mt-2">
@@ -153,10 +153,10 @@ if (isset($_POST['participateAuction'])) {
                     your tokens</a>
                 <?php }
               } else { ?>
-                <button class="btn btn-lg rounded-pill h4 fw-bolder btn-danger buy_Button mb-5 alreadyInAuction">Already
+                <button class="btn btn-lg rounded-pill h4 fw-bolder btn-danger buy_Button mb-5 alreadyInAuction d-none">Already
                   Registered in Auction</button>
                 <form method="POST">
-                  <button type="submit" class="btn btn-lg rounded-pill h4 fw-bolder btn-danger buy_Button mb-5 enterAuction" <?php if($cTime>  $data['starting_from']){echo 'style="display:block;"';}else{echo 'style="display:none;"';}?> name="participateAuction">
+                  <button type="submit" class="btn btn-lg rounded-pill h4 fw-bolder btn-danger buy_Button mb-5 enterAuction" name="participateAuction">
                     Enter Auction
                   </button>
                 </form>
@@ -242,7 +242,7 @@ if (isset($_POST['participateAuction'])) {
 
 
           var countDownDate2 = new Date(
-            "<?php echo date('Y-m-d H:i', strtotime('+10 minutes', strtotime($data['starting_from']))); ?>").getTime();
+            "<?php echo date('Y-m-d H:i', strtotime('+5 minutes', strtotime($data['starting_from']))); ?>").getTime();
 
 
           // Update the count down every 1 second
