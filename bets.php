@@ -72,9 +72,9 @@ if(mysqli_num_rows($sql) == 0){
               <!-- icon -->
               <!-- content -->
               <div class="bitCard_Contnet">
-                <h1 id="timer">24K</h1>
+                <h1 id="timer">0m 00s</h1>
 
-                <p class="light_para">Artwork</p>
+                <p class="light_para">Left</p>
               </div>
               <!-- content -->
             </div>
@@ -226,15 +226,18 @@ if(mysqli_num_rows($sql) == 0){
         $winningData = mysqli_query($conn, "SELECT Date_Add(starting_from , INTERVAL +10 MINUTE ) starting_from FROM `bnmi_auctions` where id = '$id' AND Date_Add(starting_from , INTERVAL +10 MINUTE )= ' $full '");
         
         if (mysqli_num_rows($winningData) > 0) {
+          
          
           $winnercheck = mysqli_query($conn, "SELECT * FROM " . $tblPrefix . "winnig WHERE auction_id = '$auctionid' AND auction_name= '$auctionname'");
           if (mysqli_num_rows($winnercheck) > 0) {
+            auctionDeactivate($id);
             header("location:winning.php");
             } else {
               $bidinginsert =  mysqli_query($conn, "INSERT INTO " . $tblPrefix . "winnig(`winner_name`, `Winner_email`, `amount`, `auction_id`, `auction_name`) VALUES ('$userName','$useremail','$winamount','$auctionid','$auctionname')");
               if ($bidinginsert) {
                 if(updateWallet($winamount)){
                   makeAuctionTransaction($winamount,$auctionid);
+                  auctionDeactivate($id);
                 }
                 header("location : winning.php");
               }
@@ -243,7 +246,12 @@ if(mysqli_num_rows($sql) == 0){
            
           }
             ?>
-          window.location.reload();
+          const reloadFUnction = function() {
+            window.location.reload();
+            window.location.href = ' winningPage.php';
+          }
+
+          reloadFUnction();
 
       }
 

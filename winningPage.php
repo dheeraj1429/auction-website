@@ -3,6 +3,10 @@ $pageName = "Winner";
 $dataquery = mysqli_query($conn, "SELECT * FROM " . $tblPrefix . "winnig");
 $topWining = mysqli_query($conn, "SELECT * FROM " . $tblPrefix . "bid  ORDER BY " . $tblPrefix . "bid. amount DESC LIMIT 3");
 
+$img = mysqli_query($conn, "SELECT * FROM " . $tblPrefix ."users`");
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

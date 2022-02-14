@@ -54,14 +54,13 @@
        $auctionId = mysqli_real_escape_string($conn,ak_secure_string($_GET['id']));
        $query = mysqli_query($conn,"INSERT INTO `".$tblPrefix."attendance`(`auction_id`, `user_id`, `date_time`) VALUES ('$auctionId','$userId','$cTime')");
        if($query== true){
+        $_SESSION['userWallet'] = getWallet($_SESSION['user']['id']) -$data['starting_price'] ;
            $_SESSION['toast']['type']="success";
            $_SESSION['toast']['msg']="Entered Auction Successfully";
 
            $auctionName = $_GET['auction'];
            $auctionid = $_GET['id'];
           
-           print_r($auctionName);
-
            header('location:bets.php?auction='.$auctionName.'&&id='.$auctionid.'');
            exit();
        }
@@ -137,7 +136,7 @@
                         ?>
 
             <form method="POST">
-              <button type="submit" class="btn btn-lg rounded-pill h4 fw-bolder btn-danger buy_Button mb-5"
+              <button type="submit" class="btn btn-lg rounded-pill h4 fw-bolder btn-danger buy_Button mb-5 paticipate_button"
                 name="enterAuction">Participate In <?php echo $data['entry_price'] ;?> Tokens</button>
             </form>
             <?php }else{ ?>
@@ -175,96 +174,97 @@
 
   <?php require_once 'inc/js.php';?>
   <script>
-  const timerFunction = function(distance, elem) {
-    // Time calculations for days, hours, minutes and seconds
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
 
-    // Display the result in the element with id="demo"
-    document.getElementById(elem).innerHTML = days + "d " + hours + "h " +
-      minutes + "m " + seconds + "s ";
+    const timerFunction = function(distance, elem) {
+      // Time calculations for days, hours, minutes and seconds
+      var days = Math.floor(distance / (1000*  60  *60 * 24));
+      var hours = Math.floor((distance % (1000*  60 * 60 * 24)) / (1000  *60 * 60));
+      var minutes = Math.floor((distance % (1000  *60*  60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      if(days && hours && minutes && seconds === 0){
-        if (distance < 0) {
+      // Display the result in the element with id="demo"
+      document.getElementById(elem).innerHTML = days + "d " + hours + "h " +
+        minutes + "m " + seconds + "s ";
+
+      if (distance < 0) {
         <?php if (isUserAlreadyInAuction($_GET['id'])) { ?>
+
           document.getElementById(elem).innerHTML = "auction has been closed";
           document.querySelector('.paticipate_button').style.display = "none";
         <?php }
 
         ?>
       }
+
+      if (days && hours && minutes && seconds === 0) {
         window.location.reload();
       }
-  }
+    }
 
-  // Set the date we're counting down to
-  // var countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
-  var countDownDate = new Date("<?php echo $data['starting_from']; ?>").getTime();
-  // var countDownDate = new Date('feb 3, 2022 10:20:25').getTime();
+    // Set the date we're counting down to
+    // var countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
+    var countDownDate = new Date("<?php echo $data['starting_from']; ?>").getTime();
+    // var countDownDate = new Date('feb 3, 2022 10:20:25').getTime();
 
-  // Update the count down every 1 second
-  var x = setInterval(function() {
+    // Update the count down every 1 second
+    var x = setInterval(function() {
 
-      // Get today's date and time
-      var now = new Date().getTime();
+        // Get today's date and time
+        var now = new Date().getTime();
 
-      // Find the distance between now and the count down date
-      var distance = countDownDate - now;
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
 
-      // show the time and distance
-      timerFunction(distance, 'demo');
+        // show the time and distance
+        timerFunction(distance, 'demo');
 
-      // If the count down is finished, write some text
-      if (distance < 0) {
-        clearInterval(x);
-        document.querySelector(".enterAuction").style.display = 'block'
-        document.getElementById("demo").innerHTML = "Started";
-        document.getElementById("demo2").style.display = "block";
+        // If the count down is finished, write some text
+        if (distance < 0) {
+          clearInterval(x);
+          document.querySelector(".enterAuction").style.display = 'block'
+          document.getElementById("demo").innerHTML = "Started";
+          document.getElementById("demo2").style.display = "block";
 
-        document.querySelector(".timeComplete").style.display = 'block'
-        document.querySelector(".alreadyInAuction").style.display = 'none'
+          document.querySelector(".timeComplete").style.display = 'block'
 
-        document.querySelector(".auctionText").innerHtml = 'Entry Closing In'
-
-        
+          document.querySelector(".auctionText").innerHtml = 'Entry Closing In'
 
 
-        var countDownDate2 = new Date(
-          "<?php echo date('Y-m-d H:i',strtotime('+10 minutes',strtotime($data['starting_from'])));?>").getTime();
 
 
-        // Update the count down every 1 second
-        var x2 = setInterval(function() {
+          var countDownDate2 = new Date(
+            "<?php echo date('Y-m-d H:i', strtotime('+10 minutes', strtotime($data['starting_from']))); ?>").getTime();
 
-          // Get today's date and time
-          var now2 = new Date().getTime();
 
-          // Find the distance between now2 and the count down date
-          var distance2 = countDownDate2 - now2;
+          // Update the count down every 1 second
+          var x2 = setInterval(function() {
 
-          // show the time and distance
-          timerFunction(distance2, 'demo2');
+            // Get today's date and time
+            var now2 = new Date().getTime();
 
-          document.querySelector('.auctionText').innerHtml = `Entry Closing In`
+            // Find the distance between now2 and the count down date
+            var distance2 = countDownDate2 - now2;
 
-          if (distance2 < 0) {
-            clearInterval(x2);
-            document.getElementById("demo").innerHTML = "Expired";
-            document.querySelector(".enterAuction").style.display = 'none'
-            document.getElementById("demo").innerHTML = `Auction has been started and Entry is closed`;
-            const elem = document.querySelector('.timeComplete');
-            const elem2 = document.querySelector('#demo2');
-            elem.style.display = 'none';
-            elem2.style.display = 'none';
-          }
-        }, 1000);
-      }
-    },
-    1000);
+            // show the time and distance
+            timerFunction(distance2, 'demo2');
 
-   
+            document.querySelector('.auctionText').innerHtml = `Entry Closing In`
+
+            if (distance2 < 0) {
+              clearInterval(x2);
+              document.getElementById("demo").innerHTML = "Expired";
+              document.querySelector(".enterAuction").style.display = 'none'
+              document.getElementById("demo").innerHTML = `Auction has been started and Entry is closed`;
+              const elem = document.querySelector('.timeComplete');
+              const elem2 = document.querySelector('#demo2');
+              elem.style.display = 'none';
+              elem2.style.display = 'none';
+            }
+          }, 1000);
+        }
+      },
+      1000);
   </script>
 
   <script>
