@@ -319,3 +319,11 @@ function getTokens($packageId){
 	$data = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `sale_price` FROM `".$tblPrefix."packages` WHERE id = ".$packageId))['sale_price'];
 	return $data;
 }
+
+function auctionDeactivate($id){
+	global $conn,$tblPrefix;
+
+	$deactivateAuction =  mysqli_query($conn,"UPDATE  ".$tblPrefix."auctions  SET  status= '3' WHERE id = $id");
+
+	return $deactivateAuction;
+}
